@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -12,6 +11,9 @@ const Header = () => {
         </Link>
       </div>
       <nav className="flex gap-[50px] max-sm:hidden">
+        <Link to="/home" className="text-[#2B2C34] text-xl font-bold">
+          Home
+        </Link>
         <Link to="/" className="text-[#2B2C34] text-xl font-bold">
           Hello
         </Link>
