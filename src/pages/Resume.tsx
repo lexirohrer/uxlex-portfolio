@@ -68,7 +68,7 @@ const Resume = () => {
               </div>
             </div>
 
-            {/* Right column with Publications and Education */}
+            {/* Right column with Publications, Education, Skills, and Contact */}
             <div className="space-y-12">
               {/* Publications */}
               <div className="bg-[#FFF8F2] p-8 rounded-3xl">
@@ -104,57 +104,57 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Skills */}
-            <div className="bg-[#FFF8F2] p-8 rounded-3xl">
-              <h2 className="text-[#403930] text-2xl font-semibold mb-6">Skills</h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold mb-2">Proficient in</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
-                    <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
+              {/* Skills */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Skills</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Proficient in</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
+                    </div>
                   </div>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold mb-2">Working knowledge of</h3>
-                  <div className="flex flex-wrap gap-2">
-                    <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
-                    <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">InVision</span>
-                    <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
-                    <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Python</span>
-                    <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Working knowledge of</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">InVision</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Python</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Contact Information */}
-            <div className="bg-[#FFF8F2] p-8 rounded-3xl lg:col-span-2">
-              <h2 className="text-[#403930] text-2xl font-semibold mb-6">Contact</h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold">Portfolio</h3>
-                  <p className="text-[#594F43]">uxlex.com</p>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold">Phone</h3>
-                  <p className="text-[#594F43]">(831) 917-3866</p>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold">Email</h3>
-                  <p className="text-[#594F43]">lexirohrer@gmail.com</p>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-lg font-semibold">LinkedIn</h3>
-                  <p className="text-[#594F43]">linkedin.com/in/alexandra-rohrer/</p>
+              {/* Contact Information */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Contact</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold">Portfolio</h3>
+                    <a href="https://uxlex.com" className="text-[#594F43] underline hover:text-[#403930]">uxlex.com</a>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold">Email</h3>
+                    <a href="mailto:lexirohrer@gmail.com" className="text-[#594F43] underline hover:text-[#403930]">lexirohrer@gmail.com</a>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold">LinkedIn</h3>
+                    <a href="https://linkedin.com/in/alexandra-rohrer/" className="text-[#594F43] underline hover:text-[#403930]">linkedin.com/in/alexandra-rohrer/</a>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold">Book a Coffee Chat</h3>
+                    <a href="https://calendar.app.google/F1HEuEakYHH7GsBbA" className="text-[#594F43] underline hover:text-[#403930]">Schedule a meeting</a>
+                  </div>
                 </div>
               </div>
             </div>
