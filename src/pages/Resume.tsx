@@ -1,3 +1,4 @@
+
 import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
@@ -71,11 +72,18 @@ const Resume = () => {
             <div className="space-y-12">
               {/* Publications */}
               <div className="bg-[#FFF8F2] p-8 rounded-3xl">
-                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Publications</h2>
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">Principles for Applying Augmented Reality in Manufacturing</h3>
-                  <p className="text-[#594F43] font-medium">January 2019</p>
-                  <p className="text-[#594F43] mt-2">Massachusetts Institute of Technology (MIT) Undergraduate Research Technology Conference</p>
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Talks & Publications</h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Mock to Stock: Let's Jam on a Minimum Lovable Product</h3>
+                    <p className="text-[#594F43] font-medium">Grace Hopper conference, Sept 2023</p>
+                    <p className="text-[#594F43] mt-2">Designed and facilitated a workshop guiding 80+ engineers through Intuit's E2E design process.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Human Centered Principles for Applying Augmented Reality in Manufacturing</h3>
+                    <p className="text-[#594F43] font-medium">Massachusetts Institute of Technology (MIT), January 2019</p>
+                    <p className="text-[#594F43] mt-2">Conference presentation accompanying my primary author publication at MIT's Undergraduate Research Technology Conference.</p>
+                  </div>
                 </div>
               </div>
 
