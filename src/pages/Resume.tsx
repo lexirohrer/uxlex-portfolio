@@ -2,8 +2,19 @@
 import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
+import { Button } from "@/components/ui/button";
+import { Download } from "lucide-react";
 
 const Resume = () => {
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/6e809fb2-1d82-4528-bee5-9474a08453fe.png';
+    link.download = 'Lexi_Rohrer_Resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       <link
@@ -14,7 +25,16 @@ const Resume = () => {
         <Header />
         <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           <div className="mb-10">
-            <h1 className="text-[#403930] text-[40px] font-semibold mb-6">Resume</h1>
+            <div className="flex items-center justify-between mb-6 max-sm:flex-col max-sm:items-start max-sm:gap-4">
+              <h1 className="text-[#403930] text-[40px] font-semibold">Resume</h1>
+              <Button 
+                onClick={handleDownload}
+                className="bg-[#FCA61F] hover:bg-[#E8951C] text-white px-6 py-2 rounded-lg flex items-center gap-2"
+              >
+                <Download size={20} />
+                Download PDF Resume
+              </Button>
+            </div>
             <p className="text-[#594F43] text-xl mb-8">
               I care about value-driven design that strives for positive social impact. Growing up in a home that hosted 56 exchange students from 16 different countries fostered my love of travel and language learning.
             </p>
