@@ -1,4 +1,3 @@
-
 import React from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
@@ -40,7 +39,7 @@ const Resume = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Experience */}
             <div className="bg-[#FFF8F2] p-8 rounded-3xl">
               <h2 className="text-[#403930] text-2xl font-semibold mb-6">Experience</h2>
@@ -68,30 +67,33 @@ const Resume = () => {
               </div>
             </div>
 
-            {/* Publications */}
-            <div className="bg-[#FFF8F2] p-8 rounded-3xl">
-              <h2 className="text-[#403930] text-2xl font-semibold mb-6">Publications</h2>
-              <div>
-                <h3 className="text-[#403930] text-xl font-semibold">Principles for Applying Augmented Reality in Manufacturing</h3>
-                <p className="text-[#594F43] font-medium">January 2019</p>
-                <p className="text-[#594F43] mt-2">Massachusetts Institute of Technology (MIT) Undergraduate Research Technology Conference</p>
-              </div>
-            </div>
-
-            {/* Education */}
-            <div className="bg-[#FFF8F2] p-8 rounded-3xl lg:col-start-2">
-              <h2 className="text-[#403930] text-2xl font-semibold mb-6">Education</h2>
-              <div className="space-y-4">
+            {/* Right column with Publications and Education */}
+            <div className="space-y-12">
+              {/* Publications */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Publications</h2>
                 <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
-                  <p className="text-[#594F43] font-medium">Minor | Linguistics</p>
-                  <p className="text-[#594F43] font-medium">University of Washington, Seattle • 2017-2021</p>
-                  <p className="text-[#594F43] mt-2">GPA: 3.98</p>
+                  <h3 className="text-[#403930] text-xl font-semibold">Principles for Applying Augmented Reality in Manufacturing</h3>
+                  <p className="text-[#594F43] font-medium">January 2019</p>
+                  <p className="text-[#594F43] mt-2">Massachusetts Institute of Technology (MIT) Undergraduate Research Technology Conference</p>
                 </div>
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">UX Certificate in Interaction Design</h3>
-                  <p className="text-[#594F43] font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
-                  <p className="text-[#594F43] mt-2">ID 1025553</p>
+              </div>
+
+              {/* Education */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Education</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
+                    <p className="text-[#594F43] font-medium">Minor | Linguistics</p>
+                    <p className="text-[#594F43] font-medium">University of Washington, Seattle • 2017-2021</p>
+                    <p className="text-[#594F43] mt-2">GPA: 3.98</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">UX Certificate in Interaction Design</h3>
+                    <p className="text-[#594F43] font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
+                    <p className="text-[#594F43] mt-2">ID 1025553</p>
+                  </div>
                 </div>
               </div>
             </div>
