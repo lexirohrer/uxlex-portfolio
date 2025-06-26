@@ -40,11 +40,15 @@ const Hero = () => {
             }}
           />
         </div>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/59b00f0db136ab4ad5f4c92847dae0e6bb237957"
-          className="absolute w-auto h-full right-0 top-0"
-          alt="Hero"
-        />
+        <div className="absolute w-[340px] h-[340px] right-0 top-0 flex items-center justify-center z-10 max-md:w-[220px] max-md:h-[220px]">
+          <div className="rounded-full ring-8 ring-white shadow-2xl p-2 bg-white/0">
+            <img
+              src="/COB profile.png"
+              alt="Profile"
+              className="w-full h-full object-contain rounded-full drop-shadow-lg"
+            />
+          </div>
+        </div>
         <div className="absolute shadow-[0px_40px_30px_0px_rgba(25,25,46,0.04)] text-[#5D87A8] text-2xl bg-white px-6 py-4 rounded-2xl right-[20%] top-[20%]">
           🔔 TECH
         </div>

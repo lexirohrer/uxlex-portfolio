@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "@/components/layout/Header";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+      <Header />
       {/* matcha-blur.png, 3x size, 2vw from left, behind center widget, flipped on x axis */}
       <img
         src="/matcha-blur.png"
