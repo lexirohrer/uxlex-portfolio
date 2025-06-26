@@ -40,9 +40,9 @@ const Resume = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {/* Left Column: Experience, then Skills */}
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* Experience */}
               <div className="bg-[#FFF8F2] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Experience</h2>
@@ -102,7 +102,7 @@ const Resume = () => {
             </div>
 
             {/* Right Column: Publications, Education, Contact */}
-            <div className="space-y-12">
+            <div className="space-y-6">
               {/* Publications */}
               <div className="bg-[#FFF8F2] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Talks & Publications</h2>
