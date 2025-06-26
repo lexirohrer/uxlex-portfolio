@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const Blogs = () => {
@@ -7,12 +8,12 @@ const Blogs = () => {
         <h2 className="text-gray-900 text-[40px] font-semibold mb-2.5">
           BLOGS
         </h2>
-        <p className="text-[#9E69AA] text-sm mb-5">
+        <p className="text-[#557592] text-sm mb-5">
           Find inspiration has never been easier than it is now.
         </p>
         <a
           href="#"
-          className="inline-block text-gray-50 text-sm px-9 py-5 rounded-[5px]"
+          className="inline-block text-white text-sm bg-[#557592] hover:bg-[#4A6680] px-9 py-5 rounded-[5px] transition-colors"
         >
           VIEW MORE
         </a>

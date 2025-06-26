@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const Contact = () => {
@@ -13,7 +14,7 @@ const Contact = () => {
         </h2>
         <a
           href="mailto:contact@samar.in"
-          className="inline-block text-[#4D5566] text-2xl font-semibold px-10 py-6 rounded-2xl border-4 border-solid border-[#4D5566]"
+          className="inline-block text-[#557592] text-2xl font-semibold px-10 py-6 rounded-2xl border-4 border-solid border-[#557592] hover:bg-[#557592] hover:text-white transition-colors"
         >
           Contact Me
         </a>

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <footer className="text-center px-0 py-10">
       <div className="mb-10">
-        <div className="text-[#403930] text-2xl font-semibold bg-[#FFDDBF] mr-2.5 px-6 py-3 rounded-[10px] inline-block">
+        <div className="text-[#403930] text-2xl font-semibold bg-[#E6F0F7] mr-2.5 px-6 py-3 rounded-[10px] inline-block">
           Follow me on
         </div>
         <div className="text-[40px] mb-5">👇</div>

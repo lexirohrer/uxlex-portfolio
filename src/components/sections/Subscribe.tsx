@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 
 const Subscribe = () => {
@@ -38,14 +39,14 @@ const Subscribe = () => {
         <input
           type="email"
           placeholder="Enter your email here...."
-          className="text-xl w-[400px] px-[25px] py-[21px] rounded-lg border-2 border-solid border-[#4D5566] max-sm:w-full"
+          className="text-xl w-[400px] px-[25px] py-[21px] rounded-lg border-2 border-solid border-[#557592] max-sm:w-full focus:outline-none focus:border-[#4A6680]"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <button
           type="submit"
-          className="text-[#FFFFFE] text-xl font-bold bg-[#F2C94C] px-[23px] py-5 rounded-lg border-[none]"
+          className="text-white text-xl font-bold bg-[#557592] hover:bg-[#4A6680] px-[23px] py-5 rounded-lg border-[none] transition-colors"
           disabled={isSubmitting}
         >
           {isSubmitting ? "Subscribing..." : "Subscribe"}
