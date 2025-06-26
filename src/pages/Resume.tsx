@@ -29,7 +29,7 @@ const Resume = () => {
               <h1 className="text-[#403930] text-[40px] font-semibold">Resume</h1>
               <Button 
                 onClick={handleDownload}
-                className="bg-[#FCA61F] hover:bg-[#E8951C] text-white px-6 py-2 rounded-lg flex items-center gap-2"
+                className="bg-[#557592] hover:bg-[#4A6680] text-white px-6 py-2 rounded-lg flex items-center gap-2"
               >
                 <Download size={20} />
                 Download PDF Resume
@@ -44,7 +44,7 @@ const Resume = () => {
             {/* Left Column: Experience, then Skills */}
             <div className="space-y-6">
               {/* Experience */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+              <div className="bg-[#F0F4F7] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Experience</h2>
                 <div className="space-y-6">
                   <div>
@@ -71,30 +71,30 @@ const Resume = () => {
               </div>
 
               {/* Skills */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+              <div className="bg-[#F0F4F7] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Skills</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-[#403930] text-lg font-semibold mb-2">Proficient in</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
+                      <span className="bg-[#8FA5B8] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-[#403930] text-lg font-semibold mb-2">Working knowledge of</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">InVision</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Python</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                      <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
+                      <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-sm">InVision</span>
+                      <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
+                      <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-sm">Python</span>
+                      <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
                     </div>
                   </div>
                 </div>
@@ -104,7 +104,7 @@ const Resume = () => {
             {/* Right Column: Publications, Education, Contact */}
             <div className="space-y-6">
               {/* Publications */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+              <div className="bg-[#F0F4F7] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Talks & Publications</h2>
                 <div className="space-y-6">
                   <div>
@@ -121,7 +121,7 @@ const Resume = () => {
               </div>
 
               {/* Education */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+              <div className="bg-[#F0F4F7] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Education</h2>
                 <div className="space-y-4">
                   <div>
@@ -139,7 +139,7 @@ const Resume = () => {
               </div>
 
               {/* Contact Information */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+              <div className="bg-[#F0F4F7] p-8 rounded-3xl">
                 <h2 className="text-[#403930] text-2xl font-semibold mb-6">Contact</h2>
                 <div className="space-y-4">
                   <div>
