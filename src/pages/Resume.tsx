@@ -41,34 +41,67 @@ const Resume = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            {/* Experience */}
-            <div className="bg-[#FFF8F2] p-8 rounded-3xl">
-              <h2 className="text-[#403930] text-2xl font-semibold mb-6">Experience</h2>
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
-                  <p className="text-[#594F43] font-medium">August 2024 - Present</p>
-                  <p className="text-[#594F43] mt-2">Lived and worked in Bangkok, Thailand on a year long design & research fellowship. Facilitated 15+ participatory design workshops across 5 NGO, private, and public orgs.</p>
+            {/* Left Column: Experience, then Skills */}
+            <div className="space-y-12">
+              {/* Experience */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Experience</h2>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
+                    <p className="text-[#594F43] font-medium">August 2024 - Present</p>
+                    <p className="text-[#594F43] mt-2">Lived and worked in Bangkok, Thailand on a year long design & research fellowship. Facilitated 15+ participatory design workshops across 5 NGO, private, and public orgs.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Product Designer</h3>
+                    <p className="text-[#594F43] font-medium">Intuit • September 2021 - August 2024</p>
+                    <p className="text-[#594F43] mt-2">Designing onboarding experiences to help small business owners set up and use QuickBooks across web and mobile. Leading the design effort to unify and tailor the QuickBooks onboarding experience across geographic regions.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Design & Communications Director</h3>
+                    <p className="text-[#594F43] font-medium">Basilica Bio • April 2021 - Present</p>
+                    <p className="text-[#594F43] mt-2">Facilitating and participating in environmental justice education workshops. Created Basilica Bio's brand system, communication strategy, and website.</p>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Human Computer Interaction Research Intern</h3>
+                    <p className="text-[#594F43] font-medium">Carnegie Mellon University • June 2019 - September 2019</p>
+                    <p className="text-[#594F43] mt-2">Designed the onboarding flow for the chrome extension by Dr. Aniket Kittur's lab. Planned, recruited for, and conducted concept tests with users on prospective feature development.</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">Product Designer</h3>
-                  <p className="text-[#594F43] font-medium">Intuit • September 2021 - August 2024</p>
-                  <p className="text-[#594F43] mt-2">Designing onboarding experiences to help small business owners set up and use QuickBooks across web and mobile. Leading the design effort to unify and tailor the QuickBooks onboarding experience across geographic regions.</p>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">Design & Communications Director</h3>
-                  <p className="text-[#594F43] font-medium">Basilica Bio • April 2021 - Present</p>
-                  <p className="text-[#594F43] mt-2">Facilitating and participating in environmental justice education workshops. Created Basilica Bio's brand system, communication strategy, and website.</p>
-                </div>
-                <div>
-                  <h3 className="text-[#403930] text-xl font-semibold">Human Computer Interaction Research Intern</h3>
-                  <p className="text-[#594F43] font-medium">Carnegie Mellon University • June 2019 - September 2019</p>
-                  <p className="text-[#594F43] mt-2">Designed the onboarding flow for the chrome extension by Dr. Aniket Kittur's lab. Planned, recruited for, and conducted concept tests with users on prospective feature development.</p>
+              </div>
+
+              {/* Skills */}
+              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Skills</h2>
+                <div className="space-y-4">
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Proficient in</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
+                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Working knowledge of</h3>
+                    <div className="flex flex-wrap gap-2">
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">InVision</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Python</span>
+                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Right column with Publications, Education, Skills, and Contact */}
+            {/* Right Column: Publications, Education, Contact */}
             <div className="space-y-12">
               {/* Publications */}
               <div className="bg-[#FFF8F2] p-8 rounded-3xl">
@@ -101,36 +134,6 @@ const Resume = () => {
                     <h3 className="text-[#403930] text-xl font-semibold">UX Certificate in Interaction Design</h3>
                     <p className="text-[#594F43] font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
                     <p className="text-[#594F43] mt-2">ID 1025553</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Skills */}
-              <div className="bg-[#FFF8F2] p-8 rounded-3xl">
-                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Skills</h2>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Proficient in</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Figma</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Adobe CC</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Prototyping</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Design critique</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Storyboarding</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">User Interviews</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Usability Testing</span>
-                      <span className="bg-[#EDC048] text-[#403930] px-3 py-1 rounded-full text-sm">Content Strategy</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-[#403930] text-lg font-semibold mb-2">Working knowledge of</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Sketch</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">InVision</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">Python</span>
-                      <span className="bg-[#FCA61F] text-white px-3 py-1 rounded-full text-sm">HTML/CSS</span>
-                    </div>
                   </div>
                 </div>
               </div>
