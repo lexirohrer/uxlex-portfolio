@@ -76,155 +76,184 @@ const CaseStudy = () => {
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Discover how trial users think about onboarding to QuickBooks, compared to users who buy the product for 50% off without a free trial
+                  Reduce friction in the onboarding journey and help users reach value faster.
                 </p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Identify trial users' pain points with the current onboarding experience
+                  Align multiple internal teams around a shared vision for onboarding.
                 </p>
               </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Design an onboarding flow that eliminates these pain points while helping trial users get the most out of their free trial
+                  Identify usability issues preventing successful setup.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  Explore responsible AI integrations to save users time and effort.
                 </p>
               </div>
             </div>
-            <p className="text-[#557592] text-lg mt-6">
-              To help achieve these goals, I contributed to and led various phases of the project as it followed a double diamond design process
+            <p className="text-[#403930] text-lg mt-6">
+              Onboarding had become a silver bullet for teams to guarantee a boost to completion of their specific setup tasks and meet their target metrics. While each addition seemed valuable on its own, the result was a long, bloated flow that slowed users down at the exact moment when their excitement to see the product was highest.
             </p>
           </section>
 
           {/* Project Process */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project process</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project Process</h2>
+            
+            {/* Building alignment */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Building alignment</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                I knew from past projects that simply proposing a shorter flow wouldn't be enough — removing steps from onboarding was a debate that often escalated to the VP-level, and rarely stuck. Instead, I brought stakeholders together for a design sprint to reorient stakeholders around shared goals, and get them invested in building a customer focused solution
+              </p>
               
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl transform rotate-3 hover:rotate-0 transition-transform duration-300">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">1</div>
-                <h3 className="text-[#403930] text-lg font-bold mb-3">Qual & quant research</h3>
-                <ul className="text-[#557592] text-sm space-y-1">
-                  <li>• Advised on interview script</li>
-                  <li>• Sat in on 8/17 interviews</li>
-                  <li>• Helped draft survey with reach of 976 users</li>
-                </ul>
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+                <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                  <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">1</div>
+                  <h4 className="text-[#403930] text-lg font-bold mb-3">Listening</h4>
+                  <p className="text-[#557592] text-sm">Each team shared their goals and why their step had been added.</p>
+                </div>
 
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl transform -rotate-2 hover:rotate-0 transition-transform duration-300">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">2</div>
-                <h3 className="text-[#403930] text-lg font-bold mb-3">Generative brainstorming</h3>
-                <ul className="text-[#557592] text-sm space-y-1">
-                  <li>• Facilitated 3 working team sessions</li>
-                  <li>• Facilitated 1 session with design leadership</li>
-                </ul>
-              </div>
+                <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                  <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">2</div>
+                  <h4 className="text-[#403930] text-lg font-bold mb-3">Grounding in evidence</h4>
+                  <p className="text-[#557592] text-sm">I presented metrics showing the 18-minute average onboarding time and shared quotes from users describing the process as "endless paperwork."</p>
+                </div>
 
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl transform rotate-1 hover:rotate-0 transition-transform duration-300">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">3</div>
-                <h3 className="text-[#403930] text-lg font-bold mb-3">User testing</h3>
-                <ul className="text-[#557592] text-sm space-y-1">
-                  <li>• Ran 4/8 moderated user tests</li>
-                  <li>• Set up 6 unmoderated user tests</li>
-                </ul>
-              </div>
+                <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                  <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">3</div>
+                  <h4 className="text-[#403930] text-lg font-bold mb-3">Shared principles</h4>
+                  <p className="text-[#557592] text-sm">Together, we agreed that the primary goal of onboarding should be to get users to value quickly, not to maximize every team's KPIs.</p>
+                </div>
 
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl transform -rotate-1 hover:rotate-0 transition-transform duration-300">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">4</div>
-                <h3 className="text-[#403930] text-lg font-bold mb-3">Final design cycles</h3>
-                <ul className="text-[#557592] text-sm space-y-1">
-                  <li>• Refined interactions</li>
-                  <li>• Created responsive specs</li>
-                  <li>• Laid out end to end flow</li>
-                </ul>
+                <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                  <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">4</div>
+                  <h4 className="text-[#403930] text-lg font-bold mb-3">Co-designing</h4>
+                  <p className="text-[#557592] text-sm">We sketched out a lean flow with only the most essential steps, with other setup tasks deferred to contextual moments later in the product.</p>
+                </div>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for workshop collage or sticky note wall photo.]</p>
               </div>
             </div>
-            <div className="text-center mt-8">
-              <p className="text-[#557592] text-lg">the team aligned on a few core ideas to test</p>
-              <div className="flex justify-center mt-4">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="text-[#557592]">
-                  <path d="M12 5v14m7-7l-7 7-7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+
+            {/* Testing and iteration */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Testing and iteration</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                With a proposed flow in place, I worked closely with content designers, PMs, and engineers to create prototypes and bring them into production for testing. This looked like:
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Running 40+ usability tests across end-to-end flows to gain confidence in our design direction
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Identifying critical blockers that prevented setup success.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Iterating on both interaction design and copy to ensure clarity.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for usability test quotes and screenshots of friction points.]</p>
               </div>
             </div>
-          </section>
 
-          {/* Summary */}
-          <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Summary</h2>
-            <div className="prose prose-lg max-w-none">
+            {/* Designing with AI */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Designing with AI</h3>
               <p className="text-[#403930] text-lg mb-6">
-                <strong>50% of new QuickBooks signups come from a 30 day free trial</strong>, but only <strong>16% of those trial customers converted</strong> to a paid subscription after their free trial. Through initial research into this user group, we discovered that the product's onboarding didn't fit their goals for the first month of using QuickBooks - the onboarding focused on lots of manual data entry and setup, while <strong>trial users wanted to explore and evaluate the product's fit without a lot of up front work</strong>.
+                One of the biggest opportunities we saw was to reduce the amount of manual entry during setup. Our data showed that 75% of QuickBooks customers had websites, which already contained much of the information needed to create their account — things like business name, email, industry, and branding.
               </p>
               
               <p className="text-[#403930] text-lg mb-6">
-                In short, an onboarding that wasn't designed for the trial mindset was causing these users to abandon the product. As a product designer on the onboarding team, I assisted with the research and led the design of an onboarding experience tailored to meet these trial users' specific needs during their first 30 days using QuickBooks. We started with the following question:
+                We introduced an AI-powered step that asked users if they'd like to import data directly from their website. With one click, QuickBooks generated a business profile pre-filled with the information we had pulled, which users could then confirm or edit.
               </p>
               
-              <blockquote className="border-l-4 border-[#557592] pl-6 text-[#403930] text-xl font-medium italic mb-6">
-                How might we tailor the QuickBooks onboarding flow to reflect trial users needs?
-              </blockquote>
-              
-              <p className="text-[#557592] text-lg">
-                The below prototype shows my final solution - read on for more in depth descriptions of the project process to produce these designs.
+              <p className="text-[#403930] text-lg mb-6">
+                When tested in production, this step alone saved users significant time in the onboarding process. It also created a more personalized experience later on: if a user chose to learn how to create an invoice, QuickBooks could surprise them with a sample invoice already set up using the colors and branding from their website.
               </p>
+              
+              <p className="text-[#403930] text-lg mb-6">
+                This flow not only streamlined setup but also built early trust and delight by showing users how their data could be put to work for them right away.
+              </p>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                  <p className="text-[#557592] text-lg italic">📍 [Placeholder for before/after wireframe: manual entry vs. AI business profile import.]</p>
+                </div>
+                <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                  <p className="text-[#557592] text-lg italic">📍 [Placeholder for before/after wireframe: manual entry vs. AI import.]</p>
+                </div>
+              </div>
             </div>
           </section>
 
           {/* Final Design */}
-          <section>
+          <section className="mb-16">
             <h2 className="text-[#403930] text-[32px] font-bold mb-8">Final Design</h2>
-            <div className="bg-[#E6F0F7] p-8 rounded-2xl">
-              <div className="text-center mb-6">
-                <div className="inline-flex items-center gap-2 mb-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                    <span className="text-white text-xs font-bold">QB</span>
-                  </div>
-                  <span className="text-[#403930] font-semibold">quickbooks</span>
-                </div>
-                
-                <div className="flex justify-center items-center gap-8 mb-8">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">1</div>
-                    <span className="text-[#403930] font-medium">Business</span>
-                    <div className="w-24 h-1 bg-green-500 rounded"></div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-400 text-xs font-bold">2</div>
-                    <span className="text-gray-400 font-medium">People</span>
-                    <div className="w-24 h-1 bg-gray-200 rounded"></div>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 border-2 border-gray-300 rounded-full flex items-center justify-center text-gray-400 text-xs font-bold">3</div>
-                    <span className="text-gray-400 font-medium">Get started</span>
-                  </div>
-                </div>
+            <p className="text-[#403930] text-lg mb-6">
+              The new flow emphasized speed while ensuring users didn't lose the ability to complete important setup later.
+            </p>
+            
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  <strong>Streamlined onboarding:</strong> fewer upfront steps, clearer progression, and faster access to the homepage.
+                </p>
               </div>
-              
-              <div className="bg-gradient-to-br from-blue-100 to-green-100 p-8 rounded-xl text-center">
-                <h3 className="text-[#403930] text-2xl font-bold mb-4">Tell us about your business</h3>
-                <p className="text-[#557592] text-lg mb-8">We'll use this info to get you started in QuickBooks.</p>
-                
-                <div className="max-w-md mx-auto">
-                  <div className="bg-white p-6 rounded-lg shadow-sm mb-6">
-                    <label className="block text-left text-[#403930] font-medium mb-2">What's your business name?</label>
-                    <input 
-                      type="text" 
-                      className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:border-[#557592]"
-                      placeholder="Enter business name"
-                    />
-                  </div>
-                </div>
-                
-                <div className="flex justify-center">
-                  <img
-                    src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=200&h=200&fit=crop"
-                    className="w-32 h-32 object-contain"
-                    alt="Business illustration"
-                  />
-                </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  <strong>AI-supported imports:</strong> reduced manual work and increased confidence in setup.
+                </p>
               </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  <strong>Flexible hand-offs:</strong> less critical tasks were moved into contextual "right time, right place" experiences.
+                </p>
+              </div>
+            </div>
+            
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder for final UI screenshots of streamlined flow + AI import step.]</p>
+            </div>
+          </section>
+
+          {/* Reflection */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Reflection</h2>
+            <p className="text-[#403930] text-lg mb-6">
+              This project reinforced that designing for impact means balancing user needs with organizational realities. Onboarding wasn't just an interaction design or user journey flow problem — it was a stakeholder alignment challenge. By creating space for teams to see the bigger picture, we were able to shift from siloed decision-making toward a shared vision centered on user success.
+            </p>
+            
+            <p className="text-[#403930] text-lg mb-8">
+              For me, this was a reminder that good design is as much about facilitation and diplomacy as it is about pixels on a screen. The same approach — aligning different points of view, grounding decisions in user data, and designing responsibly with AI — is what I continue to bring to complex projects that work on systemic issues.
+            </p>
+            
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder for "metrics at a glance" graphic: +37% completion, 40+ usability tests, 18 → reduced minutes.]</p>
             </div>
           </section>
 
