@@ -6,7 +6,7 @@ const CaseStudies = () => {
   return (
     <section
       id="case-studies"
-      className="px-28 py-[88px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-10"
+      className="py-[88px] max-md:py-[60px] max-sm:py-10"
     >
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-[#403930] text-[40px] font-semibold">
