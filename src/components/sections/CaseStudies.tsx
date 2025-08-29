@@ -25,17 +25,19 @@ const CaseStudies = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-        <CaseStudyCard
-          title="QuickBooks Onboarding"
-          description="Tailoring accounting software onboarding to different mindsets"
-          tools={["Figma", "Figjam", "Usertesting.com", "Google Suite"]}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop"
-            className="w-full h-full object-cover"
-            alt="QuickBooks Onboarding"
-          />
-        </CaseStudyCard>
+        <a href="/case-study/quickbooks-onboarding" className="block">
+          <CaseStudyCard
+            title="QuickBooks Onboarding"
+            description="Tailoring accounting software onboarding to different mindsets"
+            tools={["Figma", "Figjam", "Usertesting.com", "Google Suite"]}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop"
+              className="w-full h-full object-cover"
+              alt="QuickBooks Onboarding"
+            />
+          </CaseStudyCard>
+        </a>
 
         <CaseStudyCard
           title="QuickBooks Mobile Web Redesign"
