@@ -105,8 +105,13 @@ const Resume = () => {
             <div className="space-y-6">
               {/* Publications */}
               <div className="bg-[#F0F4F7] p-8 rounded-3xl">
-                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Talks & Publications</h2>
+                <h2 className="text-[#403930] text-2xl font-semibold mb-6">Talks, Publications, Patents</h2>
                 <div className="space-y-6">
+                  <div>
+                    <h3 className="text-[#403930] text-xl font-semibold">Patent IPR-2412979US: Automatic Onboarding to a Computer Application by Scraping Website Data</h3>
+                    <p className="text-[#594F43] font-medium">Patent Application, 2024</p>
+                    <p className="text-[#594F43] mt-2">Automated system for streamlining user onboarding by extracting relevant business information from websites.</p>
+                  </div>
                   <div>
                     <h3 className="text-[#403930] text-xl font-semibold">Mock to Stock: Let's Jam on a Minimum Lovable Product</h3>
                     <p className="text-[#594F43] font-medium">Grace Hopper conference, Sept 2023</p>
