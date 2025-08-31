@@ -9,6 +9,17 @@
 
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
+    
+    /* Glassmorphic variables */
+    --glass-bg: 255 255 255 / 0.1;
+    --glass-border: 255 255 255 / 0.2;
+    --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    
+    /* Moving gradient variables */
+    --gradient-1: 255 182 193;  /* Light pink */
+    --gradient-2: 173 216 230;  /* Light blue */
+    --gradient-3: 221 160 221;  /* Plum */
+    --gradient-4: 144 238 144;  /* Light green */
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
@@ -57,6 +68,11 @@
 
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
+    
+    /* Dark mode glassmorphic variables */
+    --glass-bg: 0 0 0 / 0.3;
+    --glass-border: 255 255 255 / 0.1;
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
@@ -97,5 +113,26 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(var(--glass-bg));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(var(--glass-border));
+    box-shadow: var(--glass-shadow);
+  }
+  
+  .moving-gradient {
+    background: linear-gradient(-45deg, 
+      rgb(var(--gradient-1)), 
+      rgb(var(--gradient-2)), 
+      rgb(var(--gradient-3)), 
+      rgb(var(--gradient-4))
+    );
+    background-size: 400% 400%;
+    animation: gradient-move 15s ease infinite;
   }
 }
