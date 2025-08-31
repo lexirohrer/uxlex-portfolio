@@ -46,7 +46,7 @@ const Resume = () => {
             {/* Left Column: Experience, then Skills */}
             <div className="space-y-6">
               {/* Experience */}
-              <div className="glass-card p-8 rounded-3xl">
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6">Experience</h2>
                 <div className="space-y-6">
                   <div>
@@ -73,7 +73,7 @@ const Resume = () => {
               </div>
 
               {/* Skills */}
-              <div className="glass-card p-8 rounded-3xl">
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6">Skills</h2>
                 <div className="space-y-4">
                   <div>
@@ -106,7 +106,7 @@ const Resume = () => {
             {/* Right Column: Publications, Education, Contact */}
             <div className="space-y-6">
               {/* Publications */}
-              <div className="glass-card p-8 rounded-3xl">
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6">Talks, Publications, Patents</h2>
                 <div className="space-y-6">
                   <div>
@@ -128,7 +128,7 @@ const Resume = () => {
               </div>
 
               {/* Education */}
-              <div className="glass-card p-8 rounded-3xl">
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6">Education</h2>
                 <div className="space-y-4">
                   <div>
@@ -146,7 +146,7 @@ const Resume = () => {
               </div>
 
               {/* Contact Information */}
-              <div className="glass-card p-8 rounded-3xl">
+              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6">Contact</h2>
                 <div className="space-y-4">
                   <div>
