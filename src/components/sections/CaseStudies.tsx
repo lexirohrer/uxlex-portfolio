@@ -39,29 +39,33 @@ const CaseStudies = () => {
           </CaseStudyCard>
         </a>
 
-        <CaseStudyCard
-          title="QuickBooks Mobile Web Redesign"
-          description="Turning broken workflows into intentionally crafted experiences"
-          tools={["Figma", "Photoshop", "QuickBooks design system"]}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop"
-            className="w-full h-full object-cover"
-            alt="QuickBooks Mobile Web Redesign"
-          />
-        </CaseStudyCard>
+        <a href="/case-study/muvmi-tuk-tuks" className="block">
+          <CaseStudyCard
+            title="MuvMi: Co-designing Electric Tuk Tuks"
+            description="Designing sustainable transportation solutions through community collaboration"
+            tools={["Figma", "User Research", "Co-design", "Prototyping"]}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop"
+              className="w-full h-full object-cover"
+              alt="MuvMi Electric Tuk Tuk"
+            />
+          </CaseStudyCard>
+        </a>
 
-        <CaseStudyCard
-          title="Fuse Google Chrome Extension"
-          description="Designing a second brain for researchers collecting information"
-          tools={["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"]}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-            className="w-full h-full object-cover"
-            alt="Fuse Chrome Extension"
-          />
-        </CaseStudyCard>
+        <a href="/case-study/fuse-chrome-extension" className="block">
+          <CaseStudyCard
+            title="Fuse Google Chrome Extension"
+            description="Designing a second brain for researchers collecting information"
+            tools={["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"]}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
+              className="w-full h-full object-cover"
+              alt="Fuse Chrome Extension"
+            />
+          </CaseStudyCard>
+        </a>
 
         <CaseStudyCard
           title="Harvest app"

@@ -10,6 +10,8 @@ import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
 import CaseStudy from "./pages/CaseStudy";
+import FuseCaseStudy from "./pages/FuseCaseStudy";
+import MuvMiCaseStudy from "./pages/MuvMiCaseStudy";
 
 const queryClient = new QueryClient();
 
@@ -26,6 +28,8 @@ const App = () => (
           <Route path="/blog" element={<Blog />} />
           <Route path="/home" element={<Home />} />
           <Route path="/case-study/quickbooks-onboarding" element={<CaseStudy />} />
+          <Route path="/case-study/fuse-chrome-extension" element={<FuseCaseStudy />} />
+          <Route path="/case-study/muvmi-tuk-tuks" element={<MuvMiCaseStudy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

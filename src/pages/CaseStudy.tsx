@@ -17,12 +17,33 @@ const CaseStudy = () => {
           <section className="mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h1 className="text-[#557592] text-[48px] font-bold mb-6 max-md:text-[36px]">
-                  QuickBooks Onboarding
+                <h1 className="text-[#403930] text-[48px] font-bold mb-6 max-md:text-[36px]">
+                  Lexi Rohrer
                 </h1>
-                <p className="text-[#403930] text-xl mb-8">
-                  Tailoring accounting software onboarding to different mindsets
+                <p className="text-[#557592] text-xl mb-8">
+                  user experience designer
                 </p>
+                
+                {/* Project Box */}
+                <div className="bg-pink-100 p-8 rounded-2xl mb-8 relative">
+                  <div className="flex justify-between items-start">
+                    <div className="flex-1">
+                      <h2 className="text-red-800 text-[32px] font-bold mb-3">
+                        QuickBooks Onboarding
+                      </h2>
+                      <p className="text-[#403930] text-lg">
+                        Tailoring accounting software onboarding to different mindsets
+                      </p>
+                    </div>
+                    <div className="ml-6">
+                      <div className="bg-red-600 text-white p-3 rounded-lg text-center">
+                        <div className="text-sm font-bold">QB</div>
+                        <div className="text-xs">QuickBooks</div>
+                        <div className="text-xs">Team</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
                 <div className="space-y-6">
                   <div className="bg-[#E6F0F7] p-6 rounded-2xl">

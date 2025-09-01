@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 const Home = () => {
   return (
     <div
-      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-[100px]"
       style={{
         backgroundImage: "url('/bkg.png')",
         backgroundSize: "cover",
