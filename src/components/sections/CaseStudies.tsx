@@ -28,7 +28,7 @@ const CaseStudies = () => {
         <a href="/case-study/quickbooks-onboarding" className="block">
           <CaseStudyCard
             title="QuickBooks Onboarding"
-            description="Tailoring accounting software onboarding to different mindsets"
+            description="Helping small business owners learn money management"
             tools={["Figma", "Figjam", "Usertesting.com", "Google Suite"]}
           >
             <img
@@ -41,9 +41,9 @@ const CaseStudies = () => {
 
         <a href="/case-study/muvmi-tuk-tuks" className="block">
           <CaseStudyCard
-            title="MuvMi: Co-designing Electric Tuk Tuks"
-            description="Designing sustainable transportation solutions through community collaboration"
-            tools={["Figma", "User Research", "Co-design", "Prototyping"]}
+            title="MuvMi: Co-designing electric Tuk Tuks"
+            description="Sustainable mobility for Thai tourists and citizens"
+            tools={["Figma", "User Research", "Co-design", "Prototyping", "Workshop Facilitation"]}
           >
             <img
               src="/MuvMi.png"

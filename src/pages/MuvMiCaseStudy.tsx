@@ -49,28 +49,27 @@ const MuvMiCaseStudy = () => {
                   <div className="bg-[#E6F0F7] p-6 rounded-2xl">
                     <h3 className="text-[#403930] text-lg font-semibold mb-3">Context</h3>
                     <p className="text-[#557592] text-sm">
-                      MuvMi is a sustainable transportation startup focused on electric tuk-tuk services in Thailand. This project involved co-designing the user experience for their mobile application and service ecosystem with local communities and drivers.
+                      As part of my Fulbright fellowship on Human-Centered Design in Thailand, I partnered with MuvMi, a Bangkok-based ridesharing startup operating a fleet of electric Tuk Tuks. MuvMi's mission is to create a safer, more affordable, and greener first–last mile transit option, supporting Thailand's Smart Mobility, Smart Environment, and Smart Economy pillars.
                     </p>
                   </div>
                   
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-[#E6F0F7] p-4 rounded-2xl">
                       <h4 className="text-[#403930] font-semibold mb-2">Role</h4>
-                      <p className="text-[#557592] text-sm">UX Designer & Co-design Facilitator</p>
+                      <p className="text-[#557592] text-sm">Fulbright Research Fellow & UX Designer</p>
                     </div>
                     
                     <div className="bg-[#E6F0F7] p-4 rounded-2xl">
                       <h4 className="text-[#403930] font-semibold mb-2">Duration</h4>
-                      <p className="text-[#557592] text-sm">March - June 2023</p>
+                      <p className="text-[#557592] text-sm">Bangkok, 2025 – Fulbright Research Project</p>
                     </div>
                     
                     <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Tools</h4>
+                      <h4 className="text-[#403930] font-semibold mb-2">Methods</h4>
                       <div className="flex flex-wrap gap-2">
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Figma</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">User Research</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Co-design</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Prototyping</span>
+                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Participatory Design</span>
+                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Ethnography</span>
+                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Paper Prototyping</span>
                       </div>
                     </div>
                   </div>
@@ -80,7 +79,7 @@ const MuvMiCaseStudy = () => {
               <div className="flex justify-center">
                 <div className="relative">
                   <img
-                    src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=600&h=400&fit=crop"
+                    src="/MuvMi.png"
                     className="w-full max-w-[500px] rounded-2xl shadow-lg"
                     alt="MuvMi Electric Tuk Tuk"
                   />
@@ -89,212 +88,276 @@ const MuvMiCaseStudy = () => {
             </div>
           </section>
 
-          {/* Background */}
+          {/* Summary */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Background</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Summary</h2>
             <p className="text-[#403930] text-lg mb-6">
-              MuvMi (มูฟมี) is a Thai electric tuk-tuk service that aims to provide sustainable, accessible transportation solutions in urban areas. The company operates with a unique co-design approach, involving local communities, drivers, and passengers in the design process to create a service that truly meets local needs.
+              Through participatory design methods—including ethnographic ride-alongs, paper prototyping workshops, and group feedback sessions—I worked with both tourists and locals to explore how MuvMi's dual offerings could be unified into one app without compromising the user experience.
             </p>
             
-            <p className="text-[#403930] text-lg mb-6">
-              The project focused on designing the mobile application experience for both passengers and drivers, while also considering the broader service ecosystem including vehicle design, payment systems, and community engagement.
-            </p>
-            
-            <div className="bg-gray-100 p-8 rounded-2xl text-center mb-8">
-              <p className="text-[#557592] text-lg italic">📍 [Placeholder for MuvMi service overview video or interactive prototype]</p>
-            </div>
-            
-            <p className="text-[#403930] text-lg mb-6">
-              <strong>Key challenges addressed in this project:</strong>
+            <p className="text-[#403930] text-lg mb-8">
+              <strong>Key outcomes included:</strong>
             </p>
             
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-4">
-                <div className="w-6 h-6 bg-[#557592] text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">1</div>
-                <p className="text-[#403930] text-lg">Designing for diverse user groups (passengers, drivers, local communities)</p>
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">Concrete service concepts (visual travel zones, integrated modes, and expanded tourist options) later implemented by MuvMi.</p>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-6 h-6 bg-[#557592] text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">2</div>
-                <p className="text-[#403930] text-lg">Integrating sustainable transportation with local cultural practices</p>
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">A shift in methodology, with staff noting participatory design produced more "realistic and usable" solutions than interviews or surveys.</p>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-6 h-6 bg-[#557592] text-white rounded-full flex items-center justify-center text-sm font-bold mt-1 flex-shrink-0">3</div>
-                <p className="text-[#403930] text-lg">Creating accessible technology for users with varying digital literacy</p>
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">A cultural shift, as employees began informally using personas and participatory outputs in everyday decision-making.</p>
               </div>
             </div>
           </section>
 
-          {/* Co-Design Process */}
+          {/* Project Goals */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Co-Design Process</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project Goals</h2>
+            <div className="space-y-4">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  Explore how Human-Centered Design methods can be adapted to Thailand's cultural context, as part of my Fulbright research.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  Improve the onboarding and ride experience for both tourist and local riders.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  Generate actionable service design concepts aligned with smart city goals.
+                </p>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  Introduce participatory methods that could realistically fit into a Thai startup environment.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* Project Process */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project Process</h2>
+            
+            {/* Why participatory design */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Why participatory design?</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                In Thailand, indirect feedback tendencies often make traditional user interviews difficult. Participatory methods were chosen not just to overcome this, but because of their cultural fit. In a collectivist society, people are well-practiced at collaborating to solve systemic challenges for the broader good.
+              </p>
+              
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl mb-6">
+                <p className="text-[#403930] text-lg italic mb-4">
+                  "People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here."
+                </p>
+                <p className="text-[#557592] text-sm">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for diagram: Western HCD vs. adapted participatory design in Thai context]</p>
+              </div>
+            </div>
+
+            {/* Observing real-world experiences */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Observing real-world experiences</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                Ethnographic ride-alongs with tourists and group feedback sessions with locals surfaced key differences:
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    <strong>Local riders</strong> accepted MuvMi's zone-based system as familiar, mirroring gas Tuk Tuk norms.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    <strong>Tourists</strong>, influenced by ride-hailing apps, expected on-demand, unlimited travel. The zones felt confusing and restrictive.
+                  </p>
+                </div>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for UI/service image: Zone-based travel — before and after redesign]</p>
+              </div>
+            </div>
+
+            {/* Paper prototyping methodology */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Paper prototyping methodology</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                The product team had several ideas for improving the app but worried that presenting polished concepts would bias users toward polite approval. To avoid this, we adapted a paper prototyping method:
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    We deconstructed the app into low-fidelity paper feature cards.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Users were asked to reconstruct a user flow (e.g., booking a ride) using the kit.
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    They could add their own ideas if features weren't already represented.
+                  </p>
+                </div>
+              </div>
+              
+              <p className="text-[#403930] text-lg mb-6">
+                The results were sets of reconstructed apps across participants, clearly showing what users prioritized when building the experience themselves.
+              </p>
+              
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl mb-6">
+                <p className="text-[#403930] text-lg italic mb-4">
+                  "Activities like paper prototyping felt like another layer — the user has to think deeper on what they want and why, instead of just tell us what they don't like."
+                </p>
+                <p className="text-[#557592] text-sm">— MuvMi Employee (Interview, 04/08/2025)</p>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for workshop photos: paper feature kit, reconstructed flows]</p>
+              </div>
+            </div>
+
+            {/* Co-designing solutions */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] text-2xl font-bold mb-6">Co-designing solutions</h3>
+              <p className="text-[#403930] text-lg mb-6">
+                Through this process, users generated actionable concepts:
+              </p>
+              
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">Visual travel zones displayed directly on the map.</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">A switchable tourist vs. local mode within the same app.</p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">Expanded radius for tourists willing to pay more.</p>
+                </div>
+              </div>
+              
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl mb-6">
+                <p className="text-[#403930] text-lg italic mb-4">
+                  "You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness."
+                </p>
+                <p className="text-[#557592] text-sm">— MuvMi Employee (Interview, 04/08/2025)</p>
+              </div>
+              
+              <div className="bg-gray-100 p-8 rounded-2xl text-center">
+                <p className="text-[#557592] text-lg italic">📍 [Placeholder for UI mockups of revised concepts: zone maps, toggleable modes, expanded radius pricing]</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Solution */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Solution</h2>
             <p className="text-[#403930] text-lg mb-6">
-              The core of this project was a collaborative design process that brought together multiple stakeholders to ensure the solution would work for everyone in the ecosystem. This involved extensive fieldwork, community workshops, and iterative prototyping with real users.
+              Within months of the project, MuvMi implemented several of the co-designed features:
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
-                <h3 className="text-[#403930] text-lg font-bold mb-4">Community Engagement</h3>
-                <p className="text-[#557592] text-sm mb-4">
-                  Conducted workshops with local communities to understand transportation needs, cultural preferences, and accessibility requirements.
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  <strong>Travel zones</strong> now appear visually on the in-app map.
                 </p>
-                <ul className="text-[#557592] text-sm space-y-2">
-                  <li>• Neighborhood mapping exercises</li>
-                  <li>• Cultural immersion sessions</li>
-                  <li>• Accessibility audits</li>
-                </ul>
               </div>
-              
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
-                <h3 className="text-[#403930] text-lg font-bold mb-4">Driver Collaboration</h3>
-                <p className="text-[#557592] text-sm mb-4">
-                  Worked directly with tuk-tuk drivers to understand their workflow, challenges, and opportunities for improvement.
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  <strong>Tourists</strong> can access expanded routes with premium pricing.
                 </p>
-                <ul className="text-[#557592] text-sm space-y-2">
-                  <li>• Ride-along observations</li>
-                  <li>• Driver interviews and surveys</li>
-                  <li>• Prototype testing sessions</li>
-                </ul>
               </div>
-              
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
-                <h3 className="text-[#403930] text-lg font-bold mb-4">Passenger Research</h3>
-                <p className="text-[#557592] text-sm mb-4">
-                  Studied passenger behavior, preferences, and pain points to create an intuitive booking and riding experience.
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] text-lg">
+                  A <strong>unified app experience</strong> is being tested to merge tourist and local flows.
                 </p>
-                <ul className="text-[#557592] text-sm space-y-2">
-                  <li>• Journey mapping workshops</li>
-                  <li>• Usability testing</li>
-                  <li>• Accessibility considerations</li>
-                </ul>
               </div>
             </div>
             
-            <div className="bg-gray-100 p-8 rounded-2xl text-center">
-              <p className="text-[#557592] text-lg italic">📍 [Placeholder for co-design workshop photos and community engagement documentation]</p>
-            </div>
-          </section>
-
-          {/* Design Solutions */}
-          <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Design Solutions</h2>
-            
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">Passenger App Experience</h3>
-                <p className="text-[#403930] text-lg mb-4">
-                  Designed an intuitive mobile application that accommodates users with varying levels of digital literacy, incorporating local language support and cultural design patterns.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                    <h4 className="text-[#403930] font-semibold mb-2">Key Features</h4>
-                    <ul className="text-[#557592] text-sm space-y-1">
-                      <li>• Simple booking flow with minimal steps</li>
-                      <li>• Visual location selection with landmarks</li>
-                      <li>• Real-time driver tracking</li>
-                      <li>• Multiple payment options</li>
-                      <li>• Accessibility features for elderly users</li>
-                    </ul>
-                  </div>
-                  <div className="bg-gray-100 p-4 rounded-2xl text-center">
-                    <p className="text-[#557592] text-sm italic">📍 [Placeholder for passenger app screenshots]</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">Driver App Experience</h3>
-                <p className="text-[#403930] text-lg mb-4">
-                  Created a driver-focused interface that supports efficient route planning, fare management, and communication with passengers while considering the challenges of mobile use while driving.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                    <h4 className="text-[#403930] font-semibold mb-2">Key Features</h4>
-                    <ul className="text-[#557592] text-sm space-y-1">
-                      <li>• Large touch targets for easy interaction</li>
-                      <li>• Voice-guided navigation</li>
-                      <li>• Simplified fare calculation</li>
-                      <li>• Offline functionality</li>
-                      <li>• Battery management for electric vehicles</li>
-                    </ul>
-                  </div>
-                  <div className="bg-gray-100 p-4 rounded-2xl text-center">
-                    <p className="text-[#557592] text-sm italic">📍 [Placeholder for driver app screenshots]</p>
-                  </div>
-                </div>
-              </div>
-              
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">Service Ecosystem Design</h3>
-                <p className="text-[#403930] text-lg mb-4">
-                  Designed the broader service experience including vehicle branding, payment systems, and community engagement initiatives that support the sustainable transportation mission.
-                </p>
-                <div className="bg-gray-100 p-8 rounded-2xl text-center">
-                  <p className="text-[#557592] text-lg italic">📍 [Placeholder for service ecosystem diagrams and branding guidelines]</p>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          {/* Impact & Results */}
-          <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Impact & Results</h2>
-            <p className="text-[#403930] text-lg mb-6">
-              The co-design approach resulted in a transportation service that better serves the local community while advancing sustainable mobility goals. The project demonstrated the value of inclusive design processes in creating solutions that work for diverse user groups.
-            </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl text-center">
-                <div className="text-[#557592] text-3xl font-bold mb-2">85%</div>
-                <p className="text-[#403930] text-sm font-semibold">User Satisfaction</p>
-                <p className="text-[#557592] text-xs mt-2">Among both passengers and drivers</p>
-              </div>
-              
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl text-center">
-                <div className="text-[#557592] text-3xl font-bold mb-2">40%</div>
-                <p className="text-[#403930] text-sm font-semibold">Reduced Carbon Emissions</p>
-                <p className="text-[#557592] text-xs mt-2">Compared to traditional tuk-tuks</p>
-              </div>
-              
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl text-center">
-                <div className="text-[#557592] text-3xl font-bold mb-2">200+</div>
-                <p className="text-[#403930] text-sm font-semibold">Community Members</p>
-                <p className="text-[#557592] text-xs mt-2">Participated in co-design process</p>
-              </div>
-            </div>
-            
-            <div className="bg-gray-100 p-8 rounded-2xl text-center">
-              <p className="text-[#557592] text-lg italic">📍 [Placeholder for impact metrics dashboard and user testimonials]</p>
-            </div>
-          </section>
-
-          {/* Key Learnings */}
-          <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Key Learnings</h2>
             <p className="text-[#403930] text-lg mb-8">
-              This project reinforced the importance of community-centered design approaches and highlighted how sustainable technology can be successfully integrated into local transportation systems when designed with and for the people who will use it.
+              Participatory design was consistently rated by staff as producing more "realistic and usable" solutions than focus groups or interviews, reinforcing its value in Thai contexts.
             </p>
             
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">The Power of Co-Design</h3>
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder for final UI screenshots of visual zones + expanded routes]</p>
+            </div>
+          </section>
+
+          {/* Impact */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Impact</h2>
+            <div className="space-y-4 mb-8">
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Involving multiple stakeholders from the beginning led to solutions that were more culturally appropriate, accessible, and sustainable. The co-design process revealed insights that would have been impossible to discover through traditional research methods alone.
+                  <strong>Concrete service changes</strong> implemented in the live app.
                 </p>
               </div>
-              
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">Sustainability Through Accessibility</h3>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Making sustainable transportation accessible to diverse user groups is crucial for adoption. This means considering not just environmental sustainability, but also economic accessibility, cultural relevance, and ease of use for people with varying abilities and digital literacy levels.
+                  <strong>Methodological shift:</strong> participatory methods now complement surveys and interviews in MuvMi's toolkit.
                 </p>
               </div>
-              
-              <div>
-                <h3 className="text-[#403930] text-xl font-bold mb-4">Local Context Matters</h3>
+              <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
-                  Transportation solutions must be deeply rooted in local context, culture, and existing infrastructure. What works in one city or country may not work in another, making local collaboration essential for successful implementation.
+                  <strong>Cultural change:</strong> staff informally reference personas and user flows in daily conversation.
                 </p>
               </div>
+            </div>
+            
+            <p className="text-[#403930] text-lg">
+              As one employee reflected, participatory methods gave them not only insights but also confidence in those insights.
+            </p>
+          </section>
+
+          {/* Reflection */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Reflection</h2>
+            <p className="text-[#403930] text-lg mb-6">
+              This project was part of my larger Fulbright research into Smart City technologies and how HCD methods can be adapted to Thai cultural norms.
+            </p>
+            
+            <p className="text-[#403930] text-lg mb-6">
+              With MuvMi, participatory design proved especially effective because it built on Thailand's collectivist strengths while addressing limitations of more traditional methods. By meeting users in real travel contexts and engaging them in co-design, we surfaced solutions that were both innovative and implementable.
+            </p>
+            
+            <p className="text-[#403930] text-lg mb-8">
+              The broader lesson: smart cities aren't built by technology alone. They require participatory approaches that respect cultural norms and actively involve citizens in shaping urban futures.
+            </p>
+            
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder for "outcomes at a glance" graphic: service changes implemented, participatory methods tested, cultural shift toward personas]</p>
             </div>
           </section>
 
