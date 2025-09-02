@@ -7,6 +7,7 @@ import ContentGrid from "@/components/sections/ContentGrid";
 import Blogs from "@/components/sections/Blogs";
 import Subscribe from "@/components/sections/Subscribe";
 import Contact from "@/components/sections/Contact";
+import Testimonials from "@/components/sections/Testimonials";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
@@ -25,6 +26,7 @@ const Index = () => {
           <Blogs />
           <Subscribe />
           <Contact />
+          <Testimonials />
         </main>
         <Footer />
       </div>

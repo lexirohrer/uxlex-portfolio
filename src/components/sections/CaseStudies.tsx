@@ -24,7 +24,7 @@ const CaseStudies = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
         <a href="/case-study/quickbooks-onboarding" className="block">
           <CaseStudyCard
             title="QuickBooks Onboarding"
@@ -46,7 +46,7 @@ const CaseStudies = () => {
             tools={["Figma", "User Research", "Co-design", "Prototyping"]}
           >
             <img
-              src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop"
+              src="/MuvMi.png"
               className="w-full h-full object-cover"
               alt="MuvMi Electric Tuk Tuk"
             />
