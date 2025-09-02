@@ -70,46 +70,22 @@ const FuseCaseStudy = () => {
               {/* Tools - Full width row */}
               <div className="w-full">
                 <h2 className="text-2xl font-bold text-gray-800 mb-6">Tools</h2>
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl">
-                  {/* Sketch */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
-                    <div className="w-10 h-10 bg-yellow-400 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">S</span>
-                    </div>
-                    <span className="text-base font-medium text-gray-800">Sketch</span>
-                  </div>
-                  
-                  {/* Illustrator */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">Ai</span>
-                    </div>
-                    <span className="text-base font-medium text-gray-800">Illustrator</span>
-                  </div>
-                  
-                  {/* InDesign */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
-                    <div className="w-10 h-10 bg-pink-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">Id</span>
-                    </div>
-                    <span className="text-base font-medium text-gray-800">InDesign</span>
-                  </div>
-                  
-                  {/* Photoshop */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">Ps</span>
-                    </div>
-                    <span className="text-base font-medium text-gray-800">Photoshop</span>
-                  </div>
-                  
-                  {/* InVision Studio */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
-                    <div className="w-10 h-10 bg-pink-500 rounded flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">in</span>
-                    </div>
-                    <span className="text-base font-medium text-gray-800">InVision Studio</span>
-                  </div>
+                <div className="flex flex-wrap gap-3">
+                  <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    Sketch
+                  </span>
+                  <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    Illustrator
+                  </span>
+                  <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    InDesign
+                  </span>
+                  <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    Photoshop
+                  </span>
+                  <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    InVision Studio
+                  </span>
                 </div>
               </div>
             </div>
