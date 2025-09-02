@@ -109,49 +109,14 @@ const FuseCaseStudy = () => {
                   </div>
                 </div>
 
-                {/* Right content - Computer mockup */}
+                {/* Right content - Fuse Interface Image */}
                 <div className="flex justify-center lg:justify-end">
                   <div className="relative max-w-lg w-full">
-                    {/* iMac-style computer frame */}
-                    <div className="bg-gray-800 rounded-t-2xl p-4 relative">
-                      {/* Screen bezel */}
-                      <div className="bg-black rounded-lg p-1">
-                        {/* Screen content */}
-                        <div className="bg-white rounded aspect-[4/3] relative overflow-hidden">
-                          {/* Browser UI */}
-                          <div className="bg-gray-100 h-8 flex items-center px-4 border-b">
-                            <div className="flex gap-2">
-                              <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                              <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
-                              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
-                            </div>
-                          </div>
-                          
-                          {/* Google Scholar interface */}
-                          <div className="p-6 h-full bg-white">
-                            <div className="text-center mb-6">
-                              <div className="text-2xl font-bold text-blue-600 mb-2">Google Scholar</div>
-                              <div className="w-64 h-8 bg-gray-100 rounded-full mx-auto border"></div>
-                              <div className="text-xs text-gray-500 mt-2">Stand on the shoulders of giants</div>
-                            </div>
-                            
-                            {/* Fuse extension panel */}
-                            <div className="absolute top-16 right-4 w-48 bg-purple-100 border-2 border-purple-300 rounded-lg p-3 shadow-lg">
-                              <div className="text-xs font-bold text-purple-800 mb-2">Welcome to Fuse!</div>
-                              <div className="space-y-2">
-                                <div className="bg-white p-2 rounded text-xs">Organize Content</div>
-                                <div className="bg-white p-2 rounded text-xs">Save Research</div>
-                                <div className="bg-purple-200 p-2 rounded text-xs">Create Project</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    
-                    {/* Stand */}
-                    <div className="bg-gray-300 h-8 w-32 mx-auto rounded-b-lg"></div>
-                    <div className="bg-gray-400 h-4 w-48 mx-auto rounded-full"></div>
+                    <img 
+                      src="/lovable-uploads/70dfa45c-a7f7-4022-9a36-264948ce304b.png" 
+                      alt="Fuse Chrome extension interface showing Google Scholar with Fuse sidebar panel"
+                      className="w-full h-auto rounded-lg shadow-2xl"
+                    />
                   </div>
                 </div>
               </div>
