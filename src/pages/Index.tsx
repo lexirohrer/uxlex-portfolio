@@ -8,6 +8,7 @@ import Blogs from "@/components/sections/Blogs";
 import Subscribe from "@/components/sections/Subscribe";
 import Contact from "@/components/sections/Contact";
 import Testimonials from "@/components/sections/Testimonials";
+import SubstackEmbed from "@/components/sections/SubstackEmbed";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
@@ -27,6 +28,7 @@ const Index = () => {
           <Subscribe />
           <Contact />
           <Testimonials />
+          <SubstackEmbed />
         </main>
         <Footer />
       </div>

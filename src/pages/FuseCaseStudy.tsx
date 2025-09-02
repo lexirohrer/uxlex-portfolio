@@ -11,90 +11,98 @@ const FuseCaseStudy = () => {
       />
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
         <Header />
-        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
+        
+        {/* Hero Section - Full Width */}
+        <section className="bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 w-full py-16 max-sm:py-12">
+          {/* Glassmorphic Header - Full Width */}
+          <div className="bg-[#EAD6D7]/50 backdrop-blur-md w-full py-8 border-b border-[#EAD6D7]/30">
+            <div className="px-[120px] max-md:px-10 max-sm:px-5">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl">
+                Fuse Google Chrome Extension
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-700 font-medium">
+                Designing a second brain for researchers collecting information
+              </p>
+            </div>
+          </div>
           
-          {/* Hero Section */}
-          <section className="bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 -mx-[120px] px-[120px] py-16 max-md:-mx-10 max-md:px-10 max-sm:-mx-5 max-sm:px-5 max-sm:py-12 mb-16">
-            <div className="max-w-6xl mx-auto">
-              {/* Header with logo */}
-              <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
-                <div className="flex-1">
-                  <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl">
-                    Fuse Google Chrome Extension
-                  </h1>
-                  <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                    Designing a second brain for researchers collecting information
-                  </p>
-                </div>
-                
-                {/* HCI Logo */}
+          <div className="px-[120px] max-md:px-10 max-sm:px-5">
+            {/* Header with logo */}
+            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+              <div className="flex-1">
                 
               </div>
+              
+              {/* HCI Logo */}
+              
+            </div>
 
-              {/* Main content grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-                {/* Left content */}
-                <div className="space-y-4">
-                  {/* Context */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Context</h2>
-                    <p className="text-gray-700 leading-relaxed">
-                      Fuse is a Google Chrome extension that helps researchers collect and organize information. In summer 2019, I interned and designed for the Fuse team at Carnegie Mellon's Human Computer Interaction Institute.
-                    </p>
-                  </div>
-
-                  {/* Role */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Role</h2>
-                    <p className="text-gray-700 leading-relaxed">
-                      UX research and design intern on a 7 person cross functional team
-                    </p>
-                  </div>
-
-                  {/* Duration */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Duration</h2>
-                    <p className="text-gray-700 leading-relaxed">
-                      June - August 2019
-                    </p>
-                  </div>
-
-                  {/* Tools */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-2">Tools</h2>
-                    <div className="flex flex-wrap gap-3">
-                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                        Sketch
-                      </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                        Illustrator
-                      </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                        InDesign
-                      </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                        Photoshop
-                      </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                        InVision Studio
-                      </span>
-                    </div>
-                  </div>
+            {/* Main content grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+              {/* Left content */}
+              <div className="space-y-4">
+                {/* Context */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Context</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Fuse is a Google Chrome extension that helps researchers collect and organize information. In summer 2019, I interned and designed for the Fuse team at Carnegie Mellon's Human Computer Interaction Institute.
+                  </p>
                 </div>
 
-                {/* Right content - Computer mockup */}
-                <div className="flex justify-center lg:justify-end">
-                  <div className="relative w-full">
-                    <img 
-                      src="/lovable-uploads/62572add-39f9-457c-b8bf-91e39cde4c63.png" 
-                      alt="Fuse Chrome Extension Interface with CMU HCII Logo"
-                      className="w-full h-auto"
-                    />
+                {/* Role */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Role</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    UX research and design intern on a 7 person cross functional team
+                  </p>
+                </div>
+
+                {/* Duration */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Duration</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    June - August 2019
+                  </p>
+                </div>
+
+                {/* Tools */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Tools</h2>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Sketch
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Illustrator
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      InDesign
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Photoshop
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      InVision Studio
+                    </span>
                   </div>
+                </div>
+              </div>
+
+              {/* Right content - Computer mockup */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="relative w-full">
+                  <img 
+                    src="/lovable-uploads/62572add-39f9-457c-b8bf-91e39cde4c63.png" 
+                    alt="Fuse Chrome Extension Interface with CMU HCII Logo"
+                    className="w-full h-auto"
+                  />
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </section>
+        
+        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
 
               {/* Background */}
               <section className="mb-16">

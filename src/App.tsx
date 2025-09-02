@@ -25,7 +25,6 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/blog" element={<Blog />} />
           <Route path="/home" element={<Home />} />
           <Route path="/case-study/quickbooks-onboarding" element={<CaseStudy />} />
           <Route path="/case-study/fuse-chrome-extension" element={<FuseCaseStudy />} />

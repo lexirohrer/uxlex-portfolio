@@ -60,8 +60,8 @@ const CaseStudies = () => {
             tools={["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"]}
           >
             <img
-              src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-              className="w-full h-full object-cover"
+              src="/CMU cover pic.png"
+              className="w-full h-full object-contain"
               alt="Fuse Chrome Extension"
             />
           </CaseStudyCard>
