@@ -14,78 +14,145 @@ const FuseCaseStudy = () => {
         <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           
           {/* Hero Section */}
-          <section className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-[#403930] text-[48px] font-bold mb-6 max-md:text-[36px]">
-                  Lexi Rohrer
-                </h1>
-                <p className="text-[#557592] text-xl mb-8">
-                  user experience designer
-                </p>
-                
-                {/* Project Box */}
-                <div className="bg-pink-100 p-8 rounded-2xl mb-8 relative">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h2 className="text-red-800 text-[32px] font-bold mb-3">
-                        Fuse Google Chrome Extension
-                      </h2>
-                      <p className="text-[#403930] text-lg">
-                        Designing a second brain for researchers collecting information
-                      </p>
-                    </div>
-                    <div className="ml-6">
-                      <div className="bg-red-600 text-white p-3 rounded-lg text-center">
-                        <div className="text-sm font-bold">HCI</div>
-                        <div className="text-xs">Human-Computer</div>
-                        <div className="text-xs">Interaction</div>
-                        <div className="text-xs">Institute</div>
-                      </div>
-                    </div>
-                  </div>
+          <section className="bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 -mx-[120px] px-[120px] py-16 max-md:-mx-10 max-md:px-10 max-sm:-mx-5 max-sm:px-5 max-sm:py-12 mb-16">
+            <div className="max-w-6xl mx-auto">
+              {/* Header with logo */}
+              <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+                <div className="flex-1">
+                  <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl">
+                    Fuse Google Chrome Extension
+                  </h1>
+                  <p className="text-lg lg:text-xl text-gray-700 font-medium">
+                    Designing a second brain for researchers collecting information
+                  </p>
                 </div>
                 
-                <div className="space-y-6">
-                  <div className="bg-[#E6F0F7] p-6 rounded-2xl">
-                    <h3 className="text-[#403930] text-lg font-semibold mb-3">Context</h3>
-                    <p className="text-[#557592] text-sm">
+                {/* HCI Logo */}
+                <div className="bg-red-700 text-white px-6 py-4 rounded-full text-center min-w-[120px] max-lg:self-start">
+                  <div className="text-lg font-bold">HCI</div>
+                  <div className="text-xs leading-tight">Human-<br/>Computer<br/>Interaction<br/>Institute</div>
+                </div>
+              </div>
+
+              {/* Main content grid */}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                {/* Left content */}
+                <div className="space-y-8">
+                  {/* Context */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Context</h2>
+                    <p className="text-gray-700 leading-relaxed">
                       Fuse is a Google Chrome extension that helps researchers collect and organize information. In summer 2019, I interned and designed for the Fuse team at Carnegie Mellon's Human Computer Interaction Institute.
                     </p>
                   </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Role</h4>
-                      <p className="text-[#557592] text-sm">UX research and design intern on a 7 person cross functional team</p>
-                    </div>
-                    
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Duration</h4>
-                      <p className="text-[#557592] text-sm">June - August 2019</p>
-                    </div>
-                    
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Tools</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Sketch</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Illustrator</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">InDesign</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Photoshop</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">InVision Studio</span>
+
+                  {/* Role */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Role</h2>
+                    <p className="text-gray-700 leading-relaxed">
+                      UX research and design intern on a 7 person cross functional team
+                    </p>
+                  </div>
+
+                  {/* Duration */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Duration</h2>
+                    <p className="text-gray-700 leading-relaxed">
+                      June - August 2019
+                    </p>
+                  </div>
+
+                  {/* Tools */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Tools</h2>
+                    <div className="grid grid-cols-3 gap-3 max-w-sm">
+                      {/* Sketch */}
+                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <div className="w-8 h-8 bg-yellow-400 rounded flex items-center justify-center">
+                          <span className="text-white font-bold text-xs">S</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-800">Sketch</span>
+                      </div>
+                      
+                      {/* Illustrator */}
+                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <div className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center">
+                          <span className="text-white font-bold text-xs">Ai</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-800">Illustrator</span>
+                      </div>
+                      
+                      {/* InDesign */}
+                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <div className="w-8 h-8 bg-pink-600 rounded flex items-center justify-center">
+                          <span className="text-white font-bold text-xs">Id</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-800">InDesign</span>
+                      </div>
+                      
+                      {/* Photoshop */}
+                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
+                          <span className="text-white font-bold text-xs">Ps</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-800">Photoshop</span>
+                      </div>
+                      
+                      {/* InVision Studio */}
+                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2 col-span-2">
+                        <div className="w-8 h-8 bg-pink-500 rounded flex items-center justify-center">
+                          <span className="text-white font-bold text-xs">in</span>
+                        </div>
+                        <span className="text-sm font-medium text-gray-800">InVision Studio</span>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="flex justify-center">
-                <div className="relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=400&fit=crop"
-                    className="w-full max-w-[500px] rounded-2xl shadow-lg"
-                    alt="Fuse Chrome Extension Interface"
-                  />
+
+                {/* Right content - Computer mockup */}
+                <div className="flex justify-center lg:justify-end">
+                  <div className="relative max-w-lg w-full">
+                    {/* iMac-style computer frame */}
+                    <div className="bg-gray-800 rounded-t-2xl p-4 relative">
+                      {/* Screen bezel */}
+                      <div className="bg-black rounded-lg p-1">
+                        {/* Screen content */}
+                        <div className="bg-white rounded aspect-[4/3] relative overflow-hidden">
+                          {/* Browser UI */}
+                          <div className="bg-gray-100 h-8 flex items-center px-4 border-b">
+                            <div className="flex gap-2">
+                              <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                              <div className="w-3 h-3 bg-yellow-400 rounded-full"></div>
+                              <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                            </div>
+                          </div>
+                          
+                          {/* Google Scholar interface */}
+                          <div className="p-6 h-full bg-white">
+                            <div className="text-center mb-6">
+                              <div className="text-2xl font-bold text-blue-600 mb-2">Google Scholar</div>
+                              <div className="w-64 h-8 bg-gray-100 rounded-full mx-auto border"></div>
+                              <div className="text-xs text-gray-500 mt-2">Stand on the shoulders of giants</div>
+                            </div>
+                            
+                            {/* Fuse extension panel */}
+                            <div className="absolute top-16 right-4 w-48 bg-purple-100 border-2 border-purple-300 rounded-lg p-3 shadow-lg">
+                              <div className="text-xs font-bold text-purple-800 mb-2">Welcome to Fuse!</div>
+                              <div className="space-y-2">
+                                <div className="bg-white p-2 rounded text-xs">Organize Content</div>
+                                <div className="bg-white p-2 rounded text-xs">Save Research</div>
+                                <div className="bg-purple-200 p-2 rounded text-xs">Create Project</div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Stand */}
+                    <div className="bg-gray-300 h-8 w-32 mx-auto rounded-b-lg"></div>
+                    <div className="bg-gray-400 h-4 w-48 mx-auto rounded-full"></div>
+                  </div>
                 </div>
               </div>
             </div>
