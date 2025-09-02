@@ -27,7 +27,7 @@ const FuseCaseStudy = () => {
               </div>
 
               {/* Main content grid */}
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
                 {/* Left content */}
                 <div className="space-y-8">
                   {/* Context */}
@@ -53,62 +53,62 @@ const FuseCaseStudy = () => {
                       June - August 2019
                     </p>
                   </div>
-
-                  {/* Tools */}
-                  <div>
-                    <h2 className="text-2xl font-bold text-gray-800 mb-4">Tools</h2>
-                    <div className="grid grid-cols-3 gap-3 max-w-sm">
-                      {/* Sketch */}
-                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
-                        <div className="w-8 h-8 bg-yellow-400 rounded flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">S</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-800">Sketch</span>
-                      </div>
-                      
-                      {/* Illustrator */}
-                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
-                        <div className="w-8 h-8 bg-orange-600 rounded flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">Ai</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-800">Illustrator</span>
-                      </div>
-                      
-                      {/* InDesign */}
-                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
-                        <div className="w-8 h-8 bg-pink-600 rounded flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">Id</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-800">InDesign</span>
-                      </div>
-                      
-                      {/* Photoshop */}
-                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2">
-                        <div className="w-8 h-8 bg-blue-600 rounded flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">Ps</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-800">Photoshop</span>
-                      </div>
-                      
-                      {/* InVision Studio */}
-                      <div className="bg-white p-3 rounded-lg shadow-sm flex items-center gap-2 col-span-2">
-                        <div className="w-8 h-8 bg-pink-500 rounded flex items-center justify-center">
-                          <span className="text-white font-bold text-xs">in</span>
-                        </div>
-                        <span className="text-sm font-medium text-gray-800">InVision Studio</span>
-                      </div>
-                    </div>
-                  </div>
                 </div>
 
                 {/* Right content - Computer mockup */}
                 <div className="flex justify-center lg:justify-end">
-                  <div className="relative max-w-lg w-full">
+                  <div className="relative max-w-2xl w-full">
                     <img 
                       src="/lovable-uploads/62572add-39f9-457c-b8bf-91e39cde4c63.png" 
                       alt="Fuse Chrome Extension Interface with CMU HCII Logo"
                       className="w-full h-auto"
                     />
+                  </div>
+                </div>
+              </div>
+
+              {/* Tools - Full width row */}
+              <div className="w-full">
+                <h2 className="text-2xl font-bold text-gray-800 mb-6">Tools</h2>
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 max-w-4xl">
+                  {/* Sketch */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
+                    <div className="w-10 h-10 bg-yellow-400 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">S</span>
+                    </div>
+                    <span className="text-base font-medium text-gray-800">Sketch</span>
+                  </div>
+                  
+                  {/* Illustrator */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
+                    <div className="w-10 h-10 bg-orange-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">Ai</span>
+                    </div>
+                    <span className="text-base font-medium text-gray-800">Illustrator</span>
+                  </div>
+                  
+                  {/* InDesign */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
+                    <div className="w-10 h-10 bg-pink-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">Id</span>
+                    </div>
+                    <span className="text-base font-medium text-gray-800">InDesign</span>
+                  </div>
+                  
+                  {/* Photoshop */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
+                    <div className="w-10 h-10 bg-blue-600 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">Ps</span>
+                    </div>
+                    <span className="text-base font-medium text-gray-800">Photoshop</span>
+                  </div>
+                  
+                  {/* InVision Studio */}
+                  <div className="bg-white p-4 rounded-lg shadow-sm flex items-center gap-3">
+                    <div className="w-10 h-10 bg-pink-500 rounded flex items-center justify-center">
+                      <span className="text-white font-bold text-sm">in</span>
+                    </div>
+                    <span className="text-base font-medium text-gray-800">InVision Studio</span>
                   </div>
                 </div>
               </div>
