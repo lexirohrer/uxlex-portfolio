@@ -11,86 +11,95 @@ const MuvMiCaseStudy = () => {
       />
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
         <Header />
-        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
+        
+        {/* Hero Section - Full Width */}
+        <section className="bg-gradient-to-br from-green-100 via-emerald-50 to-green-200 w-full py-16 max-sm:py-12">
+          {/* Glassmorphic Header - Full Width */}
+          <div className="bg-[#EAD6D7]/50 backdrop-blur-md w-full py-8 border-b border-[#EAD6D7]/30">
+            <div className="px-[120px] max-md:px-10 max-sm:px-5">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
+                MuvMi: Co-designing Electric Tuk Tuks
+              </h1>
+              <p className="text-lg lg:text-xl text-gray-700 font-medium">
+                Designing sustainable transportation solutions through community collaboration
+              </p>
+            </div>
+          </div>
           
-          {/* Hero Section */}
-          <section className="mb-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <h1 className="text-[#403930] text-[48px] font-bold mb-6 max-md:text-[36px]">
-                  Lexi Rohrer
-                </h1>
-                <p className="text-[#557592] text-xl mb-8">
-                  user experience designer
-                </p>
+          <div className="px-[120px] max-md:px-10 max-sm:px-5">
+            {/* Header with logo */}
+            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+              <div className="flex-1">
                 
-                {/* Project Box */}
-                <div className="bg-pink-100 p-8 rounded-2xl mb-8 relative">
-                  <div className="flex justify-between items-start">
-                    <div className="flex-1">
-                      <h2 className="text-red-800 text-[32px] font-bold mb-3">
-                        MuvMi: Co-designing Electric Tuk Tuks
-                      </h2>
-                      <p className="text-[#403930] text-lg">
-                        Designing sustainable transportation solutions through community collaboration
-                      </p>
-                    </div>
-                    <div className="ml-6">
-                      <div className="bg-red-600 text-white p-3 rounded-lg text-center">
-                        <div className="text-sm font-bold">MuvMi</div>
-                        <div className="text-xs">Electric</div>
-                        <div className="text-xs">Transport</div>
-                      </div>
-                    </div>
-                  </div>
+              </div>
+              
+              {/* MuvMi Logo */}
+              
+            </div>
+
+            {/* Main content grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+              {/* Left content */}
+              <div className="space-y-4">
+                {/* Context */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Context</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    As part of my Fulbright fellowship on Human-Centered Design in Thailand, I partnered with MuvMi, a Bangkok-based ridesharing startup operating a fleet of electric Tuk Tuks. MuvMi's mission is to create a safer, more affordable, and greener first–last mile transit option, supporting Thailand's Smart Mobility, Smart Environment, and Smart Economy pillars.
+                  </p>
                 </div>
-                
-                <div className="space-y-6">
-                  <div className="bg-[#E6F0F7] p-6 rounded-2xl">
-                    <h3 className="text-[#403930] text-lg font-semibold mb-3">Context</h3>
-                    <p className="text-[#557592] text-sm">
-                      As part of my Fulbright fellowship on Human-Centered Design in Thailand, I partnered with MuvMi, a Bangkok-based ridesharing startup operating a fleet of electric Tuk Tuks. MuvMi's mission is to create a safer, more affordable, and greener first–last mile transit option, supporting Thailand's Smart Mobility, Smart Environment, and Smart Economy pillars.
-                    </p>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Role</h4>
-                      <p className="text-[#557592] text-sm">Fulbright Research Fellow & UX Designer</p>
-                    </div>
-                    
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Duration</h4>
-                      <p className="text-[#557592] text-sm">Bangkok, 2025 – Fulbright Research Project</p>
-                    </div>
-                    
-                    <div className="bg-[#E6F0F7] p-4 rounded-2xl">
-                      <h4 className="text-[#403930] font-semibold mb-2">Methods</h4>
-                      <div className="flex flex-wrap gap-2">
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Participatory Design</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Ethnography</span>
-                        <span className="bg-[#557592] text-white px-3 py-1 rounded-full text-xs">Paper Prototyping</span>
-                      </div>
-                    </div>
+
+                {/* Role */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Role</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Fulbright Research Fellow & UX Designer
+                  </p>
+                </div>
+
+                {/* Duration */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Duration</h2>
+                  <p className="text-gray-700 leading-relaxed">
+                    Bangkok, 2025 – Fulbright Research Project
+                  </p>
+                </div>
+
+                {/* Tools */}
+                <div>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Methods</h2>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Participatory Design
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Ethnography
+                    </span>
+                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                      Paper Prototyping
+                    </span>
                   </div>
                 </div>
               </div>
-              
-              <div className="flex justify-center">
-                <div className="relative">
-                  <img
-                    src="/MuvMi.png"
-                    className="w-full max-w-[500px] rounded-2xl shadow-lg"
+
+              {/* Right content - MuvMi mockup */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="relative w-full">
+                  <img 
+                    src="/MuvMi.png" 
                     alt="MuvMi Electric Tuk Tuk"
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
             </div>
-          </section>
-
+          </div>
+        </section>
+        
+        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           {/* Summary */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Summary</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Summary</h2>
             <p className="text-[#403930] text-lg mb-6">
               Through participatory design methods—including ethnographic ride-alongs, paper prototyping workshops, and group feedback sessions—I worked with both tourists and locals to explore how MuvMi's dual offerings could be unified into one app without compromising the user experience.
             </p>
@@ -117,7 +126,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Project Goals */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project Goals</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Project Goals</h2>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
@@ -148,7 +157,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Project Process */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Project Process</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Project Process</h2>
             
             {/* Why participatory design */}
             <div className="mb-12">
@@ -277,7 +286,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Solution */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Solution</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Solution</h2>
             <p className="text-[#403930] text-lg mb-6">
               Within months of the project, MuvMi implemented several of the co-designed features:
             </p>
@@ -314,7 +323,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Impact */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Impact</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Impact</h2>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
@@ -343,7 +352,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Reflection */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8">Reflection</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
             <p className="text-[#403930] text-lg mb-6">
               This project was part of my larger Fulbright research into Smart City technologies and how HCD methods can be adapted to Thai cultural norms.
             </p>
@@ -360,7 +369,6 @@ const MuvMiCaseStudy = () => {
               <p className="text-[#557592] text-lg italic">📍 [Placeholder for "outcomes at a glance" graphic: service changes implemented, participatory methods tested, cultural shift toward personas]</p>
             </div>
           </section>
-
         </main>
         <Footer />
       </div>

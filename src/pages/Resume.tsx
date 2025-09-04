@@ -28,7 +28,7 @@ const Resume = () => {
         <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
           <div className="mb-10">
             <div className="flex items-center justify-between mb-6 max-sm:flex-col max-sm:items-start max-sm:gap-4">
-              <h1 className="text-foreground text-[40px] font-semibold">Resume</h1>
+              <h1 className="text-foreground text-[40px] font-semibold font-hagrid">Resume</h1>
               <Button 
                 onClick={handleDownload}
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg flex items-center gap-2"
@@ -47,7 +47,7 @@ const Resume = () => {
             <div className="space-y-6">
               {/* Experience */}
               <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6">Experience</h2>
+                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Experience</h2>
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
@@ -74,7 +74,7 @@ const Resume = () => {
 
               {/* Skills */}
               <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6">Skills</h2>
+                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Skills</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Design & Research</h3>
@@ -141,7 +141,7 @@ const Resume = () => {
             <div className="space-y-6">
               {/* Publications */}
               <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6">Talks, Publications, Patents</h2>
+                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Talks, Publications, Patents</h2>
                 <div className="space-y-6">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">Patent IPR-2412979US: Automatic Onboarding to a Computer Application by Scraping Website Data</h3>
@@ -163,7 +163,7 @@ const Resume = () => {
 
               {/* Education */}
               <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6">Education</h2>
+                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Education</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
@@ -181,7 +181,7 @@ const Resume = () => {
 
               {/* Contact Information */}
               <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6">Contact</h2>
+                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
                 <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-lg font-semibold">Portfolio</h3>

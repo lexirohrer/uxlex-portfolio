@@ -3,10 +3,6 @@ import React from "react";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import CaseStudies from "@/components/sections/CaseStudies";
-import ContentGrid from "@/components/sections/ContentGrid";
-import Blogs from "@/components/sections/Blogs";
-import Subscribe from "@/components/sections/Subscribe";
-import Contact from "@/components/sections/Contact";
 import Testimonials from "@/components/sections/Testimonials";
 import SubstackEmbed from "@/components/sections/SubstackEmbed";
 import Footer from "@/components/sections/Footer";
@@ -23,10 +19,7 @@ const Index = () => {
         <main>
           <Hero />
           <CaseStudies />
-          <ContentGrid />
-          <Blogs />
-          <Subscribe />
-          <Contact />
+
           <Testimonials />
           <SubstackEmbed />
         </main>

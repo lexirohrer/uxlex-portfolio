@@ -8,22 +8,7 @@ const CaseStudies = () => {
       id="case-studies"
       className="py-[88px] max-md:py-[60px] max-sm:py-10"
     >
-      <div className="flex justify-between items-center mb-8">
-        <h2 className="text-[#403930] text-[40px] font-semibold">
-          My Recent CaseStudies
-        </h2>
-        <div className="flex items-center gap-6 text-[#2B2C34] text-xl">
-          <span>See All</span>
-          <div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html:
-                  '<svg id="2:1448" layer-name="vuesax/linear/arrow-right" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon"> <path d="M14.4302 5.92993L20.5002 11.9999L14.4302 18.0699" stroke="#2B2C34" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M3.5 12H20.33" stroke="#2B2C34" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path> </svg>',
-              }}
-            />
-          </div>
-        </div>
-      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-7">
         <a href="/case-study/quickbooks-onboarding" className="block">
           <CaseStudyCard

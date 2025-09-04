@@ -14,7 +14,7 @@ const Portfolio = () => {
         <Header />
         <main className="px-[120px] py-[100px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-[40px]">
           <div className="mb-10">
-            <h1 className="text-[#403930] text-[40px] font-semibold mb-6">Portfolio</h1>
+            <h1 className="text-[#403930] text-[40px] font-semibold mb-6 font-hagrid">Portfolio</h1>
             <p className="text-[#594F43] text-xl mb-8">
               Take a look at my work and case studies showcasing design solutions and creative processes.
             </p>

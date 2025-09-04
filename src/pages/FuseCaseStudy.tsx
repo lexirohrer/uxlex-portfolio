@@ -17,7 +17,7 @@ const FuseCaseStudy = () => {
           {/* Glassmorphic Header - Full Width */}
           <div className="bg-[#EAD6D7]/50 backdrop-blur-md w-full py-8 border-b border-[#EAD6D7]/30">
             <div className="px-[120px] max-md:px-10 max-sm:px-5">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl">
+              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
                 Fuse Google Chrome Extension
               </h1>
               <p className="text-lg lg:text-xl text-gray-700 font-medium">
@@ -43,7 +43,7 @@ const FuseCaseStudy = () => {
               <div className="space-y-4">
                 {/* Context */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Context</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Context</h2>
                   <p className="text-gray-700 leading-relaxed">
                     Fuse is a Google Chrome extension that helps researchers collect and organize information. In summer 2019, I interned and designed for the Fuse team at Carnegie Mellon's Human Computer Interaction Institute.
                   </p>
@@ -51,7 +51,7 @@ const FuseCaseStudy = () => {
 
                 {/* Role */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Role</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Role</h2>
                   <p className="text-gray-700 leading-relaxed">
                     UX research and design intern on a 7 person cross functional team
                   </p>
@@ -59,33 +59,38 @@ const FuseCaseStudy = () => {
 
                 {/* Duration */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Duration</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Duration</h2>
                   <p className="text-gray-700 leading-relaxed">
                     June - August 2019
                   </p>
                 </div>
 
-                {/* Tools */}
-                <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2">Tools</h2>
-                  <div className="flex flex-wrap gap-3">
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                      Sketch
-                    </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                      Illustrator
-                    </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                      InDesign
-                    </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                      Photoshop
-                    </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
-                      InVision Studio
-                    </span>
+                                  {/* Tools */}
+                  <div>
+                    <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Tools</h2>
+                    <div className="flex flex-wrap gap-3">
+                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                        <img src="/Sketch_Logo.png" alt="Sketch" className="w-5 h-5" />
+                        Sketch
+                      </span>
+                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                        <img src="/Illustrator logo.png" alt="Illustrator" className="w-5 h-5" />
+                        Illustrator
+                      </span>
+                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                        <img src="/ID_logo.png" alt="InDesign" className="w-5 h-5" />
+                        InDesign
+                      </span>
+                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                        <img src="/Photoshop-logo.png" alt="Photoshop" className="w-5 h-5" />
+                        Photoshop
+                      </span>
+                      <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                        <img src="/Invision Logo.png" alt="InVision Studio" className="w-5 h-5" />
+                        InVision Studio
+                      </span>
+                    </div>
                   </div>
-                </div>
               </div>
 
               {/* Right content - Computer mockup */}
@@ -106,7 +111,7 @@ const FuseCaseStudy = () => {
 
               {/* Background */}
               <section className="mb-16">
-                <h2 className="text-[#403930] text-[32px] font-bold mb-8">Background</h2>
+                <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Background</h2>
                 <p className="text-[#403930] text-lg mb-6">
                   For summer 2019, I relocated to Pittsburgh to work in Carnegie Mellon's <strong>Human Computer Interaction Institute (HCII)</strong> as a <strong>UX research intern</strong>. Working closely with Dr. Aniket Kittur and his team of talented researchers, I assisted in developing <strong>Fuse: a chrome extension</strong> to <strong>help researchers collect and organize information.</strong>
                 </p>
@@ -145,7 +150,7 @@ const FuseCaseStudy = () => {
 
               {/* Onboarding Design and Testing */}
               <section className="mb-16">
-                <h2 className="text-[#403930] text-[32px] font-bold mb-8">Onboarding Design and Testing</h2>
+                <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Onboarding Design and Testing</h2>
                 <p className="text-[#403930] text-lg mb-6">
                   My biggest project during my summer on the Fuse team was <strong>the start to finish design and testing of a new onboarding sequence.</strong> In past versions of Fuse, there had been no onboarding procedure besides a pop up message encouraging new users to "try capturing and saving content", so this was a first effort at designing an onboarding sequence to introduce users to Fuse.
                 </p>
@@ -202,7 +207,7 @@ const FuseCaseStudy = () => {
 
               {/* Storyboards */}
               <section className="mb-16">
-                <h2 className="text-[#403930] text-[32px] font-bold mb-8">Storyboards</h2>
+                <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Storyboards</h2>
                 <p className="text-[#403930] text-lg mb-6">
                   My work with storyboards aimed to explore the link between existing or prospective features and the value they bring to our users. To examine these relationships, I created a series of storyboards detailing common challenges that befall researchers. These storyboards illustrate the way Fuse allows users to tackle challenges using existing features, or how they could do so with prospective features.
                 </p>
@@ -218,7 +223,7 @@ const FuseCaseStudy = () => {
 
               {/* User Research */}
               <section className="mb-16">
-                <h2 className="text-[#403930] text-[32px] font-bold mb-8">User Research: Getting Information Out of Fuse</h2>
+                <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">User Research: Getting Information Out of Fuse</h2>
                 <p className="text-[#403930] text-lg mb-6">
                   The sentiment we had noted many times across many interviews, <strong>no one on our research team really understood what this notion meant.</strong> I began by breaking down the overarching research question into more specific questions:
                 </p>
@@ -284,7 +289,7 @@ const FuseCaseStudy = () => {
 
               {/* Key Takeaways */}
               <section className="mb-16">
-                <h2 className="text-[#403930] text-[32px] font-bold mb-8">Key Takeaways from the Summer</h2>
+                <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Key Takeaways from the Summer</h2>
                 <p className="text-[#403930] text-lg mb-8">
                   Although my work with the Fuse team was conducted in an academic research setting, it often felt more like a startup environment with so many opportunities to jump in and lend a hand on many different aspects of the product. In this setting, I learned several meaningful takeaways that I know will allow me to better navigate future work environments and contribute to those projects with competence.
                 </p>

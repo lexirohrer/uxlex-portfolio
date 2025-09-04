@@ -5,13 +5,10 @@ const Hero = () => {
   return (
     <section className="flex px-[120px] py-[100px] max-md:flex-col max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-10">
       <div className="flex-1">
-        <div className="text-[#403930] text-2xl font-semibold bg-[#FFDDBF] mb-6 px-6 py-3 rounded-[10px]">
-          👋 Hello All
-        </div>
-        <h1 className="text-[#403930] text-[64px] font-semibold leading-[80px] tracking-[1.28px] mb-10 max-md:text-5xl max-sm:text-4xl">
-          <span>I'm Samarjit,</span>
+        <h1 className="text-[#403930] text-[64px] font-semibold leading-[80px] tracking-[1.28px] mb-10 max-md:text-5xl max-sm:text-4xl font-hagrid">
+          <span>I'm Lexi,</span>
           <br />
-          <span>A Problem solver</span>
+          <span>A problem solver</span>
           <br />
           <span>and a Storyteller</span>
         </h1>
