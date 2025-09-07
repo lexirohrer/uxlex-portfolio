@@ -52,8 +52,36 @@ const Home = () => {
         }}
       />
       {/* Main center widget with glassmorphism effect */}
-      <div className="relative z-20 w-[1200px] h-[700px] rounded-3xl shadow-2xl border border-white/30 max-lg:w-[98vw] max-lg:h-[500px] max-md:w-full max-md:h-[300px] bg-white/20 backdrop-blur-lg" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-        {/* Intentionally left blank: all inner and surrounding elements removed */}
+      {/* Floating icons on the right side */}
+      <div className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 z-30 space-y-4">
+        <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <img src="/Figma Logo Thumbnail.png" alt="Figma" className="w-10 h-10 object-contain" />
+        </div>
+        <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <img src="/Photoshop-logo.png" alt="Photoshop" className="w-10 h-10 object-contain" />
+        </div>
+        <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <img src="/Illustrator logo.png" alt="Illustrator" className="w-10 h-10 object-contain" />
+        </div>
+        <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <img src="/Sketch_Logo.png" alt="Sketch" className="w-10 h-10 object-contain" />
+        </div>
+        <div className="w-16 h-16 rounded-2xl bg-white/90 backdrop-blur-sm shadow-lg flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          <img src="/Invision Logo.png" alt="InVision" className="w-10 h-10 object-contain" />
+        </div>
+      </div>
+
+      {/* Main center widget with glassmorphism effect - increased horizontal margins */}
+      <div className="relative z-20 w-[900px] h-[500px] rounded-3xl shadow-2xl border border-white/30 max-lg:w-[80vw] max-lg:h-[400px] max-md:w-[90vw] max-md:h-[300px] bg-white/20 backdrop-blur-lg flex flex-col items-center justify-center text-center px-8" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+        <h1 className="text-6xl font-bold text-gray-800 mb-4 max-md:text-4xl">
+          Hi I'm Lexi <span className="text-5xl">👋</span>
+        </h1>
+        <p className="text-2xl text-gray-600 mb-2 max-md:text-xl">
+          a social impact designer*
+        </p>
+        <p className="text-sm text-gray-500 max-w-2xl leading-relaxed max-md:text-xs">
+          *I work with social impact focused orgs on UX and service design problems. I wear many hats, most often designer or researcher 🤓
+        </p>
       </div>
     </div>
   );
