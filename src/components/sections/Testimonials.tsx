@@ -3,19 +3,31 @@ import React, { useState, useEffect } from "react";
 const testimonials = [
   {
     id: 1,
-    text: "It is super inspiring to see Lexi grow as a designer and a leader; always bringing positive energy, proactively, courage, customer obsession, collaboration, and strong systems thinking to any project she was tasked with. She naturally has a learning mindset and always comes to the table with a strong data-backed POV; advocating for what's best for the customer and pushing to balance customer and business outcomes.",
-    author: "Womo Iyegha",
-    title: "Product Design Leader @ Intuit"
-  },
-  {
-    id: 2,
-    text: "If I put a design dream team together, Lexi is at the top of my list. There are a few core qualities that Lexi possesses: first, she has great design hygiene. That is, Lexi applies best practices to every project, from designing customer research, to broad iteration and exploration, to an exacting eye for detail. Second, Lexi's positive attitude is infectious. No obstacle or pivot discourages her; she just keeps at it. She builds teams by example; she embraces projects whole-heartedly. Third, Lexi is curious. She is genuinely interested - in design, in culture, in technology - everything is an opportunity to learn more. Lexi thinks big, swings hard, and cares deeply.",
+    text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list.",
     author: "Zip Lehnus",
     title: "Staff Content Designer"
   },
   {
+    id: 2,
+    text: "Working with Lexi on the onboarding team for about a year was an incredible experience. She's one of those very rare designers who not only excels at her craft but also uplifts everyone around her with her proactivity, curiosity, and positivity.",
+    author: "Grace Kim",
+    title: "Senior Product Designer"
+  },
+  {
     id: 3,
-    text: "Lexi is the definition of a team player – always willing to go the extra mile and contribute to the project's success. Her communication is clear, concise, and she's incredibly responsive, which is essential in our fast-paced environment. Beyond her strong work ethic, Lexi possesses a genuine passion for improving user experience and meeting customer needs. She confidently leads discussions, drives projects to completion, and proactively engages with a systems mindset. She's also not afraid to ask for guidance when needed, which shows a strong sense of self-awareness and a desire to learn and grow.",
+    text: "Lexi's expertise in UX design and feedback collection methods allowed us to engage users deeply and meaningfully, ensuring that our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
+    author: "Tanida Disyabut",
+    title: "Social Enterprise Founder"
+  },
+  {
+    id: 4,
+    text: "Lexi always brings positive energy, proactivity, courage, customer obsession, collaboration, and strong systems thinking to any project she was tasked with. She naturally has a learning mindset and always comes to the table with a strong data-backed POV",
+    author: "Womo Iyegha",
+    title: "Product Design Leader @ Intuit"
+  },
+  {
+    id: 5,
+    text: "Lexi is the definition of a team player – always willing to go the extra mile and contribute to the project's success. She has a strong sense of self-awareness and a desire to learn and grow.",
     author: "Jen Hong",
     title: "Staff Product Designer"
   }
@@ -24,13 +36,6 @@ const testimonials = [
 const Testimonials = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % testimonials.length);
-    }, 5000); // Change testimonial every 5 seconds
-
-    return () => clearInterval(interval);
-  }, []);
 
   const goToTestimonial = (index: number) => {
     setCurrentIndex(index);
@@ -50,12 +55,9 @@ const Testimonials = () => {
     <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF]">
       <div className="max-w-6xl mx-auto px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#403930] text-[40px] font-semibold mb-4">
-            What People Say About My Work
+          <h2 className="text-[#403930] text-[40px] font-semibold mb-4 font-hagrid">
+            what it's like to work with me:
           </h2>
-          <p className="text-[#557592] text-xl max-w-2xl mx-auto">
-            Here's what colleagues and managers have shared about working with me
-          </p>
         </div>
 
         <div className="relative">
@@ -120,17 +122,8 @@ const Testimonials = () => {
           </div>
         </div>
 
-        {/* Progress Bar */}
-        <div className="mt-8 max-w-md mx-auto">
-          <div className="w-full bg-[#E5E7EB] rounded-full h-1">
-            <div 
-              className="bg-[#403930] h-1 rounded-full transition-all duration-1000 ease-out"
-              style={{ 
-                width: `${((currentIndex + 1) / testimonials.length) * 100}%` 
-              }}
-            />
-          </div>
-        </div>
+       
+        
       </div>
     </section>
   );

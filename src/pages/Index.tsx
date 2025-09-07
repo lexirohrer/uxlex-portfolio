@@ -95,6 +95,9 @@ const Index = () => {
           <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Calendar.png" alt="Calendar" className="w-16 h-16 object-contain drop-shadow-lg" />
           </a>
+          <a href="https://www.linkedin.com/in/alexandra-rohrer/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+            <img src="/LinkedIn.png" alt="LinkedIn" className="w-16 h-16 object-contain drop-shadow-lg" />
+          </a>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Spotify - Dark.png" alt="Spotify" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
