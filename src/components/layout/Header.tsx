@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
@@ -9,8 +9,30 @@ const navLinks = [
 
 const Header = () => {
   const location = useLocation();
-  // Use black text since /home no longer exists
-  const linkBase = "text-black";
+  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Check if we're on the Hello page and if we've scrolled past the hero section
+      if (location.pathname === "/") {
+        const heroSection = document.querySelector('[data-hero-section]');
+        if (heroSection) {
+          const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+          setIsScrolledPastHero(window.scrollY > heroBottom);
+        }
+      } else {
+        setIsScrolledPastHero(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Check initial state
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [location.pathname]);
+
+  // Use white text on Hello page only when not scrolled past hero, black text otherwise
+  const linkBase = (location.pathname === "/" && !isScrolledPastHero) ? "text-white" : "text-black";
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-lg">

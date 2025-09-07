@@ -2,7 +2,7 @@
 import React from "react";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
-import CaseStudies from "@/components/sections/CaseStudies";
+import AboutMe from "@/components/sections/AboutMe";
 import Testimonials from "@/components/sections/Testimonials";
 import SubstackEmbed from "@/components/sections/SubstackEmbed";
 import Footer from "@/components/sections/Footer";
@@ -16,7 +16,8 @@ const Index = () => {
       />
       {/* Home page content moved here */}
       <div
-        className="relative min-h-screen w-full overflow-hidden flex items-center justify-center pt-[100px]"
+        className="relative min-h-screen w-full overflow-hidden flex items-start justify-center pt-[120px]"
+        data-hero-section
         style={{
           backgroundImage: "url('/bkg.png')",
           backgroundSize: "cover",
@@ -63,14 +64,37 @@ const Index = () => {
             width: 'auto',
           }}
         />
-        {/* Floating icons on the right side */}
-        <div className="hidden md:block absolute right-4 top-1/4 z-30 space-y-4">
-          <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+        {/* Second glass screen - behind and offset */}
+        <div className="absolute z-10 w-[1100px] h-[600px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[85vw] max-lg:h-[450px] max-md:w-[90vw] max-md:h-[350px] bg-white/15 backdrop-blur-lg" style={{
+          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.12)',
+          left: 'calc(50% - 100px)',
+          top: 'calc(120px - 40px)',
+          transform: 'translateX(-50%)'
+        }}>
+          {/* Gradient overlay inside card */}
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-white/15 to-purple-200/20 rounded-3xl"></div>
+        </div>
+
+        {/* Hero component with new design */}
+        <div className="absolute z-20" style={{
+          left: '50%',
+          top: '120px',
+          transform: 'translateX(-50%)'
+        }}>
+          <Hero />
+        </div>
+        
+        {/* Floating icons anchored to the right of the glass screen */}
+        <div className="hidden md:block absolute z-30 space-y-4" style={{
+          left: 'calc(50% + 550px + 20px)', // 50% (center) + 550px (half glass width) + 20px (margin)
+          top: 'calc(120px + 20px)' // 20px down from top of glass screen
+        }}>
+          <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Substack.png" alt="Substack" className="w-16 h-16 object-contain drop-shadow-lg" />
-          </div>
-          <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+          </a>
+          <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Calendar.png" alt="Calendar" className="w-16 h-16 object-contain drop-shadow-lg" />
-          </div>
+          </a>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Spotify - Dark.png" alt="Spotify" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
@@ -78,26 +102,12 @@ const Index = () => {
             <img src="/Libby.png" alt="Libby" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
         </div>
-
-        {/* Main center widget with glassmorphism effect - increased horizontal margins */}
-        <div className="relative z-20 w-[900px] h-[500px] rounded-3xl shadow-2xl border border-white/30 max-lg:w-[80vw] max-lg:h-[400px] max-md:w-[90vw] max-md:h-[300px] bg-white/20 backdrop-blur-lg flex flex-col items-center justify-center text-center px-8" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-          <h1 className="mb-4 max-md:text-4xl">
-            Hi I'm Lexi <span className="text-5xl">👋</span>
-          </h1>
-          <h2 className="mb-2 max-md:text-xl">
-            a social impact designer*
-          </h2>
-          <p className="text-sm text-gray-500 max-w-2xl leading-relaxed max-md:text-xs">
-            *I work with social impact focused orgs on UX and service design problems. I wear many hats, most often designer or researcher 🤓
-          </p>
-        </div>
       </div>
       
       {/* Original Index page content */}
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
         <main>
-          <Hero />
-          <CaseStudies />
+          <AboutMe />
           <Testimonials />
           <SubstackEmbed />
         </main>
