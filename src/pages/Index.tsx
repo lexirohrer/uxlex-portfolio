@@ -64,7 +64,7 @@ const Index = () => {
           }}
         />
         {/* Floating icons on the right side */}
-        <div className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 z-30 space-y-4">
+        <div className="hidden md:block absolute right-4 top-1/4 z-30 space-y-4">
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Substack.png" alt="Substack" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
