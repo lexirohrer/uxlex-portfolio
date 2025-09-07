@@ -66,16 +66,16 @@ const Index = () => {
         {/* Floating icons on the right side */}
         <div className="hidden md:block absolute right-8 top-1/2 transform -translate-y-1/2 z-30 space-y-4">
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Substack.png" alt="Substack" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="/Substack.png" alt="Substack" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Calendar.png" alt="Calendar" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="/Calendar.png" alt="Calendar" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Spotify - Dark.png" alt="Spotify" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="/Spotify - Dark.png" alt="Spotify" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Libby.png" alt="Libby" className="w-10 h-10 object-contain drop-shadow-lg" />
+            <img src="/Libby.png" alt="Libby" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
         </div>
 
