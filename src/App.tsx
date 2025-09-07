@@ -8,7 +8,7 @@ import Portfolio from "./pages/Portfolio";
 import Resume from "./pages/Resume";
 // import Blog from "./pages/Blog";
 import NotFound from "./pages/NotFound";
-import Home from "./pages/Home";
+
 import CaseStudy from "./pages/CaseStudy";
 import FuseCaseStudy from "./pages/FuseCaseStudy";
 import MuvMiCaseStudy from "./pages/MuvMiCaseStudy";
@@ -25,7 +25,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/resume" element={<Resume />} />
-          <Route path="/home" element={<Home />} />
+          
           <Route path="/case-study/quickbooks-onboarding" element={<CaseStudy />} />
           <Route path="/case-study/fuse-chrome-extension" element={<FuseCaseStudy />} />
           <Route path="/case-study/muvmi-tuk-tuks" element={<MuvMiCaseStudy />} />
