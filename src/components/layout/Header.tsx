@@ -2,7 +2,6 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-  { to: "/home", label: "Home" },
   { to: "/", label: "Hello" },
   { to: "/portfolio", label: "Portfolio" },
   { to: "/resume", label: "Resume" },
@@ -10,9 +9,8 @@ const navLinks = [
 
 const Header = () => {
   const location = useLocation();
-  // Use white text on /home, black elsewhere
-  const isHome = location.pathname === "/home";
-  const linkBase = isHome ? "text-white" : "text-black";
+  // Use black text since /home no longer exists
+  const linkBase = "text-black";
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-lg">
