@@ -4,7 +4,7 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import AboutMe from "@/components/sections/AboutMe";
 import Testimonials from "@/components/sections/Testimonials";
-import SubstackEmbed from "@/components/sections/SubstackEmbed";
+import KeepInTouch from "@/components/sections/KeepInTouch";
 import Footer from "@/components/sections/Footer";
 
 const Index = () => {
@@ -104,6 +104,9 @@ const Index = () => {
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
             <img src="/Libby.png" alt="Libby" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
+          <a href="mailto:lexirohrer@gmail.com" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
+            <img src="/Gmail.png" alt="Gmail" className="w-16 h-16 object-contain drop-shadow-lg" />
+          </a>
         </div>
       </div>
       
@@ -112,7 +115,7 @@ const Index = () => {
         <main>
           <AboutMe />
           <Testimonials />
-          <SubstackEmbed />
+          <KeepInTouch />
         </main>
         <Footer />
       </div>

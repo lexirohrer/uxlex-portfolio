@@ -84,13 +84,21 @@ const AboutMe = () => {
     // Create a copy of the current positions array
     const shuffledPositions = [...cardPositions];
     
-    // Fisher-Yates shuffle algorithm
+    // Fisher-Yates shuffle algorithm for positions
     for (let i = shuffledPositions.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [shuffledPositions[i], shuffledPositions[j]] = [shuffledPositions[j], shuffledPositions[i]];
     }
     
+    // Also shuffle the card order to change which cards appear on top
+    const shuffledOrder = [...cardOrder];
+    for (let i = shuffledOrder.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledOrder[i], shuffledOrder[j]] = [shuffledOrder[j], shuffledOrder[i]];
+    }
+    
     setCardPositions(shuffledPositions);
+    setCardOrder(shuffledOrder);
   };
 
   return (
