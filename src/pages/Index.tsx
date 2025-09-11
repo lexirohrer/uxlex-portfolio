@@ -65,7 +65,7 @@ const Index = () => {
           }}
         />
         {/* Second glass screen - behind and offset */}
-        <div className="absolute z-10 w-[1100px] h-[600px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[85vw] max-lg:h-[450px] max-md:w-[90vw] max-md:h-[350px] bg-white/15 backdrop-blur-lg" style={{
+        <div className="absolute z-10 w-[1100px] min-h-[500px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[85vw] max-md:w-[90vw] bg-white/15 backdrop-blur-lg" style={{
           boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.12)',
           left: 'calc(50% - 100px)',
           top: 'calc(120px - 40px)',
@@ -85,7 +85,7 @@ const Index = () => {
         </div>
         
         {/* Floating icons anchored to the right of the glass screen */}
-        <div className="hidden md:block absolute z-30 space-y-4" style={{
+        <div className="hidden lg:block absolute z-30 space-y-4" style={{
           left: 'calc(50% + 550px + 20px)', // 50% (center) + 550px (half glass width) + 20px (margin)
           top: 'calc(120px + 20px)' // 20px down from top of glass screen
         }}>

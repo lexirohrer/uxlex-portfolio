@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 const testimonials = [
   {
     id: 1,
-    text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list.",
+    text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list. 🚀",
     author: "Zip Lehnus",
     title: "Staff Content Designer"
   },

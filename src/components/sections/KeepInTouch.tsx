@@ -14,7 +14,7 @@ const KeepInTouch = () => {
         </div>
         
         <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Gmail */}
             <div className="text-center">
               <a 
@@ -30,6 +30,50 @@ const KeepInTouch = () => {
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     lexirohrer@gmail.com
+                  </p>
+                </div>
+              </a>
+            </div>
+
+            {/* LinkedIn */}
+            <div className="text-center">
+              <a 
+                href="https://www.linkedin.com/in/alexandra-rohrer/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+              >
+                <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <img src="/LinkedIn.png" alt="LinkedIn" className="w-20 h-20 object-contain drop-shadow-lg" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    LinkedIn
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    Connect with me
+                  </p>
+                </div>
+              </a>
+            </div>
+
+            {/* Calendar */}
+            <div className="text-center">
+              <a 
+                href="https://calendar.app.google/K8owt9w3d5wnVL9B6" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+              >
+                <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <img src="/Calendar.png" alt="Calendar" className="w-20 h-20 object-contain drop-shadow-lg" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+                    Schedule
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">
+                    Book a meeting
                   </p>
                 </div>
               </a>
@@ -57,27 +101,6 @@ const KeepInTouch = () => {
               </a>
             </div>
 
-            {/* Calendar */}
-            <div className="text-center">
-              <a 
-                href="https://calendar.app.google/K8owt9w3d5wnVL9B6" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
-              >
-                <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <img src="/Calendar.png" alt="Calendar" className="w-20 h-20 object-contain drop-shadow-lg" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    Schedule
-                  </h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">
-                    Book a meeting
-                  </p>
-                </div>
-              </a>
-            </div>
           </div>
         </div>
       </div>
