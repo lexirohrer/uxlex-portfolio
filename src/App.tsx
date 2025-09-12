@@ -12,6 +12,7 @@ import NotFound from "./pages/NotFound";
 import CaseStudy from "./pages/CaseStudy";
 import FuseCaseStudy from "./pages/FuseCaseStudy";
 import MuvMiCaseStudy from "./pages/MuvMiCaseStudy";
+import BridgeBoxCaseStudy from "./pages/BridgeBoxCaseStudy";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/case-study/quickbooks-onboarding" element={<CaseStudy />} />
           <Route path="/case-study/fuse-chrome-extension" element={<FuseCaseStudy />} />
           <Route path="/case-study/muvmi-tuk-tuks" element={<MuvMiCaseStudy />} />
+          <Route path="/case-study/bridgebox-disaster-response" element={<BridgeBoxCaseStudy />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -52,17 +52,19 @@ const CaseStudies = () => {
           </CaseStudyCard>
         </a>
 
-        <CaseStudyCard
-          title="Harvest app"
-          description="Putting a seasonal spin on accessible farmers market information"
-          tools={["Figma", "Illustrator", "Lucid Chart", "Marvel"]}
-        >
-          <img
-            src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=600&h=400&fit=crop"
-            className="w-full h-full object-cover"
-            alt="Harvest App"
-          />
-        </CaseStudyCard>
+        <a href="/case-study/bridgebox-disaster-response" className="block">
+          <CaseStudyCard
+            title="Designing for Disaster Response with BridgeBox"
+            description="Human-centered design for climate disaster communication in rural Thailand"
+            tools={["Figma", "Participatory Design", "User Research", "AI/ML", "Workshop Facilitation"]}
+          >
+            <img
+              src="https://images.unsplash.com/photo-1574263867126-8b0a0b5a0a0a?w=600&h=400&fit=crop"
+              className="w-full h-full object-cover"
+              alt="BridgeBox Disaster Response"
+            />
+          </CaseStudyCard>
+        </a>
       </div>
     </section>
   );
