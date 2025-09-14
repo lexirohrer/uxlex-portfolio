@@ -65,10 +65,10 @@ const Index = () => {
           }}
         />
         {/* Second glass screen - behind and offset */}
-        <div className="absolute z-10 w-[1100px] min-h-[500px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[85vw] max-md:w-[90vw] bg-white/15 backdrop-blur-lg" style={{
+        <div className="absolute z-10 w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[75vw] max-md:w-[80vw] bg-white/15 backdrop-blur-lg" style={{
           boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.12)',
-          left: 'calc(50% - 100px)',
-          top: 'calc(120px - 40px)',
+          left: 'calc(50% - 80px)',
+          top: 'calc(120px - 30px)',
           transform: 'translateX(-50%)'
         }}>
           {/* Gradient overlay inside card */}
@@ -86,7 +86,7 @@ const Index = () => {
         
         {/* Floating icons anchored to the right of the glass screen */}
         <div className="hidden lg:block absolute z-30 space-y-4" style={{
-          left: 'calc(50% + 550px + 20px)', // 50% (center) + 550px (half glass width) + 20px (margin)
+          left: 'calc(50% + 450px + 20px)', // 50% (center) + 450px (half glass width) + 20px (margin)
           top: 'calc(120px + 20px)' // 20px down from top of glass screen
         }}>
           <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">

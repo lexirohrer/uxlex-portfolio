@@ -17,8 +17,8 @@ const CaseStudies = () => {
             tools={["Figma", "Figjam", "Usertesting.com", "Google Suite"]}
           >
             <img
-              src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop"
-              className="w-full h-full object-cover"
+              src="/QB cover.png"
+              className="w-full h-full object-contain"
               alt="QuickBooks Onboarding"
             />
           </CaseStudyCard>
@@ -31,9 +31,23 @@ const CaseStudies = () => {
             tools={["Figma", "User Research", "Co-design", "Prototyping", "Workshop Facilitation"]}
           >
             <img
-              src="/MuvMi.png"
-              className="w-full h-full object-cover"
+              src="/MuvMi cover.png"
+              className="w-full h-full object-contain"
               alt="MuvMi Electric Tuk Tuk"
+            />
+          </CaseStudyCard>
+        </a>
+
+        <a href="/case-study/bridgebox-disaster-response" className="block">
+          <CaseStudyCard
+            title="Designing for Disaster Response with BridgeBox"
+            description="Human-centered design for climate disaster communication in rural Thailand"
+            tools={["Figma", "Participatory Design", "User Research", "AI/ML", "Workshop Facilitation", "AI for social good"]}
+          >
+            <img
+              src="/BBX cover.png"
+              className="w-full h-full object-contain"
+              alt="BridgeBox Disaster Response"
             />
           </CaseStudyCard>
         </a>
@@ -45,23 +59,9 @@ const CaseStudies = () => {
             tools={["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"]}
           >
             <img
-              src="/CMU cover pic.png"
+              src="/Fuse cover.png"
               className="w-full h-full object-contain"
               alt="Fuse Chrome Extension"
-            />
-          </CaseStudyCard>
-        </a>
-
-        <a href="/case-study/bridgebox-disaster-response" className="block">
-          <CaseStudyCard
-            title="Designing for Disaster Response with BridgeBox"
-            description="Human-centered design for climate disaster communication in rural Thailand"
-            tools={["Figma", "Participatory Design", "User Research", "AI/ML", "Workshop Facilitation"]}
-          >
-            <img
-              src="https://images.unsplash.com/photo-1574263867126-8b0a0b5a0a0a?w=600&h=400&fit=crop"
-              className="w-full h-full object-cover"
-              alt="BridgeBox Disaster Response"
             />
           </CaseStudyCard>
         </a>

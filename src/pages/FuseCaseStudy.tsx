@@ -21,7 +21,7 @@ const FuseCaseStudy = () => {
                 Fuse Google Chrome Extension
               </h1>
               <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                Designing a second brain for researchers collecting information
+                Building a second brain for researchers synthesizing information
               </p>
             </div>
           </div>

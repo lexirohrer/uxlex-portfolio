@@ -79,58 +79,58 @@ const Resume = () => {
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Design & Research</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Figma</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Adobe CC</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Prototyping</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Design Systems</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">User Research</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">User Interviews</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Usability Testing</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">A/B Testing</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Figma</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Adobe CC</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Prototyping</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Design Systems</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">User Research</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">User Interviews</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Usability Testing</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">A/B Testing</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Methods & Strategy</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Design Thinking</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Human-Centered Design</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Service Design</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Design critique</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Storyboarding</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Wireframing</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Content Strategy</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Information Architecture</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Design Thinking</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Human-Centered Design</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Service Design</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Design critique</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Storyboarding</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Wireframing</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Content Strategy</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Information Architecture</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Collaboration & Analysis</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Cross-functional Collaboration</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Stakeholder Management</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Workshop Facilitation</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Product Strategy</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Data Analysis</span>
-                      <span className="bg-secondary text-secondary-foreground px-3 py-1 rounded-full text-sm">Competitive Analysis</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Cross-functional Collaboration</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Stakeholder Management</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Workshop Facilitation</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Product Strategy</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Data Analysis</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Competitive Analysis</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Technical Skills</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">Sketch</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">InVision</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">Miro</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">Notion</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">Python</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">HTML/CSS</span>
-                      <span className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm">JavaScript</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Sketch</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">InVision</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Miro</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Notion</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Python</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">HTML/CSS</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">JavaScript</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Languages</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm">English (Native)</span>
-                      <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm">Thai (Conversational)</span>
-                      <span className="bg-accent text-accent-foreground px-3 py-1 rounded-full text-sm">Spanish (Basic)</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">English (Native)</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Thai (Conversational)</span>
+                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Spanish (Basic)</span>
                     </div>
                   </div>
                 </div>

@@ -85,13 +85,13 @@ const CaseStudy = () => {
                 </div>
               </div>
 
-              {/* Right content - QuickBooks mockup */}
+              {/* Right content - QuickBooks cover */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=600&h=400&fit=crop" 
+                    src="/QB cover.png" 
                     alt="QuickBooks Interface Mockup"
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-2xl shadow-lg"
                   />
                 </div>
               </div>

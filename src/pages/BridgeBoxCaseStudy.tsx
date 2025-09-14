@@ -18,10 +18,10 @@ const BridgeBoxCaseStudy = () => {
           <div className="bg-white/50 backdrop-blur-md w-full py-8 border-b border-white/30">
             <div className="px-[120px] max-md:px-10 max-sm:px-5">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
-                Designing for Disaster Response
+                BridgeBox 
               </h1>
               <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                Human-centered design for climate disaster communication in rural Thailand
+                Designing disaster response tools in rural Thailand
               </p>
             </div>
           </div>
@@ -85,14 +85,14 @@ const BridgeBoxCaseStudy = () => {
                 </div>
               </div>
 
-              {/* Right content - BridgeBox mockup placeholder */}
+              {/* Right content - BridgeBox cover */}
               <div className="flex justify-center lg:justify-end">
-                <div className="relative w-full bg-gradient-to-br from-blue-200 to-purple-300 rounded-2xl p-8 flex items-center justify-center">
-                  <div className="text-center text-gray-700">
-                    <div className="text-6xl mb-4">📱</div>
-                    <p className="text-lg font-medium">BridgeBox App Interface</p>
-                    <p className="text-sm opacity-75">Disaster Response Communication</p>
-                  </div>
+                <div className="relative w-full">
+                  <img 
+                    src="/BBX cover.png" 
+                    alt="BridgeBox Disaster Response"
+                    className="w-full h-auto rounded-2xl shadow-lg"
+                  />
                 </div>
               </div>
             </div>
@@ -105,12 +105,15 @@ const BridgeBoxCaseStudy = () => {
             <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Summary</h2>
             <div className="prose prose-lg max-w-none">
               <p className="text-gray-700 leading-relaxed mb-6">
-                Over a 10-month collaboration, I worked with the team to adapt participatory design methods for rural Thai users with low digital literacy, leading to:
+                As part of my Fulbright fellowship on adapting Participatory Design to Thailand, I collaborated with BridgeBox, a startup developing a communication system for climate disaster response. BridgeBox builds a mobile app for rural residents to call for help during disasters like flash flooding, and a desktop software for "responders" (local governments, nonprofits, and employers) to manage and respond to the submitted cases. The high stakes and unique context for rural Thai users made usability a critical priority for both the mobile and desktop interface.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Over 10-months, I helped the BridgeBox team adapt participatory design for use with rural Thai users who had low digital literacy. Results included:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-3 mb-6">
                 <li>New features such as offline emergency reporting, proxy reporting for non-smartphone users, and a "Bridge Alert" function for critical announcements.</li>
-                <li>AI support features that automatically categorized cases by urgency, helping responders prioritize between life-threatening issues and routine requests.</li>
-                <li>A participatory process that employees described as producing more "creative and realistic" solutions than surveys or interviews.</li>
+                <li>AI support features that auto-categorized cases by urgency, helping responders prioritize between life-threatening issues and routine requests.</li>
+                <li>A participatory design process that employees described as producing more "creative and realistic" solutions than surveys or interviews.</li>
                 <li>Stronger trust and confidence among rural users in adopting new tools for disaster communication.</li>
               </ul>
               <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
@@ -124,24 +127,12 @@ const BridgeBoxCaseStudy = () => {
           {/* Project Goals */}
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Project Goals</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Cultural Adaptation</h3>
-                <p className="text-gray-700">Adapt Human-Centered Design methods to Thai cultural contexts as part of my Fulbright research.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Accessibility</h3>
-                <p className="text-gray-700">Make BridgeBox accessible to rural users with low digital literacy.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Service Design</h3>
-                <p className="text-gray-700">Generate service design improvements through participatory methods.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">AI Integration</h3>
-                <p className="text-gray-700">Design and test AI-supported features to help responders categorize and prioritize disaster reports.</p>
-              </div>
-            </div>
+            <ul className="list-disc list-inside text-gray-700 space-y-3">
+              <li>Adapt Human-Centered Design methods to Thai cultural contexts as part of my Fulbright research.</li>
+              <li>Make BridgeBox accessible to rural users with low digital literacy.</li>
+              <li>Generate service design improvements through participatory methods.</li>
+              <li>Design and test AI-supported features to help responders categorize and prioritize disaster reports.</li>
+            </ul>
           </section>
 
           {/* Project Process */}
@@ -152,11 +143,12 @@ const BridgeBoxCaseStudy = () => {
             <div className="mb-12">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">Why participatory design?</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Past research at BridgeBox relied on surveys and interviews, but these methods often failed to surface deeper insights. Participatory approaches were chosen not only to work around indirect feedback tendencies but also to build on cultural strengths.
+                Past research and design at BridgeBox relied on surveys and interviews, but these methods often yielded little more than confirmation of expected issues. Participatory approaches were chosen for two key reasons:
               </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                In a collectivist society like Thailand, participation is highly resonant — people are accustomed to working together toward systemic solutions for the wider good. This made participatory workshops a natural fit.
-              </p>
+              <ol className="list-decimal list-inside text-gray-700 space-y-2 mb-4">
+                <li>To gather honest critique despite Thailand's culturally engrained indirect feedback tendencies</li>
+                <li>To play to collectivist cultural strengths. Thai social values are heavily focused on building trustworthy relationships and amicable collaboration, making this context a particularly good fit for participatory design workshops</li>
+              </ol>
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
                 <p className="text-yellow-800 font-medium">
                   📍 [Placeholder for diagram: Traditional research vs. participatory design in Thai context]
@@ -168,19 +160,16 @@ const BridgeBoxCaseStudy = () => {
             <div className="mb-12">
               <h3 className="text-2xl font-semibold text-gray-800 mb-4">Running workshops in rural contexts</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                We facilitated five co-design workshops in Songkhla Province, a politically sensitive and flood-prone area. Adjustments were needed for participants with lower technical literacy:
+                To achieve the project goals, I planned five participatory design workshops for users in the Songkhla Province, a politically sensitive and flood-prone area. In the first two workshops, I ran while my collaborator from BridgeBox translated - however, we quickly realized that common technology concepts in English often don't have a clear Thai translation. Moreover, my Thai collaborators were interested in learning participatory design, so I decided to take the more intensive process of training Thai collaborators in participatory design, so that they could lead workshop facilitation. By the final workshop, Thai collaborators were comfortable facilitating sessions independently, and since this project's conclusion have continued to do so.
+              </p>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                After each workshop, I reflected not only on the product feedback received, but the methodological blockers to a successful session. Through successive rounds of participatory design, I learned that a successful participatory design workshops for rural users with lower technical literacy should include:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-3 mb-6">
-                <li>Activities were broken down into simple, detailed steps (e.g., "First, write the steps you'd take to report an incident. Then draw the screen you'd expect to see for each step").</li>
-                <li>In-person sessions proved essential, as many participants were not comfortable juggling tools like Zoom or online whiteboards. Using familiar materials like pen and paper allowed participants to engage fully.</li>
-                <li>Flexible pacing respected Thailand's polychronic view of time, where building consensus mattered more than keeping to strict schedules.</li>
+                <li>Activity instructions that are more detailed than typical, and broken in discrete steps (e.g., "First, write the steps you'd take to report an incident. Then, draw the screen you'd expect to see for each step").</li>
+                <li>In-person sessions, as many participants were not comfortable juggling tools like Zoom or online whiteboards. Using familiar materials like pen and paper allowed participants to express their ideas more comfortably. The BridgeBox founder, after co-facilitating, noted "It's important to have someone in the field with participants, because online it's difficult to get their full attention… in person, you can see the time they spent to write down what they actually think."</li>
+                <li>Flexible pacing with respect to Thailand's polychronic view of time, where building consensus matters more than keeping to strict schedules.</li>
               </ul>
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-6">
-                <p className="text-blue-800 italic">
-                  "It's important to have someone in the field with participants, because online it's difficult to get their full attention… in person, you can see the time they spent to write down what they actually think."
-                </p>
-                <p className="text-blue-700 text-sm mt-2">— BridgeBox founder</p>
-              </div>
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
                 <p className="text-yellow-800 font-medium">
                   📍 [Placeholder for workshop photos and participant sketches]
@@ -188,26 +177,23 @@ const BridgeBoxCaseStudy = () => {
               </div>
             </div>
 
-            {/* Generative sketching and prototyping */}
+            {/* Workshop activities: generative sketching */}
             <div className="mb-12">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">Generative sketching and prototyping</h3>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">Workshop activities: generative sketching</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Workshops used generative sketching and paper prototyping to invite participants to imagine solutions beyond the existing software. This encouraged participants to propose ideas, compare alternatives, and frame feedback as preferences rather than critiques.
+                Workshops used generative sketching to invite participants to imagine solutions beyond the existing software. This encouraged participants to propose ideas, compare alternatives, and frame feedback as preferences rather than critiques.
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                This approach yielded tangible concepts like:
+                This approach yielded tangible concepts that met real user needs, such as:
               </p>
               <ul className="list-disc list-inside text-gray-700 space-y-2 mb-6">
-                <li>Offline emergency reporting.</li>
+                <li>Offline emergency reporting for inconsistent connection in rural areas</li>
                 <li>Proxy reporting for those without smartphones.</li>
-                <li>Bridge Alert, a one-way channel for urgent announcements from responders to rural users.</li>
+                <li>Bridge Alert, a one-way channel for urgent announcements from responders to users.</li>
               </ul>
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-6">
-                <p className="text-blue-800 italic">
-                  "With the participatory approach, they take ownership in designing."
-                </p>
-                <p className="text-blue-700 text-sm mt-2">— BridgeBox employee</p>
-              </div>
+              <p className="text-gray-700 leading-relaxed mb-6">
+                Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting "[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing." This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand.
+              </p>
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
                 <p className="text-yellow-800 font-medium">
                   📍 [Placeholder for paper prototype examples and side-by-side sketches vs. final UI]
@@ -215,82 +201,76 @@ const BridgeBoxCaseStudy = () => {
               </div>
             </div>
 
-            {/* Designing with AI */}
+            {/* AI for Social Good */}
             <div className="mb-12">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-4">Designing with AI</h3>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">AI for Social Good</h3>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Alongside participatory workshops, I collaborated with BridgeBox to design and test AI-supported features for responders.
+                At participatory design workshops, emergency responders often spoke with frustration of trying to correctly sort cases into categories using a complex set of government guidelines. While time consuming for a human, this well defined task would be simple for an AI model. The feature I proposed would auto-suggest tags for submitted cases by category and urgency. Reports that were automatically tagged as urgent, such as "medical emergency" or "human rights violation" could then be prioritized over more routine issues like "documentation approval needed."
               </p>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Reports were automatically tagged by urgency: urgent "medical emergency" or "human rights violation" cases were prioritized over lower-urgency issues like "documentation approval needed."
+                Because the BridgeBox team only had one engineer, I volunteered to design this feature and build the model that would power it. The feature's goals were to:
               </p>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                User testing confirmed that these AI tags helped responders triage more effectively, saving time and reducing cognitive overload during crisis situations.
+              <ul className="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                <li>Auto suggest tags for submitted cases by category and urgency. Reports were automatically tagged by urgency: urgent "medical emergency" or "human rights violation" cases were prioritized over lower-urgency issues like "documentation approval needed."</li>
+              </ul>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                First, I designed the flow that would allow users to accept or correct the AI's suggested categories, saving time and creating feedback models where the AI could continually improve its performance with human input. Next, I gathered historical data from BridgeBox cases, with the correct tags for each one based on the handbook. Then, I uploaded the data to &lt;TOOL&gt;, iteratively training and testing the model, until we achieved a satisfactory &lt;name of test&gt;. From here, I passed my work off to the developer for integration.
               </p>
               <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
                 <p className="text-yellow-800 font-medium">
-                  📍 [Placeholder for UI screenshots: AI-driven case categorization screen — before/after]
+                  📍 [Placeholder for UI video of AI-driven case categorization]
                 </p>
               </div>
+              <p className="text-gray-700 leading-relaxed mt-6">
+                At the time of writing, BridgeBox is seeking further funding to implement this time saving feature for current and new clients.
+              </p>
             </div>
           </section>
 
-          {/* Solution */}
+          {/* End to End Solution */}
           <section className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Solution</h2>
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">End to End Solution</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              The final design combined user-driven features with AI-assisted tools:
+              The end to end designs incorporated co-designed features, AI-assisted case categorization, and a tiered subscription model for organizations with different resource constraints. Key functionality included:
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div className="text-3xl mb-3">📱</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Mobile App</h3>
-                <p className="text-gray-700">A mobile app for rural reporters with offline and proxy functionality.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div className="text-3xl mb-3">💻</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Desktop Interface</h3>
-                <p className="text-gray-700">A desktop interface for responders with automated case prioritization.</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                <div className="text-3xl mb-3">🚨</div>
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">Bridge Alert</h3>
-                <p className="text-gray-700">A "Bridge Alert" feature ensuring critical announcements reached rural users quickly.</p>
-              </div>
-            </div>
-            <p className="text-gray-700 leading-relaxed mt-6">
-              Participatory workshops not only shaped these solutions but also increased users' confidence in adopting the platform.
-            </p>
+            <ul className="list-disc list-inside text-gray-700 space-y-3 mb-6">
+              <li>A mobile app for rural reporters with offline and proxy functionality.</li>
+              <li>A desktop interface for responders to manage cases, with AI-driven case prioritization.</li>
+              <li>A "Bridge Alert" feature to send early warnings and critical announcements through mass text messages and app announcements</li>
+            </ul>
           </section>
 
           {/* Impact */}
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Impact</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Platform Features</h3>
-                  <p className="text-gray-700">Concrete features added to the BridgeBox platform within the collaboration period.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">AI Efficiency</h3>
-                  <p className="text-gray-700">AI categorization tools improved responder efficiency in handling urgent vs. routine cases.</p>
-                </div>
-              </div>
-              <div className="space-y-6">
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">User Adoption</h3>
-                  <p className="text-gray-700">User adoption and trust increased, with rural participants more confident in using the app after co-design involvement.</p>
-                </div>
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">Design Process</h3>
-                  <p className="text-gray-700">Employees consistently rated participatory design as producing more "realistic and usable" solutions than interviews or focus groups.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg mt-8">
+            <ul className="list-disc list-inside text-gray-700 space-y-3 mb-6">
+              <li>Concrete features added to the BridgeBox platform within the collaboration period.</li>
+              <li>AI categorization tools improved responder efficiency in handling urgent vs. routine cases.</li>
+              <li>User adoption and trust increased, with rural participants more confident in using the app after co-design involvement.</li>
+              <li>Employees consistently rated participatory design as producing more "realistic and usable" solutions than interviews or focus groups.</li>
+            </ul>
+            <div className="bg-blue-50 border-l-4 border-blue-400 p-6 rounded-r-lg">
               <p className="text-blue-800 font-medium">
                 📍 [Placeholder for "metrics at a glance" graphic: e.g. xx% increase in adoption, xx% faster case triage, 5 participatory workshops]
+              </p>
+            </div>
+          </section>
+
+          {/* Reflection */}
+          <section className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Reflection</h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              This project reinforced that smart city technologies succeed only when adapted to cultural and infrastructural realities.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Working with BridgeBox, I learned that participatory design — carefully adapted for rural, low-digital-literacy users — could uncover solutions that were both technically feasible and socially resonant. By involving participants directly in sketching, testing, and decision-making, we not only shaped platform features but also built lasting user trust.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              I was drawn to this collaboration for my Fulbright Fellowship because of the opportunity to work on Smart City tech for frontline communities, who bear the brunt of effects from the climate crisis. My approach to designing disaster response tools is so much more than just building software — it's about facilitating trust, participation, and context-sensitive innovation to engrain self-empowered resilience into the communities that need it most.
+            </p>
+            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
+              <p className="text-yellow-800 font-medium">
+                📍 [Placeholder for final UI screenshots: offline reporting, Bridge Alert, AI case categorization]
               </p>
             </div>
           </section>

@@ -18,10 +18,10 @@ const MuvMiCaseStudy = () => {
           <div className="bg-[#EAD6D7]/50 backdrop-blur-md w-full py-8 border-b border-[#EAD6D7]/30">
             <div className="px-[120px] max-md:px-10 max-sm:px-5">
               <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
-                MuvMi: Co-designing Electric Tuk Tuks
+                MuvMi Electric Tuk Tuks
               </h1>
               <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                Designing sustainable transportation solutions through community collaboration
+                Designing sustainable transportation with participatory design
               </p>
             </div>
           </div>
@@ -82,13 +82,13 @@ const MuvMiCaseStudy = () => {
                 </div>
               </div>
 
-              {/* Right content - MuvMi mockup */}
+              {/* Right content - MuvMi cover */}
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="/MuvMi.png" 
+                    src="/MuvMi cover.png" 
                     alt="MuvMi Electric Tuk Tuk"
-                    className="w-full h-auto"
+                    className="w-full h-auto rounded-2xl shadow-lg"
                   />
                 </div>
               </div>
