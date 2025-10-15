@@ -89,7 +89,7 @@ const BridgeBoxCaseStudy = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="/BBX cover.png" 
+                    src={`${import.meta.env.BASE_URL}BBX cover.png`} 
                     alt="BridgeBox Disaster Response"
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />

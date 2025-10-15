@@ -17,7 +17,7 @@ const CaseStudies = () => {
             tools={["Figma", "Figjam", "Usertesting.com", "Google Suite"]}
           >
             <img
-              src="/QB cover.png"
+              src={`${import.meta.env.BASE_URL}QB cover.png`}
               className="w-full h-full object-contain"
               alt="QuickBooks Onboarding"
             />
@@ -31,7 +31,7 @@ const CaseStudies = () => {
             tools={["Figma", "User Research", "Co-design", "Prototyping", "Workshop Facilitation"]}
           >
             <img
-              src="/MuvMi cover.png"
+              src={`${import.meta.env.BASE_URL}MuvMi cover.png`}
               className="w-full h-full object-contain"
               alt="MuvMi Electric Tuk Tuk"
             />
@@ -45,7 +45,7 @@ const CaseStudies = () => {
             tools={["Figma", "Participatory Design", "User Research", "AI/ML", "Workshop Facilitation", "AI for social good"]}
           >
             <img
-              src="/BBX cover.png"
+              src={`${import.meta.env.BASE_URL}BBX cover.png`}
               className="w-full h-full object-contain"
               alt="BridgeBox Disaster Response"
             />
@@ -59,7 +59,7 @@ const CaseStudies = () => {
             tools={["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"]}
           >
             <img
-              src="/Fuse cover.png"
+              src={`${import.meta.env.BASE_URL}Fuse cover.png`}
               className="w-full h-full object-contain"
               alt="Fuse Chrome Extension"
             />

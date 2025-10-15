@@ -70,23 +70,23 @@ const FuseCaseStudy = () => {
                     <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Tools</h2>
                     <div className="flex flex-wrap gap-3">
                       <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
-                        <img src="/Sketch_Logo.png" alt="Sketch" className="w-5 h-5" />
+                        <img src={`${import.meta.env.BASE_URL}Sketch_Logo.png`} alt="Sketch" className="w-5 h-5" />
                         Sketch
                       </span>
                       <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
-                        <img src="/Illustrator logo.png" alt="Illustrator" className="w-5 h-5" />
+                        <img src={`${import.meta.env.BASE_URL}Illustrator logo.png`} alt="Illustrator" className="w-5 h-5" />
                         Illustrator
                       </span>
                       <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
-                        <img src="/ID_logo.png" alt="InDesign" className="w-5 h-5" />
+                        <img src={`${import.meta.env.BASE_URL}ID_logo.png`} alt="InDesign" className="w-5 h-5" />
                         InDesign
                       </span>
                       <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
-                        <img src="/Photoshop-logo.png" alt="Photoshop" className="w-5 h-5" />
+                        <img src={`${import.meta.env.BASE_URL}Photoshop-logo.png`} alt="Photoshop" className="w-5 h-5" />
                         Photoshop
                       </span>
                       <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
-                        <img src="/Invision Logo.png" alt="InVision Studio" className="w-5 h-5" />
+                        <img src={`${import.meta.env.BASE_URL}Invision Logo.png`} alt="InVision Studio" className="w-5 h-5" />
                         InVision Studio
                       </span>
                     </div>
@@ -97,7 +97,7 @@ const FuseCaseStudy = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="/lovable-uploads/62572add-39f9-457c-b8bf-91e39cde4c63.png" 
+                    src={`${import.meta.env.BASE_URL}lovable-uploads/62572add-39f9-457c-b8bf-91e39cde4c63.png`} 
                     alt="Fuse Chrome Extension Interface with CMU HCII Logo"
                     className="w-full h-auto"
                   />

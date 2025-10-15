@@ -19,7 +19,7 @@ const Index = () => {
         className="relative min-h-screen w-full overflow-hidden flex items-start justify-center pt-[120px]"
         data-hero-section
         style={{
-          backgroundImage: "url('/bkg.png')",
+          backgroundImage: `url(${import.meta.env.BASE_URL}bkg.png)`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -28,7 +28,7 @@ const Index = () => {
         <Header />
         {/* matcha-blur.png, 3x size, 2vw from left, behind center widget, flipped on x axis */}
         <img
-          src="/matcha-blur.png"
+          src={`${import.meta.env.BASE_URL}matcha-blur.png`}
           alt="Matcha"
           className="hidden md:block absolute z-0"
           style={{
@@ -41,7 +41,7 @@ const Index = () => {
         />
         {/* keyboard-blur.png, 4x size, centered, flush with bottom */}
         <img
-          src="/keyboard-blur.png"
+          src={`${import.meta.env.BASE_URL}keyboard-blur.png`}
           alt="Keyboard"
           className="hidden md:block absolute z-10"
           style={{
@@ -54,7 +54,7 @@ const Index = () => {
         />
         {/* mouse-blur.png, same size, 5vw from right, flush with bottom */}
         <img
-          src="/mouse-blur.png"
+          src={`${import.meta.env.BASE_URL}mouse-blur.png`}
           alt="Mouse"
           className="hidden md:block absolute z-10"
           style={{
@@ -90,22 +90,22 @@ const Index = () => {
           top: 'calc(120px + 20px)' // 20px down from top of glass screen
         }}>
           <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Substack.png" alt="Substack" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-16 h-16 object-contain drop-shadow-lg" />
           </a>
           <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Calendar.png" alt="Calendar" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-16 h-16 object-contain drop-shadow-lg" />
           </a>
           <a href="https://www.linkedin.com/in/alexandra-rohrer/" target="_blank" rel="noopener noreferrer" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/LinkedIn.png" alt="LinkedIn" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-16 h-16 object-contain drop-shadow-lg" />
           </a>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Spotify - Dark.png" alt="Spotify" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}Spotify - Dark.png`} alt="Spotify" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
           <div className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Libby.png" alt="Libby" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}Libby.png`} alt="Libby" className="w-16 h-16 object-contain drop-shadow-lg" />
           </div>
           <a href="mailto:lexirohrer@gmail.com" className="w-16 h-16 flex items-center justify-center hover:scale-110 transition-transform duration-300">
-            <img src="/Gmail.png" alt="Gmail" className="w-16 h-16 object-contain drop-shadow-lg" />
+            <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-16 h-16 object-contain drop-shadow-lg" />
           </a>
         </div>
       </div>

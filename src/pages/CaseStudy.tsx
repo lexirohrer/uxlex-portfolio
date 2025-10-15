@@ -89,7 +89,7 @@ const CaseStudy = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="/QB cover.png" 
+                    src={`${import.meta.env.BASE_URL}QB cover.png`} 
                     alt="QuickBooks Interface Mockup"
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />

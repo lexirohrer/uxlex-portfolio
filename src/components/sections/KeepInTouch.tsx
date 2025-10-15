@@ -22,7 +22,7 @@ const KeepInTouch = () => {
                 className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <img src="/Gmail.png" alt="Gmail" className="w-20 h-20 object-contain drop-shadow-lg" />
+                  <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-20 h-20 object-contain drop-shadow-lg" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -44,7 +44,7 @@ const KeepInTouch = () => {
                 className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <img src="/LinkedIn.png" alt="LinkedIn" className="w-20 h-20 object-contain drop-shadow-lg" />
+                  <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-20 h-20 object-contain drop-shadow-lg" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -66,7 +66,7 @@ const KeepInTouch = () => {
                 className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <img src="/Calendar.png" alt="Calendar" className="w-20 h-20 object-contain drop-shadow-lg" />
+                  <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-20 h-20 object-contain drop-shadow-lg" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
@@ -88,7 +88,7 @@ const KeepInTouch = () => {
                 className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                  <img src="/Substack.png" alt="Substack" className="w-20 h-20 object-contain drop-shadow-lg" />
+                  <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-20 h-20 object-contain drop-shadow-lg" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">

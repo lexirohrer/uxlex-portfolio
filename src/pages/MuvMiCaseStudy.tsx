@@ -86,7 +86,7 @@ const MuvMiCaseStudy = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src="/MuvMi cover.png" 
+                    src={`${import.meta.env.BASE_URL}MuvMi cover.png`} 
                     alt="MuvMi Electric Tuk Tuk"
                     className="w-full h-auto rounded-2xl shadow-lg"
                   />
