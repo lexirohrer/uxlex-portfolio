@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Redirecting...</title>
+    <script>
+        // Redirect apex domain to www
+        if (window.location.hostname === 'uxlex.com') {
+            window.location.replace('https://www.uxlex.com' + window.location.pathname + window.location.search);
+        }
+    </script>
+    <meta http-equiv="refresh" content="0; url=https://www.uxlex.com">
+</head>
+<body>
+    <p>Redirecting to www.uxlex.com...</p>
+    <script>
+        // Fallback redirect
+        setTimeout(function() {
+            window.location.replace('https://www.uxlex.com');
+        }, 1000);
+    </script>
+</body>
+</html>
