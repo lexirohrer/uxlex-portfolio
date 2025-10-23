@@ -9,24 +9,29 @@ const BridgeBoxCaseStudy = () => {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
-        <Header />
+      <Header />
+      
+      {/* Hero Section - Full Width */}
+      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 w-full py-16 max-sm:py-12 overflow-hidden">
+        {/* Grainy overlay */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px'
+        }}></div>
         
-        {/* Hero Section - Full Width */}
-        <section className="bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 w-full py-16 max-sm:py-12">
-          {/* Glassmorphic Header - Full Width */}
-          <div className="bg-white/50 backdrop-blur-md w-full py-8 border-b border-white/30">
-            <div className="px-[120px] max-md:px-10 max-sm:px-5">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
-                BridgeBox 
-              </h1>
-              <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                Designing disaster response tools in rural Thailand
-              </p>
-            </div>
+        {/* Header - No background */}
+        <div className="relative z-10 w-full py-8">
+          <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
+              BridgeBox 
+            </h1>
+            <p className="text-lg lg:text-xl text-gray-700 font-medium">
+              Designing disaster response tools in rural Thailand
+            </p>
           </div>
-          
-          <div className="px-[120px] max-md:px-10 max-sm:px-5">
+        </div>
+        
+        <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
             <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
@@ -91,7 +96,7 @@ const BridgeBoxCaseStudy = () => {
                   <img 
                     src={`${import.meta.env.BASE_URL}BBX cover.png`} 
                     alt="BridgeBox Disaster Response"
-                    className="w-full h-auto rounded-2xl shadow-lg"
+                    className="w-full h-auto rounded-2xl"
                   />
                 </div>
               </div>
@@ -99,7 +104,8 @@ const BridgeBoxCaseStudy = () => {
           </div>
         </section>
         
-        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+          <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           {/* Summary */}
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-6 font-hagrid">Summary</h2>
@@ -274,10 +280,9 @@ const BridgeBoxCaseStudy = () => {
               </p>
             </div>
           </section>
-        </main>
-        
-        <Footer />
-      </div>
+          </main>
+          <Footer />
+        </div>
     </>
   );
 };

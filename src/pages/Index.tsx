@@ -6,6 +6,7 @@ import AboutMe from "@/components/sections/AboutMe";
 import Testimonials from "@/components/sections/Testimonials";
 import KeepInTouch from "@/components/sections/KeepInTouch";
 import Footer from "@/components/sections/Footer";
+import SteamAnimation from "@/components/ui/SteamAnimation";
 
 const Index = () => {
   return (
@@ -27,18 +28,30 @@ const Index = () => {
       >
         <Header />
         {/* matcha-blur.png, 3x size, 2vw from left, behind center widget, flipped on x axis */}
-        <img
-          src={`${import.meta.env.BASE_URL}matcha-blur.png`}
-          alt="Matcha"
-          className="hidden md:block absolute z-0"
-          style={{
-            left: '2vw',
-            bottom: 0,
-            width: '18rem', // 3x original h-24 (6rem)
-            height: '18rem',
-            transform: 'scaleX(-1)',
-          }}
-        />
+        <div className="hidden md:block absolute z-0" style={{
+          left: '2vw',
+          bottom: 0,
+          width: '18rem', // 3x original h-24 (6rem)
+          height: '18rem',
+          transform: 'scaleX(-1)',
+        }}>
+          <img
+            src={`${import.meta.env.BASE_URL}matcha-blur.png`}
+            alt="Matcha"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Steam animation positioned above the Matcha image */}
+        <div className="hidden md:block absolute z-5" style={{
+          left: '2vw',
+          bottom: '18rem', // Position above the Matcha image
+          width: '18rem',
+          height: '8rem', // Height for steam animation area
+          transform: 'scaleX(-1)',
+        }}>
+          <SteamAnimation />
+        </div>
         {/* keyboard-blur.png, 4x size, centered, flush with bottom */}
         <img
           src={`${import.meta.env.BASE_URL}keyboard-blur.png`}

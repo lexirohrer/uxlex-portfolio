@@ -9,24 +9,29 @@ const FuseCaseStudy = () => {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
-        <Header />
+      <Header />
+      
+      {/* Hero Section - Full Width */}
+      <section className="relative bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 w-full py-16 max-sm:py-12 overflow-hidden">
+        {/* Grainy overlay */}
+        <div className="absolute inset-0 opacity-30" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
+          backgroundSize: '200px 200px'
+        }}></div>
         
-        {/* Hero Section - Full Width */}
-        <section className="bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 w-full py-16 max-sm:py-12">
-          {/* Glassmorphic Header - Full Width */}
-          <div className="bg-[#EAD6D7]/50 backdrop-blur-md w-full py-8 border-b border-[#EAD6D7]/30">
-            <div className="px-[120px] max-md:px-10 max-sm:px-5">
-              <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
-                Fuse Google Chrome Extension
-              </h1>
-              <p className="text-lg lg:text-xl text-gray-700 font-medium">
-                Building a second brain for researchers synthesizing information
-              </p>
-            </div>
+        {/* Header - No background */}
+        <div className="relative z-10 w-full py-8">
+          <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
+              Fuse Google Chrome Extension
+            </h1>
+            <p className="text-lg lg:text-xl text-gray-700 font-medium">
+              Building a second brain for researchers synthesizing information
+            </p>
           </div>
-          
-          <div className="px-[120px] max-md:px-10 max-sm:px-5">
+        </div>
+        
+        <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
             <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
@@ -107,7 +112,8 @@ const FuseCaseStudy = () => {
           </div>
         </section>
         
-        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+          <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
 
               {/* Background */}
               <section className="mb-16">
@@ -318,9 +324,9 @@ const FuseCaseStudy = () => {
                 </div>
               </section>
 
-            </main>
-            <Footer />
-          </div>
+          </main>
+          <Footer />
+        </div>
         </>
       );
     };

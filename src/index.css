@@ -203,3 +203,40 @@
     transform: rotate(20deg);
   }
 }
+
+/* Steam animation keyframes */
+@keyframes steam-rise {
+  0% {
+    opacity: 0.8;
+    transform: translateY(0) scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.4;
+    transform: translateY(-30px) scale(1.1) rotate(2deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-60px) scale(1.2) rotate(-2deg);
+  }
+}
+
+@keyframes steam-wiggle {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-2px);
+  }
+  75% {
+    transform: translateX(2px);
+  }
+}
+
+@keyframes steam-hover {
+  0%, 100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.2) translateY(-5px);
+  }
+}
