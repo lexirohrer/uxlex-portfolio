@@ -584,7 +584,7 @@ const CaseStudy = () => {
               For me, this project was an important reminder that good design is as much about facilitation and diplomacy as it is about arranging pixels on a screen. Our team had been redesigning this flow on our own for years - but once we stepped back, decided to address root causes, and worked on aligning different points of view, grounding decisions in user data, and designing responsibly with AI, we cracked critical metrics and solved the biggest user facing and organizational problem plaguing the onboarding space.
             </p>
             
-            <p className="text-[#403930] text-lg mb-6">
+            <p className="text-[#403930] text-lggit a mb-6">
             This combination of design and stakeholder alignment challenge directly inspired my future work in social impact arenas. Fundamentally, this project gave me first hand belief that by creating space for opposing sides to see the bigger picture, we can shift away from siloed decision-making toward a shared vision of user success - a strategy I continue to leverage in each complex, systemic issue I encounter.
             </p>
             
