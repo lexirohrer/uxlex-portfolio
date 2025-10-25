@@ -541,17 +541,31 @@ const CaseStudy = () => {
                 </p>
 
                 <div className="bg-gray-50 rounded-2xl p-4 mb-6">
-                    <video 
+                  <a 
+                    href="https://drive.google.com/file/d/1AxKJpkcx9lF__oN7RUE9HgUh-kaz231I/view?usp=sharing"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="relative block group cursor-pointer"
+                  >
+                    <img 
+                      src={`${import.meta.env.BASE_URL}qb-streamline-e2e-cover.png`}
+                      alt="QuickBooks streamlined end-to-end flow"
                       className="w-full h-auto rounded-lg"
-                      controls 
-                      muted 
-                      loop
-                      playsInline
-                      preload="metadata"
-                    >
-                      <source src={`${import.meta.env.BASE_URL}qb-streamline-e2e.mp4`} type="video/mp4"/>
-                      Your browser does not support the video tag.
-                    </video>
+                    />
+                    {/* Play button overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                      <div className="bg-white bg-opacity-90 group-hover:bg-opacity-100 rounded-full p-6 shadow-md transform group-hover:scale-110 transition-all duration-300 pointer-events-auto">
+                        <svg 
+                          xmlns="http://www.w3.org/2000/svg" 
+                          viewBox="0 0 24 24" 
+                          fill="currentColor" 
+                          className="w-12 h-12 text-gray-800"
+                        >
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                      </div>
+                    </div>
+                  </a>
                 </div> 
                  <p className="text-[#403930] text-lg mb-6">As noted in the beginning of this case study, this was one of the most successful tests our team has ever run. It achieved its goal of reducing cognitive load, as evidenced by:</p>
                  
