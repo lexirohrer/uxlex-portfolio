@@ -103,60 +103,92 @@ const MuvMiCaseStudy = () => {
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
-          {/* Summary */}
+          {/* Overview */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Summary</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Overview</h2>
             <p className="text-[#403930] text-lg mb-6">
-              Through participatory design methods—including ethnographic ride-alongs, paper prototyping workshops, and group feedback sessions—I worked with both tourists and locals to explore how MuvMi's dual offerings could be unified into one app without compromising the user experience.
+            MuvMi, a Bangkok-based ridesharing startup, operates a fleet of electric Tuk Tuks (a three wheeled motorized vehicle). The electric Tuk Tuks are positioned as a cleaner first-last mile alternative to motorbikes, busses, cars, or gas-powered Tuk Tuks. MuvMi offered separate products for tourists and locals, and much of my work with them focused on <strong> how to unite these two services without compromising on the user experience</strong> for either group. I took on this project as a part of my Fulbright Research study on how to adapt Western-created Design Thinking Methods to Global South Contexts - so this project focused on not only redesigning the service, but <strong>adapting the methodologies used to specific cultural contexts.</strong>
             </p>
+              <div className="bg-gray-100 rounded-2xl p-4 mb-6">
+                <div className="relative">
+                  <span className="absolute -top-2 -left-2 text-6xl text-[#557592] font-serif leading-none opacity-60">"</span>
+                  <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here.</p>
+                  <p className="text-[#403930] text-xl pl-6 pt-2">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
+                </div>
+              </div>
+              <p className="text-[#403930] text-lg mb-6"> 
+                Thai culture's engrained attention to hierarcical power dynamics and strong values of social harmony can make it dfficult to elicit direct cricital feedback. For these reasons, ethnographic ride-alongs and participatory design were chosen as methods to allow users to show, not tell, their honest assesments of the service. Previously, Muvmi had used surveys and interviews to gather feedback, so these research methods were new to the team, so I worked closely with them to explore how MuvMi's dual tourist and local offerings could be unified into one unified experience.
+              </p>
+         
             
-            <p className="text-[#403930] text-lg mb-8">
-              <strong>Key outcomes included:</strong>
-            </p>
-            
-            <div className="space-y-4 mb-8">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">Concrete service concepts (visual travel zones, integrated modes, and expanded tourist options) later implemented by MuvMi.</p>
+            {/* Project Goals and Key Outcomes Cards */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+              {/* Project Goals Card */}
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+                <div className="bg-[#E6F0F7] p-6">
+                  <h3 className="text-[#403930] text-xl font-bold font-hagrid">
+                    Project Goals
+                  </h3>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        Explore how Human-Centered Design methods can be adapted to Thailand's cultural context, as part of my Fulbright research.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        Improve the onboarding and ride experience for both tourist and local riders.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        Generate actionable service design concepts aligned with smart city goals.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        Introduce participatory methods that could realistically fit into a Thai startup environment.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">A shift in methodology, with staff noting participatory design produced more "realistic and usable" solutions than interviews or surveys.</p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">A cultural shift, as employees began informally using personas and participatory outputs in everyday decision-making.</p>
-              </div>
-            </div>
-          </section>
 
-          {/* Project Goals */}
-          <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Project Goals</h2>
-            <div className="space-y-4">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
-                  Explore how Human-Centered Design methods can be adapted to Thailand's cultural context, as part of my Fulbright research.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
-                  Improve the onboarding and ride experience for both tourist and local riders.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
-                  Generate actionable service design concepts aligned with smart city goals.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
-                  Introduce participatory methods that could realistically fit into a Thai startup environment.
-                </p>
+              {/* Key Outcomes Card */}
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+                <div className="bg-[#E6F0F7] p-6">
+                  <h3 className="text-[#403930] text-xl font-bold font-hagrid">
+                    Key Outcomes
+                  </h3>
+                </div>
+                <div className="p-6">
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        Concrete service concepts (visual travel zones, integrated modes, and expanded tourist options) later implemented by MuvMi.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        A shift in methodology, with staff noting participatory design produced more "realistic and usable" solutions than interviews or surveys.
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-[#403930] text-base">
+                        A cultural shift, as employees began informally using personas and participatory outputs in everyday decision-making.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
@@ -165,6 +197,130 @@ const MuvMiCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Project Process</h2>
             
+            {/* Process graphic */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">1</div>
+                <h4 className="text-[#403930] text-2xl font-bold mb-3">Ethnographic ride alongs</h4>
+                <p className="text-[#403930] text-md">MuvMi employees and Ibserved tourists using the serviceto understand their expectations and pain points with calling, finding, and riding the Tuk Tuks.</p>
+              </div>
+
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">2</div>
+                <h4 className="text-[#403930] text-2xl font-bold mb-3">Paper prototyping sessions</h4>
+                <p className="text-[#403930] text-md">I used low-fidelity paper feature cards to have tourists construct their ideal app experience.</p>
+              </div>
+
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">3</div>
+                <h4 className="text-[#403930] text-2xl font-bold mb-3">Participatory design workshop</h4>
+                <p className="text-[#403930] text-md">MuvMi employees hosted a workshop to co-design solutions with local riders.
+                </p>
+              </div>
+
+              <div className="bg-[#E6F0F7] p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] text-white rounded-full text-xl font-bold mb-4">4</div>
+                <h4 className="text-[#403930] text-2xl font-bold mb-3">Synthesis & implementation</h4>
+                <p className="text-[#403930] text-md">Consolidated insights from both user groups and worked with MuvMi to implement unified service concepts.</p>
+              </div>
+            </div>
+          </section>
+
+          {/* Phase 1: Ethnographic ride alongs */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Ethnographic ride alongs</h2>
+            <p className="text-[#403930] text-md mb-6"> Alongside MuvMi employees, I conducted ethnographic research, <strong> observing 4 groups of real tourists using the MuvMi app and Tuk Tuk service.</strong> Each tourist group was on vacation in Bangkok, some for the first time and others as repeat visitors. We recruited these tourists through "Travel in Bangkok" Facebook groups, local walking tours, and flyers in nearby hotel lobbies, and they were compensated after the research session with a day pass for free rides on the MuvMi Tuk Tuks.
+            </p>
+            <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-6">
+              <img
+                src={`${import.meta.env.BASE_URL}MuvMi-ridealong.png`}
+                alt="MuvMi ride along"
+                className="rounded-xl w-full md:w-2/3 h-full object-contain"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}MuvMi-ridealong-app.png`}
+                alt="MuvMi ride along app view"
+                className="rounded-xl w-full md:w-1/3 h-full object-cover"
+              /> 
+            </div>
+            <p className="text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6"> Each session followed a similar structure:
+            </p>
+            <ol className="list-decimal list-outside text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6">
+              <li>Meet with the tourists at their hotel and observe as they downloaded the app, navigated the checkout flow, and called their first Tuk Tuk</li>
+              <li>Observe as the tourists attempted to find and board their Tuk Tuk</li>
+              <li>Ride with the tourists to their destination, asking them to "think out loud" about their experience of riding in the Tuk Tuk</li>
+              <li>Debrief with the tourists about the ride and their experience, including a 15 minute paper prototyping session where they redesigned the app in low fidelity to match their ideal flow</li>
+            </ol>
+            <p className="text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6"> Across the 4 sets of tourists, these ride alongs generated many key insights, with the most notable being:
+            </p>
+
+            {/* Key Insights */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+              <div className="bg-green-50 p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-green-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👍</div>
+                <h4 className="text-[#403930] text-2xl font-regular mb-3">Users loved how <strong>safe, clean, and comfortable</strong> the vehicles were</h4>
+              </div>
+
+              <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
+                <h4 className="text-[#403930] text-2xl font-regular mb-3">Users <strong>struggled the most with the checkout flow</strong>, with key UI issues preventing them from success</h4>
+              </div>
+
+              <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
+                <h4 className="text-[#403930] text-2xl font-regular mb-3">Tourist users were <strong>confused</strong> why they could only go <strong>limited distances</strong> in the Tuk Tuks</h4>
+              </div>
+            </div>
+            <p className="text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6"> The safety, cleanliness, and comfort of the Tuk Tuk rides was a major highlight - but there were two key areas for improvement in the app experience. Firstly, the UI of the checkout was confusing - UI issues like selection components and text hierarchy created a confusing flow, and add on options like "include hotel pickup" didn't give a field place for the user to input their hotel.
+            </p>
+              <img
+                src={`${import.meta.env.BASE_URL}Muvmi-checkout-1.png`}
+                alt="MuvMi checkout screens showing the checkout flow and the issues with the UI"
+                className="rounded-xl w-full md:w-fill h-full object-contain mb-6"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}Muvmi-checkout-2.png`}
+                alt="MuvMi checkout screens showing the checkout flow and the issues with the UI"
+                className="rounded-xl w-full md:w-fill h-full object-cover mb-6"
+              /> 
+            <p className="text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6"> Next, tourist users had a mismatched mental model from local users. Local users accepted MuvMi's zone-based system as familiar, mirroring gas Tuk Tuk norms. Tourist users, influenced by ride-hailing apps, expected on-demand, unlimited travel. The zones felt confusing and restrictive.
+            </p>
+            <img
+                src={`${import.meta.env.BASE_URL}Muvmi-zones.png`}
+                alt="MuvMi checkout screens showing the checkout flow and the issues with the UI"
+                className="rounded-xl w-full md:w-fill h-full object-cover mb-6"
+              /> 
+
+          </section>
+
+          {/* Phase 2: Paper prototyping */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Paper prototyping</h2>
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder content for Phase 2]</p>
+            </div>
+          </section>
+
+          {/* Phase 3: Participatory Design workshop with local users */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Participatory Design workshop with local users</h2>
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder content for Phase 3]</p>
+            </div>
+          </section>
+
+          {/* Phase 4: Synthesis & implementation of new features */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Synthesis & implementation of new features</h2>
+            <div className="bg-gray-100 p-8 rounded-2xl text-center">
+              <p className="text-[#557592] text-lg italic">📍 [Placeholder content for Phase 4]</p>
+            </div>
+          </section>
+
+          {/* Additional Context */}
+          <section className="mb-16">
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Additional Context</h2>
+            
             {/* Why participatory design */}
             <div className="mb-12">
               <h3 className="text-[#403930] text-2xl font-bold mb-6">Why participatory design?</h3>
@@ -172,12 +328,7 @@ const MuvMiCaseStudy = () => {
                 In Thailand, indirect feedback tendencies often make traditional user interviews difficult. Participatory methods were chosen not just to overcome this, but because of their cultural fit. In a collectivist society, people are well-practiced at collaborating to solve systemic challenges for the broader good.
               </p>
               
-              <div className="bg-[#E6F0F7] p-6 rounded-2xl mb-6">
-                <p className="text-[#403930] text-lg italic mb-4">
-                  "People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here."
-                </p>
-                <p className="text-[#557592] text-sm">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
-              </div>
+          
               
               <div className="bg-gray-100 p-8 rounded-2xl text-center">
                 <p className="text-[#557592] text-lg italic">📍 [Placeholder for diagram: Western HCD vs. adapted participatory design in Thai context]</p>
