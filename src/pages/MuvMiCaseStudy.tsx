@@ -115,7 +115,7 @@ const MuvMiCaseStudy = () => {
             <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Why Participatory Design?</h2>
             
             <div className="mb-12">
-              <p className="text-[#403930] text-lg mb-6">
+            <p className="text-[#403930] text-lg mb-6">
                 Thai culture's engrained attention to social harmony and respect for authority can make it difficult to elicit direct critical feedback using classic design research methods such as interviews and focus groups. Despite the mismatch between culture and methodology, these methods are the most widely taught and used in places like Thailand, where integration of human centered design is still cutting edge rather than assumed in the technology sector. 
               </p>
             
@@ -254,7 +254,7 @@ const MuvMiCaseStudy = () => {
               <div className="bg-red-50 p-6 rounded-2xl">
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#403930] text-2xl font-regular mb-3">Local users cared about speed, but <strong>reliability was even more important.</strong>  ETA inconsistencies damaged trust.</h4>
-              </div>
+            </div>
 
               <div className="bg-red-50 p-6 rounded-2xl">
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
@@ -272,16 +272,16 @@ const MuvMiCaseStudy = () => {
             <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Tourist users: ethnographic ride alongs</h2>
             <p className="text-[#403930] text-md mb-6"> After observing the structure of these focus groups, I designed the tourist research phases to coach MuvMi employees on using resesarch methdos that would allow the user to "show not tell" what they liked and didn't like about the service. ALongside a few MuvMi employees, I conducted ethnographic research, <strong> observing 4 groups of real tourists using the MuvMi app and Tuk Tuk service.</strong> Each tourist group was on vacation in Bangkok, some for the first time and others as repeat visitors. We recruited these tourists through "Travel in Bangkok" Facebook groups, local walking tours, and flyers in nearby hotel lobbies, and they were compensated after the research session with a day pass for free rides on the MuvMi Tuk Tuks.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-6">
+            <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
               <img
                 src={`${import.meta.env.BASE_URL}MuvMi-ridealong.png`}
                 alt="MuvMi ride along"
-                className="rounded-xl w-full md:w-2/3 h-full object-contain"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
               />
               <img
                 src={`${import.meta.env.BASE_URL}MuvMi-ridealong-app.png`}
                 alt="MuvMi ride along app view"
-                className="rounded-xl w-full md:w-1/3 h-full object-cover"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
               /> 
             </div>
             <p className="text-[#403930] text-lg space-y-3 pl-2 mb-6"> Each session followed a similar structure:
@@ -300,13 +300,13 @@ const MuvMiCaseStudy = () => {
               <div className="bg-green-50 p-6 rounded-2xl">
                 <div className="flex items-center justify-center w-12 h-12 bg-green-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👍</div>
                 <h4 className="text-[#403930] text-2xl font-regular mb-3">Tourist users loved how <strong>safe, clean, and comfortable</strong> the vehicles were</h4>
-              </div>
+                </div>
 
               <div className="bg-red-50 p-6 rounded-2xl">
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#403930] text-2xl font-regular mb-3">Tourist users <strong>struggled the most with the checkout flow</strong>, with key UI issues preventing them from success</h4>
               </div>
-
+              
               <div className="bg-red-50 p-6 rounded-2xl">
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#403930] text-2xl font-regular mb-3">Tourist users were <strong>confused</strong> why they could only go <strong>limited distances</strong> in the Tuk Tuks</h4>
@@ -359,16 +359,16 @@ const MuvMiCaseStudy = () => {
                   </p>
                 </div>
               </div>
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch mb-6">
+            <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
               <img
                 src={`${import.meta.env.BASE_URL}MuvMi-workshop.png`}
                 alt="MuvMi ride along"
-                className="rounded-xl w-full md:w-1/2 h-full object-contain"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
               />
               <img
                 src={`${import.meta.env.BASE_URL}MuvMi-pps.png`}
                 alt="MuvMi ride along app view"
-                className="rounded-xl w-full md:w-1/2 h-full object-cover"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
               /> 
             </div>
             <p className="text-[#403930] text-lg space-y-3 pl-2 mb-6"> In an ideal world, tourists would generate these mockups of the app from scratch; however, the extremely time sensitive nature of working with real tourists necessitated a hybrid paper prototyping / sketching activity, which could be constrained to 15 minute sessions. This activity was generative rather than evaluative, allowing MuvMi to gain understand <strong>what features they should prioritize building or improving based on what users omitted, not what they critiqued. </strong>This alternative method prevented feedback from being biased by cultural norms of social harmony or authority.
@@ -423,7 +423,7 @@ const MuvMiCaseStudy = () => {
             </div>
 
             <h3 className="text-[#403930] text-2xl font-bold mb-6">Design recommendations</h3>
-            <p className="text-[#403930] text-lg mb-6">
+              <p className="text-[#403930] text-lg mb-6">
               After conducting both tourist and local user research, I synthesized the insights and user generated concepts into a set of design recommendations for the MuvMi team to implement. These included:
            
               </p>
@@ -444,11 +444,11 @@ const MuvMiCaseStudy = () => {
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-[#403930] text-lg">Improving usability of the checkout flow for tourists</p>
-                </div>
+              </div>
                 <div className="flex items-start gap-4">
                   <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                   <p className="text-[#403930] text-lg">Implementing convenience features like "saved places" that would increase user adption for locals and ease first time use for tourists</p>
-                </div>
+              </div>
               </div>
             <img
                 src={`${import.meta.env.BASE_URL}MuvMi-design-reccs.png`}
@@ -456,7 +456,7 @@ const MuvMiCaseStudy = () => {
                 className="rounded-3xl w-full md:w-full h-full object-cover mb-6"
               /> 
 
-<p className="text-[#403930] text-lg mb-6">
+            <p className="text-[#403930] text-lg mb-6">
               Within months of the project, MuvMi implemented several of the co-designed features:
             </p>
             
@@ -480,7 +480,7 @@ const MuvMiCaseStudy = () => {
                 </p>
               </div>
             </div>
-
+            
         {/* Methodology Learnings */}
           <h3 className="text-[#403930] text-2xl font-bold mb-6">Methodology Learnings</h3>
           <p className="text-[#403930] text-lg space-y-3 pl-2 mb-6"> This project was focused not only on solving the desgin challenges at hand, but also on <strong>adapting the methodologies used to specific cultural contexts.</strong> After shadowing and practicing ethnographic observation and participatory design workshops, one Muvmi employee reflected:
@@ -502,8 +502,8 @@ const MuvMiCaseStudy = () => {
               <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness.</p>
               <p className="text-[#403930] text-xl pl-6 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
             </div>
-          </div>
-        </section>
+            </div>
+          </section>
 
           {/* Impact */}
           <section className="mb-16">
@@ -511,7 +511,7 @@ const MuvMiCaseStudy = () => {
             <p className="text-[#403930] text-lg mb-6">Across the board, MuvMi employees <strong>rated participatory methods as producing more "realisitic and usable" solutions</strong> than traditional interview and focus group methods. Beyond just the feature updates and changes, this project also represented a <strong>cultural shift in the way MuvMi employees approach design.</strong> After shadowing and practicing ethnographic observation and participatory design workshops, the MuvMi CEO reported observing:
             </p>
 
-          <div className="space-y-4 mb-8">
+            <div className="space-y-4 mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] text-lg">
