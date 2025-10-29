@@ -234,7 +234,7 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] text-lg mb-6"> Some of the workshops were originally hosted as hybrid – however, we quickly saw that this format was going to prevent true collaboration. With rural participants, <strong>in person sessions were essential for building trust and comfort. </strong>Many users weren’t used to juggling tools like Zoom and an online whiteboard, so being face to face with facilitators and using familiar tools like pen and paper put them at ease and allowed them to meaningfully participate without insecurity or confusion. 
               </p>
               
-              <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
+               <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
               <img
                 src={`${import.meta.env.BASE_URL}BBx_Songkhla1.png`}
                 alt="Picture of workshop participants in Songkhla Province"
@@ -252,7 +252,7 @@ const BridgeBoxCaseStudy = () => {
                    <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">It’s important to have someone in the field with [the participants], because online it’s difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
                    <p className="text-[#403930] text-xl pl-6 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
                  </div>
-               </div>
+              </div>
               <p className="text-[#403930] text-lg mb-6">
                 During this first workshop, I faciliated while my collaborator from BridgeBox translated - however, we quickly realized that common technology concepts in English often don't have a clear Thai translation. Moreover, my Thai collaborators from BridgeBox were interested in learning participatory design, so <strong>I took a step back and conducted training for BridgeBox employees in faciliating participatory design workshops</strong>, so that they could lead sessions themselves. By the final workshop, Thai BridgeBox employees were comfortable facilitating sessions independently, and since this project's conclusion have continued to do so.
               </p>
@@ -265,18 +265,18 @@ const BridgeBoxCaseStudy = () => {
                 Workshops used generative sketching to invite participants to imagine solutions beyond the existing software. In this exercise, users were given a situation like "Imagine that there is a flash flood, and you are working on dispatching emergency aid to different areas. Think about the information would you want people calling for help to provide to you to help you dispatch the right aid to the right area. Keeping in mind that reporters need to be able to fill out this information as quickly as possible, what should the screens look like to report an emergency?"
               </p>
 
-              <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
-              <img
-                src={`${import.meta.env.BASE_URL}BBx_sketch1.png`}
-                alt="Example 1 of sketching activity"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              />
-              <img
-                src={`${import.meta.env.BASE_URL}BBx_sketch2.png`}
-                alt="Example 2 of sketching activity"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              /> 
-            </div>
+               <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
+               <img
+                 src={`${import.meta.env.BASE_URL}BBx_sketch1.png`}
+                 alt="Example 1 of sketching activity"
+                 className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+               />
+               <img
+                 src={`${import.meta.env.BASE_URL}BBx_sketch2.png`}
+                 alt="Example 2 of sketching activity"
+                 className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+               /> 
+             </div>
               <p className="text-[#403930] text-lg mb-6">
               This approach encouraged participants to propose ideas, share what they came up with, compare alternatives, and frame feedback as preferences rather than critiques. The generative sketching activities yielded tangible concepts that met real user needs, many of which BridgeBox later developed. These included:
               </p>
