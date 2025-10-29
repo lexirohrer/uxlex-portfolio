@@ -110,8 +110,8 @@ const BridgeBoxCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Overview</h2>
             <p className="text-[#403930] text-lg mb-6">
-              As part of my Fulbright fellowship on adapting Participatory Design to Thailand, I collaborated with BridgeBox, a startup developing <strong>a communication system for climate disaster response.</strong> BridgeBox builds a mobile app for rural residents to call for help during disasters like flash flooding, and a desktop software for "responders" (local governments, nonprofits, and employers) to manage and respond to the submitted cases. The high stakes and unique context for rural Thai users made usability a critical priority in this project.
-            </p>
+                As part of my Fulbright fellowship on adapting Participatory Design to Thailand, I collaborated with BridgeBox, a startup developing <strong>a communication system for climate disaster response.</strong> BridgeBox builds a mobile app for rural residents to call for help during disasters like flash flooding, and a desktop software for "responders" (local governments, nonprofits, and employers) to manage and respond to the submitted cases. The high stakes and unique context for rural Thai users made usability a critical priority in this project.
+              </p>
           </section>
 
           {/* Project Goals */}
@@ -193,7 +193,7 @@ const BridgeBoxCaseStudy = () => {
                 </p>
               </div>
             </div>
-
+            
             {/* Why participatory design? */}
             <div className="mb-12">
               <h3 className="text-[#403930] text-2xl font-bold mb-6">Why participatory design?</h3>
@@ -210,46 +210,75 @@ const BridgeBoxCaseStudy = () => {
             <div className="mb-12">
               <h3 className="text-[#403930] text-2xl font-bold mb-6">Running workshops in rural contexts</h3>
               <p className="text-[#403930] text-lg mb-6">
-                To achieve the project goals, I planned five participatory design workshops for users in the Songkhla Province, a politically sensitive and flood-prone area. In the first two workshops, I ran while my collaborator from BridgeBox translated - however, we quickly realized that common technology concepts in English often don't have a clear Thai translation. Moreover, my Thai collaborators were interested in learning participatory design, so I decided to take the more intensive process of training Thai collaborators in participatory design, so that they could lead workshop facilitation. By the final workshop, Thai collaborators were comfortable facilitating sessions independently, and since this project's conclusion have continued to do so.
+                These workshops were conducted with two partner organizations – the Human Rights Development Foundation (HRDF), and the Songkhla Disaster Center. At each organization, employees joined in 3 participatory design workshops, structured as follows: 
               </p>
+              <ol className="list-decimal list-outside text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6">
+                <li><strong>Workshop 1:</strong> Usability testing of the existing BridgeBox app</li>
+                <li><strong>Workshop 2:</strong> Community dreaming exercises & feature prioritization</li>
+                <li><strong>Workshop 3:</strong> Generative sketching and co-design of new features</li>
+              </ol>
               <p className="text-[#403930] text-lg mb-6">
-                After each workshop, I reflected not only on the product feedback received, but the methodological blockers to a successful session. Through successive rounds of participatory design, I learned that a successful participatory design workshops for rural users with lower technical literacy should include:
+                Both contexts had to be structured carefully; At HRDF, lawyers were working to address human rights violations for migrant and rural workers across many site. In Songkhla, frequent flash flooding paried with the tension from political insurgency created a general mistrust of government and aid responders when climate disasters struck.In both contexts, it was crucial to make the submission UI extremely intuitive for rural users, correctly prioritze the submitted cases, and build trust through open lines of communication open between reporters and responders.
               </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#403930] text-lg">
-                    Activity instructions that are more detailed than typical, and broken in discrete steps (e.g., "First, write the steps you'd take to report an incident. Then, draw the screen you'd expect to see for each step").
-                  </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#403930] text-lg">
-                    In-person sessions, as many participants were not comfortable juggling tools like Zoom or online whiteboards. Using familiar materials like pen and paper allowed participants to express their ideas more comfortably. The BridgeBox founder, after co-facilitating, noted "It's important to have someone in the field with participants, because online it's difficult to get their full attention… in person, you can see the time they spent to write down what they actually think."
-                  </p>
-                </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#403930] text-lg">
-                    Flexible pacing with respect to Thailand's polychronic view of time, where building consensus matters more than keeping to strict schedules.
-                  </p>
-                </div>
-              </div>
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-                <p className="text-yellow-800 font-medium">
-                  📍 [Placeholder for workshop photos and participant sketches]
+               <div className="bg-gray-100 rounded-2xl p-4 mb-6">
+                 <div className="relative">
+                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] font-serif leading-none opacity-60">"</span>
+                   <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
+                   <p className="text-[#403930] text-xl pl-6 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                 </div>
+               </div>
+              <p className="text-[#403930] text-lg mb-6">
+                For the first workshop with each organization, we focused on usability testing. I had created a prototype of the website and app, but we quickly realized that our users didn't understand how a "prototype" was different than the real app, and what it could or could not do. They had trouble opening the prototype on their own computers, navigating the systems, and understanding the limitations - so we quickly switched to user testing with live versions of the software.
                 </p>
-              </div>
+
+              <p className="text-[#403930] text-lg mb-6"> Some of the workshops were originally hosted as hybrid – however, we quickly saw that this format was going to prevent true collaboration. With rural participants, <strong>in person sessions were essential for building trust and comfort. </strong>Many users weren’t used to juggling tools like Zoom and an online whiteboard, so being face to face with facilitators and using familiar tools like pen and paper put them at ease and allowed them to meaningfully participate without insecurity or confusion. 
+              </p>
+              
+              <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
+              <img
+                src={`${import.meta.env.BASE_URL}BBx_Songkhla1.png`}
+                alt="Picture of workshop participants in Songkhla Province"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}BBx_workshop1.png`}
+                alt="Picture of HRDF workshop participants"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+              /> 
+            </div>
+            <div className="bg-gray-100 rounded-2xl p-4 mb-6">
+                 <div className="relative">
+                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] font-serif leading-none opacity-60">"</span>
+                   <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">It’s important to have someone in the field with [the participants], because online it’s difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
+                   <p className="text-[#403930] text-xl pl-6 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                 </div>
+               </div>
+              <p className="text-[#403930] text-lg mb-6">
+                During this first workshop, I faciliated while my collaborator from BridgeBox translated - however, we quickly realized that common technology concepts in English often don't have a clear Thai translation. Moreover, my Thai collaborators from BridgeBox were interested in learning participatory design, so <strong>I took a step back and conducted training for BridgeBox employees in faciliating participatory design workshops</strong>, so that they could lead sessions themselves. By the final workshop, Thai BridgeBox employees were comfortable facilitating sessions independently, and since this project's conclusion have continued to do so.
+              </p>
             </div>
 
             {/* Workshop activities: generative sketching */}
             <div className="mb-12">
               <h3 className="text-[#403930] text-2xl font-bold mb-6">Workshop activities: generative sketching</h3>
               <p className="text-[#403930] text-lg mb-6">
-                Workshops used generative sketching to invite participants to imagine solutions beyond the existing software. This encouraged participants to propose ideas, compare alternatives, and frame feedback as preferences rather than critiques.
+                Workshops used generative sketching to invite participants to imagine solutions beyond the existing software. In this exercise, users were given a situation like "Imagine that there is a flash flood, and you are working on dispatching emergency aid to different areas. Think about the information would you want people calling for help to provide to you to help you dispatch the right aid to the right area. Keeping in mind that reporters need to be able to fill out this information as quickly as possible, what should the screens look like to report an emergency?"
               </p>
+
+              <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
+              <img
+                src={`${import.meta.env.BASE_URL}BBx_sketch1.png`}
+                alt="Example 1 of sketching activity"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+              />
+              <img
+                src={`${import.meta.env.BASE_URL}BBx_sketch2.png`}
+                alt="Example 2 of sketching activity"
+                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
+              /> 
+            </div>
               <p className="text-[#403930] text-lg mb-6">
-                This approach yielded tangible concepts that met real user needs, such as:
+              This approach encouraged participants to propose ideas, share what they came up with, compare alternatives, and frame feedback as preferences rather than critiques. The generative sketching activities yielded tangible concepts that met real user needs, many of which BridgeBox later developed. These included:
               </p>
               <div className="space-y-4 mb-6">
                 <div className="flex items-start gap-4">
@@ -272,13 +301,18 @@ const BridgeBoxCaseStudy = () => {
                 </div>
               </div>
               <p className="text-[#403930] text-lg mb-6">
-                Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting "[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing." This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand.
+                Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting:
               </p>
-              <div className="bg-yellow-50 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-                <p className="text-yellow-800 font-medium">
-                  📍 [Placeholder for paper prototype examples and side-by-side sketches vs. final UI]
-                </p>
+              <div className="bg-gray-100 rounded-2xl p-4 mb-6">
+                 <div className="relative">
+                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] font-serif leading-none opacity-60">"</span>
+                   <p className="text-[#403930] text-2xl pl-6 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
+                   <p className="text-[#403930] text-xl pl-6 pt-2">— BridgeBox Facilitator</p>
+                 </div>
               </div>
+              <p className="text-[#403930] text-lg mb-6">
+                This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand.
+              </p>
             </div>
 
             {/* AI for Social Good */}
@@ -342,7 +376,8 @@ const BridgeBoxCaseStudy = () => {
 
           {/* Impact */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Impact</h2>
+            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Outcomes</h2>
+            <h3 className="text-[#403930] text-2xl font-bold mb-6">Concrete Changes</h3>
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
@@ -375,6 +410,31 @@ const BridgeBoxCaseStudy = () => {
               </p>
             </div>
           </section>
+
+          <h3 className="text-[#403930] text-2xl font-bold mb-6">Methodology Learnings</h3>
+          <p className="text-[#403930] text-lg mb-6">
+                After each workshop, I reflected not only on the product feedback received, but the methodological blockers to a successful session. Through successive rounds of participatory design, I learned that a successful participatory design workshops for rural users with lower technical literacy should include:
+              </p>
+              <div className="space-y-4 mb-6">
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Activity instructions that are more detailed than typical, and broken in discrete steps (e.g., "First, write the steps you'd take to report an incident. Then, draw the screen you'd expect to see for each step").
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    In-person sessions, as many participants were not comfortable juggling tools like Zoom or online whiteboards. Using familiar materials like pen and paper allowed participants to express their ideas more comfortably. The BridgeBox founder, after co-facilitating, noted "It's important to have someone in the field with participants, because online it's difficult to get their full attention… in person, you can see the time they spent to write down what they actually think."
+                  </p>
+                </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
+                  <p className="text-[#403930] text-lg">
+                    Flexible pacing with respect to Thailand's polychronic view of time, where building consensus matters more than keeping to strict schedules.
+                  </p>
+                </div>
+              </div>
 
           {/* Reflection */}
           <section className="mb-16">
