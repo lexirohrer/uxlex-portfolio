@@ -78,14 +78,14 @@ const Index = () => {
           }}
         />
         {/* Second glass screen - behind and offset */}
-        <div className="absolute z-10 w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/20 max-lg:w-[75vw] max-md:w-[80vw] bg-white/15 backdrop-blur-lg" style={{
+        <div className="absolute z-10 w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/20 dark:border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-white/15 dark:bg-white/5 backdrop-blur-lg" style={{
           boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.12)',
           left: 'calc(50% - 80px)',
           top: 'calc(120px - 30px)',
           transform: 'translateX(-50%)'
         }}>
           {/* Gradient overlay inside card */}
-          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-white/15 to-purple-200/20 rounded-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-blue-200/20 via-white/15 to-purple-200/20 dark:from-blue-500/10 dark:via-transparent dark:to-purple-500/10 rounded-3xl"></div>
         </div>
 
         {/* Hero component with new design */}
@@ -124,7 +124,7 @@ const Index = () => {
       </div>
       
       {/* Original Index page content */}
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-[#1A103F]">
         <main>
           <AboutMe />
           <Testimonials />

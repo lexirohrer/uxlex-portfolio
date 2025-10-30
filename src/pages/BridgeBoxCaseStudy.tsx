@@ -12,7 +12,7 @@ const BridgeBoxCaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 w-full py-16 max-sm:py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden">
         {/* Grainy overlay */}
         <div className="absolute inset-0 opacity-30" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
@@ -22,10 +22,10 @@ const BridgeBoxCaseStudy = () => {
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 mb-4 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] mb-4 max-md:text-3xl font-hagrid">
               BridgeBox 
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 font-medium">
+            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 font-medium">
               Designing disaster response tools in rural Thailand
             </p>
           </div>
@@ -48,42 +48,42 @@ const BridgeBoxCaseStudy = () => {
               <div className="space-y-4">
                 {/* Context */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Context</h2>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] mb-2 font-hagrid">Context</h2>
+                  <p className="text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed">
                     As part of my Fulbright fellowship on Human-Centered Design in Thailand, I collaborated with BridgeBox, a startup developing a communication system for climate disaster response. BridgeBox connects rural "reporters" with urban "responders" (local governments, nonprofits, and employers) through a mobile app and desktop interface.
                   </p>
                 </div>
 
                 {/* Role */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Role</h2>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 font-hagrid">Role</h2>
+                  <p className="text-gray-700 dark:text-[#EAE8F3]/90 leading-relaxed">
                     Sole UX/UI Designer, co-workshop facilitator
                   </p>
                 </div>
 
                 {/* Duration */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Duration</h2>
-                  <p className="text-gray-700 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] mb-2 font-hagrid">Duration</h2>
+                  <p className="text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed">
                     Thailand, 2025 – Fulbright Research Project (10 months)
                   </p>
                 </div>
 
                 {/* Tools */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 mb-2 font-hagrid">Methods</h2>
+                  <h2 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 font-hagrid">Methods</h2>
                   <div className="flex flex-wrap gap-3">
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white dark:bg-white/10 bg-opacity-20 text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Participatory Design
                     </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white dark:bg-white/10 bg-opacity-20 text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       User Research
                     </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white dark:bg-white/10 bg-opacity-20 text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       AI/ML Design
                     </span>
-                    <span className="bg-white bg-opacity-20 text-gray-800 border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white dark:bg-white/10 bg-opacity-20 text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Workshop Facilitation
                     </span>
                   </div>
@@ -104,7 +104,7 @@ const BridgeBoxCaseStudy = () => {
           </div>
         </section>
         
-        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-[#1A103F]">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           {/* Overview */}
           <section className="mb-16">
@@ -319,7 +319,7 @@ const BridgeBoxCaseStudy = () => {
             <div className="mb-12">
               <h3 className="text-[#403930] text-2xl font-bold mb-6">AI for Social Good</h3>
               <p className="text-[#403930] text-lg mb-6">
-                At participatory design workshops, emergency responders often spoke with frustration of trying to correctly sort cases into categories using a complex set of government guidelines. While time consuming for a human, this well defined task would be simple for an AI model. The feature I proposed would auto-suggest tags for submitted cases by category and urgency. Reports that were automatically tagged as urgent, such as "medical emergency" or "human rights violation" could then be prioritized over more routine issues like "documentation approval needed."
+                At the participatory design workshops, emergency responders often spoke with frustration of trying to correctly sort cases into categories using a complex set of government guidelines. While time consuming for a human, this well defined task would be simple for an AI model. The feature I proposed would auto-suggest tags for submitted cases by category and urgency. Reports that were automatically tagged as urgent, such as "medical emergency" or "human rights violation" could then be prioritized over more routine issues like "documentation approval needed."
               </p>
               <p className="text-[#403930] text-lg mb-6">
                 Because the BridgeBox team only had one engineer, I volunteered to design this feature and build the model that would power it. The feature's goals were to:

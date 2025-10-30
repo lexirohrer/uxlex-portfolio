@@ -98,12 +98,24 @@ export default {
 					'100%': {
 						'background-position': '0% 50%'
 					}
+				},
+				'wave': {
+					'0%, 100%': {
+						transform: 'rotate(0deg)'
+					},
+					'25%': {
+						transform: 'rotate(-20deg)'
+					},
+					'75%': {
+						transform: 'rotate(20deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'gradient-move': 'gradient-move 15s ease infinite'
+				'gradient-move': 'gradient-move 15s ease infinite',
+				'wave': 'wave 0.5s ease-in-out infinite'
 			}
 		}
 	},

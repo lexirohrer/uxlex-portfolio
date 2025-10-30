@@ -21,9 +21,9 @@ const Resume = () => {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden">
+      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-[#1A103F] min-h-screen">
         {/* Moving gradient background */}
-        <div className="fixed inset-0 moving-gradient opacity-30 -z-10"></div>
+        <div className="fixed inset-0 moving-gradient opacity-30 dark:opacity-10 -z-10"></div>
         <Header />
         <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
           <div className="mb-10">
@@ -46,7 +46,7 @@ const Resume = () => {
             {/* Left Column: Experience, then Skills */}
             <div className="space-y-6">
               {/* Experience */}
-              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Experience</h2>
                 <div className="space-y-6">
                   <div>
@@ -73,7 +73,7 @@ const Resume = () => {
               </div>
 
               {/* Skills */}
-              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Skills</h2>
                 <div className="space-y-4">
                   <div>
@@ -140,7 +140,7 @@ const Resume = () => {
             {/* Right Column: Publications, Education, Contact */}
             <div className="space-y-6">
               {/* Publications */}
-              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Talks, Publications, Patents</h2>
                 <div className="space-y-6">
                   <div>
@@ -162,7 +162,7 @@ const Resume = () => {
               </div>
 
               {/* Education */}
-              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Education</h2>
                 <div className="space-y-4">
                   <div>
@@ -180,7 +180,7 @@ const Resume = () => {
               </div>
 
               {/* Contact Information */}
-              <div className="bg-white/20 backdrop-blur-lg border border-white/30 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
+              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
                 <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
                 <div className="space-y-4">
                   <div>

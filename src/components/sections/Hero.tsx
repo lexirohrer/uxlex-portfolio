@@ -38,11 +38,11 @@ const Hero = () => {
   }, [subheaderComplete]);
 
   return (
-    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/30 max-lg:w-[75vw] max-md:w-[80vw] bg-white/20 backdrop-blur-lg relative px-8 py-6" style={{
+    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/30 dark:border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-white/20 dark:bg-white/5 backdrop-blur-lg relative px-8 py-6" style={{
       boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'
     }}>
       {/* Moving gradient overlay inside card */}
-      <div className="absolute inset-0 moving-gradient opacity-20 rounded-3xl"></div>
+      <div className="absolute inset-0 moving-gradient opacity-20 dark:opacity-10 rounded-3xl"></div>
       
       {/* Main content with proper spacing */}
       <div className="relative z-10 w-full h-full flex flex-col items-start justify-between text-left">
@@ -50,7 +50,7 @@ const Hero = () => {
         <div className="pt-4">
           {/* Main heading */}
           <div>
-            <h1 className="font-hagrid text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 leading-tight">
+            <h1 className="font-hagrid text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 dark:text-[#EAE8F3] leading-tight">
               {displayedHeader.replace('👋', '')}
               {displayedHeader.includes('👋') && (
                 <span className={`inline-block ${headerComplete ? 'animate-bounce' : ''}`} style={{
@@ -65,13 +65,13 @@ const Hero = () => {
           
           {/* Subtitle */}
           <div className="mt-4 sm:mt-6 md:mt-8">
-            <h2 className="font-hagrid text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-800">
+            <h2 className="font-hagrid text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-gray-800 dark:text-[#EAE8F3]/90">
               {displayedSubheader.replace('*', '').replace('social impact designer', '')}
               {displayedSubheader.includes('social impact designer') && subheaderComplete && (
                 <span className="relative">
                   social impact designer
                   <span 
-                    className="absolute bottom-0 left-0 h-0.5 bg-gray-800"
+                    className="absolute bottom-0 left-0 h-0.5 bg-gray-800 dark:bg-[#EAE8F3]"
                     style={{
                       animation: 'drawUnderline 0.8s ease-out forwards',
                       animationDelay: '0.2s',
@@ -90,7 +90,7 @@ const Hero = () => {
         
         {/* Bottom content - Asterisk explanation */}
         <div className="pb-4">
-          <p className="text-gray-700 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
+          <p className="text-gray-700 dark:text-[#EAE8F3]/90 text-sm sm:text-base md:text-lg lg:text-xl leading-relaxed">
             {displayedBody}
             {showBodyCursor && <span className="animate-pulse">|</span>}
           </p>

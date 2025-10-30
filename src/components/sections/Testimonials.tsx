@@ -52,32 +52,32 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF]">
+    <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF] dark:from-[#1A103F] dark:to-[#1A103F]">
       <div className="max-w-6xl mx-auto px-8">
         <div className="text-center mb-16">
-          <h2 className="text-[#403930] text-[40px] font-semibold mb-4 font-hagrid">
+          <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[40px] font-semibold mb-4 font-hagrid">
             what it's like to work with me:
           </h2>
         </div>
 
         <div className="relative">
           {/* Testimonial Card */}
-          <div className="bg-white rounded-3xl shadow-xl p-12 max-w-4xl mx-auto relative">
+          <div className="bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 max-w-4xl mx-auto relative">
             {/* Quote Icon */}
-            <div className="absolute top-8 left-8 text-6xl text-[#FFDDBF] opacity-60">
+            <div className="absolute top-8 left-8 text-6xl text-[#FFDDBF] dark:text-[#FFDDBF]/60 opacity-60">
               "
             </div>
             
             <div className="relative z-10">
-              <p className="text-[#403930] text-xl leading-relaxed mb-8 text-center italic">
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl leading-relaxed mb-8 text-center italic">
                 {testimonials[currentIndex].text}
               </p>
               
               <div className="text-center">
-                <h4 className="text-[#403930] text-lg font-semibold mb-1">
+                <h4 className="text-[#403930] dark:text-[#EAE8F3] text-lg font-semibold mb-1">
                   {testimonials[currentIndex].author}
                 </h4>
-                <p className="text-[#557592] text-base">
+                <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-base">
                   {testimonials[currentIndex].title}
                 </p>
               </div>
@@ -87,20 +87,20 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-200 z-20"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-200 z-20"
             aria-label="Previous testimonial"
           >
-            <svg className="w-6 h-6 text-[#403930]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-200 z-20"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg hover:shadow-xl transition-shadow duration-200 z-20"
             aria-label="Next testimonial"
           >
-            <svg className="w-6 h-6 text-[#403930]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -113,8 +113,8 @@ const Testimonials = () => {
                 onClick={() => goToTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 ${
                   index === currentIndex 
-                    ? 'bg-[#403930] scale-125' 
-                    : 'bg-[#D1D5DB] hover:bg-[#9CA3AF]'
+                    ? 'bg-[#403930] dark:bg-[#EAE8F3] scale-125' 
+                    : 'bg-[#D1D5DB] dark:bg-[#EAE8F3]/30 hover:bg-[#9CA3AF] dark:hover:bg-[#EAE8F3]/50'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />
