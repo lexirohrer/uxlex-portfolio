@@ -22,10 +22,8 @@ const Resume = () => {
         rel="stylesheet"
       />
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-[#1A103F] min-h-screen">
-        {/* Moving gradient background */}
-        <div className="fixed inset-0 moving-gradient opacity-30 dark:opacity-10 -z-10"></div>
         <Header />
-        <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
+        <main className="px-[120px] py-[100px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-[40px] relative z-10">
           <div className="mb-10">
             <div className="flex items-center justify-between mb-6 max-sm:flex-col max-sm:items-start max-sm:gap-4">
               <h1 className="text-foreground text-[40px] font-semibold font-hagrid">Resume</h1>
@@ -46,9 +44,11 @@ const Resume = () => {
             {/* Left Column: Experience, then Skills */}
             <div className="space-y-6">
               {/* Experience */}
-              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Experience</h2>
-                <div className="space-y-6">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 via-white/10 to-pink-200/20 dark:from-purple-500/10 dark:via-transparent dark:to-pink-500/10 rounded-3xl"></div>
+                <div className="relative z-10">
+                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Experience</h2>
+                  <div className="space-y-6">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
                     <p className="text-foreground/70 font-medium">August 2024 - Present</p>
@@ -69,13 +69,16 @@ const Resume = () => {
                     <p className="text-foreground/70 font-medium">Carnegie Mellon University • June 2019 - September 2019</p>
                     <p className="text-foreground/70 mt-2">Designed the onboarding flow for the chrome extension by Dr. Aniket Kittur's lab. Planned, recruited for, and conducted concept tests with users on prospective feature development.</p>
                   </div>
+                  </div>
                 </div>
               </div>
 
               {/* Skills */}
-              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Skills</h2>
-                <div className="space-y-4">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-200/20 via-white/10 to-blue-200/20 dark:from-indigo-500/10 dark:via-transparent dark:to-blue-500/10 rounded-3xl"></div>
+                <div className="relative z-10">
+                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Skills</h2>
+                  <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-lg font-semibold mb-2">Design & Research</h3>
                     <div className="flex flex-wrap gap-2">
@@ -133,6 +136,7 @@ const Resume = () => {
                       <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Spanish (Basic)</span>
                     </div>
                   </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -140,9 +144,11 @@ const Resume = () => {
             {/* Right Column: Publications, Education, Contact */}
             <div className="space-y-6">
               {/* Publications */}
-              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Talks, Publications, Patents</h2>
-                <div className="space-y-6">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-green-200/20 via-white/10 to-teal-200/20 dark:from-green-500/10 dark:via-transparent dark:to-teal-500/10 rounded-3xl"></div>
+                <div className="relative z-10">
+                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Talks, Publications, Patents</h2>
+                  <div className="space-y-6">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">Patent IPR-2412979US: Automatic Onboarding to a Computer Application by Scraping Website Data</h3>
                     <p className="text-foreground/70 font-medium">Patent Application, 2024</p>
@@ -158,13 +164,16 @@ const Resume = () => {
                     <p className="text-foreground/70 font-medium">Massachusetts Institute of Technology (MIT), January 2019</p>
                     <p className="text-foreground/70 mt-2">Conference presentation accompanying my primary author publication at MIT's Undergraduate Research Technology Conference.</p>
                   </div>
+                  </div>
                 </div>
               </div>
 
               {/* Education */}
-              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Education</h2>
-                <div className="space-y-4">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 via-white/10 to-orange-200/20 dark:from-yellow-500/10 dark:via-transparent dark:to-orange-500/10 rounded-3xl"></div>
+                <div className="relative z-10">
+                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Education</h2>
+                  <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
                     <p className="text-foreground/70 font-medium">Minor | Linguistics</p>
@@ -176,13 +185,16 @@ const Resume = () => {
                     <p className="text-foreground/70 font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
                     <p className="text-foreground/70 mt-2">ID 1025553</p>
                   </div>
+                  </div>
                 </div>
               </div>
 
               {/* Contact Information */}
-              <div className="bg-white/20 dark:bg-white/5 backdrop-blur-lg border border-white/30 dark:border-white/10 p-8 rounded-3xl" style={{boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'}}>
-                <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
-                <div className="space-y-4">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
+                <div className="absolute inset-0 bg-gradient-to-br from-rose-200/20 via-white/10 to-pink-200/20 dark:from-rose-500/10 dark:via-transparent dark:to-pink-500/10 rounded-3xl"></div>
+                <div className="relative z-10">
+                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
+                  <div className="space-y-4">
                   <div>
                     <h3 className="text-foreground text-lg font-semibold">Portfolio</h3>
                     <a href="https://uxlex.com" className="text-foreground/70 underline hover:text-foreground transition-colors">uxlex.com</a>
@@ -198,6 +210,7 @@ const Resume = () => {
                   <div>
                     <h3 className="text-foreground text-lg font-semibold">Book a Coffee Chat</h3>
                     <a href="https://calendar.app.google/F1HEuEakYHH7GsBbA" className="text-foreground/70 underline hover:text-foreground transition-colors">Schedule a meeting</a>
+                  </div>
                   </div>
                 </div>
               </div>

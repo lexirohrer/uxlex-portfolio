@@ -18,9 +18,9 @@ const CaseStudyCard: React.FC<CaseStudyCardProps> = ({
   children,
 }) => {
   return (
-    <article className="relative group bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer h-[500px]">
+    <article className="relative group bg-transparent dark:bg-[#1A103F]/80 rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:scale-105 cursor-pointer h-[500px]">
       {/* Background Image */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center bg-transparent">
         {children}
       </div>
       

@@ -3,11 +3,40 @@ import React, { useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
+import KeepInTouch from "@/components/sections/KeepInTouch";
 import Footer from "@/components/sections/Footer";
 
 const IndexNew = () => {
   // Testimonial slider state
   const [activeTestimonial, setActiveTestimonial] = useState(2);
+  
+  // Fun Facts master list
+  const allFunFacts = [
+    { emoji: "📚", text: "I collect library cards from every place I've lived" },
+    { emoji: "🎤", text: "I love public speaking (weirdo)" },
+    { emoji: "🏔️", text: "I once backpacked for a month straight in the Rocky Mountains" },
+    { emoji: "🌍", text: "I grew up living with 56 exchange students from 16 different countries" },
+    { emoji: "🗣️", text: "I minored in Linguistics & love languages" },
+    { emoji: "✈️", text: "So far, I've visited 35 countries and 23 states"},
+    { emoji: "🇹🇭", text: "I'm currently learning to speak Thai. It is very hard." },
+    { emoji: "🎨", text: "I fell in love with design because I get to work on interdisciplinary problems" },
+    { emoji: "🌱", text: "I've been a climate activist for over 10 years" },
+    { emoji: "🏔️", text: "I climbed the highest mountain in the continental US – twice!" },
+    { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
+    { emoji: "☕️", text: "People say I have a ton of energy, but I've never had a cup of coffee!" },
+    { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" }
+  ];
+  
+  // Initialize with first 4 facts
+  const [displayedFacts, setDisplayedFacts] = useState(() => 
+    allFunFacts.slice(0, 4)
+  );
+  
+  // Track which cards are flipped
+  const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
+  
+  // Track if cards are rotating (full flip on shuffle)
+  const [isRotating, setIsRotating] = useState(false);
   
   // Parallax scroll effect
   const { scrollY } = useScroll();
@@ -44,7 +73,7 @@ const IndexNew = () => {
       quoteColor: "text-green-300 dark:text-green-400"
     },
     {
-      text: "exi's expertise in UX design and feedback collection methods allowed us to engage users deeply and meaningfully, ensuring that our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
+      text: "Lexi's UX expertise made sure our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
       author: "Tanida Disyabut",
       title: "Social Enterprise Founder",
       gradient: "from-yellow-200/20 via-white/10 to-orange-200/20 dark:from-yellow-500/10 dark:via-transparent dark:to-orange-500/10",
@@ -58,6 +87,34 @@ const IndexNew = () => {
       quoteColor: "text-rose-300 dark:text-rose-400"
     }
   ];
+  
+  // Shuffle facts - pick 4 random facts from master list
+  const shuffleFacts = () => {
+    // Trigger full rotation animation first
+    setIsRotating(true);
+    
+    // Wait for rotation to complete, then update facts
+    setTimeout(() => {
+      setIsRotating(false);
+      const shuffled = [...allFunFacts].sort(() => Math.random() - 0.5);
+      setDisplayedFacts(shuffled.slice(0, 4));
+      // Reset all cards to unflipped state
+      setFlippedCards(new Set());
+    }, 600); // Duration matches animation
+  };
+  
+  // Toggle flip state of a card
+  const toggleFlip = (index: number) => {
+    setFlippedCards(prev => {
+      const newSet = new Set(prev);
+      if (newSet.has(index)) {
+        newSet.delete(index);
+      } else {
+        newSet.add(index);
+      }
+      return newSet;
+    });
+  };
 
   return (
     <>
@@ -100,24 +157,18 @@ const IndexNew = () => {
         
         {/* Hero Text Box - Behind Mountains (z-0) */}
         <div className="relative z-0 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-4 mb-6">
-          <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group hover:scale-[1.01] transition-all duration-300 w-full">
+          <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300 w-full">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl"></div>
             <div className="relative z-10 w-full">
-              <h1 className="font-hagrid text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-                Hi, I'm Lexi 
-              </h1>
-              <h2 className="font-hagrid text-2xl md:text-3xl lg:text-4xl text-white/90 mb-8">
-                a <span className="relative inline-block">
-                  <span className="relative z-10">social impact technologist</span>
-                  <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-pink-400"></span>
-                </span>
-              </h2>
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed max-w-3xl">
-                I work with social impact focused orgs on UX and service design problems.
+                  <h1 className="font-hagrid text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
+                Hi, I'm Lexi <span className="text-2xl md:text-3xl lg:text-4xl font-normal text-white/90">a social impact technologist</span>
+                  </h1>
+              <p className="text-white/80 text-lg md:text-xl leading-relaxed">
+                This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
               </p>
             </div>
           </div>
-        </div>
+                </div>
         
         {/* Other Boxes - In Front of Mountains (z-20) */}
         <div className="relative z-20 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 pb-32 mt-6">
@@ -126,50 +177,59 @@ const IndexNew = () => {
           <div className="flex flex-col lg:flex-row gap-4 items-stretch">
             
             {/* Memoji Box - Narrower width, full height */}
+            {false && (
             <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full lg:w-[22%] flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-3xl"></div>
               <div className="relative z-10">
                 <img 
                   src={`${import.meta.env.BASE_URL}Memoji.png`} 
                   alt="Lexi Memoji" 
-                  className="w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 object-contain"
+                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
                 />
               </div>
             </div>
+            )}
 
             {/* Middle Column - Currently + Experience Stacked */}
-            <div className="flex flex-col gap-6 w-full lg:w-[26%]">
+            <div className="flex flex-col gap-6 w-full lg:w-[50%]">
               
               {/* Currently Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 shadow-2xl hover:scale-[1.02] transition-all duration-300 flex-1">
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-cyan-400/20 rounded-3xl"></div>
+              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300">
                 <div className="relative z-10">
-                  <h3 className="font-hagrid text-2xl font-bold text-white mb-4">Currently</h3>
-                  <p className="text-white/90 text-sm md:text-base leading-relaxed">
-                    🌏 Based in Bangkok & Bay Area<br/>
-                    🌱 Designing for an Environmental Justice nonprofit<br/>
-                    🧗‍♀️ Learning Thai & Climbing
-                  </p>
-                </div>
+                  <h3 className="font-hagrid text-2xl font-bold text-white mb-3">Currently</h3>
+                  <div className="grid grid-cols-3 gap-3">
+                    <div className="flex items-center gap-2 justify-center">
+                      <div className="text-2xl md:text-3xl flex-shrink-0">🌏</div>
+                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Based in Bangkok & Bay Area</div>
+                    </div>
+                    <div className="flex items-center gap-2 justify-center">
+                      <div className="text-2xl md:text-3xl flex-shrink-0">🌱</div>
+                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Leading Design @ Basilica Bio</div>
+                    </div>
+                    <div className="flex items-center gap-2 justify-center">
+                      <div className="text-2xl md:text-3xl flex-shrink-0">📣</div>
+                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Open to new collaborations</div>
+                    </div>
+                  </div>
               </div>
+            </div>
 
               {/* Experience Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 shadow-2xl hover:scale-[1.02] transition-all duration-300 flex-1">
-                <div className="absolute inset-0 bg-gradient-to-br from-green-400/20 to-teal-400/20 rounded-3xl"></div>
+              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300">
                 <div className="relative z-10">
-                  <h3 className="font-hagrid text-2xl font-bold text-white mb-4">Experience</h3>
+                  <h3 className="font-hagrid text-2xl font-bold text-white mb-3">Experience</h3>
                   <div className="grid grid-cols-3 gap-3 text-center">
                     <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">4+</div>
+                      <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
                       <div className="text-white/70 text-xs md:text-sm">Years</div>
                     </div>
                     <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">22</div>
+                      <div className="text-2xl md:text-3xl font-bold text-white">35</div>
                       <div className="text-white/70 text-xs md:text-sm">Countries</div>
                     </div>
                     <div>
                       <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
-                      <div className="text-white/70 text-xs md:text-sm">Projects</div>
+                      <div className="text-white/70 text-xs md:text-sm">Talks & Panels</div>
                     </div>
                   </div>
                 </div>
@@ -177,29 +237,92 @@ const IndexNew = () => {
 
             </div>
 
-            {/* Fun Facts Box - full height */}
-            <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full lg:flex-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 rounded-3xl"></div>
-              <div className="relative z-10">
-                <h3 className="font-hagrid text-2xl md:text-3xl font-bold text-white mb-6">Fun Facts</h3>
-                <ul className="space-y-4 text-white/90 text-sm md:text-base">
-                  <li className="flex items-start gap-2">
-                    <span>📚</span>
-                    <span>Collects library cards</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>🎤</span>
-                    <span>Loves public speaking (weirdo)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>⚡</span>
-                    <span>Once backpacked for 30 days straight</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span>🌍</span>
-                    <span>Lived with 56 exchange students from 16 different countries</span>
-                  </li>
-                </ul>
+            {/* Fun Facts - 4 square cards in grid */}
+            <div className="w-full lg:flex-1 flex flex-col">
+              <div className="relative grid grid-cols-2 gap-4 flex-1 h-full" style={{ gridAutoRows: '1fr' }}>
+                  {displayedFacts.map((fact, index) => {
+                    const isFlipped = flippedCards.has(index);
+                    return (
+                      <div
+                        key={`${fact.text}-${index}`}
+                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 h-full w-full"
+                        style={{ perspective: "1000px" }}
+                        onClick={() => toggleFlip(index)}
+                      >
+                        <div
+                          className={`relative w-full h-full ${isRotating ? 'animate-flip-full' : 'transition-transform duration-500'}`}
+                          style={{
+                            transform: isRotating ? undefined : (isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"),
+                            transformStyle: "preserve-3d"
+                          }}
+                        >
+                          {/* Front of card - shows "flip for fun fact" */}
+                          <div
+                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden"
+                            style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                              transform: "rotateY(0deg)"
+                            }}
+                          >
+                            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">flip me 👀</span>
+                          </div>
+                          {/* Back of card - shows emoji and text */}
+                          <div
+                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-4 backface-hidden"
+                            style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                              transform: "rotateY(180deg)"
+                            }}
+                          >
+                            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
+                            <span className="text-white/90 text-xl leading-relaxed text-center">{fact.text}</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {/* Central Shuffle Button */}
+                  <button
+                    onClick={shuffleFacts}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-36 h-36 rounded-full transition-all duration-200 flex items-center justify-center hover:scale-110 shadow-2xl overflow-hidden group"
+                    style={{
+                      background: 'linear-gradient(180deg, #3D2F5C 0%, #5C4B8D 25%, #7A6BA5 50%, #A68B7D 75%, #D49B7C 100%)',
+                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.4), inset -10px 0 20px rgba(0, 0, 0, 0.2), inset 10px 0 20px rgba(0, 0, 0, 0.2)'
+                    }}
+                    aria-label="Shuffle facts"
+                  >
+                    {/* Darker sides for 3D effect */}
+                    <div 
+                      className="absolute inset-0 rounded-full opacity-40"
+                      style={{
+                        background: 'radial-gradient(ellipse at 0% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 50%)',
+                        pointerEvents: 'none'
+                      }}
+                    />
+                    {/* Glossy highlight */}
+                    <div 
+                      className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full opacity-70"
+                      style={{
+                        background: 'radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3), transparent 70%)',
+                        pointerEvents: 'none'
+                      }}
+                    />
+                    {/* Concentric rings */}
+                    <div 
+                      className="absolute inset-0 rounded-full opacity-25"
+                      style={{
+                        background: 'conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.15), transparent 120deg, rgba(255, 255, 255, 0.15), transparent 240deg)',
+                        pointerEvents: 'none'
+                      }}
+                    />
+                    <img 
+                      src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                      alt="Shuffle"
+                      className="w-12 h-12 relative z-10 drop-shadow-lg"
+                    />
+                  </button>
               </div>
             </div>
 
@@ -227,30 +350,50 @@ const IndexNew = () => {
       </div>
       
       {/* Bento Grid Section */}
-      <div className="w-full bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] py-16 px-4 md:px-8 lg:px-16">
+      <div className="w-full bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-24 md:pt-32 lg:pt-40 pb-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           
           {/* Bento Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
             
-            {/* About Me - Large Box */}
-            <div className="relative lg:col-span-4 lg:row-span-1 rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-200/20 via-white/10 to-pink-200/20 dark:from-purple-500/10 dark:via-transparent dark:to-pink-500/10 rounded-3xl"></div>
-              <div className="relative z-10">
-                <h2 className="text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] dark:text-[#EAE8F3] mb-6 font-hagrid">about me</h2>
-                <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed">
-                  <p className="text-lg">
-                    I design experiences that create positive social impact. As a Fulbright fellow, I used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
-                  </p>
-                  <p className="text-lg">
-                    Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities.
-                  </p>
-                  <p className="text-lg">
-                    If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or studying Thai 🇹🇭
-                  </p>
-                  <a href="mailto:lexirohrer@gmail.com" className="inline-block mt-4 px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-full hover:shadow-lg transition-all duration-300 font-semibold">
-                    Get in touch
-                  </a>
+            {/* About Me - Grid Layout with MeMoji */}
+            <div className="relative lg:col-span-4 lg:row-span-1 rounded-3xl transition-all duration-300 mt-8">
+              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-visible">
+                {/* Radial gradient behind Memoji - positioned at grid level, centered behind Memoji */}
+                <div className="absolute left-1/2 lg:left-3/4 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
+                  <div 
+                    className="rounded-full"
+                    style={{
+                      width: 'clamp(400px, 100vw, 750px)',
+                      height: 'clamp(400px, 100vw, 750px)',
+                      background: 'radial-gradient(circle, rgba(93, 54, 77, 0.7) 0%, rgba(93, 54, 77, 0.65) 15%, rgba(93, 54, 77, 0.55) 25%, rgba(93, 54, 77, 0.45) 35%, rgba(85, 50, 72, 0.38) 45%, rgba(77, 46, 68, 0.32) 52%, rgba(70, 40, 63, 0.26) 58%, rgba(63, 36, 59, 0.21) 65%, rgba(55, 31, 55, 0.16) 72%, rgba(48, 28, 51, 0.12) 78%, rgba(40, 24, 47, 0.08) 84%, rgba(33, 20, 55, 0.05) 90%, rgba(26, 16, 63, 0.02) 95%, rgba(26, 16, 63, 0) 100%)'
+                    }}
+                  ></div>
+                </div>
+                
+                {/* About Me Content - Left Column */}
+                <div className="relative z-10 p-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid text-left">about me</h2>
+                  <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed text-justify">
+                    <p className="text-lg">
+                      I design experiences that create positive social impact. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
+                    </p>
+                    <p className="text-lg">
+                      Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities. If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or doing Thai flashcards on the elliptical.
+                    </p>            
+                    <p className="text-lg">
+                      If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
+                    </p>
+                  </div>
+                </div>
+                
+                {/* MeMoji Card - Right Column */}
+                <div className="relative flex items-center justify-center p-6 md:p-8 z-10">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}Memoji.png`} 
+                    alt="Lexi Memoji" 
+                    className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
+                  />
                 </div>
               </div>
             </div>
@@ -258,8 +401,9 @@ const IndexNew = () => {
 
 
             {/* Testimonials 3D Card Slider */}
-            <div className="relative lg:col-span-4 lg:row-span-1 flex items-center justify-center py-8 px-4">
-              <div className="relative w-full max-w-4xl h-[380px] flex items-center justify-center">
+            <div className="relative lg:col-span-4 lg:row-span-1 flex flex-col items-center justify-center py-8 px-4 mt-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-8 font-hagrid text-center w-full">testimonials</h2>
+              <div className="relative w-full h-[380px] flex items-center justify-center">
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
@@ -307,7 +451,7 @@ const IndexNew = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl cursor-pointer w-[90%] md:w-[500px] min-h-[320px] max-h-[340px]"
+                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl cursor-pointer w-[90%] md:w-[600px] lg:w-[700px] min-h-[320px] max-h-[340px]"
                         style={{
                           transform,
                           zIndex,
@@ -322,16 +466,16 @@ const IndexNew = () => {
                         <div className="relative z-10 h-full flex flex-col justify-between overflow-y-auto">
                           <div className="flex-1">
                             <div className={`text-4xl md:text-5xl ${testimonial.quoteColor} opacity-60 mb-2`}>"</div>
-                            <p className="text-gray-800 dark:text-[#EAE8F3] italic text-sm md:text-base leading-relaxed">
+                            <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
-                          </div>
+                    </div>
                           <div className="mt-4 flex-shrink-0">
                             <p className="font-semibold text-gray-800 dark:text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
                             <p className="text-xs md:text-sm text-gray-600 dark:text-[#EAE8F3]/70">{testimonial.title}</p>
-                          </div>
-                        </div>
-                      </div>
+                </div>
+              </div>
+            </div>
                     );
                   })}
                 </div>
@@ -346,7 +490,7 @@ const IndexNew = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-              </div>
+            </div>
 
               {/* Dots Indicator */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
@@ -391,6 +535,9 @@ const IndexNew = () => {
 
           </div>
         </div>
+
+        {/* Keep in Touch Section */}
+        <KeepInTouch />
       </div>
 
       <Footer />

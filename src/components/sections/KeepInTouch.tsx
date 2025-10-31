@@ -2,15 +2,12 @@ import React from "react";
 
 const KeepInTouch = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <section className="py-16 mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Keep in Touch
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid">
+            I love to chat - reach out anytime ✨
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Let's connect! Reach out through any of these channels.
-          </p>
         </div>
         
         <div className="max-w-4xl mx-auto">
@@ -70,7 +67,7 @@ const KeepInTouch = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                    Schedule
+                    Coffee Chat
                   </h3>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">
                     Book a meeting

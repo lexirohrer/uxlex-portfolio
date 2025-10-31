@@ -4,6 +4,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      // Set dark mode as default before React loads to prevent flash
+      (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || 'dark';
+        document.documentElement.classList.add(theme);
+      })();
+    </script>
     <title>Lexi Rohrer - UX Designer & Researcher</title>
     <meta name="description" content="Portfolio of Lexi Rohrer, a social impact designer specializing in UX research, participatory design, and human-centered design for social enterprises and B-corps." />
     <meta name="author" content="Lexi Rohrer" />

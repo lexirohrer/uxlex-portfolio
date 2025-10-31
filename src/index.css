@@ -241,3 +241,42 @@
     transform: scale(1.2) translateY(-5px);
   }
 }
+
+/* Full flip rotation animation for shuffle effect */
+@keyframes flip-full {
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-flip-full {
+  animation: flip-full 0.6s ease-in-out;
+}
+
+/* Glass Cursor Styles */
+.glass-cursor {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: opacity 0.2s ease;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  will-change: left, top;
+}
+
+/* Hide default cursor on non-touch devices */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}

@@ -16,7 +16,7 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if we're on the Hello page and if we've scrolled past the hero section
+      // Check if we're on the Hello page (now IndexNew) and if we've scrolled past the hero section
       if (location.pathname === "/") {
         const heroSection = document.querySelector('[data-hero-section]');
         if (heroSection) {
@@ -34,7 +34,7 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [location.pathname]);
 
-  // Use white text on Hello page only when not scrolled past hero, otherwise use theme-appropriate colors
+  // Use white text on Hello page (now IndexNew) only when not scrolled past hero, otherwise use theme-appropriate colors
   const linkBase = (location.pathname === "/" && !isScrolledPastHero) 
     ? "text-white" 
     : "text-black dark:text-[#EAE8F3]";
