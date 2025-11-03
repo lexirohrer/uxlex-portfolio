@@ -41,12 +41,14 @@ const Header = () => {
 
   return (
     <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-lg">
+      {/* White gradient for light mode only */}
       <div 
-        className="w-full absolute top-0 left-0 h-full"
+        className="w-full absolute top-0 left-0 h-full dark:hidden"
         style={{
           background: 'linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.2) 60%, rgba(255, 255, 255, 0) 100%)'
         }}
       />
+      {/* No background gradient in dark mode - backdrop blur provides darkening when overlapping */}
       <div className="w-full flex justify-end items-center py-4 px-8 relative">
         <nav className="flex gap-8 items-center pointer-events-auto" style={{ fontSize: '1rem' }}>
           {navLinks.map(link => (

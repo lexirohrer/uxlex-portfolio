@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
@@ -24,8 +24,15 @@ const IndexNew = () => {
     { emoji: "🏔️", text: "I climbed the highest mountain in the continental US – twice!" },
     { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
     { emoji: "☕️", text: "People say I have a ton of energy, but I've never had a cup of coffee!" },
-    { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" }
+    { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" },
+    { emoji: "🏰", text: "My most memorable workshop was hosted in the attic of a Polish Castle" },
   ];
+  
+  // Track which fact indices have been shown (using ref for reliable access)
+  const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2, 3])); // Start with first 4 facts shown
+  const [shownFactIndices, setShownFactIndices] = useState<Set<number>>(
+    shownFactIndicesRef.current
+  );
   
   // Initialize with first 4 facts
   const [displayedFacts, setDisplayedFacts] = useState(() => 
@@ -69,8 +76,8 @@ const IndexNew = () => {
       text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list. 🚀",
       author: "Zip Lehnus",
       title: "Staff Content Designer, Intuit ",
-      gradient: "from-green-200/20 via-white/10 to-teal-200/20 dark:from-green-500/10 dark:via-transparent dark:to-teal-500/10",
-      quoteColor: "text-green-300 dark:text-green-400"
+      gradient: "from-purple-200/20 via-white/10 to-purple-200/20 dark:from-purple-500/10 dark:via-transparent dark:to-purple-500/10",
+      quoteColor: "text-purple-300 dark:text-purple-400"
     },
     {
       text: "Lexi's UX expertise made sure our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
@@ -88,7 +95,7 @@ const IndexNew = () => {
     }
   ];
   
-  // Shuffle facts - pick 4 random facts from master list
+  // Shuffle facts - pick 4 random facts that haven't been shown yet
   const shuffleFacts = () => {
     // Trigger full rotation animation first
     setIsRotating(true);
@@ -96,8 +103,46 @@ const IndexNew = () => {
     // Wait for rotation to complete, then update facts
     setTimeout(() => {
       setIsRotating(false);
-      const shuffled = [...allFunFacts].sort(() => Math.random() - 0.5);
-      setDisplayedFacts(shuffled.slice(0, 4));
+      
+      // Use ref to get current shown indices (always up-to-date)
+      const prevShownIndices = shownFactIndicesRef.current;
+      
+      // Get indices that haven't been shown yet
+      const unshownIndices = allFunFacts
+        .map((_, index) => index)
+        .filter(index => !prevShownIndices.has(index));
+      
+      // If we have 4 or more unshown facts, pick 4 random ones
+      // Otherwise, reset and start over
+      let newIndices: number[];
+      let updatedShownIndices: Set<number>;
+      
+      if (unshownIndices.length >= 4) {
+        // Shuffle unshown indices and pick 4
+        const shuffled = [...unshownIndices].sort(() => Math.random() - 0.5);
+        newIndices = shuffled.slice(0, 4);
+        updatedShownIndices = new Set([...prevShownIndices, ...newIndices]);
+      } else {
+        // Not enough unshown facts, reset and start fresh
+        // First, use remaining unshown facts
+        const remaining = [...unshownIndices];
+        // Then add random facts from all facts to fill to 4
+        const allIndices = allFunFacts.map((_, index) => index);
+        const shuffled = [...allIndices].sort(() => Math.random() - 0.5);
+        const additional = shuffled.filter(index => !remaining.includes(index));
+        newIndices = [...remaining, ...additional].slice(0, 4);
+        // Reset tracking to only these 4
+        updatedShownIndices = new Set(newIndices);
+      }
+      
+      // Update ref and state
+      shownFactIndicesRef.current = updatedShownIndices;
+      setShownFactIndices(updatedShownIndices);
+      
+      // Update displayed facts
+      const newFacts = newIndices.map(index => allFunFacts[index]);
+      setDisplayedFacts(newFacts);
+      
       // Reset all cards to unflipped state
       setFlippedCards(new Set());
     }, 600); // Duration matches animation
@@ -119,7 +164,7 @@ const IndexNew = () => {
   return (
     <>
       <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&family=Holtwood+One+SC&display=swap"
         rel="stylesheet"
       />
       
@@ -156,14 +201,14 @@ const IndexNew = () => {
         </div>
         
         {/* Hero Text Box - Behind Mountains (z-0) */}
-        <div className="relative z-0 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-4 mb-6">
-          <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300 w-full">
+        <div className="relative z-0 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 mb-3">
+          <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl px-4 md:px-6 py-6 md:py-8 shadow-2xl group transition-all duration-300 w-full">
             <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl"></div>
-            <div className="relative z-10 w-full">
-                  <h1 className="font-hagrid text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8">
-                Hi, I'm Lexi <span className="text-2xl md:text-3xl lg:text-4xl font-normal text-white/90">a social impact technologist</span>
+            <div className="relative z-10 max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[72%] xl:max-w-[68%]">
+                  <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+                Hi, I'm Lexi <span className="text-xl md:text-2xl lg:text-3xl font-normal text-white/90">a social impact technologist</span>
                   </h1>
-              <p className="text-white/80 text-lg md:text-xl leading-relaxed">
+              <p className="text-white/80 text-base leading-relaxed">
                 This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
               </p>
             </div>
@@ -171,10 +216,10 @@ const IndexNew = () => {
                 </div>
         
         {/* Other Boxes - In Front of Mountains (z-20) */}
-        <div className="relative z-20 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 pb-32 mt-6">
+        <div className="relative z-20 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 pb-16 mt-3">
           
           {/* Main Content Row */}
-          <div className="flex flex-col lg:flex-row gap-4 items-stretch">
+          <div className="flex flex-col lg:flex-row gap-2 items-stretch lg:items-stretch">
             
             {/* Memoji Box - Narrower width, full height */}
             {false && (
@@ -191,45 +236,43 @@ const IndexNew = () => {
             )}
 
             {/* Middle Column - Currently + Experience Stacked */}
-            <div className="flex flex-col gap-6 w-full lg:w-[50%]">
+            <div className="flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
               
               {/* Currently Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300">
-                <div className="relative z-10">
-                  <h3 className="font-hagrid text-2xl font-bold text-white mb-3">Currently</h3>
-                  <div className="grid grid-cols-3 gap-3">
-                    <div className="flex items-center gap-2 justify-center">
-                      <div className="text-2xl md:text-3xl flex-shrink-0">🌏</div>
-                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Based in Bangkok & Bay Area</div>
+              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 md:p-6 shadow-2xl group transition-all duration-300 flex-1 flex items-center justify-center min-h-0">
+                <div className="relative z-10 w-full">
+                  <div className="grid grid-cols-3 gap-2">
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <div className="text-2xl md:text-3xl">🌏</div>
+                      <div className="text-white/90 text-base leading-relaxed text-center">Based between Bangkok & Bay Area</div>
                     </div>
-                    <div className="flex items-center gap-2 justify-center">
-                      <div className="text-2xl md:text-3xl flex-shrink-0">🌱</div>
-                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Leading Design @ Basilica Bio</div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <div className="text-2xl md:text-3xl">🌱</div>
+                      <div className="text-white/90 text-base leading-relaxed text-center">Leading Design @ Basilica Bio</div>
                     </div>
-                    <div className="flex items-center gap-2 justify-center">
-                      <div className="text-2xl md:text-3xl flex-shrink-0">📣</div>
-                      <div className="text-white/90 text-lg md:text-base leading-relaxed">Open to new collaborations</div>
+                    <div className="flex flex-col items-center justify-center gap-1">
+                      <div className="text-2xl md:text-3xl">📣</div>
+                      <div className="text-white/90 text-base leading-relaxed text-center">Open to new collaborations</div>
                     </div>
                   </div>
+                </div>
               </div>
-            </div>
 
               {/* Experience Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-8 md:p-12 shadow-2xl group transition-all duration-300">
-                <div className="relative z-10">
-                  <h3 className="font-hagrid text-2xl font-bold text-white mb-3">Experience</h3>
-                  <div className="grid grid-cols-3 gap-3 text-center">
+              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 md:p-6 shadow-2xl group transition-all duration-300 flex-1 flex items-center justify-center min-h-0">
+                <div className="relative z-10 w-full">
+                  <div className="grid grid-cols-3 gap-2 text-center">
                     <div>
                       <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
-                      <div className="text-white/70 text-xs md:text-sm">Years</div>
+                      <div className="text-white/70 text-base">years experience</div>
                     </div>
                     <div>
                       <div className="text-2xl md:text-3xl font-bold text-white">35</div>
-                      <div className="text-white/70 text-xs md:text-sm">Countries</div>
+                      <div className="text-white/70 text-base">Countries explored</div>
                     </div>
                     <div>
                       <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
-                      <div className="text-white/70 text-xs md:text-sm">Talks & Panels</div>
+                      <div className="text-white/70 text-base">Conference Talks & Panels</div>
                     </div>
                   </div>
                 </div>
@@ -238,8 +281,8 @@ const IndexNew = () => {
             </div>
 
             {/* Fun Facts - 4 square cards in grid */}
-            <div className="w-full lg:flex-1 flex flex-col">
-              <div className="relative grid grid-cols-2 gap-4 flex-1 h-full" style={{ gridAutoRows: '1fr' }}>
+            <div className="w-full lg:flex-1 flex flex-col min-h-0 lg:self-stretch">
+              <div className="relative grid grid-cols-2 gap-2 flex-1 min-h-0" style={{ gridAutoRows: '1fr' }}>
                   {displayedFacts.map((fact, index) => {
                     const isFlipped = flippedCards.has(index);
                     return (
@@ -269,7 +312,7 @@ const IndexNew = () => {
                           </div>
                           {/* Back of card - shows emoji and text */}
                           <div
-                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-4 backface-hidden"
+                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-3 backface-hidden"
                             style={{
                               backfaceVisibility: "hidden",
                               WebkitBackfaceVisibility: "hidden",
@@ -277,7 +320,7 @@ const IndexNew = () => {
                             }}
                           >
                             <span className="text-4xl md:text-5xl">{fact.emoji}</span>
-                            <span className="text-white/90 text-xl leading-relaxed text-center">{fact.text}</span>
+                            <span className="text-white/90 text-base leading-relaxed text-center">{fact.text}</span>
                           </div>
                         </div>
                       </div>
@@ -286,41 +329,13 @@ const IndexNew = () => {
                   {/* Central Shuffle Button */}
                   <button
                     onClick={shuffleFacts}
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-36 h-36 rounded-full transition-all duration-200 flex items-center justify-center hover:scale-110 shadow-2xl overflow-hidden group"
-                    style={{
-                      background: 'linear-gradient(180deg, #3D2F5C 0%, #5C4B8D 25%, #7A6BA5 50%, #A68B7D 75%, #D49B7C 100%)',
-                      boxShadow: '0 15px 40px rgba(0, 0, 0, 0.4), inset 0 2px 0 rgba(255, 255, 255, 0.5), inset 0 -2px 0 rgba(0, 0, 0, 0.4), inset -10px 0 20px rgba(0, 0, 0, 0.2), inset 10px 0 20px rgba(0, 0, 0, 0.2)'
-                    }}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-24 h-24 rounded-full transition-all duration-200 flex items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
                     aria-label="Shuffle facts"
                   >
-                    {/* Darker sides for 3D effect */}
-                    <div 
-                      className="absolute inset-0 rounded-full opacity-40"
-                      style={{
-                        background: 'radial-gradient(ellipse at 0% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 50%), radial-gradient(ellipse at 100% 50%, rgba(0, 0, 0, 0.3) 0%, transparent 50%)',
-                        pointerEvents: 'none'
-                      }}
-                    />
-                    {/* Glossy highlight */}
-                    <div 
-                      className="absolute top-0 left-1/2 transform -translate-x-1/2 w-20 h-20 rounded-full opacity-70"
-                      style={{
-                        background: 'radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.3), transparent 70%)',
-                        pointerEvents: 'none'
-                      }}
-                    />
-                    {/* Concentric rings */}
-                    <div 
-                      className="absolute inset-0 rounded-full opacity-25"
-                      style={{
-                        background: 'conic-gradient(from 0deg, transparent, rgba(255, 255, 255, 0.15), transparent 120deg, rgba(255, 255, 255, 0.15), transparent 240deg)',
-                        pointerEvents: 'none'
-                      }}
-                    />
                     <img 
                       src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
                       alt="Shuffle"
-                      className="w-12 h-12 relative z-10 drop-shadow-lg"
+                      className="w-8 h-8 relative z-10 drop-shadow-lg"
                     />
                   </button>
               </div>
@@ -329,16 +344,16 @@ const IndexNew = () => {
             {/* App Icons Column - Full row height */}
             <div className="hidden lg:flex flex-col justify-between w-auto gap-4">
               <a href="https://www.linkedin.com/in/alexandra-rohrer/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-full h-full max-w-[80px] max-h-[80px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
               </a>
               <a href="mailto:lexirohrer@gmail.com" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-full h-full max-w-[80px] max-h-[80px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
               </a>
               <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-full h-full max-w-[80px] max-h-[80px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
               </a>
               <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-full h-full max-w-[80px] max-h-[80px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
               </a>
             </div>
 
@@ -346,11 +361,11 @@ const IndexNew = () => {
         </div>
         
         {/* Gradient transition overlay for smooth blend */}
-        <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-b from-transparent via-orange-50/30 to-orange-50 dark:via-[#1A103F]/30 dark:to-[#1A103F] pointer-events-none z-[25]"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-transparent via-purple-100/40 to-purple-100 dark:via-[#1A103F]/40 dark:to-[#1A103F] pointer-events-none z-[25]"></div>
       </div>
       
       {/* Bento Grid Section */}
-      <div className="w-full bg-gradient-to-br from-orange-50 via-pink-50 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-24 md:pt-32 lg:pt-40 pb-16 px-4 md:px-8 lg:px-16">
+      <div className="w-full bg-gradient-to-br from-purple-100 via-purple-100 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-24 md:pt-32 lg:pt-40 pb-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           
           {/* Bento Grid Layout */}
@@ -360,15 +375,11 @@ const IndexNew = () => {
             <div className="relative lg:col-span-4 lg:row-span-1 rounded-3xl transition-all duration-300 mt-8">
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-visible">
                 {/* Radial gradient behind Memoji - positioned at grid level, centered behind Memoji */}
-                <div className="absolute left-1/2 lg:left-3/4 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0">
-                  <div 
-                    className="rounded-full"
-                    style={{
+                <div className="absolute left-1/2 lg:left-3/4 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 rounded-full" style={{
                       width: 'clamp(400px, 100vw, 750px)',
                       height: 'clamp(400px, 100vw, 750px)',
-                      background: 'radial-gradient(circle, rgba(93, 54, 77, 0.7) 0%, rgba(93, 54, 77, 0.65) 15%, rgba(93, 54, 77, 0.55) 25%, rgba(93, 54, 77, 0.45) 35%, rgba(85, 50, 72, 0.38) 45%, rgba(77, 46, 68, 0.32) 52%, rgba(70, 40, 63, 0.26) 58%, rgba(63, 36, 59, 0.21) 65%, rgba(55, 31, 55, 0.16) 72%, rgba(48, 28, 51, 0.12) 78%, rgba(40, 24, 47, 0.08) 84%, rgba(33, 20, 55, 0.05) 90%, rgba(26, 16, 63, 0.02) 95%, rgba(26, 16, 63, 0) 100%)'
-                    }}
-                  ></div>
+                      background: 'var(--memoji-gradient)'
+                  }}>
                 </div>
                 
                 {/* About Me Content - Left Column */}
@@ -407,7 +418,7 @@ const IndexNew = () => {
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="absolute left-0 md:left-8 z-50 text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute left-0 md:left-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
@@ -465,7 +476,7 @@ const IndexNew = () => {
                         <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl`}></div>
                         <div className="relative z-10 h-full flex flex-col justify-between overflow-y-auto">
                           <div className="flex-1">
-                            <div className={`text-4xl md:text-5xl ${testimonial.quoteColor} opacity-60 mb-2`}>"</div>
+                            <div className={`text-4xl md:text-5xl ${testimonial.quoteColor} opacity-60 mb-2 quote-mark`}>"</div>
                             <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
@@ -482,7 +493,7 @@ const IndexNew = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="absolute right-0 md:right-8 z-50 text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute right-0 md:right-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
@@ -500,8 +511,8 @@ const IndexNew = () => {
                     onClick={() => setActiveTestimonial(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 ${
                       index === activeTestimonial
-                        ? 'bg-white w-6'
-                        : 'bg-white/40 hover:bg-white/60'
+                        ? 'bg-[#1A103F] dark:bg-white w-6'
+                        : 'bg-[#1A103F]/40 dark:bg-white/40 hover:bg-[#1A103F]/60 dark:hover:bg-white/60'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />

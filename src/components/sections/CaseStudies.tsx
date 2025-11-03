@@ -1,5 +1,6 @@
 
 import React from "react";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const caseStudies = [
   {
@@ -37,6 +38,8 @@ const caseStudies = [
 ];
 
 const CaseStudies = () => {
+  const { theme } = useTheme();
+  
   return (
     <section
       id="case-studies"
@@ -46,6 +49,11 @@ const CaseStudies = () => {
         {caseStudies.map((study, index) => {
           // Alternate image position: even indices (0, 2) have image on left, odd (1, 3) have image on right
           const imageOnLeft = index % 2 === 0;
+          
+          // Use dark cover image for QB in dark mode
+          const imageSrc = study.image === "QB cover.png" && theme === 'dark' 
+            ? "QB_cover_dark.png" 
+            : study.image;
           
           return (
             <a
@@ -60,7 +68,7 @@ const CaseStudies = () => {
                   {/* Image Column */}
                   <div className={`relative ${imageOnLeft ? 'order-1' : 'order-2'} flex items-center justify-center p-6 md:p-10`}>
                     <img
-                      src={`${import.meta.env.BASE_URL}${study.image}`}
+                      src={`${import.meta.env.BASE_URL}${imageSrc}`}
                       className="w-full h-full max-h-[400px] object-contain group-hover:scale-105 transition-transform duration-300"
                       alt={study.imageAlt}
                     />

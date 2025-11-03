@@ -64,7 +64,7 @@ const Testimonials = () => {
           {/* Testimonial Card */}
           <div className="bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 max-w-4xl mx-auto relative">
             {/* Quote Icon */}
-            <div className="absolute top-8 left-8 text-6xl text-[#FFDDBF] dark:text-[#FFDDBF]/60 opacity-60">
+            <div className="absolute top-8 left-8 text-6xl text-[#FFDDBF] dark:text-[#FFDDBF]/60 opacity-60 quote-mark">
               "
             </div>
             

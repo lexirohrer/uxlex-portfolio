@@ -1,9 +1,17 @@
 import React, { useRef, useEffect } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
+import CaseStudyNavigation from "@/components/sections/CaseStudyNavigation";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const CaseStudy = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const { theme } = useTheme();
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -32,15 +40,15 @@ const CaseStudy = () => {
   return (
     <>
       <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&family=Holtwood+One+SC&display=swap"
         rel="stylesheet"
       />
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-blue-200 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden">
-        {/* Grainy overlay */}
-        <div className="absolute inset-0 opacity-30" style={{
+      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-blue-200 dark:bg-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden">
+        {/* Grainy overlay - hidden in dark mode */}
+        <div className="absolute inset-0 opacity-30 dark:hidden" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
           backgroundSize: '200px 200px'
         }}></div>
@@ -139,7 +147,7 @@ const CaseStudy = () => {
               <div className="flex justify-center lg:justify-end">
                 <div className="relative w-full">
                   <img 
-                    src={`${import.meta.env.BASE_URL}QB cover.png`} 
+                    src={`${import.meta.env.BASE_URL}${theme === 'dark' ? 'QB_cover_dark.png' : 'QB cover.png'}`} 
                     alt="QuickBooks Interface Mockup"
                     className="w-full h-auto rounded-2xl"
                   />
@@ -246,7 +254,7 @@ const CaseStudy = () => {
               Past customer surveys showed that 75% of QuickBooks customers had websites, which already contained much of the information needed to create their account — things like business name, email, industry, and branding. Alongside my engineers, we designed an AI import flow that allowed users to scrape data from their public website, rather than importing it manually. <b> With one click, QuickBooks generated a business profile pre-filled with all the user's information we had pulled, which users could then confirm or edit.</b>
               </p>
                 </div>
-               <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">
+               <div className="bg-gray-50 dark:bg-white/5 dark:bg-white/5 rounded-2xl p-4 mb-6">
                  <video 
                    ref={videoRef}
                    className="w-full h-auto rounded-lg"
@@ -263,7 +271,7 @@ const CaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
               When tested in production, this step alone contributed most significantly to shortening the time in flow by 40% compared to control. This step also gave us the opportunity to create a moment of delight later on - if a user chose to create an invoice, <b> QuickBooks would magically generate a personalized invoice</b>, with the logo and colors already pulled in from their website.
               </p>
-              <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">
+              <div className="bg-gray-50 dark:bg-white/5 dark:bg-white/5 rounded-2xl p-4 mb-6">
                  <video 
                    ref={videoRef}
                    className="w-full h-auto rounded-lg"
@@ -319,21 +327,21 @@ const CaseStudy = () => {
                    </span>
                  </div>
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] font-serif leading-none opacity-60">"</span>
+                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] leading-none opacity-60 quote-mark">"</span>
                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-6 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-6 pt-2">– User 16, an independent business consultant in Canada </p>
                  </div>
                </div>
 
                {/* Streamlined Flow Quote */}
-               <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
+               <div className="bg-gray-50 dark:bg-white/5 dark:bg-white/5 rounded-2xl p-4">
                  <div className="mb-4">
                    <span className="bg-white dark:bg-white/10 bg-opacity-50 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm">
                      Streamlined Flow
                    </span>
                  </div>
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] font-serif leading-none opacity-60">"</span>
+                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] leading-none opacity-60 quote-mark">"</span>
                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-6 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-6 pt-2">- User 23, runs a coffee shop in Seattle </p>
                  </div>
@@ -352,37 +360,37 @@ const CaseStudy = () => {
                <img src={`${import.meta.env.BASE_URL}qb-streamlined-usability.png`} alt="usability scorecard the Streamlined flow, boasting a 6.0 confidence score and a 6.4 ease of use score, both in the green" />
              </div>
 
-              <p className="text-[#403930] text-lg mb-6"> However, despite success on the major usability issues of length, ease of use, and confidence, there was still room to grow. To put the finishing touches on this flow, I examined the usability issues that stopped users from giving the new designs a perfect 7. These included:</p>
+              <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> However, despite success on the major usability issues of length, ease of use, and confidence, there was still room to grow. To put the finishing touches on this flow, I examined the usability issues that stopped users from giving the new designs a perfect 7. These included:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                 </div>
                 
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Users didn't understand why we needed all this information up front</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                 </div>
                 
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Generalized uncertainty about whether the product was right for them</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Generalized uncertainty about whether the product was right for them</p>
                 </div>
               </div>
            </section>
@@ -390,57 +398,57 @@ const CaseStudy = () => {
 
           {/* Final touches */}
           <div className="mb-12">
-            <h3 className="text-[#403930] text-2xl font-bold mb-6">Final touches 🪄</h3>
-            <p className="text-[#403930] text-lg mb-6"> To shoot for that perfect usability score in the real experiment, I took each key pain point above, and ideated, prototyped, and brought solutions to design critique before settling on the most comprehensive ones: </p>
+            <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Final touches 🪄</h3>
+            <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> To shoot for that perfect usability score in the real experiment, I took each key pain point above, and ideated, prototyped, and brought solutions to design critique before settling on the most comprehensive ones: </p>
               
               {/* Progress bar pain point */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point 1
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                 </div>
-                <div className="bg-green-50 p-6 rounded-2xl">
+                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-green-100 text-green-800 border border-green-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👍</span>
                       Solution 1
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Work with developers to understand why the progress bar doesn't grow predictably, and design around engineering constraints</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Work with developers to understand why the progress bar doesn't grow predictably, and design around engineering constraints</p>
                 </div>
               </div>
               
-              <p className="text-[#403930] text-lg mb-6"> Essentially, when the user would complete some steps in the flow, the progress bar at the top would grow a large amount, and when they took other steps, it wouldn't grow at all. This wasn't a bug, but rather a side effect of having a large, branching flow. If the user chose to complete an optional setup job, like learning about invoice creation, the progress calculation would reset the denominator to include the additional 5 screens involved in invoice creation. Because of this, when a user chose to do extra setup, we rewarded them with... a more confusing progress indicator. Not exactly the setup behavior we were trying to encourage  </p>
-              <p className="text-[#403930] text-lg mb-6"> To fix this issue, we broke the progress bar into two sections: one requied, static section on basic information needed, and a second section for optional setup tasks. This was not only more descriptive, but also allowed the progress bar caluclations to be done <i> after</i> the user had selected or skipped the optional step, so that it could grow predictably and consistently. </p>
+              <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> Essentially, when the user would complete some steps in the flow, the progress bar at the top would grow a large amount, and when they took other steps, it wouldn't grow at all. This wasn't a bug, but rather a side effect of having a large, branching flow. If the user chose to complete an optional setup job, like learning about invoice creation, the progress calculation would reset the denominator to include the additional 5 screens involved in invoice creation. Because of this, when a user chose to do extra setup, we rewarded them with... a more confusing progress indicator. Not exactly the setup behavior we were trying to encourage  </p>
+              <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> To fix this issue, we broke the progress bar into two sections: one requied, static section on basic information needed, and a second section for optional setup tasks. This was not only more descriptive, but also allowed the progress bar caluclations to be done <i> after</i> the user had selected or skipped the optional step, so that it could grow predictably and consistently. </p>
               <img src={`${import.meta.env.BASE_URL}qb-progress-bars.png`} alt="screenshot of the old and new progress bar with a static section for basic information and a dynamic section for optional setup tasks" className="w-full h-auto rounded-2xl mb-20"/>
               
             {/* Tooltips pain point */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point 2
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Users didn't understand why we needed all this information up front</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                 </div>
-                <div className="bg-green-50 p-6 rounded-2xl">
+                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-green-100 text-green-800 border border-green-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👍</span>
                       Solution 2
                     </span>
                   </div>
-                  <p className="text-[#403930] text-lg">Add tooltips on fields that frequently elicited questions during user testing. Build these on the basis of progressive disclosure, so that users who aren't confused can continue without being slowed down.</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Add tooltips on fields that frequently elicited questions during user testing. Build these on the basis of progressive disclosure, so that users who aren't confused can continue without being slowed down.</p>
                 </div>
               </div>
-              <div className="bg-gray-50 rounded-2xl p-4 mb-20">
+              <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-20">
                 <video 
                   className="w-full h-auto rounded-lg"
                   controls 
@@ -456,18 +464,18 @@ const CaseStudy = () => {
               
               {/* Generalized uncertainty pain point */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 p-6 rounded-2xl">
+                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-red-100 text-red-800 border border-red-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👎</span>
                       Pain Point 3
                     </span>
                   </div>
                   <p className="text-[#403930] text-lg">Generalized uncertainty about whether the product was right for them</p>
                 </div>
-                <div className="bg-green-50 p-6 rounded-2xl">
+                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
                   <div className="mb-4">
-                    <span className="bg-green-100 text-green-800 border border-green-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
                       <span className="text-lg">👍</span>
                       Solution 3
                     </span>
@@ -475,7 +483,7 @@ const CaseStudy = () => {
                   <p className="text-[#403930] text-lg"> Worked with 2 motion designers over the span of a month to create an updated welcome screen, and loading screens that give an overview of the many things QuickBooks can do</p>
                 </div>
               </div>
-                  <div className="bg-gray-50 rounded-2xl p-4 mb-6">
+                  <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">
                     <video 
                       className="w-full h-auto rounded-lg"
                       controls 
@@ -488,7 +496,7 @@ const CaseStudy = () => {
                       Your browser does not support the video tag.
                     </video>
                 </div>
-                <div className="bg-gray-50 rounded-2xl p-4 mb-6">
+                <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">
                     <video 
                       className="w-full h-auto rounded-lg"
                       controls 
@@ -505,42 +513,42 @@ const CaseStudy = () => {
 
           {/* Final Design */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Final Design</h2>
-            <p className="text-[#403930] text-lg mb-6">
+            <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Final Design</h2>
+            <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
               The new flow emphasized speed while ensuring users didn't lose the ability to complete important setup later.
             </p>
             
             <div className="space-y-4 mb-8">
               <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
+                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
                   <strong>Streamlined onboarding</strong> meant fewer upfront steps, clearer progression, and faster access to the homepage.
                 </p>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
+                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
                   <strong>AI-supported imports:</strong> reduced manual work and increased confidence in setup.
                 </p>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
+                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
                   <strong>Flexible hand-offs:</strong> less critical tasks were moved into contextual "right time, right place" experiences.
                 </p>
               </div>
               <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] text-lg">
+                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
                   <strong>Attention to detail</strong> allowed me to fix longstanding usability issues like confusion over the progress bar and lack of tooltips
                 </p>
               </div>
             </div>
-            <p className="text-[#403930] text-lg">
+            <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
                   Here's a walkthrough of the end to end flow:
                 </p>
 
-                <div className="bg-gray-50 rounded-2xl p-4 mb-6">
+                <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">
                   <a 
                     href="https://drive.google.com/file/d/1AxKJpkcx9lF__oN7RUE9HgUh-kaz231I/view?usp=sharing"
                     target="_blank"
@@ -567,9 +575,9 @@ const CaseStudy = () => {
                     </div>
                   </a>
                 </div> 
-                 <p className="text-[#403930] text-lg mb-6">As noted in the beginning of this case study, this was one of the most successful tests our team has ever run. It achieved its goal of reducing cognitive load, as evidenced by:</p>
+                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">As noted in the beginning of this case study, this was one of the most successful tests our team has ever run. It achieved its goal of reducing cognitive load, as evidenced by:</p>
                  
-                 <ul className="list-disc list-outside text-[#403930] text-lg space-y-3 ml-6 pl-2 mb-6">
+                 <ul className="list-disc list-outside text-[#403930] dark:text-[#EAE8F3]/90 text-lg space-y-3 ml-6 pl-2 mb-6">
                    <li><b>37% increase in customers choosing to engage</b> in additional optional setup tasks, compared to control</li>
                    <li><b>4% increase in trial conversion</b></li>
                    <li><b>40% reduction in average time to complete</b></li>
@@ -579,12 +587,12 @@ const CaseStudy = () => {
 
           {/* Reflection */}
           <section className="mb-16">
-            <h2 className="text-[#403930] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
-            <p className="text-[#403930] text-lg mb-8">
+            <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
+            <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-8">
               For me, this project was an important reminder that good design is as much about facilitation and diplomacy as it is about arranging pixels on a screen. Our team had been redesigning this flow on our own for years - but once we stepped back, decided to address root causes, and worked on aligning different points of view, grounding decisions in user data, and designing responsibly with AI, we cracked critical metrics and solved the biggest user facing and organizational problem plaguing the onboarding space.
             </p>
             
-            <p className="text-[#403930] text-lggit a mb-6">
+            <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
             This combination of design and stakeholder alignment challenge directly inspired my future work in social impact arenas. Fundamentally, this project gave me first hand belief that by creating space for opposing sides to see the bigger picture, we can shift away from siloed decision-making toward a shared vision of user success - a strategy I continue to leverage in each complex, systemic issue I encounter.
             </p>
             
@@ -592,6 +600,11 @@ const CaseStudy = () => {
             
     
           </section>
+
+          {/* Case Study Navigation */}
+          <div className="max-w-[1440px] w-full mx-auto px-[120px] max-md:px-10 max-sm:px-5">
+            <CaseStudyNavigation />
+          </div>
           </main>
           <Footer />
         </div>

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Force solid background in dark mode for case study hero sections */
+.dark section[class*="bg-gradient"] {
+  background-image: none !important;
+}
+
 /* Custom animations */
 @keyframes drawUnderline {
   from {
@@ -63,6 +68,9 @@
     --gradient-2: 173 216 230;  /* Light blue */
     --gradient-3: 221 160 221;  /* Plum */
     --gradient-4: 144 238 144;  /* Light green */
+    
+    /* Memoji gradient - light mode */
+    --memoji-gradient: radial-gradient(circle, rgba(187, 142, 204, 0.4) 0%, rgba(187, 142, 204, 0.35) 12%, rgba(187, 142, 204, 0.3) 20%, rgba(200, 160, 215, 0.25) 28%, rgba(220, 200, 230, 0.2) 36%, rgba(235, 225, 240, 0.15) 44%, rgba(245, 240, 250, 0.1) 52%, rgba(250, 248, 252, 0.06) 60%, rgba(252, 250, 254, 0.04) 68%, rgba(254, 252, 255, 0.02) 76%, rgba(255, 254, 255, 0.01) 85%, rgba(255, 255, 255, 0) 100%);
 
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
@@ -117,6 +125,9 @@
     --glass-bg: 0 0 0 / 0.3;
     --glass-border: 255 255 255 / 0.1;
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
+    
+    /* Memoji gradient - dark mode */
+    --memoji-gradient: radial-gradient(circle, rgba(93, 54, 77, 0.7) 0%, rgba(93, 54, 77, 0.6) 12%, rgba(93, 54, 77, 0.5) 20%, rgba(85, 48, 70, 0.4) 28%, rgba(77, 42, 65, 0.3) 36%, rgba(63, 32, 58, 0.22) 44%, rgba(48, 26, 52, 0.15) 52%, rgba(35, 20, 48, 0.1) 60%, rgba(26, 16, 63, 0.06) 68%, rgba(26, 16, 63, 0.04) 76%, rgba(26, 16, 63, 0.02) 85%, rgba(26, 16, 63, 0.01) 92%, rgba(26, 16, 63, 0) 100%);
 
     --popover: 253 60% 16%;
     --popover-foreground: 250 35% 93%;
@@ -157,6 +168,15 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  .dark body {
+    background: linear-gradient(to bottom, 
+      hsl(253, 58%, 18%) 0%, 
+      hsl(253, 60%, 16%) 50%, 
+      hsl(253, 62%, 14%) 100%
+    );
+    background-attachment: fixed;
   }
 }
 
@@ -262,15 +282,15 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.25);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   pointer-events: none;
   transform: translate(-50%, -50%);
   z-index: 9999;
   transition: opacity 0.2s ease;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(128, 128, 128, 0.3), 0 0 40px rgba(128, 128, 128, 0.15), 0 0 0 2px rgba(128, 128, 128, 0.2);
   will-change: left, top;
 }
 
@@ -279,4 +299,9 @@
   * {
     cursor: none !important;
   }
+}
+
+/* Quote Mark Styling with Holtwood One SC */
+.quote-mark {
+  font-family: 'Holtwood One SC', serif !important;
 }
