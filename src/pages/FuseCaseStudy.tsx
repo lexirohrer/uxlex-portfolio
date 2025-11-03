@@ -156,27 +156,23 @@ const FuseCaseStudy = () => {
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">1</div>
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                     <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Onboarding Design and Testing</h4>
                     <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Start to finish design and testing of a new onboarding sequence to introduce users to Fuse.</p>
                   </div>
                   
                   <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">2</div>
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                     <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Storyboarding for Prospective Feature Development</h4>
                     <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Created storyboards detailing common challenges researchers face and how Fuse features address them.</p>
                   </div>
 
                   <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">3</div>
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                     <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">"Getting Information Out of Fuse" User Research</h4>
                     <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Conducted interviews and synthesized insights about how users extract information from Fuse for external use.</p>
                   </div>
                 </div>
-                
-                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">
-                  I'll explore each of these projects in greater detail below.
-                </p>
               </section>
 
               {/* Onboarding Design and Testing */}
@@ -184,37 +180,65 @@ const FuseCaseStudy = () => {
                 <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4 mb-8">
                   <div className="relative">
                     <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3]/70 leading-none opacity-60" style={{ fontFamily: 'Holtwood One SC, serif' }}>"</span>
-                    <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. I would have been happy with a contractor who did only one of those activities; Lexi drove all three</p>
+                    <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
                     <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-6 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
                   </div>
                 </div>
                 
                 <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Onboarding Design and Testing</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
-                  My biggest project during my summer on the Fuse team was <strong>the start to finish design and testing of a new onboarding sequence.</strong> In past versions of Fuse, there had been no onboarding procedure besides a pop up message encouraging new users to "try capturing and saving content", so this was a first effort at designing an onboarding sequence to introduce users to Fuse.
+                  My biggest project during the summer was <strong>the start to finish design and testing of a new onboarding sequence.</strong> In past versions of Fuse, there had been no onboarding procedure besides a pop up message encouraging new users to "try capturing and saving content", so this was a first effort at designing an onboarding sequence to introduce users to Fuse.
                 </p>
                 
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
-                  To approach this task, I began by researching various styles of onboarding. After reading up on situations where different onboarding strategies were more or less successful, <strong>I thought about situations in which users would be introduced to Fuse.</strong> In comparing my research to the situations in which users would first encounter Fuse, I decided to design a Trello-style onboarding. Trello, a web-based list-making application, onboards users by dropping them into a pre-populated board and allowing them to explore the interface organically.
+                  I began this task by building context and knowledge about different styles of onboarding. After conducting a competitive analysis of similar information gathering and synthesis tools (e.g. Notion, Trello, etc), <strong>I thought about situations in which users would be introduced to Fuse.</strong> Looking at the similarities and differences between our products and those I'd researched, I decided to design a Trello-style onboarding. Trello, a web-based list-making application, onboards users by dropping them into a pre-populated board and allowing them to explore the interface organically.
+                </p>
+
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
+                  Becuase we only had one developer on the team, I would be responsible for both developing and implementing the designs I created. Following the style of the Trello board, I built the first version of the onboarding experience using the drag and drop interface built into Fuse, and set out to usability test it. Because we were a small team without funding to recruit and compensate, I had to get creative. <strong>I spent the next week working from the campus coffee shop, chatting with people in line and offering to buy their cup in exchange for some feedback.</strong> After 5 interviews, I began to see consistent usability issues and feedback patterns, and began to synthesize my findings
                 </p>
                 
-                <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl mb-8 text-center">
+                <div className="mb-8 text-center">
                   <a 
                     href="https://drive.google.com/file/d/1AIKdU7_SR0CnruXWZK2NUdGW2yBr_cXx/view" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="inline-block bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] px-6 py-3 rounded-lg font-semibold hover:bg-[#4a6b8a] dark:hover:bg-[#EAE8F3]/90 transition-colors"
                   >
-                    ONBOARDING INSIGHTS DOCUMENT
+                    Onboarding insights full document
                   </a>
+                </div>
+
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
+                  The three key pieces of feedback on the first version of the onboarding sequence were:
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Too much clutter</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      Users struggled with "too much clutter and too little information." The first draft of the onboarding sequence felt overwhelming, so the revisions focused on progressive disclosure and simplifying navigation
+                    </p>
+                  </div>
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Order of information</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      Users were confused by the order and structure of information presented; the hierarchy of info presented was nearly flat, and users didn't feel like they were starting with the basics before moving on to more niche features
+                    </p>
+                  </div>
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Too much motion</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      A video's worth a thousand pictures - but v1 of the onboarding used too may GIFs, distracting users from linear progressin towards a goal. The final design reintroduced GIFs judiciously to highlight key interactions, guiding attention without overwhelming the user.
+                    </p>
+                  </div>
                 </div>
                 
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
-                  <strong>Overarching themes</strong> included balancing "too much clutter and too little information," user difficulties with organizing information, and the "strategic use of GIFs." The first draft was "information heavy" and "overwhelming the user," while the second draft (without GIFs) left users "at a loss for where to direct their attention." The final design "reimplemented GIFs, but did so more strategically to draw users' attention to certain parts of the screen, moving them through the onboarding project without explicitly using a tooltip sequence."
-                </p>
-                
-                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
-                  The below video shows the completed onboarding project, and the way a user might scroll through it and interact with the information at first glance.
+                  The below video shows the final version of the onboarding project, and the way a user might scroll through it and interact with the information at first glance.
                 </p>
                 
                 <div className="w-full aspect-video rounded-lg overflow-hidden mb-8">
@@ -232,18 +256,24 @@ const FuseCaseStudy = () => {
                   Beyond the introductory onboarding project, <strong>several "example" projects typifying the key use cases we expected with Fuse</strong> were created to show users different ways to organize information:
                 </p>
                 
-                <div className="space-y-4 mb-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">A product comparison example project (comparing different wireless headphone brands)</p>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-xl font-bold mb-2">Product Comparison</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      Example project comparing different wireless headphone brands to help users evaluate features side by side.
+                    </p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">A trip planning example project (showing a completed Fuse project planning a family vacation to Hawaii)</p>
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-xl font-bold mb-2">Trip Planning</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      Example project showing a completed Fuse project for planning a family vacation to Hawaii.
+                    </p>
                   </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">An academic research example project (showing how a researcher might organize and save sources for a literature review)</p>
+                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-xl font-bold mb-2">Academic Research</h4>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-md">
+                      Example project demonstrating how a researcher can organize and save sources for a literature review.
+                    </p>
                   </div>
                 </div>
                 
@@ -277,12 +307,19 @@ const FuseCaseStudy = () => {
                 <div className="w-full mb-8">
                   <Carousel className="w-full">
                     <CarouselContent>
-                      {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
-                        <CarouselItem key={num}>
+                      {[
+                        "Fuse_storyboard1",
+                        "Fuse_Storyboard2",
+                        "fuse_storyboard3",
+                        "Fuse_storyboard4",
+                        "Fuse_Storyboard5",
+                        "Fuse_storyboard6",
+                      ].map((name, index) => (
+                        <CarouselItem key={index}>
                           <div className="flex items-center justify-center">
                             <img
-                              src={`${import.meta.env.BASE_URL}Fuse_Storyboards${num}.png`}
-                              alt={`Fuse Storyboard ${num}`}
+                              src={`${import.meta.env.BASE_URL}${name}.png`}
+                              alt={`Fuse Storyboard ${index + 1}`}
                               className="w-full h-auto rounded-lg"
                             />
                           </div>
@@ -336,34 +373,29 @@ const FuseCaseStudy = () => {
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-8">
                   I synthesized my findings into <strong>two key insights documents</strong> and made them <strong>maximally skimmable and distributed them across the team for future use.</strong>
                 </p>
-                
-                <div className="bg-[#E6F0F7] dark:bg-white/10 p-8 rounded-2xl mb-8">
-                  <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold text-center mb-6">"Getting Stuff Out of Fuse" Research Insights</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div>
-                      <h4 className="text-[#403930] dark:text-[#EAE8F3] text-lg font-semibold mb-4">Research Questions</h4>
-                      <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-sm">What do users mean by...</p>
-                    </div>
-                    <div>
-                      <h4 className="text-[#403930] dark:text-[#EAE8F3] text-lg font-semibold mb-4">Insights</h4>
-                      <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-sm mb-4">Two Main Use Cases:</p>
-                      <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-sm mb-4">Taking notes, clips, and links they've saved, and:</p>
-                      <div className="space-y-2">
-                        <button className="bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] px-4 py-2 rounded text-sm">Use Case 1</button>
-                        <button className="bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] px-4 py-2 rounded text-sm">Use Case 2</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="bg-gray-100 dark:bg-white/5 p-8 rounded-2xl text-center">
-                  <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-lg italic">📍 [Placeholder for detailed process flow diagrams showing user methods for getting information out of Fuse]</p>
+                <div className="w-full mb-8">
+                  <img
+                    src={`${import.meta.env.BASE_URL}Fuse_UXR_insights.png`}
+                    alt="Getting Stuff Out of Fuse Research Insights"
+                    className="w-full h-auto rounded-lg mb-6"
+                  />
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-4">
+                    For the process walkthough, I asked users to take a source they'd saved in Fuse and go through the motions of moving it to a different application. This portion of the interview allowed me to catch parts of the processes the users themselves were unaware of, and therefore couldn't describe. Insights from this particular portion of the interview were so valuable that I decided to capture them in their own document, shown below.
+                  </p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
+                    This insights document shows synthesized process flows for users methods of getting information out of Fuse. Most notably, these process flows allowed me to emphasize the tediousness of some processes our users were following in my presentation to the team.
+                  </p>
+                  <img
+                    src={`${import.meta.env.BASE_URL}Fuse_UXR_insights2.png`}
+                    alt="Fuse User Research Insights - Process Flows"
+                    className="w-full h-auto rounded-lg"
+                  />
                 </div>
               </section>
 
               {/* Key Takeaways */}
               <section className="mb-16">
-                <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Key Takeaways from the Summer</h2>
+                <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Key Takeaways</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-8">
                   Although my work with the Fuse team was conducted in an academic research setting, it often felt more like a startup environment with so many opportunities to jump in and lend a hand on many different aspects of the product. In this setting, I learned several meaningful takeaways that I know will allow me to better navigate future work environments and contribute to those projects with competence.
                 </p>

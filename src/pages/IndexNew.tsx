@@ -10,7 +10,6 @@ const IndexNew = () => {
   // Testimonial slider state
   const [activeTestimonial, setActiveTestimonial] = useState(2);
   
-  // Fun Facts master list
   const allFunFacts = [
     { emoji: "📚", text: "I collect library cards from every place I've lived" },
     { emoji: "🎤", text: "I love public speaking (weirdo)" },
@@ -21,11 +20,12 @@ const IndexNew = () => {
     { emoji: "🇹🇭", text: "I'm currently learning to speak Thai. It is very hard." },
     { emoji: "🎨", text: "I fell in love with design because I get to work on interdisciplinary problems" },
     { emoji: "🌱", text: "I've been a climate activist for over 10 years" },
-    { emoji: "🏔️", text: "I climbed the highest mountain in the continental US – twice!" },
+    { emoji: "⛰️", text: "I climbed the highest mountain in the continental US – twice!" },
     { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
-    { emoji: "☕️", text: "People say I have a ton of energy, but I've never had a cup of coffee!" },
+    { emoji: "☕️", text: "I've never had a cup of coffee!" },
     { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" },
     { emoji: "🏰", text: "My most memorable workshop was hosted in the attic of a Polish Castle" },
+    { emoji: "🚗", text: "A video book report I made in second grade went viral. I used the revenue to buy my first car" }
   ];
   
   // Track which fact indices have been shown (using ref for reliable access)
@@ -85,6 +85,13 @@ const IndexNew = () => {
       title: "Social Enterprise Founder",
       gradient: "from-yellow-200/20 via-white/10 to-orange-200/20 dark:from-yellow-500/10 dark:via-transparent dark:to-orange-500/10",
       quoteColor: "text-yellow-300 dark:text-yellow-400"
+    },
+    {
+      text: "Lexi has a drive, fearlessness, and openness to improvement that set her apart and in my personal experience is highly correlated with top levels of achievement and success.",
+      author: "Aniket Kittur",
+      title: "Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University",
+      gradient: "from-pink-200/20 via-white/10 to-purple-200/20 dark:from-pink-500/10 dark:via-transparent dark:to-purple-500/10",
+      quoteColor: "text-orange-300 dark:text-orange-400"
     },
     {
       text: "Lexi is one of those very rare designers who not only excels at her craft but also uplifts everyone around her with her proactivity, curiosity, and positivity.",
