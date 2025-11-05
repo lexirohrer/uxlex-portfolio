@@ -8,8 +8,8 @@ import { Download } from "lucide-react";
 const Resume = () => {
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/6e809fb2-1d82-4528-bee5-9474a08453fe.png';
-    link.download = 'Lexi_Rohrer_Resume.pdf';
+    link.href = '/Rohrer-Resume-2025.pdf';
+    link.download = 'Rohrer-Resume-2025.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -21,7 +21,7 @@ const Resume = () => {
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&display=swap"
         rel="stylesheet"
       />
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-[#1A103F] min-h-screen">
+      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-transparent min-h-screen">
         <Header />
         <main className="px-[120px] py-[100px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-[40px] relative z-10">
           <div className="mb-10">
@@ -29,7 +29,7 @@ const Resume = () => {
               <h1 className="text-foreground text-[40px] font-semibold font-hagrid">Resume</h1>
               <Button 
                 onClick={handleDownload}
-                className="bg-primary hover:bg-primary/90 text-primary-foreground px-6 py-2 rounded-lg flex items-center gap-2"
+                className="bg-primary text-primary-foreground px-6 py-2 rounded-lg flex items-center gap-2"
               >
                 <Download size={20} />
                 Download PDF Resume

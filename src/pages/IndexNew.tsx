@@ -22,10 +22,10 @@ const IndexNew = () => {
     { emoji: "🌱", text: "I've been a climate activist for over 10 years" },
     { emoji: "⛰️", text: "I climbed the highest mountain in the continental US – twice!" },
     { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
-    { emoji: "☕️", text: "I've never had a cup of coffee!" },
+    { emoji: "☕️", text: "I've never had a cup of coffee" },
     { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" },
     { emoji: "🏰", text: "My most memorable workshop was hosted in the attic of a Polish Castle" },
-    { emoji: "🚗", text: "A video book report I made in second grade went viral. I used the revenue to buy my first car" }
+    { emoji: "🚗", text: "A video I made in second grade went viral on YouTube, and I used the ad revenue to buy my first car" }
   ];
   
   // Track which fact indices have been shown (using ref for reliable access)
@@ -243,7 +243,7 @@ const IndexNew = () => {
             )}
 
             {/* Middle Column - Currently + Experience Stacked */}
-            <div className="flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
+            <div className="hidden lg:flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
               
               {/* Currently Box */}
               <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 md:p-6 shadow-2xl group transition-all duration-300 flex-1 flex items-center justify-center min-h-0">
@@ -287,17 +287,63 @@ const IndexNew = () => {
 
             </div>
 
-            {/* Fun Facts - 4 square cards in grid */}
+            {/* Fun Facts - 4 square cards in grid (desktop), 3 cards stacked (mobile) */}
             <div className="w-full lg:flex-1 flex flex-col min-h-0 lg:self-stretch">
-              <div className="relative grid grid-cols-2 gap-2 flex-1 min-h-0" style={{ gridAutoRows: '1fr' }}>
-                  {displayedFacts.map((fact, index) => {
+              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-2 lg:flex-1 lg:min-h-0 fun-facts-grid">
+                  {displayedFacts.slice(0, 3).map((fact, index) => {
                     const isFlipped = flippedCards.has(index);
                     return (
                       <div
                         key={`${fact.text}-${index}`}
-                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 h-full w-full"
-                        style={{ perspective: "1000px" }}
+                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
+                        style={{ perspective: "1000px", minHeight: '200px', height: 'auto' }}
                         onClick={() => toggleFlip(index)}
+                      >
+                        <div
+                          className={`relative w-full h-full ${isRotating ? 'animate-flip-full' : 'transition-transform duration-500'}`}
+                          style={{
+                            transform: isRotating ? undefined : (isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"),
+                            transformStyle: "preserve-3d",
+                            minHeight: '200px'
+                          }}
+                        >
+                          {/* Front of card - shows "flip for fun fact" */}
+                          <div
+                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden"
+                            style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                              transform: "rotateY(0deg)"
+                            }}
+                          >
+                            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">flip me 👀</span>
+                          </div>
+                          {/* Back of card - shows emoji and text */}
+                          <div
+                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-3 backface-hidden"
+                            style={{
+                              backfaceVisibility: "hidden",
+                              WebkitBackfaceVisibility: "hidden",
+                              transform: "rotateY(180deg)"
+                            }}
+                          >
+                            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
+                            <span className="text-white/90 text-base leading-relaxed text-center">{fact.text}</span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                  {/* Show 4th card only on desktop */}
+                  {displayedFacts.length > 3 && displayedFacts.slice(3, 4).map((fact, index) => {
+                    const actualIndex = index + 3;
+                    const isFlipped = flippedCards.has(actualIndex);
+                    return (
+                      <div
+                        key={`${fact.text}-${actualIndex}`}
+                        className="hidden lg:block relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 h-full w-full"
+                        style={{ perspective: "1000px" }}
+                        onClick={() => toggleFlip(actualIndex)}
                       >
                         <div
                           className={`relative w-full h-full ${isRotating ? 'animate-flip-full' : 'transition-transform duration-500'}`}
@@ -333,10 +379,10 @@ const IndexNew = () => {
                       </div>
                     );
                   })}
-                  {/* Central Shuffle Button */}
+                  {/* Central Shuffle Button - Hidden on mobile, shown on desktop */}
                   <button
                     onClick={shuffleFacts}
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-24 h-24 rounded-full transition-all duration-200 flex items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
+                    className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-24 h-24 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
                     aria-label="Shuffle facts"
                   >
                     <img 
@@ -346,6 +392,19 @@ const IndexNew = () => {
                     />
                   </button>
               </div>
+              {/* Mobile Shuffle Button - Full width, below cards */}
+              <button
+                onClick={shuffleFacts}
+                className="lg:hidden w-full mt-4 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+                aria-label="Shuffle facts"
+              >
+                <img 
+                  src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                  alt="Shuffle"
+                  className="w-6 h-6 drop-shadow-lg"
+                />
+                <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
+              </button>
             </div>
 
             {/* App Icons Column - Full row height */}
@@ -425,7 +484,7 @@ const IndexNew = () => {
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="absolute left-0 md:left-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute left-0 md:left-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
@@ -483,7 +542,16 @@ const IndexNew = () => {
                         <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl`}></div>
                         <div className="relative z-10 h-full flex flex-col justify-between overflow-y-auto">
                           <div className="flex-1">
-                            <div className={`text-4xl md:text-5xl ${testimonial.quoteColor} opacity-60 mb-2 quote-mark`}>"</div>
+                            <img 
+                              src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                              alt="" 
+                              className="block dark:hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                            />
+                            <img 
+                              src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                              alt="" 
+                              className="hidden dark:block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                            />
                             <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
@@ -500,7 +568,7 @@ const IndexNew = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="absolute right-0 md:right-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute right-0 md:right-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
@@ -516,10 +584,10 @@ const IndexNew = () => {
                   <button
                     key={index}
                     onClick={() => setActiveTestimonial(index)}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                    className={`w-2 h-2 rounded-full transition-all duration-300 matte-3d-button ${
                       index === activeTestimonial
                         ? 'bg-[#1A103F] dark:bg-white w-6'
-                        : 'bg-[#1A103F]/40 dark:bg-white/40 hover:bg-[#1A103F]/60 dark:hover:bg-white/60'
+                        : 'bg-[#1A103F]/40 dark:bg-white/40'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />

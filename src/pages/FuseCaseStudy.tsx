@@ -125,7 +125,7 @@ const FuseCaseStudy = () => {
           </div>
         </section>
         
-        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-[#1A103F]">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
 
               {/* Background */}
@@ -177,11 +177,20 @@ const FuseCaseStudy = () => {
 
               {/* Onboarding Design and Testing */}
               <section className="mb-16">
-                <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4 mb-8">
+                <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-8">
                   <div className="relative">
-                    <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3]/70 leading-none opacity-60" style={{ fontFamily: 'Holtwood One SC, serif' }}>"</span>
-                    <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
-                    <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-6 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
+                    <img 
+                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                      alt="" 
+                      className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                    />
+                    <img 
+                      src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                      alt="" 
+                      className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                    />
+                    <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
+                    <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
                   </div>
                 </div>
                 

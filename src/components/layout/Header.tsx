@@ -65,7 +65,7 @@ const Header = () => {
           ))}
           <button
             onClick={toggleTheme}
-            className={`${linkBase} p-2 rounded-full hover:bg-black/10 dark:hover:bg-white/10 transition-colors`}
+            className={`${linkBase} p-2 rounded-full matte-3d-button`}
             aria-label="Toggle theme"
           >
             {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}

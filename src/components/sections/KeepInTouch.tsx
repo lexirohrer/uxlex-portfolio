@@ -16,7 +16,7 @@ const KeepInTouch = () => {
             <div className="text-center">
               <a 
                 href="mailto:lexirohrer@gmail.com" 
-                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-20 h-20 object-contain drop-shadow-lg" />
@@ -38,7 +38,7 @@ const KeepInTouch = () => {
                 href="https://www.linkedin.com/in/alexandra-rohrer/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-20 h-20 object-contain drop-shadow-lg" />
@@ -60,7 +60,7 @@ const KeepInTouch = () => {
                 href="https://calendar.app.google/K8owt9w3d5wnVL9B6" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-20 h-20 object-contain drop-shadow-lg" />
@@ -82,7 +82,7 @@ const KeepInTouch = () => {
                 href="https://uxlex.substack.com/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="group flex flex-col items-center space-y-4 p-6 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-all duration-300"
+                className="group flex flex-col items-center space-y-4 p-6 rounded-xl transition-all duration-300"
               >
                 <div className="w-20 h-20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                   <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-20 h-20 object-contain drop-shadow-lg" />

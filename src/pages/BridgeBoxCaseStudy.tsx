@@ -110,7 +110,7 @@ const BridgeBoxCaseStudy = () => {
           </div>
         </section>
         
-        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-[#1A103F]">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           {/* Overview */}
           <section className="mb-16">
@@ -226,11 +226,20 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 Both contexts had to be structured carefully; At HRDF, lawyers were working to address human rights violations for migrant and rural workers across many site. In Songkhla, frequent flash flooding paried with the tension from political insurgency created a general mistrust of government and aid responders when climate disasters struck.In both contexts, it was crucial to make the submission UI extremely intuitive for rural users, correctly prioritze the submitted cases, and build trust through open lines of communication open between reporters and responders.
               </p>
-               <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4 mb-6">
+               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3]/70 leading-none opacity-60 quote-mark">"</span>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-6 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                   />
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                   />
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
                  </div>
                </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
@@ -252,11 +261,20 @@ const BridgeBoxCaseStudy = () => {
                 className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
               /> 
             </div>
-            <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4 mb-6">
+            <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3]/70 leading-none opacity-60 quote-mark">"</span>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">It’s important to have someone in the field with [the participants], because online it’s difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-6 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                   />
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                   />
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">It's important to have someone in the field with [the participants], because online it's difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
                  </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
@@ -309,17 +327,28 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting:
               </p>
-              <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4 mb-6">
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3]/70 leading-none opacity-60 quote-mark">"</span>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-6 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-6 pt-2">— BridgeBox Facilitator</p>
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                   />
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                   />
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— BridgeBox Facilitator</p>
                  </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand.
               </p>
             </div>
+
+            <img src={`${import.meta.env.BASE_URL}BBX_AI_dashboard.png`} alt="Screenshot of the BridgeBox case dashboard" className="w-full h-auto rounded-2xl mb-6" />
 
             {/* AI for Social Good */}
             <div className="mb-12">
@@ -328,26 +357,66 @@ const BridgeBoxCaseStudy = () => {
                 At the participatory design workshops, emergency responders often spoke with frustration of trying to correctly sort cases into categories using a complex set of government guidelines. While time consuming for a human, this well defined task would be simple for an AI model. The feature I proposed would auto-suggest tags for submitted cases by category and urgency. Reports that were automatically tagged as urgent, such as "medical emergency" or "human rights violation" could then be prioritized over more routine issues like "documentation approval needed."
               </p>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
-                Because the BridgeBox team only had one engineer, I volunteered to design this feature and build the model that would power it. The feature's goals were to:
-              </p>
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                    Auto suggest tags for submitted cases by category and urgency. Reports were automatically tagged by urgency: urgent "medical emergency" or "human rights violation" cases were prioritized over lower-urgency issues like "documentation approval needed."
-                  </p>
-                </div>
-              </div>
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
-                First, I designed the flow that would allow users to accept or correct the AI's suggested categories, saving time and creating feedback models where the AI could continually improve its performance with human input. Next, I gathered historical data from BridgeBox cases, with the correct tags for each one based on the handbook. Then, I uploaded the data to &lt;TOOL&gt;, iteratively training and testing the model, until we achieved a satisfactory &lt;name of test&gt;. From here, I passed my work off to the developer for integration.
-              </p>
-              <div className="bg-yellow-50 dark:bg-yellow-950/20 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-                <p className="text-yellow-800 font-medium">
-                  📍 [Placeholder for UI video of AI-driven case categorization]
-                </p>
-              </div>
+                Because the BridgeBox team only had one engineer, I volunteered to design this feature and build the model to power it using Google Vertex. To start, I identified the following steps:
+               </p>
+               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                 <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">1</div>
+                   <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Gather Data</h4>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Collected and organized historical BridgeBox case data for model training.</p>
+                 </div>
+                 <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">2</div>
+                   <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Train AI Model</h4>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Trained and validated a simple model to auto-tag new cases by urgency and category.</p>
+                 </div>
+                 <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">3</div>
+                   <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Handoff for Integration</h4>
+                   <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Packaged the trained model and collaborated with engineering for platform integration.</p>
+                 </div>
+               </div>
+               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
+                While the model was training and iterating, I designed the UI that the user would interact with to confirm or correct the AI's suggested categories. BridgeBox employees were concerned about users' hesitation to fact check the AI, as they themselves barely understood the complex categories – so the design had to give users not only the ability to correct the AI, but the tools to identify when it was wrong.
+               </p>
+
+               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
+                When the user entered their case dashboard, they saw a red alert if the case needed conformation. If the categorization was correct, the user could simply click "Yes, Correct" and the categories would be confirmed in the system, removing the "needs confirmation" status:
+               </p>
+
+               <div className="mb-6">
+                 <video 
+                   className="w-full h-auto rounded-lg"
+                   controls 
+                   muted 
+                   loop
+                   playsInline
+                   preload="metadata"
+                 >
+                   <source src={`${import.meta.env.BASE_URL}BBX_AI_correct.mp4`} type="video/mp4"/>
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
+
+               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
+                If the user was unsure whether categorization was correct, they could click "See how to categorize" to bring up the help menu, which both gave rationale for why the AI categorized the case as it did, and provided the standard list of definions for each category, so that the user could make an informed decision whether to correct the AI. If the user decided that the AI was incorrect, they could simply click "No, Incorrect." Clicking Incorrect automatically opened the dropdown for category selection, and allowed the user to choose a different category:
+               </p>
+
+               <div className="mb-6">
+                 <video 
+                   className="w-full h-auto rounded-lg"
+                   controls 
+                   muted 
+                   loop
+                   playsInline
+                   preload="metadata"
+                 >
+                   <source src={`${import.meta.env.BASE_URL}BBX_AI_incorrect.mp4`} type="video/mp4"/>
+                   Your browser does not support the video tag.
+                 </video>
+               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mt-6">
-                At the time of writing, BridgeBox is seeking further funding to implement this time saving feature for current and new clients.
+                At the time of writing, BridgeBox has implemented this feature, and is seeking further funding from partners to enable it for their largest clients.
               </p>
             </div>
           </section>

@@ -199,6 +199,87 @@
     background-size: 400% 400%;
     animation: gradient-move 15s ease infinite;
   }
+
+  /* Matte 3D Button Effect - Only applied outside hero section */
+  .matte-3d-button {
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  /* Ensure border-radius is inherited from button, with fallback */
+  .matte-3d-button:not(.rounded-full):not([class*="rounded-"]) {
+    border-radius: 0.75rem;
+  }
+
+  .matte-3d-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.1) 0%, 
+      rgba(255, 255, 255, 0.05) 50%, 
+      rgba(0, 0, 0, 0.1) 100%
+    );
+    pointer-events: none;
+    opacity: 1;
+  }
+
+  .dark .matte-3d-button::before {
+    background: linear-gradient(to bottom, 
+      rgba(255, 255, 255, 0.08) 0%, 
+      rgba(255, 255, 255, 0.03) 50%, 
+      rgba(0, 0, 0, 0.15) 100%
+    );
+  }
+
+  .matte-3d-button {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.15),
+      0 2px 4px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+  }
+
+  .dark .matte-3d-button {
+    box-shadow: 
+      0 4px 12px rgba(0, 0, 0, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .matte-3d-button:hover {
+    transform: scale(1.05);
+  }
+
+  .matte-3d-button:active {
+    transform: translateY(0);
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.15),
+      0 1px 2px rgba(0, 0, 0, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  }
+
+  .dark .matte-3d-button:active {
+    box-shadow: 
+      0 2px 6px rgba(0, 0, 0, 0.35),
+      0 1px 2px rgba(0, 0, 0, 0.25),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  /* Fun facts grid - auto rows on mobile, 1fr on desktop */
+  .fun-facts-grid {
+    grid-auto-rows: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .fun-facts-grid {
+      grid-auto-rows: 1fr;
+    }
+  }
 }
 
 @keyframes gradient-move {

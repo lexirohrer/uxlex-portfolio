@@ -157,7 +157,7 @@ const CaseStudy = () => {
           </div>
         </section>
         
-        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-[#1A103F]">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
           {/* Overview */}
           <section className="mb-16">
@@ -320,30 +320,48 @@ const CaseStudy = () => {
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               
               {/* Control Flow Quote */}
-               <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-4">
+               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
                  <div className="mb-4">
                    <span className="bg-white dark:bg-white/10 bg-opacity-50 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm">
                      Control Flow
                    </span>
                  </div>
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] leading-none opacity-60 quote-mark">"</span>
-                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-6 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-6 pt-2">– User 16, an independent business consultant in Canada </p>
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                   />
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                   />
+                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">– User 16, an independent business consultant in Canada </p>
                  </div>
                </div>
 
                {/* Streamlined Flow Quote */}
-               <div className="bg-gray-50 dark:bg-white/5 dark:bg-white/5 rounded-2xl p-4">
+               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
                  <div className="mb-4">
                    <span className="bg-white dark:bg-white/10 bg-opacity-50 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm">
                      Streamlined Flow
                    </span>
                  </div>
                  <div className="relative">
-                   <span className="absolute -top-2 -left-2 text-6xl text-[#557592] dark:text-[#EAE8F3] leading-none opacity-60 quote-mark">"</span>
-                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-6 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-6 pt-2">- User 23, runs a coffee shop in Seattle </p>
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                   />
+                   <img 
+                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                     alt="" 
+                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                   />
+                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">- User 23, runs a coffee shop in Seattle </p>
                  </div>
                </div>
              </div>

@@ -61,15 +61,13 @@ const CaseStudies = () => {
               href={study.href}
               className="block w-full group"
             >
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.01]">
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-200/20 via-pink-200/20 to-purple-200/20 dark:from-orange-500/10 dark:via-transparent dark:to-purple-500/10 rounded-3xl"></div>
-                
-                <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[400px] md:min-h-[500px]">
+              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99]">
+                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[400px] md:min-h-[500px]">
                   {/* Image Column */}
                   <div className={`relative ${imageOnLeft ? 'order-1' : 'order-2'} flex items-center justify-center p-6 md:p-10`}>
                     <img
                       src={`${import.meta.env.BASE_URL}${imageSrc}`}
-                      className="w-full h-full max-h-[400px] object-contain group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full max-h-[400px] object-contain"
                       alt={study.imageAlt}
                     />
                   </div>
