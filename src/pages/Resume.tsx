@@ -27,10 +27,7 @@ const Resume = () => {
           <div className="mb-10">
             <div className="flex items-center justify-between mb-6 max-sm:flex-col max-sm:items-start max-sm:gap-4">
               <h1 className="text-foreground text-[40px] font-semibold font-hagrid">Resume</h1>
-              <Button 
-                onClick={handleDownload}
-                className="bg-primary text-primary-foreground px-6 py-2 rounded-lg flex items-center gap-2"
-              >
+              <Button onClick={handleDownload}>
                 <Download size={20} />
                 Download PDF Resume
               </Button>
@@ -133,7 +130,6 @@ const Resume = () => {
                     <div className="flex flex-wrap gap-2">
                       <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">English (Native)</span>
                       <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Thai (Conversational)</span>
-                      <span className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 text-foreground px-3 py-1 rounded-full text-sm font-medium backdrop-blur-sm">Spanish (Basic)</span>
                     </div>
                   </div>
                   </div>
@@ -192,25 +188,35 @@ const Resume = () => {
               {/* Contact Information */}
               <div className="relative rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-br from-rose-200/20 via-white/10 to-pink-200/20 dark:from-rose-500/10 dark:via-transparent dark:to-pink-500/10 rounded-3xl"></div>
-                <div className="relative z-10">
-                  <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
-                  <div className="space-y-4">
-                  <div>
-                    <h3 className="text-foreground text-lg font-semibold">Portfolio</h3>
-                    <a href="https://uxlex.com" className="text-foreground/70 underline hover:text-foreground transition-colors">uxlex.com</a>
+                <div className="relative z-10 flex flex-row gap-8 items-start">
+                  <div className="flex-1 min-w-0">
+                    <h2 className="text-foreground text-2xl font-semibold mb-6 font-hagrid">Contact</h2>
+                    <div className="space-y-4">
+                      <div>
+                        <h3 className="text-foreground text-lg font-semibold">Portfolio</h3>
+                        <a href="https://uxlex.com" className="text-foreground/70 underline hover:text-foreground transition-colors">uxlex.com</a>
+                      </div>
+                      <div>
+                        <h3 className="text-foreground text-lg font-semibold">Email</h3>
+                        <a href="mailto:lexirohrer@gmail.com" className="text-foreground/70 underline hover:text-foreground transition-colors">lexirohrer@gmail.com</a>
+                      </div>
+                      <div>
+                        <h3 className="text-foreground text-lg font-semibold">LinkedIn</h3>
+                        <a href="https://linkedin.com/in/alexandra-rohrer/" className="text-foreground/70 underline hover:text-foreground transition-colors">linkedin.com/in/alexandra-rohrer/</a>
+                      </div>
+                      <div>
+                        <h3 className="text-foreground text-lg font-semibold">Book a Coffee Chat</h3>
+                        <a href="https://calendar.app.google/F1HEuEakYHH7GsBbA" className="text-foreground/70 underline hover:text-foreground transition-colors">Schedule a meeting</a>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="text-foreground text-lg font-semibold">Email</h3>
-                    <a href="mailto:lexirohrer@gmail.com" className="text-foreground/70 underline hover:text-foreground transition-colors">lexirohrer@gmail.com</a>
-                  </div>
-                  <div>
-                    <h3 className="text-foreground text-lg font-semibold">LinkedIn</h3>
-                    <a href="https://linkedin.com/in/alexandra-rohrer/" className="text-foreground/70 underline hover:text-foreground transition-colors">linkedin.com/in/alexandra-rohrer/</a>
-                  </div>
-                  <div>
-                    <h3 className="text-foreground text-lg font-semibold">Book a Coffee Chat</h3>
-                    <a href="https://calendar.app.google/F1HEuEakYHH7GsBbA" className="text-foreground/70 underline hover:text-foreground transition-colors">Schedule a meeting</a>
-                  </div>
+                  <div className="h-full w-32 flex-shrink-0 flex items-start justify-end max-sm:hidden">
+                    <img
+                      src={`${import.meta.env.BASE_URL}Memoji.png`}
+                      alt="Lexi Rohrer Memoji Avatar"
+                      className="w-full h-full object-contain bg-transparent select-none pointer-events-none"
+                      style={{ background: "transparent" }}
+                    />
                   </div>
                 </div>
               </div>

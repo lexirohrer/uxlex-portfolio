@@ -5,25 +5,27 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-3 whitespace-nowrap rounded-2xl px-6 py-3 text-base font-semibold transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#1A103F]/20 disabled:pointer-events-none disabled:opacity-50 [&>svg]:pointer-events-none [&>svg]:size-5 [&>svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground matte-3d-button",
+        default:
+          "bg-[#1A103F] text-white border border-[#1A103F]/20 shadow-lg hover:scale-[1.02] hover:shadow-xl hover:bg-[#2d1a6a] dark:bg-white/10 dark:text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/15",
         destructive:
-          "bg-destructive text-destructive-foreground matte-3d-button",
+          "bg-red-600 text-white border border-red-500/40 shadow-lg hover:scale-[1.02] hover:shadow-xl hover:bg-red-700",
         outline:
-          "border border-input bg-background text-foreground matte-3d-button",
+          "bg-transparent text-[#1A103F] border border-[#1A103F]/30 hover:bg-[#1A103F]/10 hover:scale-[1.02] hover:shadow-lg dark:text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/10",
         secondary:
-          "bg-secondary text-secondary-foreground matte-3d-button",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-white/80 text-[#1A103F] border border-white/60 shadow-md hover:scale-[1.02] hover:shadow-xl hover:bg-white dark:bg-white/10 dark:text-[#EAE8F3] dark:border-white/20",
+        ghost:
+          "bg-transparent text-[#1A103F] hover:bg-[#1A103F]/10 dark:text-[#EAE8F3] dark:hover:bg-white/10",
+        link: "text-[#1A103F] underline-offset-4 hover:underline dark:text-[#EAE8F3]",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-auto",
+        sm: "px-4 py-2 text-sm gap-2",
+        lg: "px-8 py-4 text-lg gap-4",
+        icon: "p-3 rounded-xl [&>svg]:size-6",
       },
     },
     defaultVariants: {
@@ -44,7 +46,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     const Comp = asChild ? Slot : "button"
     return (
       <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
+        className={cn(buttonVariants({ variant, size }), className)}
         ref={ref}
         {...props}
       />

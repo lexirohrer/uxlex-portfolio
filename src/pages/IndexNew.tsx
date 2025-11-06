@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import KeepInTouch from "@/components/sections/KeepInTouch";
 import Footer from "@/components/sections/Footer";
+import { Button } from "@/components/ui/button";
 
 const IndexNew = () => {
   // Testimonial slider state
@@ -215,7 +216,7 @@ const IndexNew = () => {
                   <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 Hi, I'm Lexi <span className="text-xl md:text-2xl lg:text-3xl font-normal text-white/90">a social impact technologist</span>
                   </h1>
-              <p className="text-white/80 text-base leading-relaxed">
+              <p className="text-white/80 text-base">
                 This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
               </p>
             </div>
@@ -250,16 +251,16 @@ const IndexNew = () => {
                 <div className="relative z-10 w-full">
                   <div className="grid grid-cols-3 gap-2">
                     <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-2xl md:text-3xl">🌏</div>
-                      <div className="text-white/90 text-base leading-relaxed text-center">Based between Bangkok & Bay Area</div>
+                      <div className="text-3xl md:text-4xl">🌏</div>
+                      <div className="text-white/90 text-base text-center">Based between Bangkok & Bay Area</div>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-2xl md:text-3xl">🌱</div>
-                      <div className="text-white/90 text-base leading-relaxed text-center">Leading Design @ Basilica Bio</div>
+                      <div className="text-3xl md:text-4xl">🌱</div>
+                      <div className="text-white/90 text-base text-center">Leading Design @ Basilica Bio</div>
                     </div>
                     <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-2xl md:text-3xl">📣</div>
-                      <div className="text-white/90 text-base leading-relaxed text-center">Open to new collaborations</div>
+                      <div className="text-3xl md:text-4xl">📣</div>
+                      <div className="text-white/90 text-base text-center">Open to new collaborations</div>
                     </div>
                   </div>
                 </div>
@@ -410,16 +411,16 @@ const IndexNew = () => {
             {/* App Icons Column - Full row height */}
             <div className="hidden lg:flex flex-col justify-between w-auto gap-4">
               <a href="https://www.linkedin.com/in/alexandra-rohrer/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
               </a>
               <a href="mailto:lexirohrer@gmail.com" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
               </a>
               <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
               </a>
               <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-full h-full max-w-[64px] max-h-[64px] object-contain drop-shadow-lg" />
+                <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
               </a>
             </div>
 
@@ -461,6 +462,14 @@ const IndexNew = () => {
                     <p className="text-lg">
                       If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
                     </p>
+                  </div>
+                  <div className="mt-8">
+                    <Button asChild>
+                      <a href="/portfolio" className="gap-3">
+                        <span>see my work</span>
+                        <span aria-hidden="true" className="text-lg">→</span>
+                      </a>
+                    </Button>
                   </div>
                 </div>
                 

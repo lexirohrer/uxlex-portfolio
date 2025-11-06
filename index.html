@@ -12,7 +12,7 @@
         document.documentElement.classList.add(theme);
       })();
     </script>
-    <title>Lexi Rohrer - UX Designer & Researcher</title>
+    <title>uxlex</title>
     <meta name="description" content="Portfolio of Lexi Rohrer, a social impact designer specializing in UX research, participatory design, and human-centered design for social enterprises and B-corps." />
     <meta name="author" content="Lexi Rohrer" />
 
@@ -24,6 +24,17 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@lovable_dev" />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+    <script>
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') {
+          document.title = 'see ya soon? :)';
+        } else {
+          document.title = 'uxlex';
+        }
+      });
+    </script>
     
     <!-- Google Fonts - Load early -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

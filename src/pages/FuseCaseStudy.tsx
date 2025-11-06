@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import CaseStudyNavigation from "@/components/sections/CaseStudyNavigation";
@@ -9,12 +9,41 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
 
 const FuseCaseStudy = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, []);
+
+  const storyboardImages = [
+    "Fuse_storyboard1",
+    "Fuse_Storyboard2",
+    "fuse_storyboard3",
+    "Fuse_storyboard4",
+    "Fuse_Storyboard5",
+    "Fuse_storyboard6",
+  ];
+  const [storyboardApi, setStoryboardApi] = useState<CarouselApi | null>(null);
+  const [currentStoryboardIndex, setCurrentStoryboardIndex] = useState(0);
+
+  useEffect(() => {
+    if (!storyboardApi) {
+      return;
+    }
+
+    const onSelect = () => {
+      setCurrentStoryboardIndex(storyboardApi.selectedScrollSnap());
+    };
+
+    storyboardApi.on("select", onSelect);
+    onSelect();
+
+    return () => {
+      storyboardApi.off("select", onSelect);
+    };
+  }, [storyboardApi]);
 
   return (
     <>
@@ -35,10 +64,10 @@ const FuseCaseStudy = () => {
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               Fuse Google Chrome Extension
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-medium">
+            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-normal leading-relaxed">
               Building a second brain for researchers synthesizing information
             </p>
           </div>
@@ -46,7 +75,7 @@ const FuseCaseStudy = () => {
         
         <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
-            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+            <div className="flex justify-between items-start mb-6 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
                 
               </div>
@@ -56,7 +85,7 @@ const FuseCaseStudy = () => {
             </div>
 
             {/* Main content grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
               {/* Left content */}
               <div className="space-y-4">
                 {/* Context */}
@@ -123,6 +152,7 @@ const FuseCaseStudy = () => {
               </div>
             </div>
           </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white dark:via-[#1A103F]/60 dark:to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
@@ -139,15 +169,18 @@ const FuseCaseStudy = () => {
                   This video shows an overview of our extension and the potential it holds for supporting sensemaking throughout various stages of the research process. To download the fuse extension, <strong>visit the Fuse website at getfuse.io.</strong>
                 </p>
                 
-                <div className="w-full aspect-video rounded-lg overflow-hidden mb-8">
-                  <iframe 
-                    src="https://www.youtube.com/embed/hb7ubuVzYr0?start=19" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    className="w-full h-full"
-                    title="Welcome to Fuse overview video"
-                  ></iframe>
+                <div className="w-full mb-8">
+                  <div className="relative w-full bg-black rounded-lg overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                    <iframe 
+                      src="https://www.youtube-nocookie.com/embed/hb7ubuVzYr0?start=19&enablejsapi=1&rel=0" 
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen={true}
+                      className="absolute top-0 left-0 w-full h-full"
+                      title="Welcome to Fuse overview video"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
                 
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
@@ -250,15 +283,18 @@ const FuseCaseStudy = () => {
                   The below video shows the final version of the onboarding project, and the way a user might scroll through it and interact with the information at first glance.
                 </p>
                 
-                <div className="w-full aspect-video rounded-lg overflow-hidden mb-8">
-                  <iframe 
-                    src="https://www.youtube.com/embed/dMjL7yd-0fE" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    className="w-full h-full"
-                    title="Fuse Onboarding Demo"
-                  ></iframe>
+                <div className="w-full mb-8">
+                  <div className="relative w-full bg-black rounded-lg overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                    <iframe 
+                      src="https://www.youtube-nocookie.com/embed/dMjL7yd-0fE?enablejsapi=1&rel=0" 
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen={true}
+                      className="absolute top-0 left-0 w-full h-full"
+                      title="Fuse Onboarding Demo"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
                 
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
@@ -290,15 +326,18 @@ const FuseCaseStudy = () => {
                   New users are dropped into an onboarding project, but their sidebar also contains these three example projects for exploration. The below video shows the way a user might scroll through the product comparison example project.
                 </p>
                 
-                <div className="w-full aspect-video rounded-lg overflow-hidden">
-                  <iframe 
-                    src="https://www.youtube.com/embed/7zaX_PeiQII" 
-                    frameBorder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowFullScreen
-                    className="w-full h-full"
-                    title="Fuse Example Project Demo"
-                  ></iframe>
+                <div className="w-full">
+                  <div className="relative w-full bg-black rounded-lg overflow-hidden" style={{ paddingBottom: '56.25%' }}>
+                    <iframe 
+                      src="https://www.youtube-nocookie.com/embed/7zaX_PeiQII?enablejsapi=1&rel=0" 
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen={true}
+                      className="absolute top-0 left-0 w-full h-full"
+                      title="Fuse Example Project Demo"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
               </section>
 
@@ -314,30 +353,37 @@ const FuseCaseStudy = () => {
                 </p>
                 
                 <div className="w-full mb-8">
-                  <Carousel className="w-full">
+                  <Carousel className="w-full" setApi={setStoryboardApi}>
                     <CarouselContent>
-                      {[
-                        "Fuse_storyboard1",
-                        "Fuse_Storyboard2",
-                        "fuse_storyboard3",
-                        "Fuse_storyboard4",
-                        "Fuse_Storyboard5",
-                        "Fuse_storyboard6",
-                      ].map((name, index) => (
-                        <CarouselItem key={index}>
+                      {storyboardImages.map((name, index) => (
+                        <CarouselItem key={name}>
                           <div className="flex items-center justify-center">
                             <img
                               src={`${import.meta.env.BASE_URL}${name}.png`}
                               alt={`Fuse Storyboard ${index + 1}`}
-                              className="w-full h-auto rounded-lg"
+                              className="w-full h-auto rounded-lg shadow-lg"
                             />
                           </div>
                         </CarouselItem>
                       ))}
                     </CarouselContent>
-                    <CarouselPrevious />
-                    <CarouselNext />
+                    <CarouselPrevious className="!-left-8 !top-1/2 !-translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-200" />
+                    <CarouselNext className="!-right-8 !top-1/2 !-translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 shadow-xl hover:shadow-2xl transition-all duration-200" />
                   </Carousel>
+                  <div className="flex justify-center mt-6 space-x-3">
+                    {storyboardImages.map((name, index) => (
+                      <button
+                        key={name}
+                        onClick={() => storyboardApi?.scrollTo(index)}
+                        className={`w-3 h-3 rounded-full transition-all duration-200 matte-3d-button ${
+                          currentStoryboardIndex === index
+                            ? "bg-[#403930] dark:bg-[#EAE8F3] scale-125"
+                            : "bg-[#D1D5DB] dark:bg-[#EAE8F3]/30"
+                        }`}
+                        aria-label={`Go to storyboard ${index + 1}`}
+                      />
+                    ))}
+                  </div>
                 </div>
               </section>
 

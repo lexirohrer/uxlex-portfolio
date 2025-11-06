@@ -56,10 +56,10 @@ const CaseStudy = () => {
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               QuickBooks Onboarding
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-medium leading-relaxed">
+            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-normal leading-relaxed">
               Tailoring accounting software onboarding to different mindsets
             </p>
           </div>
@@ -67,7 +67,7 @@ const CaseStudy = () => {
         
         <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
-            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+            <div className="flex justify-between items-start mb-6 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
                 
               </div>
@@ -77,7 +77,7 @@ const CaseStudy = () => {
             </div>
 
             {/* Main content grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
               {/* Left content */}
               <div className="space-y-4">
                 {/* Context */}
@@ -108,7 +108,7 @@ const CaseStudy = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 font-hagrid">My role</h2>
                   <p className="text-gray-700 dark:text-[#EAE8F3]/90 leading-relaxed">
-                    Design lead & research co-facilitator
+                    Design lead on a team of 4 designers, 8 engineers, and a Product Manager
                   </p>
                 </div>
 
@@ -137,6 +137,7 @@ const CaseStudy = () => {
                       Usertesting.com
                     </span>
                     <span className="bg-white dark:bg-white/10 bg-opacity-20 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <img src={`${import.meta.env.BASE_URL}Google_logo.png`} alt="Google Suite" className="w-5 h-5" />
                       Google Suite
                     </span>
                   </div>
@@ -155,6 +156,7 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white dark:via-[#1A103F]/60 dark:to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
@@ -319,51 +321,46 @@ const CaseStudy = () => {
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">The results of the test couldn't have been more clearer: users wanted short, sweet, to-the-point setup, and our new flow delivered:</p>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               
-              {/* Control Flow Quote */}
-               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
-                 <div className="mb-4">
-                   <span className="bg-white dark:bg-white/10 bg-opacity-50 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm">
-                     Control Flow
-                   </span>
-                 </div>
-                 <div className="relative">
-                   <img 
-                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
-                     alt="" 
-                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
-                   />
-                   <img 
-                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
-                     alt="" 
-                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
-                   />
-                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-4">
+                  Control Flow (control experience)
+                </p>
+                <div className="relative">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                    alt="" 
+                    className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                  />
+                  <img 
+                    src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                    alt="" 
+                    className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                  />
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">– User 16, an independent business consultant in Canada </p>
-                 </div>
-               </div>
+                </div>
+              </div>
 
-               {/* Streamlined Flow Quote */}
-               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
-                 <div className="mb-4">
-                   <span className="bg-white dark:bg-white/10 bg-opacity-50 text-gray-800 dark:text-[#EAE8F3] border border-gray-200 dark:border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm">
-                     Streamlined Flow
-                   </span>
-                 </div>
-                 <div className="relative">
-                   <img 
-                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
-                     alt="" 
-                     className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
-                   />
-                   <img 
-                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
-                     alt="" 
-                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
-                   />
-                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
+              {/* Streamlined Flow Quote */}
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
+                <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-4">
+                  Streamlined Flow (redesign experience)
+                </p>
+                <div className="relative">
+                  <img 
+                    src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                    alt="" 
+                    className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
+                  />
+                  <img 
+                    src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                    alt="" 
+                    className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
+                  />
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
                   <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">- User 23, runs a coffee shop in Seattle </p>
-                 </div>
-               </div>
+                </div>
+              </div>
              </div>
 
              <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> We measured success on these usability tests three ways: average time to complete, sentiment analysis of quotes, and the ansswers to two key questions</p>
@@ -381,34 +378,43 @@ const CaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> However, despite success on the major usability issues of length, ease of use, and confidence, there was still room to grow. To put the finishing touches on this flow, I examined the usability issues that stopped users from giving the new designs a perfect 7. These included:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point
-                    </span>
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                 </div>
                 
-                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point
-                    </span>
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                 </div>
                 
-                <div className="bg-red-50 dark:bg-red-950/20 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 dark:bg-red-900/30 text-red-800 dark:text-red-200 dark:text-red-200 border border-red-200 dark:border-red-800 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point
-                    </span>
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Generalized uncertainty about whether the product was right for them</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Generalized uncertainty about whether the product was right for them</p>
                 </div>
               </div>
            </section>
@@ -421,49 +427,63 @@ const CaseStudy = () => {
               
               {/* Progress bar pain point */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point 1
-                    </span>
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point 1
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👍</span>
-                      Solution 1
-                    </span>
+                <div className="relative bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👍</span>
+                        Solution 1
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Work with developers to understand why the progress bar doesn't grow predictably, and design around engineering constraints</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Work with developers to understand why the progress bar doesn't grow predictably, and design around engineering constraints</p>
                 </div>
               </div>
               
               <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> Essentially, when the user would complete some steps in the flow, the progress bar at the top would grow a large amount, and when they took other steps, it wouldn't grow at all. This wasn't a bug, but rather a side effect of having a large, branching flow. If the user chose to complete an optional setup job, like learning about invoice creation, the progress calculation would reset the denominator to include the additional 5 screens involved in invoice creation. Because of this, when a user chose to do extra setup, we rewarded them with... a more confusing progress indicator. Not exactly the setup behavior we were trying to encourage  </p>
               <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6"> To fix this issue, we broke the progress bar into two sections: one requied, static section on basic information needed, and a second section for optional setup tasks. This was not only more descriptive, but also allowed the progress bar caluclations to be done <i> after</i> the user had selected or skipped the optional step, so that it could grow predictably and consistently. </p>
-              <img src={`${import.meta.env.BASE_URL}qb-progress-bars.png`} alt="screenshot of the old and new progress bar with a static section for basic information and a dynamic section for optional setup tasks" className="w-full h-auto rounded-2xl mb-20"/>
+              <div className="rounded-3xl mb-20 overflow-hidden bg-white dark:bg-white">
+                <img src={`${import.meta.env.BASE_URL}qb-progress-bars.png`} alt="screenshot of the old and new progress bar with a static section for basic information and a dynamic section for optional setup tasks" className="w-full h-auto"/>
+              </div>
               
             {/* Tooltips pain point */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point 2
-                    </span>
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point 2
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👍</span>
-                      Solution 2
-                    </span>
+                <div className="relative bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👍</span>
+                        Solution 2
+                      </span>
+                    </div>
+                    <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Add tooltips on fields that frequently elicited questions during user testing. Build these on the basis of progressive disclosure, so that users who aren't confused can continue without being slowed down.</p>
                   </div>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg">Add tooltips on fields that frequently elicited questions during user testing. Build these on the basis of progressive disclosure, so that users who aren't confused can continue without being slowed down.</p>
                 </div>
               </div>
               <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-20">
@@ -481,24 +501,30 @@ const CaseStudy = () => {
               </div>
               
               {/* Generalized uncertainty pain point */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👎</span>
-                      Pain Point 3
-                    </span>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div className="relative bg-red-50 dark:bg-red-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-red-100 dark:bg-red-900/30 text-red-800 dark:text-red-200 border border-red-200 dark:border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👎</span>
+                        Pain Point 3
+                      </span>
+                    </div>
+                    <p className="text-[#403930] text-lg">Generalized uncertainty about whether the product was right for them</p>
                   </div>
-                  <p className="text-[#403930] text-lg">Generalized uncertainty about whether the product was right for them</p>
                 </div>
-                <div className="bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl">
-                  <div className="mb-4">
-                    <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
-                      <span className="text-lg">👍</span>
-                      Solution 3
-                    </span>
+                <div className="relative bg-green-50 dark:bg-green-950/20 p-6 rounded-2xl overflow-hidden">
+                  <div className="absolute inset-0 bg-white/20 dark:bg-white/10 pointer-events-none"></div>
+                  <div className="relative">
+                    <div className="mb-4">
+                      <span className="bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-200 border border-green-200 dark:border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
+                        <span className="text-lg">👍</span>
+                        Solution 3
+                      </span>
+                    </div>
+                    <p className="text-[#403930] text-lg"> Worked with 2 motion designers over the span of a month to create an updated welcome screen, and loading screens that give an overview of the many things QuickBooks can do</p>
                   </div>
-                  <p className="text-[#403930] text-lg"> Worked with 2 motion designers over the span of a month to create an updated welcome screen, and loading screens that give an overview of the many things QuickBooks can do</p>
                 </div>
               </div>
                   <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-4 mb-6">

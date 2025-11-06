@@ -28,10 +28,10 @@ const MuvMiCaseStudy = () => {
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               MuvMi Electric Tuk Tuks
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-medium">
+            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-normal leading-relaxed">
               Designing sustainable transportation with participatory design
             </p>
           </div>
@@ -39,7 +39,7 @@ const MuvMiCaseStudy = () => {
         
         <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
-            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+            <div className="flex justify-between items-start mb-6 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
                 
               </div>
@@ -49,7 +49,7 @@ const MuvMiCaseStudy = () => {
             </div>
 
             {/* Main content grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
               {/* Left content */}
               <div className="space-y-4">
                 {/* Context */}
@@ -105,6 +105,7 @@ const MuvMiCaseStudy = () => {
               </div>
             </div>
           </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white dark:via-[#1A103F]/60 dark:to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
@@ -227,26 +228,26 @@ const MuvMiCaseStudy = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">1</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Locals Focus Group</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">MuvMi employees hosted a focus group to discuss pain points with local riders.
                 </p>
               </div>
               
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">2</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Tourist ethnographic ride alongs</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">MuvMi employees and I observed tourists using the service to understand their expectations and pain points with calling, finding, and riding the Tuk Tuks.</p>
               </div>
 
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">3</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3"> Tourist paper prototyping</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">I created low-fidelity paper feature cards, and asked tourists to construct their ideal app experience.</p>
               </div>
 
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">4</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Synthesis & implementation</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md"> I consolidated insights from both user groups and worked with MuvMi to implement unified service concepts.</p>
               </div>
@@ -287,17 +288,25 @@ const MuvMiCaseStudy = () => {
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Tourist users: ethnographic ride alongs</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-md mb-6"> After observing the structure of these focus groups, I designed the tourist research phases to coach MuvMi employees on using resesarch methdos that would allow the user to "show not tell" what they liked and didn't like about the service. ALongside a few MuvMi employees, I conducted ethnographic research, <strong> observing 4 groups of real tourists using the MuvMi app and Tuk Tuk service.</strong> Each tourist group was on vacation in Bangkok, some for the first time and others as repeat visitors. We recruited these tourists through "Travel in Bangkok" Facebook groups, local walking tours, and flyers in nearby hotel lobbies, and they were compensated after the research session with a day pass for free rides on the MuvMi Tuk Tuks.
             </p>
-            <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
-              <img
-                src={`${import.meta.env.BASE_URL}MuvMi-ridealong.png`}
-                alt="MuvMi ride along"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              />
-              <img
-                src={`${import.meta.env.BASE_URL}MuvMi-ridealong-app.png`}
-                alt="MuvMi ride along app view"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              /> 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {[{
+                src: "MuvMi-ridealong.png",
+                alt: "MuvMi ride along"
+              }, {
+                src: "MuvMi-ridealong-app.png",
+                alt: "MuvMi ride along app view"
+              }].map((image) => (
+                <div
+                  key={image.src}
+                  className="rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}${image.src}`}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> Each session followed a similar structure:
             </p>
@@ -374,17 +383,25 @@ const MuvMiCaseStudy = () => {
                   </p>
                 </div>
               </div>
-            <div className="flex flex-col md:flex-row gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
-              <img
-                src={`${import.meta.env.BASE_URL}MuvMi-workshop.png`}
-                alt="MuvMi ride along"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              />
-              <img
-                src={`${import.meta.env.BASE_URL}MuvMi-pps.png`}
-                alt="MuvMi ride along app view"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              /> 
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              {[{
+                src: "MuvMi-workshop.png",
+                alt: "MuvMi participatory workshop"
+              }, {
+                src: "MuvMi-pps.png",
+                alt: "MuvMi participatory prototype"
+              }].map((image) => (
+                <div
+                  key={image.src}
+                  className="rounded-2xl overflow-hidden"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}${image.src}`}
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))}
             </div>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> In an ideal world, tourists would generate these mockups of the app from scratch; however, the extremely time sensitive nature of working with real tourists necessitated a hybrid paper prototyping / sketching activity, which could be constrained to 15 minute sessions. This activity was generative rather than evaluative, allowing MuvMi to gain understand <strong>what features they should prioritize building or improving based on what users omitted, not what they critiqued. </strong>This alternative method prevented feedback from being biased by cultural norms of social harmony or authority.
             </p>
@@ -404,9 +421,9 @@ const MuvMiCaseStudy = () => {
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Synthesis & implementation</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> After conducting both tourist and local user research, key differences between the two emerged. For example:
             </p>
-            <div className="flex flex-col md:flex-row gap-6 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Local Riders Box */}
-              <div className="flex-1 bg-gray-100 dark:bg-white/5 rounded-2xl p-6 shadow-sm">
+              <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-6 shadow-sm">
                 <h4 className="font-bold text-[#403930] dark:text-[#EAE8F3] text-xl mb-4 text-left">Local Riders...</h4>
                 <ul className="space-y-4 text-[#403930] dark:text-[#EAE8F3] text-lg list-disc list-inside">
                   <li>
@@ -421,7 +438,7 @@ const MuvMiCaseStudy = () => {
                 </ul>
               </div>
               {/* Tourist Riders Box */}
-              <div className="flex-1 bg-gray-100 dark:bg-white/5 rounded-2xl p-6 shadow-sm">
+              <div className="bg-gray-100 dark:bg-white/5 rounded-2xl p-6 shadow-sm">
                 <h4 className="font-bold text-[#403930] dark:text-[#EAE8F3] text-xl mb-4 text-left">Tourists...</h4>
                 <ul className="space-y-4 text-[#403930] dark:text-[#EAE8F3] text-lg list-disc list-inside">
                   <li>
@@ -505,12 +522,12 @@ const MuvMiCaseStudy = () => {
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                 alt="" 
-                className="absolute top-8 left-8 hidden dark:block w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
               />
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                 alt="" 
-                className="absolute top-8 left-8 block dark:hidden w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
               />
               <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">Activities like paper prototyping felt like another layer — the user has to think deeper on what they want and why, instead of just tell us what they don't like.</p>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
@@ -525,12 +542,12 @@ const MuvMiCaseStudy = () => {
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                 alt="" 
-                className="absolute top-8 left-8 hidden dark:block w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 hidden dark:block w-16 h-16 opacity-60"
               />
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                 alt="" 
-                className="absolute top-8 left-8 block dark:hidden w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
               />
               <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness.</p>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import CaseStudyNavigation from "@/components/sections/CaseStudyNavigation";
@@ -7,6 +7,48 @@ const BridgeBoxCaseStudy = () => {
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
+
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [isLightboxVisible, setIsLightboxVisible] = useState(false);
+  const [imageRatios, setImageRatios] = useState<Record<string, number>>({});
+  const closeTimeoutRef = useRef<number | null>(null);
+
+  const handleOpenLightbox = (src: string) => {
+    if (closeTimeoutRef.current) {
+      window.clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setLightboxImage(src);
+    requestAnimationFrame(() => {
+      setIsLightboxVisible(true);
+    });
+  };
+
+  const handleCloseLightbox = () => {
+    setIsLightboxVisible(false);
+    closeTimeoutRef.current = window.setTimeout(() => {
+      setLightboxImage(null);
+      closeTimeoutRef.current = null;
+    }, 200);
+  };
+
+  const handleAfterImageLoad = (key: string) => (event: React.SyntheticEvent<HTMLImageElement>) => {
+    const { naturalWidth, naturalHeight } = event.currentTarget;
+    if (naturalWidth && naturalHeight) {
+      setImageRatios((previous) => ({
+        ...previous,
+        [key]: naturalWidth / naturalHeight,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        window.clearTimeout(closeTimeoutRef.current);
+      }
+    };
   }, []);
 
   return (
@@ -28,10 +70,10 @@ const BridgeBoxCaseStudy = () => {
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               BridgeBox 
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-medium">
+            <p className="text-lg lg:text-xl text-gray-700 dark:text-[#EAE8F3]/90 font-normal leading-relaxed">
               Designing disaster response tools in rural Thailand
             </p>
           </div>
@@ -39,7 +81,7 @@ const BridgeBoxCaseStudy = () => {
         
         <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             {/* Header with logo */}
-            <div className="flex justify-between items-start mb-12 max-lg:flex-col max-lg:gap-6">
+            <div className="flex justify-between items-start mb-6 max-lg:flex-col max-lg:gap-6">
               <div className="flex-1">
                 
               </div>
@@ -49,7 +91,7 @@ const BridgeBoxCaseStudy = () => {
             </div>
 
             {/* Main content grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-8">
               {/* Left content */}
               <div className="space-y-4">
                 {/* Context */}
@@ -108,6 +150,7 @@ const BridgeBoxCaseStudy = () => {
               </div>
             </div>
           </div>
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white dark:via-[#1A103F]/60 dark:to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
@@ -124,17 +167,17 @@ const BridgeBoxCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Goals</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-yellow-50 dark:bg-yellow-950/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#F7E59E] text-[#403E33] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Adapt HCD Methods</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Adapt Design Research methods like participatory design to Thai cultural contexts as part of my Fulbright research.</p>
               </div>
-              <div className="bg-yellow-50 dark:bg-yellow-950/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#FDEFB4] text-[#403930] dark:text-[#EAE8F3] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Increase Access</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Make BridgeBox more user-friendly and accessible to rural users with lower digital literacy rates.</p>
               </div>
-              <div className="bg-yellow-50 dark:bg-yellow-950/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#F7E59E] text-[#403930] dark:text-[#EAE8F3] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Integrate Responsible AI</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Design AI support features to help responders categorize and prioritize disaster reports, so they can focus on the most urgent cases.</p>
@@ -152,25 +195,25 @@ const BridgeBoxCaseStudy = () => {
             {/* Process graphic */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">1</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Planned co-design workshops</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">First, we decided on which participatory methods would best elicit honest critique and leverage Thai collectivist cultural strengths among</p>
               </div>
               
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">2</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Training local facilitators</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Next, I trained Thai collaborators in workshop facilitation to overcome language barriers, and ensure they could reuse these skills after our partnership ended. </p>
               </div>
 
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">3</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Ran Co-design workshops </h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Co-designed features with rural users through paper prototyping and generative sketching activities. Iterated on these workshops as we found what worked and didn't.</p>
               </div>
 
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">4</div>
+                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
                 <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Designed UI & AI features</h4>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-md">I overhauled the UI based on user-generated designs, and built an ML models to auto-categorize emergency cases by urgency</p>
               </div>
@@ -249,18 +292,20 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6"> Some of the workshops were originally hosted as hybrid – however, we quickly saw that this format was going to prevent true collaboration. With rural participants, <strong>in person sessions were essential for building trust and comfort. </strong>Many users weren’t used to juggling tools like Zoom and an online whiteboard, so being face to face with facilitators and using familiar tools like pen and paper put them at ease and allowed them to meaningfully participate without insecurity or confusion. 
               </p>
               
-               <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
-              <img
-                src={`${import.meta.env.BASE_URL}BBx_Songkhla1.png`}
-                alt="Picture of workshop participants in Songkhla Province"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              />
-              <img
-                src={`${import.meta.env.BASE_URL}BBx_workshop1.png`}
-                alt="Picture of HRDF workshop participants"
-                className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-              /> 
-            </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 {["BBx_Songkhla1.png", "BBx_workshop1.png"].map((image, index) => (
+                 <div
+                   key={image}
+                   className="rounded-2xl overflow-hidden"
+                 >
+                     <img
+                       src={`${import.meta.env.BASE_URL}${image}`}
+                       alt={index === 0 ? "Picture of workshop participants in Songkhla Province" : "Picture of HRDF workshop participants"}
+                     className="w-full h-full object-cover"
+                     />
+                   </div>
+                 ))}
+               </div>
             <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
                  <div className="relative">
                    <img 
@@ -289,18 +334,20 @@ const BridgeBoxCaseStudy = () => {
                 Workshops used generative sketching to invite participants to imagine solutions beyond the existing software. In this exercise, users were given a situation like "Imagine that there is a flash flood, and you are working on dispatching emergency aid to different areas. Think about the information would you want people calling for help to provide to you to help you dispatch the right aid to the right area. Keeping in mind that reporters need to be able to fill out this information as quickly as possible, what should the screens look like to report an emergency?"
               </p>
 
-               <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch justify-center mb-6 w-full max-w-full md:h-[350px] lg:h-[450px] xl:h-[500px]">
-               <img
-                 src={`${import.meta.env.BASE_URL}BBx_sketch1.png`}
-                 alt="Example 1 of sketching activity"
-                 className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-               />
-               <img
-                 src={`${import.meta.env.BASE_URL}BBx_sketch2.png`}
-                 alt="Example 2 of sketching activity"
-                 className="rounded-xl w-full md:w-auto md:h-full md:max-w-full object-contain"
-               /> 
-             </div>
+               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                 {["BBx_sketch1.png", "BBx_sketch2.png"].map((image, index) => (
+                 <div
+                   key={image}
+                   className="rounded-2xl overflow-hidden"
+                 >
+                     <img
+                       src={`${import.meta.env.BASE_URL}${image}`}
+                       alt={index === 0 ? "Example 1 of sketching activity" : "Example 2 of sketching activity"}
+                     className="w-full h-full object-cover"
+                     />
+                   </div>
+                 ))}
+               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               This approach encouraged participants to propose ideas, share what they came up with, compare alternatives, and frame feedback as preferences rather than critiques. The generative sketching activities yielded tangible concepts that met real user needs, many of which BridgeBox later developed. These included:
               </p>
@@ -344,12 +391,143 @@ const BridgeBoxCaseStudy = () => {
                  </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
-                This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand.
+                This buy in is crucial not only for efficient emergency response, but also for BridgeBox itself, who work under immense pressure to scale their solutions quickly amid the dramatic climate changes in Thailand. When we had completed usability tests, design requirements sessions, and generative sketching workshops, I went heads down to integrate the information into a fresh, clean design that would prioritize the digital comfort levels of this specific user group. 
               </p>
             </div>
 
-            <img src={`${import.meta.env.BASE_URL}BBX_AI_dashboard.png`} alt="Screenshot of the BridgeBox case dashboard" className="w-full h-auto rounded-2xl mb-6" />
+            {/* Before/After UI Comparisons */}
+            <div className="mb-12">
+              <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Case List Page:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">Before</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.caseList ? { aspectRatio: `${imageRatios.caseList}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_before_caseList.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_before_caseList.png`}
+                        alt="Case List page before"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">After</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.caseList ? { aspectRatio: `${imageRatios.caseList}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_after_caseList.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_after_caseList.png`}
+                        alt="Case List page after"
+                        onLoad={handleAfterImageLoad('caseList')}
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
 
+              <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Case Page:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">Before</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.case ? { aspectRatio: `${imageRatios.case}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_before_case.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_before_case.png`}
+                        alt="Case page before"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">After</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.case ? { aspectRatio: `${imageRatios.case}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_after_case.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_after_case.png`}
+                        alt="Case page after"
+                        onLoad={handleAfterImageLoad('case')}
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Messages Page:</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">Before</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.messages ? { aspectRatio: `${imageRatios.messages}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_before_messages.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_before_messages.png`}
+                        alt="Messages page before"
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <div>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-2">After</p>
+                  <div
+                    className="group rounded-2xl overflow-hidden transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+                    style={imageRatios.messages ? { aspectRatio: `${imageRatios.messages}` } : undefined}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => handleOpenLightbox(`${import.meta.env.BASE_URL}BBx_after_messages.png`)}
+                      className="relative block w-full h-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#6E59A5]"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}BBx_after_messages.png`}
+                        alt="Messages page after"
+                        onLoad={handleAfterImageLoad('messages')}
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
             {/* AI for Social Good */}
             <div className="mb-12">
               <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">AI for Social Good</h3>
@@ -361,17 +539,17 @@ const BridgeBoxCaseStudy = () => {
                </p>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">1</div>
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Gather Data</h4>
                    <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Collected and organized historical BridgeBox case data for model training.</p>
                  </div>
                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">2</div>
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Train AI Model</h4>
                    <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Trained and validated a simple model to auto-tag new cases by urgency and category.</p>
                  </div>
                  <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white rounded-full text-xl font-bold mb-4">3</div>
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] dark:bg-[#EAE8F3] text-white dark:text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                    <h4 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-3">Handoff for Integration</h4>
                    <p className="text-[#403930] dark:text-[#EAE8F3] text-md">Packaged the trained model and collaborated with engineering for platform integration.</p>
                  </div>
@@ -416,7 +594,7 @@ const BridgeBoxCaseStudy = () => {
                  </video>
                </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mt-6">
-                At the time of writing, BridgeBox has implemented this feature, and is seeking further funding from partners to enable it for their largest clients.
+                After training the model and collaborating with our single engineer to ensure it passed sufficient precision and recall levels, I handed off the Google Vertex credentials for export and implementation. At the time of writing, BridgeBox has implemented this feature, and is seeking further funding from partners to enable it for their largest clients.
               </p>
             </div>
           </section>
@@ -425,28 +603,9 @@ const BridgeBoxCaseStudy = () => {
           <section className="mb-16">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">End to End Solution</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
-              The end to end designs incorporated co-designed features, AI-assisted case categorization, and a tiered subscription model for organizations with different resource constraints. Key functionality included:
+              The end to end designs had incorporated useful new co-designed features and AI-assisted case categorization – however, BridgeBox's clients could be anyone using a case management system rurally, from large farms managing migrant workers to NGOs delivering disaster relief. To make this system work for everyone, BridgeBox included, I was asked to divide the UI into a tiered subscription model, and explore what the "lite" vs "pro" versions of the UI would look like. This exploration yielded one of the most beautiful Figma files I've made yet (I'm a big color coding gal):
             </p>
-            <div className="space-y-4 mb-6">
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                  A mobile app for rural reporters with offline and proxy functionality.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                  A desktop interface for responders to manage cases, with AI-driven case prioritization.
-                </p>
-              </div>
-              <div className="flex items-start gap-4">
-                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
-                <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                  A "Bridge Alert" feature to send early warnings and critical announcements through mass text messages and app announcements
-                </p>
-              </div>
-            </div>
+            <img src={`${import.meta.env.BASE_URL}BBx_tiers.png`} alt="Subscription Tiers" className="w-full h-auto rounded-lg mb-6" />
           </section>
 
           {/* Impact */}
@@ -454,10 +613,16 @@ const BridgeBoxCaseStudy = () => {
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Outcomes</h2>
             <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Concrete Changes</h3>
             <div className="space-y-4 mb-8">
+            <div className="flex items-start gap-4">
+                <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
+                <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
+                  Complete UI overhaul based on usability testing and participatory design workshop
+                </p>
+              </div>
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                  Concrete features added to the BridgeBox platform within the collaboration period.
+                  7 new clients aquired within 3 months of the UI redesign
                 </p>
               </div>
               <div className="flex items-start gap-4">
@@ -475,14 +640,9 @@ const BridgeBoxCaseStudy = () => {
               <div className="flex items-start gap-4">
                 <div className="w-2 h-2 bg-[#557592] dark:bg-[#EAE8F3] rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-[#403930] dark:text-[#EAE8F3] text-lg">
-                  Employees consistently rated participatory design as producing more "realistic and usable" solutions than interviews or focus groups.
+                  A clear set adaptations for making participatory design work with users who are rural, lower technical literacy, and identify with Thai cultural norms.
                 </p>
               </div>
-            </div>
-            <div className="bg-blue-50 dark:bg-blue-950/20 border-l-4 border-blue-400 p-6 rounded-r-lg">
-              <p className="text-blue-800 font-medium">
-                📍 [Placeholder for "metrics at a glance" graphic: e.g. xx% increase in adoption, xx% faster case triage, 5 participatory workshops]
-              </p>
             </div>
           </section>
 
@@ -523,11 +683,6 @@ const BridgeBoxCaseStudy = () => {
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               I was drawn to this collaboration for my Fulbright Fellowship because of the opportunity to work on Smart City tech for frontline communities, who bear the brunt of effects from the climate crisis. My approach to designing disaster response tools is so much more than just building software — it's about facilitating trust, participation, and context-sensitive innovation to engrain self-empowered resilience into the communities that need it most.
             </p>
-            <div className="bg-yellow-50 dark:bg-yellow-950/20 border-l-4 border-yellow-400 p-6 rounded-r-lg">
-              <p className="text-yellow-800 font-medium">
-                📍 [Placeholder for final UI screenshots: offline reporting, Bridge Alert, AI case categorization]
-              </p>
-            </div>
           </section>
 
           {/* Case Study Navigation */}
@@ -537,6 +692,38 @@ const BridgeBoxCaseStudy = () => {
           </main>
           <Footer />
         </div>
+
+      {lightboxImage && (
+        <div
+          className={`fixed inset-0 z-[999] bg-black/80 backdrop-blur-sm flex items-center justify-center p-6 transition-opacity duration-200 ${
+            isLightboxVisible ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
+          onClick={handleCloseLightbox}
+          role="dialog"
+          aria-modal="true"
+        >
+          <div
+            className={`relative max-w-5xl w-full transition-all duration-300 ${
+              isLightboxVisible ? 'scale-100 translate-y-0' : 'scale-95 translate-y-2'
+            }`}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={handleCloseLightbox}
+              className="absolute -top-12 right-0 text-white/90 hover:text-white transition-colors text-lg font-medium"
+              aria-label="Close image preview"
+            >
+              Close ✕
+            </button>
+            <img
+              src={lightboxImage}
+              alt="BridgeBox UI preview"
+              className="w-full h-auto rounded-3xl shadow-2xl"
+            />
+          </div>
+        </div>
+      )}
     </>
   );
 };

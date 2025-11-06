@@ -6,23 +6,23 @@ const caseStudies = [
   {
     href: "/case-study/quickbooks-onboarding",
     title: "QuickBooks Onboarding",
-    description: "Helping small business owners learn money management",
-    tools: ["Figma", "Figjam", "Usertesting.com", "Google Suite"],
+    description: "Leading the design effort to streamline onboarding for small business owners",
+    tools: ["Figma", "Figjam", "Usertesting.com", "Google Suite", "37% metric bump"],
     image: "QB cover.png",
     imageAlt: "QuickBooks Onboarding"
   },
   {
     href: "/case-study/muvmi-tuk-tuks",
-    title: "MuvMi: Co-designing electric Tuk Tuks",
-    description: "Sustainable mobility for Thai tourists and citizens",
+    title: "MuvMi electric Tuk Tuks",
+    description: "Co-designed sustainable mobility options with Thai tourists and citizens",
     tools: ["Figma", "User Research", "Co-design", "Prototyping", "Workshop Facilitation"],
     image: "MuvMi cover.png",
     imageAlt: "MuvMi Electric Tuk Tuk"
   },
   {
     href: "/case-study/bridgebox-disaster-response",
-    title: "Designing for Disaster Response with BridgeBox",
-    description: "Human-centered design for climate disaster communication in rural Thailand",
+    title: "BridgeBox Disaster Response System",
+    description: "Overhauled the UI for a climate disaster communication in rural Thailand",
     tools: ["Figma", "Participatory Design", "User Research", "AI/ML", "Workshop Facilitation", "AI for social good"],
     image: "BBX cover.png",
     imageAlt: "BridgeBox Disaster Response"
@@ -30,7 +30,7 @@ const caseStudies = [
   {
     href: "/case-study/fuse-chrome-extension",
     title: "Fuse Google Chrome Extension",
-    description: "Designing a second brain for researchers collecting information",
+    description: "Designed a second brain for researchers making sense of information",
     tools: ["Sketch", "Illustrator", "InDesign", "Photoshop", "InVision Studio"],
     image: "Fuse cover.png",
     imageAlt: "Fuse Chrome Extension"
@@ -62,9 +62,9 @@ const CaseStudies = () => {
               className="block w-full group"
             >
               <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99]">
-                <div className="relative grid grid-cols-1 md:grid-cols-2 gap-0 min-h-[400px] md:min-h-[500px]">
+                <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
                   {/* Image Column */}
-                  <div className={`relative ${imageOnLeft ? 'order-1' : 'order-2'} flex items-center justify-center p-6 md:p-10`}>
+                  <div className={`relative order-1 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'} flex items-center justify-center p-6 lg:p-10`}>
                     <img
                       src={`${import.meta.env.BASE_URL}${imageSrc}`}
                       className="w-full h-full max-h-[400px] object-contain"
@@ -73,7 +73,7 @@ const CaseStudies = () => {
                   </div>
                   
                   {/* Info Column */}
-                  <div className={`relative ${imageOnLeft ? 'order-2' : 'order-1'} flex flex-col justify-center p-8 md:p-12`}>
+                  <div className={`relative order-2 ${imageOnLeft ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center p-8 lg:p-12`}>
                     <h3 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 font-hagrid group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                       {study.title}
                     </h3>
