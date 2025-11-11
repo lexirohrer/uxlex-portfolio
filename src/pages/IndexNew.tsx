@@ -208,20 +208,51 @@ const IndexNew = () => {
           <Header />
         </div>
         
-        {/* Hero Text Box - Behind Mountains (z-0) */}
+        {/* Hero Text - Behind Mountains (z-0) */}
         <div className="relative z-0 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 mb-3">
-          <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl px-4 md:px-6 py-6 md:py-8 shadow-2xl group transition-all duration-300 w-full">
-            <div className="absolute inset-0 bg-gradient-to-br from-orange-500/20 via-pink-500/20 to-purple-500/20 rounded-3xl"></div>
-            <div className="relative z-10 max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[72%] xl:max-w-[68%]">
-                  <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
+          <div className="px-4 md:px-6 py-6 md:py-8 w-full">
+            <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[72%] xl:max-w-[68%]">
+              <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
                 Hi, I'm Lexi <span className="text-xl md:text-2xl lg:text-3xl font-normal text-white/90">a social impact technologist</span>
-                  </h1>
+              </h1>
               <p className="text-white/80 text-base">
                 This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
               </p>
+              <div className="mt-6 flex flex-wrap items-center gap-4">
+                <a
+                  href="https://www.linkedin.com/in/alexandra-rohrer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                >
+                  <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-12 h-12 drop-shadow-lg" />
+                </a>
+                <a
+                  href="mailto:lexirohrer@gmail.com"
+                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                >
+                  <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-12 h-12 drop-shadow-lg" />
+                </a>
+                <a
+                  href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                >
+                  <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-12 h-12 drop-shadow-lg" />
+                </a>
+                <a
+                  href="https://uxlex.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                >
+                  <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-12 h-12 drop-shadow-lg" />
+                </a>
+              </div>
             </div>
           </div>
-                </div>
+        </div>
         
         {/* Other Boxes - In Front of Mountains (z-20) */}
         <div className="relative z-20 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 pb-16 mt-3">
@@ -244,68 +275,71 @@ const IndexNew = () => {
             )}
 
             {/* Middle Column - Currently + Experience Stacked */}
-            <div className="hidden lg:flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
-              
-              {/* Currently Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 md:p-6 shadow-2xl group transition-all duration-300 flex-1 flex items-center justify-center min-h-0">
-                <div className="relative z-10 w-full">
-                  <div className="grid grid-cols-3 gap-2">
-                    <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-3xl md:text-4xl">🌏</div>
-                      <div className="text-white/90 text-base text-center">Based between Bangkok & Bay Area</div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-3xl md:text-4xl">🌱</div>
-                      <div className="text-white/90 text-base text-center">Leading Design @ Basilica Bio</div>
-                    </div>
-                    <div className="flex flex-col items-center justify-center gap-1">
-                      <div className="text-3xl md:text-4xl">📣</div>
-                      <div className="text-white/90 text-base text-center">Open to new collaborations</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Experience Box */}
-              <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-4 md:p-6 shadow-2xl group transition-all duration-300 flex-1 flex items-center justify-center min-h-0">
-                <div className="relative z-10 w-full">
-                  <div className="grid grid-cols-3 gap-2 text-center">
-                    <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
-                      <div className="text-white/70 text-base">years experience</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">35</div>
-                      <div className="text-white/70 text-base">Countries explored</div>
-                    </div>
-                    <div>
-                      <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
-                      <div className="text-white/70 text-base">Conference Talks & Panels</div>
+            {false && (
+              <div className="hidden lg:flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
+                
+                {/* Currently Box */}
+                <div className="p-4 md:p-6 flex-1 flex items-center justify-center min-h-0">
+                  <div className="w-full">
+                    <div className="grid grid-cols-3 gap-2">
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="text-3xl md:text-4xl">🌏</div>
+                        <div className="text-white/90 text-base text-center">Based between Bangkok & Bay Area</div>
+                      </div>
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="text-3xl md:text-4xl">🌱</div>
+                        <div className="text-white/90 text-base text-center">Leading Design @ Basilica Bio</div>
+                      </div>
+                      <div className="flex flex-col items-center justify-center gap-1">
+                        <div className="text-3xl md:text-4xl">📣</div>
+                        <div className="text-white/90 text-base text-center">Open to new collaborations</div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-            </div>
+                {/* Experience Box */}
+                <div className="p-4 md:p-6 flex-1 flex items-center justify-center min-h-0">
+                  <div className="w-full">
+                    <div className="grid grid-cols-3 gap-2 text-center">
+                      <div>
+                        <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
+                        <div className="text-white/70 text-base">years experience</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl md:text-3xl font-bold text-white">35</div>
+                        <div className="text-white/70 text-base">Countries explored</div>
+                      </div>
+                      <div>
+                        <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
+                        <div className="text-white/70 text-base">Conference Talks & Panels</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            )}
 
             {/* Fun Facts - 4 square cards in grid (desktop), 3 cards stacked (mobile) */}
-            <div className="w-full lg:flex-1 flex flex-col min-h-0 lg:self-stretch">
-              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-2 lg:flex-1 lg:min-h-0 fun-facts-grid">
-                  {displayedFacts.slice(0, 3).map((fact, index) => {
+            <div className="w-full flex flex-col min-h-0 lg:items-start">
+              <div className="relative w-full">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5 lg:gap-6 lg:max-w-[520px]">
+                  {displayedFacts.slice(0, 4).map((fact, index) => {
                     const isFlipped = flippedCards.has(index);
                     return (
                       <div
                         key={`${fact.text}-${index}`}
-                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
-                        style={{ perspective: "1000px", minHeight: '200px', height: 'auto' }}
+                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300"
+                        style={{ perspective: "1000px", minHeight: "187px" }}
                         onClick={() => toggleFlip(index)}
                       >
                         <div
-                          className={`relative w-full h-full ${isRotating ? 'animate-flip-full' : 'transition-transform duration-500'}`}
+                          className={`relative w-full h-full ${isRotating ? "animate-flip-full" : "transition-transform duration-500"}`}
                           style={{
-                            transform: isRotating ? undefined : (isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"),
+                            transform: isRotating ? undefined : isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
                             transformStyle: "preserve-3d",
-                            minHeight: '200px'
+                          minHeight: "187px"
                           }}
                         >
                           {/* Front of card - shows "flip for fun fact" */}
@@ -335,65 +369,20 @@ const IndexNew = () => {
                       </div>
                     );
                   })}
-                  {/* Show 4th card only on desktop */}
-                  {displayedFacts.length > 3 && displayedFacts.slice(3, 4).map((fact, index) => {
-                    const actualIndex = index + 3;
-                    const isFlipped = flippedCards.has(actualIndex);
-                    return (
-                      <div
-                        key={`${fact.text}-${actualIndex}`}
-                        className="hidden lg:block relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 h-full w-full"
-                        style={{ perspective: "1000px" }}
-                        onClick={() => toggleFlip(actualIndex)}
-                      >
-                        <div
-                          className={`relative w-full h-full ${isRotating ? 'animate-flip-full' : 'transition-transform duration-500'}`}
-                          style={{
-                            transform: isRotating ? undefined : (isFlipped ? "rotateY(180deg)" : "rotateY(0deg)"),
-                            transformStyle: "preserve-3d"
-                          }}
-                        >
-                          {/* Front of card - shows "flip for fun fact" */}
-                          <div
-                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden"
-                            style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                              transform: "rotateY(0deg)"
-                            }}
-                          >
-                            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">flip me 👀</span>
-                          </div>
-                          {/* Back of card - shows emoji and text */}
-                          <div
-                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-3 backface-hidden"
-                            style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                              transform: "rotateY(180deg)"
-                            }}
-                          >
-                            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
-                            <span className="text-white/90 text-base leading-relaxed text-center">{fact.text}</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                  {/* Central Shuffle Button - Hidden on mobile, shown on desktop */}
-                  <button
-                    onClick={shuffleFacts}
-                    className="hidden lg:flex absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 w-24 h-24 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
-                    aria-label="Shuffle facts"
-                  >
-                    <img 
-                      src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                      alt="Shuffle"
-                      className="w-8 h-8 relative z-10 drop-shadow-lg"
-                    />
-                  </button>
+                </div>
+                <button
+                  onClick={shuffleFacts}
+                  className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 pointer-events-auto"
+                  aria-label="Shuffle facts"
+                >
+                  <img 
+                    src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                    alt="Shuffle"
+                    className="w-7 h-7 drop-shadow-lg"
+                  />
+                </button>
               </div>
-              {/* Mobile Shuffle Button - Full width, below cards */}
+              {/* Mobile Shuffle Button */}
               <button
                 onClick={shuffleFacts}
                 className="lg:hidden w-full mt-4 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
@@ -406,22 +395,6 @@ const IndexNew = () => {
                 />
                 <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
               </button>
-            </div>
-
-            {/* App Icons Column - Full row height */}
-            <div className="hidden lg:flex flex-col justify-between w-auto gap-4">
-              <a href="https://www.linkedin.com/in/alexandra-rohrer/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
-              </a>
-              <a href="mailto:lexirohrer@gmail.com" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
-              </a>
-              <a href="https://calendar.app.google/K8owt9w3d5wnVL9B6" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
-              </a>
-              <a href="https://uxlex.substack.com/" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center hover:scale-110 transition-all duration-300">
-                <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-full h-full max-w-[77px] max-h-[77px] object-contain drop-shadow-lg" />
-              </a>
             </div>
 
           </div>
