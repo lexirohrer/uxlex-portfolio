@@ -23,7 +23,7 @@ const Resume = () => {
       />
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-transparent min-h-screen">
         <Header />
-        <main className="px-[120px] py-[100px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-[40px] relative z-10">
+        <main className="px-[120px] pt-[120px] pb-[100px] max-md:px-10 max-md:pt-[96px] max-md:pb-[60px] max-sm:px-5 max-sm:pt-[88px] max-sm:pb-[40px] relative z-10">
           <div className="mb-10">
             <div className="flex items-center justify-between mb-6 max-sm:flex-col max-sm:items-start max-sm:gap-4">
               <h1 className="text-foreground text-[40px] font-semibold font-hagrid">Resume</h1>
@@ -209,14 +209,6 @@ const Resume = () => {
                         <a href="https://calendar.app.google/F1HEuEakYHH7GsBbA" className="text-foreground/70 underline hover:text-foreground transition-colors">Schedule a meeting</a>
                       </div>
                     </div>
-                  </div>
-                  <div className="h-full w-32 flex-shrink-0 flex items-start justify-end max-sm:hidden">
-                    <img
-                      src={`${import.meta.env.BASE_URL}Memoji.png`}
-                      alt="Lexi Rohrer Memoji Avatar"
-                      className="w-full h-full object-contain bg-transparent select-none pointer-events-none"
-                      style={{ background: "transparent" }}
-                    />
                   </div>
                 </div>
               </div>

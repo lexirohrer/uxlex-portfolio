@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import KeepInTouch from "@/components/sections/KeepInTouch";
@@ -49,14 +49,26 @@ const IndexNew = () => {
   // Parallax scroll effect
   const { scrollY } = useScroll();
   
-  // Background layer moves much faster for dramatic effect
-  const backgroundY = useTransform(scrollY, [0, 1000], [0, 600]);
-  // Mountains layer moves at medium-fast speed
-  const mountainsY = useTransform(scrollY, [0, 1000], [0, 350]);
+  // Background layers with parallax offsets (farther layers move less)
+  const backgroundY = useTransform(scrollY, [0, 1000], [0, 150]);
+  const backMountainsY = useTransform(scrollY, [0, 1000], [0, 300]);
+  const mountainsY = useTransform(scrollY, [0, 1000], [0, 450]);
   
   const caseStudies = [
    
   ];
+
+  const fadeUp: Variants = {
+    hidden: { opacity: 0, y: 80 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.6,
+        ease: [0.18, 1.15, 0.28, 1] as [number, number, number, number]
+      }
+    }
+  };
 
   const testimonials = [
     {
@@ -158,7 +170,7 @@ const IndexNew = () => {
   
   // Toggle flip state of a card
   const toggleFlip = (index: number) => {
-    setFlippedCards(prev => {
+    setFlippedCards((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(index)) {
         newSet.delete(index);
@@ -167,6 +179,62 @@ const IndexNew = () => {
       }
       return newSet;
     });
+  };
+
+  const renderFactCard = (
+    fact: typeof displayedFacts[number],
+    index: number,
+    keyPrefix: string,
+    layout: "grid" | "stack" = "grid"
+  ) => {
+    const isFlipped = flippedCards.has(index);
+    return (
+      <div
+        key={`${keyPrefix}-${fact.text}`}
+        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 flex"
+        style={{ perspective: "1000px" }}
+        onClick={() => toggleFlip(index)}
+      >
+        <div
+          className={`relative w-full ${isRotating ? "animate-flip-full" : "transition-transform duration-500"}`}
+          style={{
+            transform: isRotating
+              ? undefined
+              : isFlipped
+              ? "rotateY(180deg)"
+              : "rotateY(0deg)",
+            transformStyle: "preserve-3d",
+            minHeight: layout === "stack" ? "240px" : "220px",
+          }}
+        >
+          <div
+            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden px-6"
+            style={{
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              transform: "rotateY(0deg)",
+            }}
+          >
+            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">
+              flip me 👀
+            </span>
+          </div>
+          <div
+            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
+            style={{
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+            }}
+          >
+            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
+            <span className="text-white/90 text-base leading-relaxed text-center">
+              {fact.text}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -184,10 +252,24 @@ const IndexNew = () => {
         {/* Parallax Background Layers */}
         <motion.div
           style={{ y: backgroundY }}
-          className="absolute inset-0 w-full h-full z-0"
+          className="absolute inset-0 w-full h-full z-0 overflow-hidden"
+        >
+          <video
+            src={`${import.meta.env.BASE_URL}Clouds_bckg.mp4`}
+            className="w-full h-full object-cover"
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+        </motion.div>
+        
+        <motion.div
+          style={{ y: backMountainsY }}
+          className="absolute inset-0 w-full h-full z-[1]"
         >
           <img
-            src={`${import.meta.env.BASE_URL}bkg_hero.svg`}
+            src={`${import.meta.env.BASE_URL}back_mountains_hero.svg`}
             alt=""
             className="w-full h-full object-cover"
           />
@@ -195,7 +277,7 @@ const IndexNew = () => {
         
         <motion.div
           style={{ y: mountainsY }}
-          className="absolute inset-0 w-full h-full z-[1]"
+          className="absolute inset-0 w-full h-full z-[2]"
         >
           <img
             src={`${import.meta.env.BASE_URL}mountains_hero.svg`}
@@ -209,7 +291,7 @@ const IndexNew = () => {
         </div>
         
         {/* Hero Text - Behind Mountains (z-0) */}
-        <div className="relative z-0 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 mb-3">
+        <div className="relative z-[10] max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 mb-3">
           <div className="px-4 md:px-6 py-6 md:py-8 w-full">
             <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[72%] xl:max-w-[68%]">
               <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
@@ -223,32 +305,60 @@ const IndexNew = () => {
                   href="https://www.linkedin.com/in/alexandra-rohrer/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                  className="group flex items-center justify-center"
                 >
-                  <img src={`${import.meta.env.BASE_URL}LinkedIn.png`} alt="LinkedIn" className="w-12 h-12 drop-shadow-lg" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                    alt="LinkedIn"
+                    className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  />
                 </a>
                 <a
                   href="mailto:lexirohrer@gmail.com"
-                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                  className="group flex items-center justify-center"
                 >
-                  <img src={`${import.meta.env.BASE_URL}Gmail.png`} alt="Gmail" className="w-12 h-12 drop-shadow-lg" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}Gmail.png`}
+                    alt="Gmail"
+                    className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  />
                 </a>
                 <a
                   href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                  className="group flex items-center justify-center"
                 >
-                  <img src={`${import.meta.env.BASE_URL}Calendar.png`} alt="Calendar" className="w-12 h-12 drop-shadow-lg" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}Calendar.png`}
+                    alt="Calendar"
+                    className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  />
                 </a>
                 <a
                   href="https://uxlex.substack.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center hover:scale-105 transition-transform"
+                  className="group flex items-center justify-center"
                 >
-                  <img src={`${import.meta.env.BASE_URL}Substack.png`} alt="Substack" className="w-12 h-12 drop-shadow-lg" />
+                  <img
+                    src={`${import.meta.env.BASE_URL}Substack.png`}
+                    alt="Substack"
+                    className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  />
                 </a>
+                <Button
+                  asChild
+                  className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-16 w-full sm:w-auto"
+                >
+                  <a
+                    href="/portfolio"
+                    className="flex w-full sm:w-auto items-center justify-center gap-3 h-full px-6"
+                  >
+                    <span>see my work</span>
+                    <span aria-hidden="true" className="text-lg">→</span>
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
@@ -256,148 +366,7 @@ const IndexNew = () => {
         
         {/* Other Boxes - In Front of Mountains (z-20) */}
         <div className="relative z-20 max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 pb-16 mt-3">
-          
-          {/* Main Content Row */}
-          <div className="flex flex-col lg:flex-row gap-2 items-stretch lg:items-stretch">
-            
-            {/* Memoji Box - Narrower width, full height */}
-            {false && (
-            <div className="relative rounded-3xl border border-white/20 bg-white/10 backdrop-blur-xl p-6 md:p-8 shadow-2xl hover:scale-[1.02] transition-all duration-300 w-full lg:w-[22%] flex items-center justify-center">
-              <div className="absolute inset-0 bg-gradient-to-br from-purple-400/20 to-pink-400/20 rounded-3xl"></div>
-              <div className="relative z-10">
-                <img 
-                  src={`${import.meta.env.BASE_URL}Memoji.png`} 
-                  alt="Lexi Memoji" 
-                  className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
-                />
-              </div>
-            </div>
-            )}
-
-            {/* Middle Column - Currently + Experience Stacked */}
-            {false && (
-              <div className="hidden lg:flex flex-col gap-2 w-full lg:w-[50%] lg:flex-1 min-h-0 lg:self-stretch">
-                
-                {/* Currently Box */}
-                <div className="p-4 md:p-6 flex-1 flex items-center justify-center min-h-0">
-                  <div className="w-full">
-                    <div className="grid grid-cols-3 gap-2">
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="text-3xl md:text-4xl">🌏</div>
-                        <div className="text-white/90 text-base text-center">Based between Bangkok & Bay Area</div>
-                      </div>
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="text-3xl md:text-4xl">🌱</div>
-                        <div className="text-white/90 text-base text-center">Leading Design @ Basilica Bio</div>
-                      </div>
-                      <div className="flex flex-col items-center justify-center gap-1">
-                        <div className="text-3xl md:text-4xl">📣</div>
-                        <div className="text-white/90 text-base text-center">Open to new collaborations</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Experience Box */}
-                <div className="p-4 md:p-6 flex-1 flex items-center justify-center min-h-0">
-                  <div className="w-full">
-                    <div className="grid grid-cols-3 gap-2 text-center">
-                      <div>
-                        <div className="text-2xl md:text-3xl font-bold text-white">5+</div>
-                        <div className="text-white/70 text-base">years experience</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl md:text-3xl font-bold text-white">35</div>
-                        <div className="text-white/70 text-base">Countries explored</div>
-                      </div>
-                      <div>
-                        <div className="text-2xl md:text-3xl font-bold text-white">10+</div>
-                        <div className="text-white/70 text-base">Conference Talks & Panels</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            )}
-
-            {/* Fun Facts - 4 square cards in grid (desktop), 3 cards stacked (mobile) */}
-            <div className="w-full flex flex-col min-h-0 lg:items-start">
-              <div className="relative w-full">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-5 lg:gap-6 lg:max-w-[520px]">
-                  {displayedFacts.slice(0, 4).map((fact, index) => {
-                    const isFlipped = flippedCards.has(index);
-                    return (
-                      <div
-                        key={`${fact.text}-${index}`}
-                        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300"
-                        style={{ perspective: "1000px", minHeight: "187px" }}
-                        onClick={() => toggleFlip(index)}
-                      >
-                        <div
-                          className={`relative w-full h-full ${isRotating ? "animate-flip-full" : "transition-transform duration-500"}`}
-                          style={{
-                            transform: isRotating ? undefined : isFlipped ? "rotateY(180deg)" : "rotateY(0deg)",
-                            transformStyle: "preserve-3d",
-                          minHeight: "187px"
-                          }}
-                        >
-                          {/* Front of card - shows "flip for fun fact" */}
-                          <div
-                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden"
-                            style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                              transform: "rotateY(0deg)"
-                            }}
-                          >
-                            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">flip me 👀</span>
-                          </div>
-                          {/* Back of card - shows emoji and text */}
-                          <div
-                            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-2 px-3 backface-hidden"
-                            style={{
-                              backfaceVisibility: "hidden",
-                              WebkitBackfaceVisibility: "hidden",
-                              transform: "rotateY(180deg)"
-                            }}
-                          >
-                            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
-                            <span className="text-white/90 text-base leading-relaxed text-center">{fact.text}</span>
-                          </div>
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-                <button
-                  onClick={shuffleFacts}
-                  className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 pointer-events-auto"
-                  aria-label="Shuffle facts"
-                >
-                  <img 
-                    src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                    alt="Shuffle"
-                    className="w-7 h-7 drop-shadow-lg"
-                  />
-                </button>
-              </div>
-              {/* Mobile Shuffle Button */}
-              <button
-                onClick={shuffleFacts}
-                className="lg:hidden w-full mt-4 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
-                aria-label="Shuffle facts"
-              >
-                <img 
-                  src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                  alt="Shuffle"
-                  className="w-6 h-6 drop-shadow-lg"
-                />
-                <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
-              </button>
-            </div>
-
-          </div>
+          {/* Additional hero content intentionally left blank */}
         </div>
         
         {/* Gradient transition overlay for smooth blend */}
@@ -405,25 +374,37 @@ const IndexNew = () => {
       </div>
       
       {/* Bento Grid Section */}
-      <div className="w-full bg-gradient-to-br from-purple-100 via-purple-100 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-24 md:pt-32 lg:pt-40 pb-16 px-4 md:px-8 lg:px-16">
+      <div className="w-full bg-gradient-to-br from-purple-100 via-purple-100 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-72 md:pt-96 lg:pt-[30rem] pb-16 px-4 md:px-8 lg:px-16">
         <div className="max-w-7xl mx-auto">
           
           {/* Bento Grid Layout */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 auto-rows-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-24 md:gap-y-32 lg:gap-y-40 auto-rows-auto">
             
             {/* About Me - Grid Layout with MeMoji */}
-            <div className="relative lg:col-span-4 lg:row-span-1 rounded-3xl transition-all duration-300 mt-8">
+            <motion.div
+              className="relative lg:col-span-4 lg:row-span-1 transition-all duration-300 mt-24 overflow-visible px-4 lg:px-0"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-visible">
-                {/* Radial gradient behind Memoji - positioned at grid level, centered behind Memoji */}
-                <div className="absolute left-1/2 lg:left-3/4 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 rounded-full" style={{
-                      width: 'clamp(400px, 100vw, 750px)',
-                      height: 'clamp(400px, 100vw, 750px)',
-                      background: 'var(--memoji-gradient)'
-                  }}>
-                </div>
-                
+                {/* Gradient frame */}
+                <div
+                  className="absolute inset-0 -z-10 pointer-events-none rounded-[2.5rem]"
+                  style={{
+                    background: "var(--memoji-gradient)",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "center",
+                    backgroundSize: "140% 140%",
+                    filter: "blur(0)",
+                  }}
+                  aria-hidden="true"
+                />
+                <div className="absolute inset-[-4%] -z-20 pointer-events-none rounded-[3.5rem] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.25),_rgba(255,255,255,0))]" aria-hidden="true" />
+
                 {/* About Me Content - Left Column */}
-                <div className="relative z-10 p-8">
+                <div className="relative z-10 p-8 rounded-3xl bg-white/5 dark:bg-white/5/10 backdrop-blur-lg">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid text-left">about me</h2>
                   <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed text-justify">
                     <p className="text-lg">
@@ -436,33 +417,65 @@ const IndexNew = () => {
                       If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
                     </p>
                   </div>
-                  <div className="mt-8">
-                    <Button asChild>
-                      <a href="/portfolio" className="gap-3">
-                        <span>see my work</span>
-                        <span aria-hidden="true" className="text-lg">→</span>
-                      </a>
-                    </Button>
-                  </div>
                 </div>
                 
-                {/* MeMoji Card - Right Column */}
-                <div className="relative flex items-center justify-center p-6 md:p-8 z-10">
-                  <img 
-                    src={`${import.meta.env.BASE_URL}Memoji.png`} 
-                    alt="Lexi Memoji" 
-                    className="relative z-10 w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-contain"
-                  />
+                {/* Fun Facts Grid - Right Column */}
+                <div className="relative z-10 flex h-full flex-col items-stretch justify-center p-6 md:p-8">
+                  <div className="relative w-full max-w-[520px] h-full">
+                    <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2 md:gap-3 lg:gap-4 h-full">
+                      {displayedFacts
+                        .slice(0, 4)
+                        .map((fact, index) =>
+                          renderFactCard(fact, index, "desktop", "grid")
+                        )}
+                    </div>
+                    <div className="flex flex-col gap-3 md:hidden">
+                      {displayedFacts
+                        .slice(0, 3)
+                        .map((fact, index) =>
+                          renderFactCard(fact, index, "mobile", "stack")
+                        )}
+                    </div>
+                    <button
+                      onClick={shuffleFacts}
+                      className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
+                      aria-label="Shuffle facts"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                        alt="Shuffle"
+                        className="w-7 h-7 drop-shadow-lg"
+                      />
+                    </button>
+                  </div>
+                  <button
+                    onClick={shuffleFacts}
+                    className="md:hidden w-full mt-4 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+                    aria-label="Shuffle facts"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                      alt="Shuffle"
+                      className="w-6 h-6 drop-shadow-lg"
+                    />
+                    <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
+                  </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
 
 
 
             {/* Testimonials 3D Card Slider */}
-            <div className="relative lg:col-span-4 lg:row-span-1 flex flex-col items-center justify-center py-8 px-4 mt-12">
+            <motion.div
+              className="relative lg:col-span-4 lg:row-span-1 flex flex-col items-center justify-center py-8 px-4 mt-48"
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+            >
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-8 font-hagrid text-center w-full">testimonials</h2>
-              <div className="relative w-full h-[380px] flex items-center justify-center">
+              <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
@@ -510,7 +523,7 @@ const IndexNew = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-8 shadow-2xl cursor-pointer w-[90%] md:w-[600px] lg:w-[700px] min-h-[320px] max-h-[340px]"
+                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
                         style={{
                           transform,
                           zIndex,
@@ -522,7 +535,7 @@ const IndexNew = () => {
                         onClick={() => setActiveTestimonial(index)}
                       >
                         <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl`}></div>
-                        <div className="relative z-10 h-full flex flex-col justify-between overflow-y-auto">
+                        <div className="relative z-10 flex flex-col gap-6">
                           <div className="flex-1">
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -537,13 +550,13 @@ const IndexNew = () => {
                             <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
-                    </div>
+                          </div>
                           <div className="mt-4 flex-shrink-0">
                             <p className="font-semibold text-gray-800 dark:text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
                             <p className="text-xs md:text-sm text-gray-600 dark:text-[#EAE8F3]/70">{testimonial.title}</p>
-                </div>
-              </div>
-            </div>
+                          </div>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
@@ -558,8 +571,6 @@ const IndexNew = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
-            </div>
-
               {/* Dots Indicator */}
               <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
                 {testimonials.map((_, index) => (
@@ -576,13 +587,18 @@ const IndexNew = () => {
                 ))}
               </div>
             </div>
+            </motion.div>
 
             {/* Case Study Boxes - 4 boxes taking 2 columns each */}
             {caseStudies.map((study, index) => (
-              <a 
+              <motion.a 
                 key={index} 
                 href={study.link}
                 className="relative lg:col-span-2 lg:row-span-1 rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
               >
                 <div className={`absolute inset-0 bg-gradient-to-br ${study.color} rounded-3xl`}></div>
                 <div className="relative z-10 p-6 flex flex-col md:flex-row items-center gap-6">
@@ -598,14 +614,22 @@ const IndexNew = () => {
                     />
                   </div>
                 </div>
-              </a>
+              </motion.a>
             ))}
 
           </div>
         </div>
 
         {/* Keep in Touch Section */}
-        <KeepInTouch />
+        <motion.div
+          className="mt-72 md:mt-96 lg:mt-[30rem]"
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <KeepInTouch />
+        </motion.div>
       </div>
 
       <Footer />

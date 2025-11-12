@@ -13,7 +13,7 @@ const Header = () => {
   const location = useLocation();
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -64,15 +64,7 @@ const Header = () => {
       {/* No background gradient in dark mode - backdrop blur provides darkening when overlapping */}
       <div className="w-full px-4 sm:px-6 md:px-8 py-4 relative">
         <div className="flex items-center justify-between gap-3">
-          <Link
-            to="/"
-            className={`${linkBase} font-semibold text-lg tracking-tight`}
-            onClick={() => setIsMenuOpen(false)}
-          >
-            uxlex
-          </Link>
-
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <button
               onClick={() => setIsMenuOpen((prev) => !prev)}
               className={`${linkBase} p-2 rounded-full matte-3d-button md:hidden`}
@@ -81,34 +73,37 @@ const Header = () => {
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-
-            <nav
-              className="hidden md:flex gap-6 items-center pointer-events-auto text-base"
-              aria-label="Primary"
+            <Link
+              to="/"
+              className={`${linkBase} font-semibold text-lg tracking-tight`}
+              onClick={() => setIsMenuOpen(false)}
             >
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={linkClasses(link.to)}
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <button
-                onClick={toggleTheme}
-                className={`${linkBase} p-2 rounded-full matte-3d-button`}
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
-              </button>
-            </nav>
+              uxlex
+            </Link>
           </div>
+
+          <nav
+            className="hidden md:flex gap-6 items-center pointer-events-auto text-base"
+            aria-label="Primary"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={linkClasses(link.to)}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="hidden" aria-hidden="true">
+              {theme === "light" ? <Moon size={20} /> : <Sun size={20} />}
+            </div>
+          </nav>
         </div>
 
         {isMenuOpen && (
-          <div className="md:hidden mt-3 rounded-3xl border border-black/5 dark:border-white/10 bg-white/90 dark:bg-[#1A103F]/90 shadow-lg backdrop-blur-md">
-            <nav className="flex flex-col gap-1 py-3" aria-label="Mobile Primary">
+          <div className="md:hidden fixed top-[68px] left-4 right-4 rounded-3xl border border-black/5 dark:border-white/10 bg-white/80 dark:bg-[#1A103F]/85 shadow-2xl backdrop-blur-xl z-[999]">
+            <nav className="flex flex-col gap-1 py-3 max-h-[70vh] overflow-y-auto" aria-label="Mobile Primary">
               {navLinks.map((link) => (
                 <Link
                   key={link.to}
@@ -121,23 +116,10 @@ const Header = () => {
                   {link.label}
                 </Link>
               ))}
-              <button
-                onClick={toggleTheme}
-                className={`${linkBase} mx-5 mt-2 flex items-center justify-center gap-2 rounded-2xl px-4 py-2 matte-3d-button`}
-                aria-label="Toggle theme"
-              >
-                {theme === "light" ? (
-                  <>
-                    <Moon size={18} />
-                    <span>Dark mode</span>
-                  </>
-                ) : (
-                  <>
-                    <Sun size={18} />
-                    <span>Light mode</span>
-                  </>
-                )}
-              </button>
+              <div className="hidden" aria-hidden="true">
+                {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+                <span className="sr-only">Theme toggle hidden</span>
+              </div>
             </nav>
           </div>
         )}

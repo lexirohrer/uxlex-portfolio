@@ -60,7 +60,7 @@ const BridgeBoxCaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 dark:bg-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-purple-200 dark:bg-[#1A103F] w-full pt-[160px] pb-16 max-xl:pt-[152px] max-lg:pt-[136px] max-md:pt-[120px] max-sm:pt-[100px] max-sm:pb-12 overflow-hidden">
         {/* Grainy overlay - hidden in dark mode */}
         <div className="absolute inset-0 opacity-30 dark:hidden" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
@@ -269,7 +269,7 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 Both contexts had to be structured carefully; At HRDF, lawyers were working to address human rights violations for migrant and rural workers across many site. In Songkhla, frequent flash flooding paried with the tension from political insurgency created a general mistrust of government and aid responders when climate disasters struck.In both contexts, it was crucial to make the submission UI extremely intuitive for rural users, correctly prioritze the submitted cases, and build trust through open lines of communication open between reporters and responders.
               </p>
-               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+               <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -281,8 +281,8 @@ const BridgeBoxCaseStudy = () => {
                      alt="" 
                      className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                    />
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
                  </div>
                </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
@@ -306,7 +306,7 @@ const BridgeBoxCaseStudy = () => {
                    </div>
                  ))}
                </div>
-            <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+            <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -318,8 +318,8 @@ const BridgeBoxCaseStudy = () => {
                      alt="" 
                      className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                    />
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">It's important to have someone in the field with [the participants], because online it's difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">It's important to have someone in the field with [the participants], because online it's difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
                  </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
@@ -374,7 +374,7 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting:
               </p>
-              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -386,8 +386,8 @@ const BridgeBoxCaseStudy = () => {
                      alt="" 
                      className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                    />
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
-                   <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— BridgeBox Facilitator</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— BridgeBox Facilitator</p>
                  </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">

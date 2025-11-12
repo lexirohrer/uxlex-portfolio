@@ -6,57 +6,11 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const CaseStudy = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const heroRef = useRef<HTMLElement | null>(null);
-  const layerRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { theme } = useTheme();
-
-  const assignLayerRef = (index: number) => (element: HTMLDivElement | null) => {
-    layerRefs.current[index] = element;
-  };
 
   // Scroll to top when component mounts
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, []);
-
-  useEffect(() => {
-    const depths = [0.1, 0.25, 0.5];
-    const scales = [1, 1.05, 1.08];
-    let animationFrame: number | null = null;
-
-    const updateParallax = () => {
-      const hero = heroRef.current;
-      if (!hero) {
-        animationFrame = null;
-        return;
-      }
-
-      const rect = hero.getBoundingClientRect();
-      const progress = Math.min(Math.max(-rect.top, 0), rect.height);
-
-      layerRefs.current.forEach((layer, index) => {
-        if (!layer) return;
-        const depth = depths[index] ?? 0;
-        const scale = scales[index] ?? 1;
-        layer.style.transform = `translate3d(0, ${progress * depth}px, 0) scale(${scale})`;
-      });
-      animationFrame = null;
-    };
-
-    const handleScroll = () => {
-      if (animationFrame !== null) return;
-      animationFrame = window.requestAnimationFrame(updateParallax);
-    };
-
-    updateParallax();
-    window.addEventListener("scroll", handleScroll, { passive: true });
-
-    return () => {
-      if (animationFrame !== null) {
-        window.cancelAnimationFrame(animationFrame);
-      }
-      window.removeEventListener("scroll", handleScroll);
-    };
   }, []);
 
   useEffect(() => {
@@ -92,36 +46,7 @@ const CaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section
-        ref={heroRef}
-        className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-blue-200 dark:bg-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden"
-      >
-        <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
-          <div
-            ref={assignLayerRef(0)}
-            className="absolute inset-0 bg-cover bg-center will-change-transform"
-            style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}bckg.png)`,
-              zIndex: 1,
-            }}
-          />
-          <div
-            ref={assignLayerRef(1)}
-            className="absolute inset-x-0 bottom-[-6vw] top-[30%] bg-contain bg-bottom bg-no-repeat will-change-transform"
-            style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}Mid_Mountains.png)`,
-              zIndex: 2,
-            }}
-          />
-          <div
-            ref={assignLayerRef(2)}
-            className="absolute inset-x-0 bottom-[-10vw] top-[45%] bg-contain bg-bottom bg-no-repeat will-change-transform"
-            style={{
-              backgroundImage: `url(${import.meta.env.BASE_URL}Front_Mountains.png)`,
-              zIndex: 3,
-            }}
-          />
-        </div>
+      <section className="relative bg-gradient-to-br from-blue-100 via-indigo-50 to-blue-200 dark:bg-[#1A103F] w-full pt-[160px] pb-16 max-xl:pt-[152px] max-lg:pt-[136px] max-md:pt-[120px] max-sm:pt-[100px] max-sm:pb-12 overflow-hidden">
         {/* Grainy overlay - hidden in dark mode */}
         <div className="absolute inset-0 opacity-30 dark:hidden" style={{
           backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
@@ -396,7 +321,7 @@ const CaseStudy = () => {
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">The results of the test couldn't have been more clearer: users wanted short, sweet, to-the-point setup, and our new flow delivered:</p>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               
-              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12">
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-4">
                   Control Flow (control experience)
                 </p>
@@ -411,13 +336,13 @@ const CaseStudy = () => {
                     alt="" 
                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                   />
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">– User 16, an independent business consultant in Canada </p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">It feels like I've been here forever. Jeez, if I wasn't getting paid for this, <b>I would've given up a long time ago</b>"</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">– User 16, an independent business consultant in Canada </p>
                 </div>
               </div>
 
               {/* Streamlined Flow Quote */}
-              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12">
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12">
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-4">
                   Streamlined Flow (redesign experience)
                 </p>
@@ -432,8 +357,8 @@ const CaseStudy = () => {
                     alt="" 
                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                   />
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
-                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">- User 23, runs a coffee shop in Seattle </p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-2xl pl-28 pt-2 mb-2">Overall <b> setting up QuickBooks was easy, it was terrific.</b> The best thing that you did was just to go ahead and tell me how many hours I saved. Fabulous… This is a great setup—A+."</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-xl pl-28 pt-2">- User 23, runs a coffee shop in Seattle </p>
                 </div>
               </div>
              </div>

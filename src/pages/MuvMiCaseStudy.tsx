@@ -126,7 +126,7 @@ const MuvMiCaseStudy = () => {
                 Thai culture's engrained attention to social harmony and respect for authority can make it difficult to elicit direct critical feedback using classic design research methods such as interviews and focus groups. Despite the mismatch between culture and methodology, these methods are the most widely taught and used in places like Thailand, where integration of human centered design is still cutting edge rather than assumed in the technology sector. 
               </p>
             
-              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+              <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
                 <div className="relative">
                   <img 
                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -138,8 +138,8 @@ const MuvMiCaseStudy = () => {
                     alt="" 
                     className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                   />
-                  <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here.</p>
-                  <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here.</p>
+                  <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
                 </div>
               </div>
               <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6"> 
@@ -517,7 +517,7 @@ const MuvMiCaseStudy = () => {
           <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Methodology Learnings</h3>
           <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> This project was focused not only on solving the desgin challenges at hand, but also on <strong>adapting the methodologies used to specific cultural contexts.</strong> After shadowing and practicing ethnographic observation and participatory design workshops, one Muvmi employee reflected:
           </p> 
-          <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+          <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
             <div className="relative">
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -529,15 +529,15 @@ const MuvMiCaseStudy = () => {
                 alt="" 
                 className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
               />
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">Activities like paper prototyping felt like another layer — the user has to think deeper on what they want and why, instead of just tell us what they don't like.</p>
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">Activities like paper prototyping felt like another layer — the user has to think deeper on what they want and why, instead of just tell us what they don't like.</p>
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
             </div>
           </div>
 
           <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               Other employees reflected that participatory methods gave them not only gave them deeper insights but also confidence in the truthfulness of those insights, compared to the use of traditional interview and focus group methods:
             </p>
-          <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-6">
+          <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
             <div className="relative">
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -549,8 +549,8 @@ const MuvMiCaseStudy = () => {
                 alt="" 
                 className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
               />
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness.</p>
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness.</p>
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
             </div>
             </div>
           </section>

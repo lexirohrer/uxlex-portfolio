@@ -53,7 +53,7 @@ const Testimonials = () => {
 
   return (
     <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF] dark:from-[#1A103F] dark:to-[#1A103F]">
-      <div className="max-w-6xl mx-auto px-8">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[40px] font-semibold mb-4 font-hagrid">
             what it's like to work with me:
@@ -62,7 +62,7 @@ const Testimonials = () => {
 
         <div className="relative">
           {/* Testimonial Card */}
-          <div className="bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 max-w-4xl mx-auto relative">
+          <div className="bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl shadow-xl w-full max-w-[640px] sm:max-w-3xl lg:max-w-4xl mx-auto relative px-6 sm:px-10 md:px-12 py-10 sm:py-12">
             {/* Quote Icon */}
             <img 
               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -76,7 +76,7 @@ const Testimonials = () => {
             />
             
             <div className="relative z-10">
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-xl leading-relaxed mb-8 text-center italic">
+              <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl leading-relaxed mb-8 text-center italic">
                 {testimonials[currentIndex].text}
               </p>
               
@@ -94,7 +94,7 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
+            className="absolute left-1 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
             aria-label="Previous testimonial"
           >
             <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -104,7 +104,7 @@ const Testimonials = () => {
           
           <button
             onClick={goToNext}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
+            className="absolute right-1 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
             aria-label="Next testimonial"
           >
             <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">

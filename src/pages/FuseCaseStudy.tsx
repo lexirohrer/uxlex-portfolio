@@ -210,7 +210,7 @@ const FuseCaseStudy = () => {
 
               {/* Onboarding Design and Testing */}
               <section className="mb-16">
-                <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-12 mb-8">
+                <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-8">
                   <div className="relative">
                     <img 
                       src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
@@ -222,8 +222,8 @@ const FuseCaseStudy = () => {
                       alt="" 
                       className="absolute top-8 left-2 block dark:hidden w-16 h-16 opacity-60"
                     />
-                    <p className="text-[#403930] dark:text-[#EAE8F3] text-2xl pl-28 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
-                    <p className="text-[#403930] dark:text-[#EAE8F3] text-xl pl-28 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
+                    <p className="text-[#403930] dark:text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
+                    <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
                   </div>
                 </div>
                 

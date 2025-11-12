@@ -124,8 +124,8 @@ const Index = () => {
       </div>
       
       {/* Original Index page content */}
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
-        <main>
+      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent mt-48 md:mt-64 lg:mt-80">
+        <main className="space-y-48 md:space-y-64 lg:space-y-80">
           <AboutMe />
           <Testimonials />
           <KeepInTouch />

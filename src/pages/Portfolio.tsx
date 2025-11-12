@@ -12,7 +12,7 @@ const Portfolio = () => {
       />
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent min-h-screen">
         <Header />
-        <main className="px-[120px] py-[100px] max-md:px-10 max-md:py-[60px] max-sm:px-5 max-sm:py-[40px]">
+        <main className="px-[120px] pt-[120px] pb-[100px] max-md:px-10 max-md:pt-[96px] max-md:pb-[60px] max-sm:px-5 max-sm:pt-[88px] max-sm:pb-[40px]">
           <div className="mb-10">
             <h1 className="text-[#403930] dark:text-[#EAE8F3] text-[40px] font-semibold mb-1 font-hagrid">Portfolio</h1>
             <p className="text-[#594F43] dark:text-[#EAE8F3]/90 text-xl mb-2">
