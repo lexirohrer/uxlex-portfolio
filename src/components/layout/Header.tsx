@@ -47,7 +47,9 @@ const Header = () => {
 
   const linkClasses = (to: string) =>
     `${linkBase} ${
-      location.pathname === to ? "font-semibold" : "font-medium"
+      location.pathname === to
+        ? "font-bold"
+        : "font-medium opacity-80 hover:opacity-100"
     } transition-colors duration-200`;
 
   const menuButtonLabel = isMenuOpen ? "Close menu" : "Open menu";
@@ -73,13 +75,6 @@ const Header = () => {
             >
               {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-            <Link
-              to="/"
-              className={`${linkBase} font-semibold text-lg tracking-tight`}
-              onClick={() => setIsMenuOpen(false)}
-            >
-              uxlex
-            </Link>
           </div>
 
           <nav

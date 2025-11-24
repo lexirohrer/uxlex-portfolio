@@ -3,7 +3,6 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
-import KeepInTouch from "@/components/sections/KeepInTouch";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
 
@@ -30,14 +29,14 @@ const IndexNew = () => {
   ];
   
   // Track which fact indices have been shown (using ref for reliable access)
-  const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2, 3])); // Start with first 4 facts shown
+  const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2])); // Start with first 3 facts shown
   const [shownFactIndices, setShownFactIndices] = useState<Set<number>>(
     shownFactIndicesRef.current
   );
   
-  // Initialize with first 4 facts
+  // Initialize with first 3 facts
   const [displayedFacts, setDisplayedFacts] = useState(() => 
-    allFunFacts.slice(0, 4)
+    allFunFacts.slice(0, 3)
   );
   
   // Track which cards are flipped
@@ -51,7 +50,6 @@ const IndexNew = () => {
   
   // Background layers with parallax offsets (farther layers move less)
   const backgroundY = useTransform(scrollY, [0, 1000], [0, 150]);
-  const backMountainsY = useTransform(scrollY, [0, 1000], [0, 300]);
   const mountainsY = useTransform(scrollY, [0, 1000], [0, 450]);
   
   const caseStudies = [
@@ -115,7 +113,7 @@ const IndexNew = () => {
     }
   ];
   
-  // Shuffle facts - pick 4 random facts that haven't been shown yet
+  // Shuffle facts - pick 3 random facts that haven't been shown yet
   const shuffleFacts = () => {
     // Trigger full rotation animation first
     setIsRotating(true);
@@ -132,26 +130,26 @@ const IndexNew = () => {
         .map((_, index) => index)
         .filter(index => !prevShownIndices.has(index));
       
-      // If we have 4 or more unshown facts, pick 4 random ones
+      // If we have 3 or more unshown facts, pick 3 random ones
       // Otherwise, reset and start over
       let newIndices: number[];
       let updatedShownIndices: Set<number>;
       
-      if (unshownIndices.length >= 4) {
-        // Shuffle unshown indices and pick 4
+      if (unshownIndices.length >= 3) {
+        // Shuffle unshown indices and pick 3
         const shuffled = [...unshownIndices].sort(() => Math.random() - 0.5);
-        newIndices = shuffled.slice(0, 4);
+        newIndices = shuffled.slice(0, 3);
         updatedShownIndices = new Set([...prevShownIndices, ...newIndices]);
       } else {
         // Not enough unshown facts, reset and start fresh
         // First, use remaining unshown facts
         const remaining = [...unshownIndices];
-        // Then add random facts from all facts to fill to 4
+        // Then add random facts from all facts to fill to 3
         const allIndices = allFunFacts.map((_, index) => index);
         const shuffled = [...allIndices].sort(() => Math.random() - 0.5);
         const additional = shuffled.filter(index => !remaining.includes(index));
-        newIndices = [...remaining, ...additional].slice(0, 4);
-        // Reset tracking to only these 4
+        newIndices = [...remaining, ...additional].slice(0, 3);
+        // Reset tracking to only these 3
         updatedShownIndices = new Set(newIndices);
       }
       
@@ -191,7 +189,7 @@ const IndexNew = () => {
     return (
       <div
         key={`${keyPrefix}-${fact.text}`}
-        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 flex"
+        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
         style={{ perspective: "1000px" }}
         onClick={() => toggleFlip(index)}
       >
@@ -244,9 +242,25 @@ const IndexNew = () => {
         rel="stylesheet"
       />
       
+      {/* Mountains Background - Spans Hero and About Me Sections, positioned from top of page */}
+      <motion.div
+        style={{ y: mountainsY }}
+        className="absolute top-0 left-0 w-full z-[2] pointer-events-none"
+      >
+        <img
+          src={`${import.meta.env.BASE_URL}mountains_hero.svg`}
+          alt=""
+          className="w-full h-auto"
+          style={{ 
+            display: 'block',
+            objectPosition: 'top'
+          }}
+        />
+      </motion.div>
+      
       {/* Hero Section - Bento Box Dashboard Style */}
       <div
-        className="relative min-h-[100vh] w-full overflow-hidden bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-[80px] pb-32"
+        className="relative min-h-[100vh] w-full overflow-visible bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-[80px] pb-32"
         data-hero-section
       >
         {/* Parallax Background Layers */}
@@ -264,34 +278,12 @@ const IndexNew = () => {
           />
         </motion.div>
         
-        <motion.div
-          style={{ y: backMountainsY }}
-          className="absolute inset-0 w-full h-full z-[1]"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}back_mountains_hero.svg`}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        
-        <motion.div
-          style={{ y: mountainsY }}
-          className="absolute inset-0 w-full h-full z-[2]"
-        >
-          <img
-            src={`${import.meta.env.BASE_URL}mountains_hero.svg`}
-            alt=""
-            className="w-full h-full object-cover"
-          />
-        </motion.div>
-        
         <div className="relative z-10">
           <Header />
         </div>
         
         {/* Hero Text - Behind Mountains (z-0) */}
-        <div className="relative z-[10] max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 mb-3">
+        <div className="relative z-[10] max-w-[95%] lg:max-w-[90%] mx-auto px-2 md:px-4 mt-2 md:mt-12 mb-3">
           <div className="px-4 md:px-6 py-6 md:py-8 w-full">
             <div className="max-w-full sm:max-w-[90%] md:max-w-[80%] lg:max-w-[72%] xl:max-w-[68%]">
               <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4">
@@ -369,42 +361,47 @@ const IndexNew = () => {
           {/* Additional hero content intentionally left blank */}
         </div>
         
-        {/* Gradient transition overlay for smooth blend */}
-        <div className="absolute bottom-0 left-0 right-0 h-96 bg-gradient-to-b from-transparent via-purple-100/40 to-purple-100 dark:via-[#1A103F]/40 dark:to-[#1A103F] pointer-events-none z-[25]"></div>
+        {/* Gradient transition overlay removed to allow mountains to show through */}
+        
+        {/* Hero section scroll cue - positioned at bottom of hero */}
+        <motion.button
+          onClick={() => {
+            const aboutMeSection = document.getElementById('about-me-section');
+            if (aboutMeSection) {
+              aboutMeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+          }}
+          className="absolute bottom-8 left-1/2 z-[30] text-white/80 dark:text-white/70 tracking-[0.2em] uppercase text-xs cursor-pointer hover:text-white/90 dark:hover:text-white transition-colors duration-200 flex items-center justify-center gap-3 p-0 border-0 bg-transparent whitespace-nowrap"
+          initial={{ opacity: 0, y: 20, x: '-50%' }}
+          animate={{ opacity: 1, y: 0, x: '-50%' }}
+          transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
+          aria-label="Scroll to next section"
+        >
+          <span aria-hidden="true" className="text-lg">↓</span>
+          <span>dive a little deeper</span>
+          <span aria-hidden="true" className="text-lg">↓</span>
+        </motion.button>
       </div>
       
       {/* Bento Grid Section */}
-      <div className="w-full bg-gradient-to-br from-purple-100 via-purple-100 to-purple-50 dark:from-[#1A103F] dark:via-[#1A103F] dark:to-[#1A103F] pt-72 md:pt-96 lg:pt-[30rem] pb-16 px-4 md:px-8 lg:px-16">
+      <div id="bento-grid-section" className="relative w-full pt-96 md:pt-[120] lg:pt-[40rem] px-4 md:px-8 lg:px-16 pb-16">
         <div className="max-w-7xl mx-auto">
-          
+
           {/* Bento Grid Layout */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-4 md:gap-x-6 lg:gap-x-8 gap-y-24 md:gap-y-32 lg:gap-y-40 auto-rows-auto">
             
             {/* About Me - Grid Layout with MeMoji */}
             <motion.div
-              className="relative lg:col-span-4 lg:row-span-1 transition-all duration-300 mt-24 overflow-visible px-4 lg:px-0"
+              id="about-me-section"
+              className="relative lg:col-span-4 lg:row-span-1 transition-all duration-300 mt-16 md:mt-24 overflow-visible px-4 lg:px-0"
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-6 overflow-visible">
-                {/* Gradient frame */}
-                <div
-                  className="absolute inset-0 -z-10 pointer-events-none rounded-[2.5rem]"
-                  style={{
-                    background: "var(--memoji-gradient)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "center",
-                    backgroundSize: "140% 140%",
-                    filter: "blur(0)",
-                  }}
-                  aria-hidden="true"
-                />
-                <div className="absolute inset-[-4%] -z-20 pointer-events-none rounded-[3.5rem] bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.25),_rgba(255,255,255,0))]" aria-hidden="true" />
-
-                {/* About Me Content - Left Column */}
-                <div className="relative z-10 p-8 rounded-3xl bg-white/5 dark:bg-white/5/10 backdrop-blur-lg">
+              <div className="relative flex flex-col gap-6 overflow-visible max-w-4xl">
+                {/* About Me Content */}
+                <div className="relative z-10">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid text-left">about me</h2>
                   <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed text-justify">
                     <p className="text-lg">
@@ -419,48 +416,30 @@ const IndexNew = () => {
                   </div>
                 </div>
                 
-                {/* Fun Facts Grid - Right Column */}
-                <div className="relative z-10 flex h-full flex-col items-stretch justify-center p-6 md:p-8">
-                  <div className="relative w-full max-w-[520px] h-full">
-                    <div className="hidden md:grid grid-cols-2 grid-rows-2 gap-2 md:gap-3 lg:gap-4 h-full">
-                      {displayedFacts
-                        .slice(0, 4)
-                        .map((fact, index) =>
-                          renderFactCard(fact, index, "desktop", "grid")
-                        )}
-                    </div>
-                    <div className="flex flex-col gap-3 md:hidden">
-                      {displayedFacts
-                        .slice(0, 3)
-                        .map((fact, index) =>
-                          renderFactCard(fact, index, "mobile", "stack")
-                        )}
-                    </div>
-                    <button
-                      onClick={shuffleFacts}
-                      className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full transition-all duration-200 items-center justify-center hover:scale-110 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20"
-                      aria-label="Shuffle facts"
-                    >
-                      <img
-                        src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                        alt="Shuffle"
-                        className="w-7 h-7 drop-shadow-lg"
-                      />
-                    </button>
-                  </div>
-                  <button
-                    onClick={shuffleFacts}
-                    className="md:hidden w-full mt-4 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
-                    aria-label="Shuffle facts"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                      alt="Shuffle"
-                      className="w-6 h-6 drop-shadow-lg"
-                    />
-                    <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
-                  </button>
+                {/* Fun Facts - 3 Cards in Row on Desktop, Stacked on Mobile */}
+                <div className="relative z-10 flex flex-col md:flex-row gap-3 md:gap-4 mt-6">
+                  {displayedFacts
+                    .slice(0, 3)
+                    .map((fact, index) => (
+                      <div key={`wrapper-${index}`} className="flex-1">
+                        {renderFactCard(fact, index, "stacked", "stack")}
+                      </div>
+                    ))}
                 </div>
+                
+                {/* Shuffle Button - Full Width */}
+                <button
+                  onClick={shuffleFacts}
+                  className="relative z-10 w-full mt-2 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+                  aria-label="Shuffle facts"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
+                    alt="Shuffle"
+                    className="w-6 h-6 drop-shadow-lg"
+                  />
+                  <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
+                </button>
               </div>
             </motion.div>
 
@@ -468,14 +447,44 @@ const IndexNew = () => {
 
             {/* Testimonials 3D Card Slider */}
             <motion.div
-              className="relative lg:col-span-4 lg:row-span-1 flex flex-col items-center justify-center py-8 px-4 mt-48"
+              className="relative lg:col-span-4 lg:row-span-1 flex flex-col items-center justify-center py-8 px-4 mt-24 overflow-hidden"
+              style={{
+                minHeight: "max(640px, calc(100vw * 0.667))",
+                marginLeft: 'calc(-50vw + 50%)',
+                marginRight: 'calc(-50vw + 50%)',
+                width: '100vw',
+              }}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-8 font-hagrid text-center w-full">testimonials</h2>
-              <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
+              {/* Background color layer - extends behind cave image for smooth transition */}
+              <div className="absolute inset-0 pointer-events-none -z-20 bg-background" />
+              
+              {/* Background image at 50% opacity - married to testimonials section */}
+              <div className="absolute inset-0 pointer-events-none -z-10 flex justify-center overflow-hidden">
+                <img
+                  src={`${import.meta.env.BASE_URL}cave_bckg.png`}
+                  alt=""
+                  className="w-full h-full object-cover"
+                  style={{ opacity: 0.5 }}
+                  aria-hidden="true"
+                />
+              </div>
+              
+              {/* Gradient fade overlay at top - extends upward to cover gap and fade smoothly into cave image */}
+              <div 
+                className="absolute left-0 right-0 pointer-events-none -z-[5]"
+                style={{
+                  top: '-300px',
+                  height: '500px',
+                  background: 'linear-gradient(to bottom, hsl(var(--background)) 0%, hsl(var(--background)) 15%, hsl(var(--background) / 0.85) 30%, hsl(var(--background) / 0.6) 45%, hsl(var(--background) / 0.35) 60%, hsl(var(--background) / 0.15) 75%, hsl(var(--background) / 0.05) 90%, transparent 100%)',
+                }}
+              />
+              
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-10 font-hagrid text-center w-full relative z-10">what it's like to work with me</h2>
+              <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12 z-10">
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
@@ -620,16 +629,6 @@ const IndexNew = () => {
           </div>
         </div>
 
-        {/* Keep in Touch Section */}
-        <motion.div
-          className="mt-72 md:mt-96 lg:mt-[30rem]"
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <KeepInTouch />
-        </motion.div>
       </div>
 
       <Footer />

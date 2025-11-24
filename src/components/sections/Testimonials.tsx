@@ -54,9 +54,9 @@ const Testimonials = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF] dark:from-[#1A103F] dark:to-[#1A103F]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-8">
           <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[40px] font-semibold mb-4 font-hagrid">
-            what it's like to work with me:
+            what it's like to work with me
           </h2>
         </div>
 

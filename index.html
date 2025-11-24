@@ -8,8 +8,10 @@
       // Set dark mode as default before React loads to prevent flash
       (function() {
         const savedTheme = localStorage.getItem('theme');
-        const theme = savedTheme || 'dark';
-        document.documentElement.classList.add(theme);
+        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark';
+        const root = document.documentElement;
+        root.classList.remove('light', 'dark');
+        root.classList.add(theme);
       })();
     </script>
     <title>uxlex</title>
