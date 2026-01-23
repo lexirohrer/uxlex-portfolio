@@ -237,11 +237,6 @@ const IndexNew = () => {
 
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Work+Sans:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;700&family=Inter:wght@400;500;600;700&family=Holtwood+One+SC&display=swap"
-        rel="stylesheet"
-      />
-      
       {/* Mountains Background - Spans Hero and About Me Sections, positioned from top of page */}
       <motion.div
         style={{ y: mountainsY }}
@@ -255,6 +250,7 @@ const IndexNew = () => {
             display: 'block',
             objectPosition: 'top'
           }}
+          loading="eager"
         />
       </motion.div>
       
@@ -275,6 +271,8 @@ const IndexNew = () => {
             loop
             muted
             playsInline
+            preload="none"
+            loading="lazy"
           />
         </motion.div>
         
@@ -303,6 +301,7 @@ const IndexNew = () => {
                     src={`${import.meta.env.BASE_URL}LinkedIn.png`}
                     alt="LinkedIn"
                     className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
                   />
                 </a>
                 <a
@@ -313,6 +312,7 @@ const IndexNew = () => {
                     src={`${import.meta.env.BASE_URL}Gmail.png`}
                     alt="Gmail"
                     className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
                   />
                 </a>
                 <a
@@ -325,6 +325,7 @@ const IndexNew = () => {
                     src={`${import.meta.env.BASE_URL}Calendar.png`}
                     alt="Calendar"
                     className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
                   />
                 </a>
                 <a
@@ -337,6 +338,7 @@ const IndexNew = () => {
                     src={`${import.meta.env.BASE_URL}Substack.png`}
                     alt="Substack"
                     className="w-16 h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
                   />
                 </a>
                 <Button
@@ -437,6 +439,7 @@ const IndexNew = () => {
                     src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
                     alt="Shuffle"
                     className="w-6 h-6 drop-shadow-lg"
+                    loading="lazy"
                   />
                   <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
                 </button>
@@ -470,6 +473,7 @@ const IndexNew = () => {
                   className="w-full h-full object-cover"
                   style={{ opacity: 0.5 }}
                   aria-hidden="true"
+                  loading="lazy"
                 />
               </div>
               
@@ -550,11 +554,13 @@ const IndexNew = () => {
                               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                               alt="" 
                               className="block dark:hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              loading="lazy"
                             />
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                               alt="" 
                               className="hidden dark:block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              loading="lazy"
                             />
                             <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
