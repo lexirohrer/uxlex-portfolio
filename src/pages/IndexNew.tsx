@@ -237,28 +237,27 @@ const IndexNew = () => {
 
   return (
     <>
-      {/* Mountains Background - Spans Hero and About Me Sections, positioned from top of page */}
-      <motion.div
-        style={{ y: mountainsY }}
-        className="absolute top-0 left-0 w-full z-[2] pointer-events-none"
-      >
-        <img
-          src={`${import.meta.env.BASE_URL}mountains_hero.svg`}
-          alt=""
-          className="w-full h-auto"
-          style={{ 
-            display: 'block',
-            objectPosition: 'top'
-          }}
-          loading="eager"
-        />
-      </motion.div>
-      
       {/* Hero Section - Bento Box Dashboard Style */}
       <div
         className="relative min-h-[100vh] w-full overflow-visible bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 pt-[80px] pb-32"
         data-hero-section
       >
+        {/* Mountains Background - Anchored to bottom of hero section */}
+        <motion.div
+          style={{ y: mountainsY }}
+          className="absolute bottom-0 left-0 w-full z-[2] pointer-events-none"
+        >
+          <img
+            src={`${import.meta.env.BASE_URL}mountains_hero.png`}
+            alt=""
+            className="w-full h-auto"
+            style={{ 
+              display: 'block',
+              objectPosition: 'bottom'
+            }}
+            loading="eager"
+          />
+        </motion.div>
         {/* Parallax Background Layers */}
         <motion.div
           style={{ y: backgroundY }}
@@ -401,7 +400,7 @@ const IndexNew = () => {
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
             >
-              <div className="relative flex flex-col gap-6 overflow-visible max-w-4xl">
+              <div className="relative flex flex-col gap-6 overflow-visible max-w-4xl mx-auto">
                 {/* About Me Content */}
                 <div className="relative z-10">
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid text-left">about me</h2>
