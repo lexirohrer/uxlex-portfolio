@@ -9,6 +9,7 @@ import GlassCursor from "@/components/ui/GlassCursor";
 
 // Lazy load all pages for code splitting
 const IndexNew = lazy(() => import("./pages/IndexNew"));
+const IndexNew2 = lazy(() => import("./pages/IndexNew2"));
 const Index = lazy(() => import("./pages/Index"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Resume = lazy(() => import("./pages/Resume"));
@@ -38,6 +39,7 @@ const App = () => (
           <Suspense fallback={<PageLoader />}>
             <Routes>
               <Route path="/" element={<IndexNew />} />
+              <Route path="/hello2" element={<IndexNew2 />} />
               <Route path="/home-old" element={<Index />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/resume" element={<Resume />} />
