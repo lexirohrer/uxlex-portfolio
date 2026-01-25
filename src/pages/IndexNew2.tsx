@@ -887,13 +887,13 @@ const IndexNew2 = () => {
               }}
             >
               <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-                <span className="text-[#6A7B9F]">Hi, I'm Lexi</span>
+                <span className="text-white">Hi, I'm Lexi</span>
                 <br />
-                <span className="text-[#6A7B9F] text-2xl md:text-3xl lg:text-4xl font-normal">
+                <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
                   a social impact technologist
                 </span>
               </h1>
-              <p className="text-[#A0AEC0] text-base md:text-lg leading-relaxed mt-6">
+              <p className="text-white text-base md:text-lg leading-relaxed mt-6">
                 This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
               </p>
               <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -1183,10 +1183,7 @@ const IndexNew2 = () => {
         
         {/* Scroll indicator (optional) */}
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none">
-          <div className="text-white/60 text-xs uppercase tracking-wider">
-            Scroll to zoom
-          </div>
-          <div className="mt-2 w-32 h-1 bg-white/20 rounded-full overflow-hidden">
+          <div className="w-32 h-1 bg-white/20 rounded-full overflow-hidden">
             <div
               className="h-full bg-white/60 rounded-full transition-all duration-300"
               style={{ width: `${scrollProgress * 100}%` }}
