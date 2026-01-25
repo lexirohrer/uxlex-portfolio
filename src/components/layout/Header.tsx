@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Menu, Moon, Sun, X } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
   { to: "/", label: "Hello" },
@@ -14,6 +15,7 @@ const Header = () => {
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useTheme();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -59,21 +61,25 @@ const Header = () => {
       {/* Frosted glass floating navigation bar */}
       <div className="w-full max-w-7xl mx-auto">
         <div 
-          className="relative rounded-full backdrop-blur-xl transition-all duration-300"
+          className={`relative transition-all duration-300 ${isMobile ? '' : 'md:rounded-full md:backdrop-blur-xl'}`}
           style={{
-            background: location.pathname === "/" && !isScrolledPastHero
-              ? 'rgba(255, 255, 255, 0.1)'
-              : theme === 'dark'
-              ? 'rgba(255, 255, 255, 0.1)'
-              : 'rgba(255, 255, 255, 0.1)',
-            boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
+            background: isMobile 
+              ? 'transparent' 
+              : (location.pathname === "/" && !isScrolledPastHero
+                ? 'rgba(255, 255, 255, 0.1)'
+                : theme === 'dark'
+                ? 'rgba(255, 255, 255, 0.1)'
+                : 'rgba(255, 255, 255, 0.1)'),
+            boxShadow: isMobile ? 'none' : '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
+            backdropFilter: isMobile ? 'none' : undefined,
+            WebkitBackdropFilter: isMobile ? 'none' : undefined,
           }}
         >
-          <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-3">
-            {/* Logo on the left */}
+          <div className="flex items-center justify-between gap-4 px-4 sm:px-6 py-3 md:justify-between">
+            {/* Logo on the left - Hidden on mobile */}
             <Link 
               to="/" 
-              className="flex items-center gap-2 flex-shrink-0"
+              className="hidden md:flex items-center gap-2 flex-shrink-0"
               aria-label="Home"
             >
               <span 
@@ -107,10 +113,10 @@ const Header = () => {
               ))}
             </nav>
 
-            {/* Mobile menu button */}
+            {/* Mobile menu button - Right aligned on mobile */}
             <button
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className={`${linkBase} p-2 rounded-full hover:bg-white/10 dark:hover:bg-white/5 transition-colors md:hidden`}
+              className={`${linkBase} p-2 rounded-full hover:bg-white/10 dark:hover:bg-white/5 transition-colors md:hidden ml-auto`}
               aria-label={menuButtonLabel}
               aria-expanded={isMenuOpen}
             >

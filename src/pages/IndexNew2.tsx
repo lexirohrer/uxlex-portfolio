@@ -227,7 +227,7 @@ const IndexNew2 = () => {
     TESTIMONIALS_EXIT_RANGE // Final section (say hello)
   ];
 
-  const [scale, setScale] = useState(0.5); // Temporary initial state, will be set in useEffect
+  const [scale, setScale] = useState(1); // Initial state - will be recalculated in useEffect (start at 1 for visibility)
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
   const isScrollingRef = useRef(false);
@@ -256,22 +256,75 @@ const IndexNew2 = () => {
       const headerPadding = viewportWidth >= 768 ? 32 : viewportWidth >= 640 ? 24 : 16; // md:px-8, sm:px-6, px-4
       const availableWidth = viewportWidth - (headerPadding * 2);
       const contentWidth = content.scrollWidth;
+      
+      // Guard against invalid content width - use fallback if content not ready
+      if (!contentWidth || contentWidth === 0 || !isFinite(contentWidth)) {
+        // Fallback to a reasonable default scale if content not ready
+        return 0.8;
+      }
+      
       // Scale content to fit within available width with some margin
       const calculatedScale = (availableWidth * 0.95) / contentWidth;
-      return Math.min(MAX_SCALE, Math.max(0.1, calculatedScale)); // Clamp between 0.1 and MAX_SCALE
+      const clampedScale = Math.min(MAX_SCALE, Math.max(0.1, calculatedScale));
+      
+      // Ensure we have a valid scale
+      if (!isFinite(clampedScale) || clampedScale <= 0) {
+        return 0.8; // Safe fallback
+      }
+      
+      return clampedScale;
     };
 
     // Initialize: start at minimum zoom (content aligned with navigation margins)
     // Scroll down → zoom in (scale increases, content gets larger)
     // This initial scale is the MIN_SCALE - content cannot zoom out further than this
     let accumulatedScroll = 0; // Start at 0 = minimum zoom
-    const initialScale = calculateInitialScale();
-    minScaleRef.current = initialScale; // Store as the true minimum scale
-    let targetScale = initialScale; // Start at calculated scale
+    
+    // Use a safe default scale initially, then recalculate once content is ready
+    // Start with scale 1 to ensure content is visible, then adjust
+    let initialScale = 1; // Safe default - ensures visibility
+    let targetScale = initialScale;
     let currentScale = initialScale;
+    
+    // Try to calculate initial scale, but use fallback if content not ready
+    try {
+      const calculatedScale = calculateInitialScale();
+      // Only use calculated scale if it's valid and reasonable
+      if (calculatedScale > 0 && calculatedScale <= MAX_SCALE && isFinite(calculatedScale)) {
+        initialScale = calculatedScale;
+        targetScale = calculatedScale;
+        currentScale = calculatedScale;
+      }
+    } catch (error) {
+      console.warn('Failed to calculate initial scale, using default:', error);
+      // Keep default of 1
+    }
+    
+    minScaleRef.current = initialScale; // Store as the true minimum scale
     setScale(initialScale); // Ensure initial state is aligned with margins
     setScrollProgress(0); // Progress bar starts at 0%
     currentSectionIndexRef.current = 0; // Start at first section (hero)
+    
+    // Recalculate scale once content is fully rendered
+    const recalculateScale = () => {
+      try {
+        const newScale = calculateInitialScale();
+        if (newScale !== initialScale && isFinite(newScale) && newScale > 0) {
+          minScaleRef.current = newScale;
+          targetScale = newScale;
+          currentScale = newScale;
+          setScale(newScale);
+        }
+      } catch (error) {
+        console.warn('Failed to recalculate scale:', error);
+      }
+    };
+    
+    // Wait for next frame to ensure content is rendered
+    requestAnimationFrame(() => {
+      requestAnimationFrame(recalculateScale);
+    });
+    
     setIsInitialized(true); // Mark as initialized to enable transitions
     let animationFrameId: number;
 
@@ -560,27 +613,19 @@ const IndexNew2 = () => {
     let touchStartDistance = 0;
     let touchStartScale = minScaleRef.current;
     
-    // Single-finger touch scroll tracking
+    // Single-finger swipe tracking (for navigation between sections)
     let singleTouchStartY = 0;
     let singleTouchStartTime = 0;
-    let touchScrollVelocity = 0;
-    const touchScrollThreshold = 50; // Minimum pixels to trigger section change
-    const touchScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-    const lastTouchDirectionRef = useRef<'up' | 'down' | null>(null);
+    const touchScrollThreshold = 100; // Minimum pixels to trigger section change
+    const touchScrollMaxTime = 500; // Maximum time (ms) for a swipe gesture
 
     const handleTouchStart = (e: TouchEvent) => {
+      if (!isInitialized) return;
+      
       if (e.touches.length === 1) {
-        // Single finger - track for scroll gesture
+        // Single finger - track for swipe gesture
         singleTouchStartY = e.touches[0].clientY;
         singleTouchStartTime = Date.now();
-        touchScrollVelocity = 0;
-        lastTouchDirectionRef.current = null;
-        
-        // Cancel any pending scroll timeout
-        if (touchScrollTimeoutRef.current) {
-          clearTimeout(touchScrollTimeoutRef.current);
-          touchScrollTimeoutRef.current = null;
-        }
       } else if (e.touches.length === 2) {
         // Two fingers - pinch to zoom
         const touch1 = e.touches[0];
@@ -594,59 +639,9 @@ const IndexNew2 = () => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length === 1) {
-        // Single finger scroll gesture
-        e.preventDefault();
-        
-        const currentY = e.touches[0].clientY;
-        const deltaY = singleTouchStartY - currentY; // Positive = scroll up, Negative = scroll down
-        const timeDelta = Date.now() - singleTouchStartTime;
-        
-        // Calculate velocity
-        if (timeDelta > 0) {
-          touchScrollVelocity = Math.abs(deltaY) / timeDelta;
-        }
-        
-        // Determine direction
-        const direction = deltaY > 0 ? 'up' : 'down';
-        
-        // Only process if we've moved enough and it's a new gesture
-        if (Math.abs(deltaY) > touchScrollThreshold) {
-          // Check if this is a new gesture (different direction or enough time passed)
-          const isNewGesture = lastTouchDirectionRef.current !== direction || timeDelta > 500;
-          
-          if (isNewGesture && !isScrollingToSectionRef.current) {
-            // Cancel any auto-scroll
-            if (isAutoScrollingRef.current) {
-              isAutoScrollingRef.current = false;
-              if (autoScrollAnimationRef.current) {
-                cancelAnimationFrame(autoScrollAnimationRef.current);
-                autoScrollAnimationRef.current = null;
-              }
-            }
-            
-            lastTouchDirectionRef.current = direction;
-            
-            // Update current section index
-            const currentProgress = accumulatedScroll / SCROLL_RANGE;
-            currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
-            
-            // Move to next or previous section
-            moveToSection(direction === 'down' ? 'next' : 'prev');
-            
-            // Reset gesture after delay
-            touchScrollTimeoutRef.current = setTimeout(() => {
-              lastTouchDirectionRef.current = null;
-              touchScrollTimeoutRef.current = null;
-            }, 1200);
-            
-            // Reset start position to prevent multiple triggers
-            singleTouchStartY = currentY;
-            singleTouchStartTime = Date.now();
-          }
-        }
-      } else if (e.touches.length === 2) {
-        // Two finger pinch-to-zoom
+      // Only process two-finger pinch gestures
+      // Single-finger swipes are handled in touchend to avoid blocking rendering
+      if (e.touches.length === 2 && isInitialized) {
         e.preventDefault();
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
@@ -697,24 +692,48 @@ const IndexNew2 = () => {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      if (e.touches.length === 0) {
-        // All touches ended
-        if (touchStartDistance > 0) {
-          // Was a pinch gesture - snap to nearest section
-          const currentProgress = accumulatedScroll / SCROLL_RANGE;
-          currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
-          const snapTarget = SNAP_POINTS[currentSectionIndexRef.current];
-          
-          // Snap to the current section if not already there
-          if (Math.abs(snapTarget - currentProgress) > 0.02) {
-            animateToProgress(snapTarget);
+      if (!isInitialized) return;
+      
+      if (e.changedTouches.length === 1 && e.touches.length === 0) {
+        // Single finger swipe ended - check if it was a navigation swipe
+        const touchEndY = e.changedTouches[0].clientY;
+        const deltaY = singleTouchStartY - touchEndY; // Positive = swipe up, Negative = swipe down
+        const deltaTime = Date.now() - singleTouchStartTime;
+        
+        // Only process if significant swipe (100px) within reasonable time (500ms)
+        if (Math.abs(deltaY) > touchScrollThreshold && deltaTime < touchScrollMaxTime) {
+          // Don't process if already animating to a section
+          if (!isScrollingToSectionRef.current) {
+            // Cancel any auto-scroll
+            if (isAutoScrollingRef.current) {
+              isAutoScrollingRef.current = false;
+              if (autoScrollAnimationRef.current) {
+                cancelAnimationFrame(autoScrollAnimationRef.current);
+                autoScrollAnimationRef.current = null;
+              }
+            }
+            
+            // Determine direction: swipe down (finger moves down) = next section, swipe up = previous
+            const direction = deltaY > 0 ? 'next' : 'prev';
+            
+            // Update current section index
+            const currentProgress = accumulatedScroll / SCROLL_RANGE;
+            currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+            
+            // Move to next or previous section
+            moveToSection(direction);
           }
-          touchStartDistance = 0;
         }
-        // Reset single touch tracking
-        singleTouchStartY = 0;
-        singleTouchStartTime = 0;
-        touchScrollVelocity = 0;
+      } else if (e.touches.length < 2) {
+        // Pinch-to-zoom ended - snap to nearest section
+        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+        const snapTarget = SNAP_POINTS[currentSectionIndexRef.current];
+        
+        // Snap to the current section if not already there
+        if (Math.abs(snapTarget - currentProgress) > 0.02) {
+          animateToProgress(snapTarget);
+        }
       }
     };
 
@@ -757,9 +776,6 @@ const IndexNew2 = () => {
       }
       if (wheelGestureTimeoutRef.current) {
         clearTimeout(wheelGestureTimeoutRef.current);
-      }
-      if (touchScrollTimeoutRef.current) {
-        clearTimeout(touchScrollTimeoutRef.current);
       }
     };
   }, []);
