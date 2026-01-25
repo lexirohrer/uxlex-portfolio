@@ -559,9 +559,30 @@ const IndexNew2 = () => {
     // Touch support for mobile
     let touchStartDistance = 0;
     let touchStartScale = minScaleRef.current;
+    
+    // Single-finger touch scroll tracking
+    let singleTouchStartY = 0;
+    let singleTouchStartTime = 0;
+    let touchScrollVelocity = 0;
+    const touchScrollThreshold = 50; // Minimum pixels to trigger section change
+    const touchScrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const lastTouchDirectionRef = useRef<'up' | 'down' | null>(null);
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (e.touches.length === 2) {
+      if (e.touches.length === 1) {
+        // Single finger - track for scroll gesture
+        singleTouchStartY = e.touches[0].clientY;
+        singleTouchStartTime = Date.now();
+        touchScrollVelocity = 0;
+        lastTouchDirectionRef.current = null;
+        
+        // Cancel any pending scroll timeout
+        if (touchScrollTimeoutRef.current) {
+          clearTimeout(touchScrollTimeoutRef.current);
+          touchScrollTimeoutRef.current = null;
+        }
+      } else if (e.touches.length === 2) {
+        // Two fingers - pinch to zoom
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
         touchStartDistance = Math.hypot(
@@ -573,7 +594,59 @@ const IndexNew2 = () => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.touches.length === 2) {
+      if (e.touches.length === 1) {
+        // Single finger scroll gesture
+        e.preventDefault();
+        
+        const currentY = e.touches[0].clientY;
+        const deltaY = singleTouchStartY - currentY; // Positive = scroll up, Negative = scroll down
+        const timeDelta = Date.now() - singleTouchStartTime;
+        
+        // Calculate velocity
+        if (timeDelta > 0) {
+          touchScrollVelocity = Math.abs(deltaY) / timeDelta;
+        }
+        
+        // Determine direction
+        const direction = deltaY > 0 ? 'up' : 'down';
+        
+        // Only process if we've moved enough and it's a new gesture
+        if (Math.abs(deltaY) > touchScrollThreshold) {
+          // Check if this is a new gesture (different direction or enough time passed)
+          const isNewGesture = lastTouchDirectionRef.current !== direction || timeDelta > 500;
+          
+          if (isNewGesture && !isScrollingToSectionRef.current) {
+            // Cancel any auto-scroll
+            if (isAutoScrollingRef.current) {
+              isAutoScrollingRef.current = false;
+              if (autoScrollAnimationRef.current) {
+                cancelAnimationFrame(autoScrollAnimationRef.current);
+                autoScrollAnimationRef.current = null;
+              }
+            }
+            
+            lastTouchDirectionRef.current = direction;
+            
+            // Update current section index
+            const currentProgress = accumulatedScroll / SCROLL_RANGE;
+            currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+            
+            // Move to next or previous section
+            moveToSection(direction === 'down' ? 'next' : 'prev');
+            
+            // Reset gesture after delay
+            touchScrollTimeoutRef.current = setTimeout(() => {
+              lastTouchDirectionRef.current = null;
+              touchScrollTimeoutRef.current = null;
+            }, 1200);
+            
+            // Reset start position to prevent multiple triggers
+            singleTouchStartY = currentY;
+            singleTouchStartTime = Date.now();
+          }
+        }
+      } else if (e.touches.length === 2) {
+        // Two finger pinch-to-zoom
         e.preventDefault();
         const touch1 = e.touches[0];
         const touch2 = e.touches[1];
@@ -624,16 +697,24 @@ const IndexNew2 = () => {
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      // When touch gesture ends (pinch-to-zoom), snap to nearest section
-      if (e.touches.length < 2) {
-        const currentProgress = accumulatedScroll / SCROLL_RANGE;
-        currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
-        const snapTarget = SNAP_POINTS[currentSectionIndexRef.current];
-        
-        // Snap to the current section if not already there
-        if (Math.abs(snapTarget - currentProgress) > 0.02) {
-          animateToProgress(snapTarget);
+      if (e.touches.length === 0) {
+        // All touches ended
+        if (touchStartDistance > 0) {
+          // Was a pinch gesture - snap to nearest section
+          const currentProgress = accumulatedScroll / SCROLL_RANGE;
+          currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+          const snapTarget = SNAP_POINTS[currentSectionIndexRef.current];
+          
+          // Snap to the current section if not already there
+          if (Math.abs(snapTarget - currentProgress) > 0.02) {
+            animateToProgress(snapTarget);
+          }
+          touchStartDistance = 0;
         }
+        // Reset single touch tracking
+        singleTouchStartY = 0;
+        singleTouchStartTime = 0;
+        touchScrollVelocity = 0;
       }
     };
 
@@ -676,6 +757,9 @@ const IndexNew2 = () => {
       }
       if (wheelGestureTimeoutRef.current) {
         clearTimeout(wheelGestureTimeoutRef.current);
+      }
+      if (touchScrollTimeoutRef.current) {
+        clearTimeout(touchScrollTimeoutRef.current);
       }
     };
   }, []);
