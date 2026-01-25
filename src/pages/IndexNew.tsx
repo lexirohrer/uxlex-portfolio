@@ -5,28 +5,12 @@ import Header from "@/components/layout/Header";
 import Hero from "@/components/sections/Hero";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
+import AboutMeContent from "@/components/sections/AboutMeContent";
+import { allFunFacts } from "@/data/funFacts";
 
 const IndexNew = () => {
   // Testimonial slider state
   const [activeTestimonial, setActiveTestimonial] = useState(2);
-  
-  const allFunFacts = [
-    { emoji: "📚", text: "I collect library cards from every place I've lived" },
-    { emoji: "🎤", text: "I love public speaking (weirdo)" },
-    { emoji: "🏔️", text: "I once backpacked for a month straight in the Rocky Mountains" },
-    { emoji: "🌍", text: "I grew up living with 56 exchange students from 16 different countries" },
-    { emoji: "🗣️", text: "I minored in Linguistics & love languages" },
-    { emoji: "✈️", text: "So far, I've visited 35 countries and 23 states"},
-    { emoji: "🇹🇭", text: "I'm currently learning to speak Thai. It is very hard." },
-    { emoji: "🎨", text: "I fell in love with design because I get to work on interdisciplinary problems" },
-    { emoji: "🌱", text: "I've been a climate activist for over 10 years" },
-    { emoji: "⛰️", text: "I climbed the highest mountain in the continental US – twice!" },
-    { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
-    { emoji: "☕️", text: "I've never had a cup of coffee" },
-    { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" },
-    { emoji: "🏰", text: "My most memorable workshop was hosted in the attic of a Polish Castle" },
-    { emoji: "🚗", text: "A video I made in second grade went viral on YouTube, and I used the ad revenue to buy my first car" }
-  ];
   
   // Track which fact indices have been shown (using ref for reliable access)
   const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2])); // Start with first 3 facts shown
@@ -418,47 +402,11 @@ const IndexNew = () => {
               viewport={{ once: true, amount: 0.3 }}
             >
               <div className="relative flex flex-col gap-6 overflow-visible max-w-4xl mx-auto">
-                {/* About Me Content */}
-                <div className="relative z-10">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid text-left">about me</h2>
-                  <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 dark:text-[#EAE8F3]/90 leading-relaxed text-justify">
-                    <p className="text-lg">
-                      I design experiences that create positive social impact. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
-                    </p>
-                    <p className="text-lg">
-                      Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities. If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or doing Thai flashcards on the elliptical.
-                    </p>            
-                    <p className="text-lg">
-                      If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
-                    </p>
-                  </div>
-                </div>
-                
-                {/* Fun Facts - 3 Cards in Row on Desktop, Stacked on Mobile */}
-                <div className="relative z-10 flex flex-col md:flex-row gap-3 md:gap-4 mt-6">
-                  {displayedFacts
-                    .slice(0, 3)
-                    .map((fact, index) => (
-                      <div key={`wrapper-${index}`} className="flex-1">
-                        {renderFactCard(fact, index, "stacked", "stack")}
-                      </div>
-                    ))}
-                </div>
-                
-                {/* Shuffle Button - Full Width */}
-                <button
-                  onClick={shuffleFacts}
-                  className="relative z-10 w-full mt-2 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
-                  aria-label="Shuffle facts"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                    alt="Shuffle"
-                    className="w-6 h-6 drop-shadow-lg"
-                    loading="lazy"
-                  />
-                  <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
-                </button>
+                <AboutMeContent
+                  renderFactCard={renderFactCard}
+                  displayedFacts={displayedFacts}
+                  shuffleFacts={shuffleFacts}
+                />
               </div>
             </motion.div>
 

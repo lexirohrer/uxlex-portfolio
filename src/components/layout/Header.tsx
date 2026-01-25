@@ -64,13 +64,13 @@ const Header = () => {
             background: location.pathname === "/" && !isScrolledPastHero
               ? 'rgba(255, 255, 255, 0.1)'
               : theme === 'dark'
-              ? 'rgba(26, 16, 63, 0.6)'
-              : 'rgba(255, 255, 255, 0.7)',
+              ? 'rgba(255, 255, 255, 0.1)'
+              : 'rgba(255, 255, 255, 0.1)',
             borderColor: location.pathname === "/" && !isScrolledPastHero
               ? 'rgba(255, 255, 255, 0.2)'
               : theme === 'dark'
-              ? 'rgba(255, 255, 255, 0.1)'
-              : 'rgba(0, 0, 0, 0.1)',
+              ? 'rgba(255, 255, 255, 0.2)'
+              : 'rgba(255, 255, 255, 0.2)',
             boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
           }}
         >
@@ -128,12 +128,8 @@ const Header = () => {
             <div 
               className="md:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl border backdrop-blur-xl z-[999]"
               style={{
-                background: theme === 'dark'
-                  ? 'rgba(26, 16, 63, 0.9)'
-                  : 'rgba(255, 255, 255, 0.9)',
-                borderColor: theme === 'dark'
-                  ? 'rgba(255, 255, 255, 0.1)'
-                  : 'rgba(0, 0, 0, 0.1)',
+                background: 'rgba(255, 255, 255, 0.1)',
+                borderColor: 'rgba(255, 255, 255, 0.2)',
                 boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
               }}
             >

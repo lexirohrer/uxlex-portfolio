@@ -3,26 +3,10 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
 import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
+import AboutMeContent from "@/components/sections/AboutMeContent";
+import { allFunFacts } from "@/data/funFacts";
 
 const IndexNew2 = () => {
-  // Fun facts data
-  const allFunFacts = [
-    { emoji: "📚", text: "I collect library cards from every place I've lived" },
-    { emoji: "🎤", text: "I love public speaking (weirdo)" },
-    { emoji: "🏔️", text: "I once backpacked for a month straight in the Rocky Mountains" },
-    { emoji: "🌍", text: "I grew up living with 56 exchange students from 16 different countries" },
-    { emoji: "🗣️", text: "I minored in Linguistics & love languages" },
-    { emoji: "✈️", text: "So far, I've visited 35 countries and 23 states"},
-    { emoji: "🇹🇭", text: "I'm currently learning to speak Thai. It is very hard." },
-    { emoji: "🎨", text: "I fell in love with design because I get to work on interdisciplinary problems" },
-    { emoji: "🌱", text: "I've been a climate activist for over 10 years" },
-    { emoji: "⛰️", text: "I climbed the highest mountain in the continental US – twice!" },
-    { emoji: "👽", text: "If you want to talk for hours abour Sci Fi Books, I'm your gal" },
-    { emoji: "☕️", text: "I've never had a cup of coffee" },
-    { emoji: "👯‍♀️", text: "I was voted 'most talkative' in my high school yearbook" },
-    { emoji: "🏰", text: "My most memorable workshop was hosted in the attic of a Polish Castle" },
-    { emoji: "🚗", text: "A video I made in second grade went viral on YouTube, and I used the ad revenue to buy my first car" }
-  ];
   
   // Track which fact indices have been shown
   const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2]));
@@ -143,12 +127,14 @@ const IndexNew2 = () => {
   
   const renderFactCard = (
     fact: typeof displayedFacts[number],
-    index: number
+    index: number,
+    keyPrefix: string,
+    layout: "grid" | "stack" = "grid"
   ) => {
     const isFlipped = flippedCards.has(index);
     return (
       <div
-        key={`fact-${index}`}
+        key={`${keyPrefix}-${fact.text}`}
         className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
         style={{ perspective: "1000px" }}
         onClick={() => toggleFlip(index)}
@@ -162,7 +148,7 @@ const IndexNew2 = () => {
               ? "rotateY(180deg)"
               : "rotateY(0deg)",
             transformStyle: "preserve-3d",
-            minHeight: "220px",
+            minHeight: layout === "stack" ? "240px" : "220px",
           }}
         >
           <div
@@ -220,10 +206,19 @@ const IndexNew2 = () => {
   const HERO_EXIT_SCALE = 8; // Scale needed to zoom hero completely off screen (text left, image right)
   const ABOUT_ME_EXIT_SCALE = 6; // Scale needed to zoom past about me section completely off screen
   const SCROLL_RANGE = 3000; // Increased scroll range to accommodate all sections
-  const HERO_ZOOM_RANGE = 0.25; // Hero section uses 25% of scroll range (0 to 0.25) to reach MAX_SCALE
-  const HERO_EXIT_RANGE = 0.4; // Hero section uses 40% of scroll range to zoom completely off screen
-  const ABOUT_ME_VISIBLE_RANGE = 0.6; // About me section is fully visible at 60% of scroll
-  const ABOUT_ME_EXIT_RANGE = 0.9; // About me section uses 90% of scroll range to zoom completely off screen
+  
+  // Even distribution: Each section gets 33.33% of scroll
+  // Hero section: 0-33.33%
+  const HERO_ZOOM_RANGE = 0.1667; // Hero zoom: 0-16.67% (first half of hero section)
+  const HERO_EXIT_RANGE = 0.3333; // Hero exit: 16.67-33.33% (second half of hero section)
+  
+  // About Me section: 33.33-66.67%
+  const ABOUT_ME_VISIBLE_RANGE = 0.5; // About me visible: 33.33-50% (first half of about me)
+  const ABOUT_ME_EXIT_RANGE = 0.6667; // About me exit: 50-66.67% (second half of about me)
+  
+  // Testimonials section: 66.67-100%
+  const TESTIMONIALS_VISIBLE_RANGE = 0.8333; // Testimonials visible: 66.67-83.33% (first half of testimonials)
+  const TESTIMONIALS_EXIT_RANGE = 1.0; // Testimonials exit: 83.33-100% (second half of testimonials)
 
   const [scale, setScale] = useState(0.5); // Temporary initial state, will be set in useEffect
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -327,8 +322,15 @@ const IndexNew2 = () => {
           // Fourth phase: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
           const aboutMeProgress = (currentProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
           targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(aboutMeProgress);
+        } else if (currentProgress <= TESTIMONIALS_VISIBLE_RANGE) {
+          // Fifth phase: testimonials section visible at scale 1
+          targetScale = 1;
+        } else if (currentProgress <= TESTIMONIALS_EXIT_RANGE) {
+          // Sixth phase: zoom past testimonials section from scale 1 to ABOUT_ME_EXIT_SCALE
+          const testimonialsProgress = (currentProgress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE);
+          targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(testimonialsProgress);
         } else {
-          // After about me exits, stay at ABOUT_ME_EXIT_SCALE
+          // After testimonials exits, stay at ABOUT_ME_EXIT_SCALE
           targetScale = ABOUT_ME_EXIT_SCALE;
         }
         targetScale = Math.max(MIN_SCALE, Math.min(ABOUT_ME_EXIT_SCALE, targetScale));
@@ -349,6 +351,13 @@ const IndexNew2 = () => {
     };
 
     const handleWheel = (e: WheelEvent) => {
+      // Allow normal scrolling once we reach 100% of scroll range
+      if (accumulatedScroll >= SCROLL_RANGE && e.deltaY > 0) {
+        // At 100%, allow normal page scrolling - don't prevent default
+        return;
+      }
+      
+      // Prevent default only when scroll system is active
       e.preventDefault();
       
       // Calculate scroll delta (normalize for different devices)
@@ -383,12 +392,20 @@ const IndexNew2 = () => {
       const progress = accumulatedScroll / SCROLL_RANGE;
       setScrollProgress(progress);
       
+      // Update body scroll lock based on progress
+      if (accumulatedScroll >= SCROLL_RANGE) {
+        document.body.style.overflow = "";
+      } else {
+        document.body.style.overflow = "hidden";
+      }
+      
       // Hero section zoom: 
-      // 0 to 0.25: zoom from MIN_SCALE to MAX_SCALE
-      // 0.25 to 0.4: continue zooming from MAX_SCALE to HERO_EXIT_SCALE (zooms off screen)
-      // 0.4 to 0.6: about me section is visible at scale 1
-      // 0.6 to 0.9: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
-      // After 0.9: testimonials section is revealed
+      // 0 to 16.67%: zoom from MIN_SCALE to MAX_SCALE
+      // 16.67% to 33.33%: continue zooming from MAX_SCALE to HERO_EXIT_SCALE (zooms off screen)
+      // 33.33% to 50%: about me section is visible at scale 1
+      // 50% to 66.67%: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
+      // 66.67% to 83.33%: testimonials section fades in and is visible
+      // 83.33% to 100%: testimonials section exits
       const MIN_SCALE = minScaleRef.current;
       if (progress <= HERO_ZOOM_RANGE) {
         // First phase: zoom from MIN_SCALE to MAX_SCALE
@@ -405,8 +422,15 @@ const IndexNew2 = () => {
         // Fourth phase: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
         const aboutMeProgress = (progress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
         targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(aboutMeProgress);
+      } else if (progress <= TESTIMONIALS_VISIBLE_RANGE) {
+        // Fifth phase: testimonials section visible at scale 1
+        targetScale = 1;
+      } else if (progress <= TESTIMONIALS_EXIT_RANGE) {
+        // Sixth phase: zoom past testimonials section from scale 1 to ABOUT_ME_EXIT_SCALE
+        const testimonialsProgress = (progress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE);
+        targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(testimonialsProgress);
       } else {
-        // After about me exits, stay at ABOUT_ME_EXIT_SCALE
+        // After testimonials exits, stay at ABOUT_ME_EXIT_SCALE
         targetScale = ABOUT_ME_EXIT_SCALE;
       }
       targetScale = Math.max(MIN_SCALE, Math.min(ABOUT_ME_EXIT_SCALE, targetScale));
@@ -475,10 +499,13 @@ const IndexNew2 = () => {
         } else if (targetScale <= 1) {
           // Third phase: scale 1 maps to HERO_EXIT_RANGE to ABOUT_ME_VISIBLE_RANGE
           progress = HERO_EXIT_RANGE + (ABOUT_ME_VISIBLE_RANGE - HERO_EXIT_RANGE);
-        } else {
+        } else if (targetScale <= ABOUT_ME_EXIT_SCALE) {
           // Fourth phase: scale maps to ABOUT_ME_VISIBLE_RANGE to ABOUT_ME_EXIT_RANGE
           const aboutMeProgress = (targetScale - 1) / (ABOUT_ME_EXIT_SCALE - 1);
           progress = ABOUT_ME_VISIBLE_RANGE + aboutMeProgress * (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
+        } else {
+          // Fifth phase: beyond about me exit, map to testimonials range
+          progress = Math.min(1, ABOUT_ME_EXIT_RANGE + (targetScale - ABOUT_ME_EXIT_SCALE) / ABOUT_ME_EXIT_SCALE * (1 - ABOUT_ME_EXIT_RANGE));
         }
         accumulatedScroll = progress * SCROLL_RANGE;
         setScrollProgress(progress);
@@ -492,9 +519,11 @@ const IndexNew2 = () => {
       }
     };
 
-    // Prevent default scroll behavior
+    // Prevent default scroll behavior only when not at 100% scroll
     const preventScroll = (e: Event) => {
-      e.preventDefault();
+      if (accumulatedScroll < SCROLL_RANGE) {
+        e.preventDefault();
+      }
     };
 
     // Add event listeners
@@ -503,8 +532,15 @@ const IndexNew2 = () => {
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
     container.addEventListener("scroll", preventScroll, { passive: false });
 
-    // Lock body scroll
-    document.body.style.overflow = "hidden";
+    // Lock body scroll only when scroll system is active
+    const updateBodyScroll = () => {
+      if (accumulatedScroll >= SCROLL_RANGE) {
+        document.body.style.overflow = "";
+      } else {
+        document.body.style.overflow = "hidden";
+      }
+    };
+    updateBodyScroll();
 
     return () => {
       container.removeEventListener("wheel", handleWheel);
@@ -566,12 +602,9 @@ const IndexNew2 = () => {
 
   return (
     <>
-      <div
-        ref={containerRef}
-        className="fixed inset-0 w-full h-full overflow-hidden"
-        style={{ touchAction: "none" }}
-      >
-        <ShaderGradientCanvas style={{ position: "fixed", inset: 0, zIndex: 0 }}>
+      {/* ShaderGradient - Outside main container to ensure it's always visible */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", isolation: "isolate" }}>
+        <ShaderGradientCanvas style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
           <ShaderGradient
             animate="on"
             brightness={1.1}
@@ -602,6 +635,12 @@ const IndexNew2 = () => {
             wireframe={false}
           />
         </ShaderGradientCanvas>
+      </div>
+      <div
+        ref={containerRef}
+        className="fixed inset-0 w-full h-full overflow-hidden"
+        style={{ touchAction: "none", zIndex: 1 }}
+      >
         <Header />
         
         {/* Z-axis layers - sections stacked, scrolling passes through them */}
@@ -753,12 +792,13 @@ const IndexNew2 = () => {
           className="fixed inset-0 flex items-center justify-center"
           style={{
             // About me section starts at scale 1 and stays visible, then zooms to ABOUT_ME_EXIT_SCALE and moves right to exit completely
+            // IMPORTANT: Only apply transform when actually needed to avoid creating containing block that breaks backdrop-filter
             transform: scrollProgress > ABOUT_ME_VISIBLE_RANGE
               ? `scale(${1 + (ABOUT_ME_EXIT_SCALE - 1) * ((scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE))}) translateX(${window.innerWidth * 1.5 * ((scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE))}px)`
-              : `scale(1) translateX(0px)`,
-            transformOrigin: "20% center", // Focus on left side to push content right
+              : undefined,
+            transformOrigin: scrollProgress > ABOUT_ME_VISIBLE_RANGE ? "20% center" : undefined, // Only set when transforming
             transition: isInitialized ? "transform 0.1s ease-out, opacity 0.3s ease-out" : "none",
-            willChange: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_VISIBLE_RANGE ? "auto" : "transform",
+            willChange: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_VISIBLE_RANGE ? "auto" : scrollProgress > ABOUT_ME_VISIBLE_RANGE ? "transform" : "auto",
             // Increased z-index separation: about me stays in front (z-index 30) until completely off screen, then moves behind (z-index 1)
             zIndex: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 30 : scrollProgress > ABOUT_ME_EXIT_RANGE ? 1 : 10,
             // About me fades in after hero exits, stays fully visible until ABOUT_ME_VISIBLE_RANGE, then fades out as it exits
@@ -773,62 +813,41 @@ const IndexNew2 = () => {
             <div 
               className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto"
             >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6 font-hagrid text-left">about me</h2>
-            <div className="space-y-4 text-white/90 leading-relaxed text-justify">
-              <p className="text-lg">
-                I design experiences that create positive social impact. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
-              </p>
-              <p className="text-lg">
-                Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities. If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or doing Thai flashcards on the elliptical.
-              </p>            
-              <p className="text-lg">
-                If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
-              </p>
-            </div>
-            
-            {/* Fun Facts - 3 Cards in Row on Desktop, Stacked on Mobile */}
-            <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-6" style={{ isolation: "isolate" }}>
-              {displayedFacts
-                .slice(0, 3)
-                .map((fact, index) => (
-                  <div key={`wrapper-${index}`} className="flex-1" style={{ isolation: "isolate" }}>
-                    {renderFactCard(fact, index)}
-                  </div>
-                ))}
-            </div>
-            
-            {/* Shuffle Button - Full Width */}
-            <button
-              onClick={shuffleFacts}
-              className="w-full mt-6 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
-              aria-label="Shuffle facts"
-            >
-              <img
-                src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                alt="Shuffle"
-                className="w-6 h-6 drop-shadow-lg"
-                loading="lazy"
-              />
-              <span className="text-white/90 font-hagrid font-medium text-xl">shuffle</span>
-            </button>
+            <AboutMeContent
+              renderFactCard={renderFactCard}
+              displayedFacts={displayedFacts}
+              shuffleFacts={shuffleFacts}
+              textColorClass="text-white"
+              textSecondaryColorClass="text-white/90"
+              cardsContainerClass="flex flex-col md:flex-row gap-3 md:gap-4 mt-6"
+              shuffleButtonClass="w-full mt-6 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+            />
             </div>
         </div>
         
         {/* Testimonials Section - Back layer (lowest z-index), appears after zooming past about me */}
+        {/* Note: ShaderGradientCanvas is at zIndex 0, so it extends behind this section */}
         <div
           className="fixed inset-0 flex items-center justify-center"
           style={{
-            transform: `scale(1)`, // Testimonials stay at normal size
-            transformOrigin: "center center",
-            transition: isInitialized ? "opacity 0.3s ease-out" : "none",
-            willChange: "opacity",
+            transform: scrollProgress > TESTIMONIALS_VISIBLE_RANGE
+              ? `scale(${1 + (ABOUT_ME_EXIT_SCALE - 1) * ((scrollProgress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE))}) translateX(${-window.innerWidth * 1.5 * ((scrollProgress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE))}px)`
+              : `scale(1)`,
+            transformOrigin: scrollProgress > TESTIMONIALS_VISIBLE_RANGE ? "80% center" : "center center",
+            transition: isInitialized ? "transform 0.1s ease-out, opacity 0.3s ease-out" : "none",
+            willChange: scrollProgress > TESTIMONIALS_VISIBLE_RANGE ? "transform" : "opacity",
+            backgroundColor: "transparent", // Ensure transparent so gradient shows through
             // Testimonials stay far behind (z-index 1) until about me is completely off screen, then move to front (z-index 10)
-            zIndex: scrollProgress > ABOUT_ME_EXIT_RANGE ? 10 : 1,
+            zIndex: scrollProgress > ABOUT_ME_EXIT_RANGE && scrollProgress <= TESTIMONIALS_EXIT_RANGE ? 10 : scrollProgress > TESTIMONIALS_EXIT_RANGE ? 1 : 1,
             // Only start fading in after about me is completely off screen (at ABOUT_ME_EXIT_RANGE)
-            opacity: scrollProgress > ABOUT_ME_EXIT_RANGE 
-              ? Math.min(1, (scrollProgress - ABOUT_ME_EXIT_RANGE) / (1 - ABOUT_ME_EXIT_RANGE)) 
+            opacity: scrollProgress > ABOUT_ME_EXIT_RANGE && scrollProgress <= TESTIMONIALS_VISIBLE_RANGE
+              ? Math.min(1, (scrollProgress - ABOUT_ME_EXIT_RANGE) / (TESTIMONIALS_VISIBLE_RANGE - ABOUT_ME_EXIT_RANGE))
+              : scrollProgress > TESTIMONIALS_VISIBLE_RANGE && scrollProgress <= TESTIMONIALS_EXIT_RANGE
+              ? 1 // Fully visible during the pause (same pattern as about me section)
+              : scrollProgress > TESTIMONIALS_EXIT_RANGE
+              ? Math.max(0, 1 - ((scrollProgress - TESTIMONIALS_EXIT_RANGE) / (1 - TESTIMONIALS_EXIT_RANGE)))
               : 0,
-            pointerEvents: scrollProgress > ABOUT_ME_EXIT_RANGE ? 'auto' : 'none',
+            pointerEvents: scrollProgress > ABOUT_ME_EXIT_RANGE && scrollProgress <= TESTIMONIALS_EXIT_RANGE ? 'auto' : 'none',
           }}
         >
           <div className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto">
@@ -949,7 +968,7 @@ const IndexNew2 = () => {
             </div>
           </div>
         </div>
-
+        
         {/* Scroll indicator (optional) */}
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 pointer-events-none">
           <div className="text-white/60 text-xs uppercase tracking-wider">
@@ -960,6 +979,86 @@ const IndexNew2 = () => {
               className="h-full bg-white/60 rounded-full transition-all duration-300"
               style={{ width: `${scrollProgress * 100}%` }}
             />
+          </div>
+        </div>
+        
+        {/* Say Hello Section - Final layer, appears after testimonials, lowest z-index */}
+        <div
+          className="fixed inset-0 flex items-center justify-center"
+          style={{
+            transform: `scale(1)`,
+            transformOrigin: "center center",
+            transition: isInitialized ? "opacity 0.3s ease-out" : "none",
+            willChange: "opacity",
+            backgroundColor: "transparent",
+            // Lowest z-index - always behind other sections
+            zIndex: 1,
+            // Only appear after testimonials section completes (at 100% scroll)
+            opacity: scrollProgress >= TESTIMONIALS_EXIT_RANGE
+              ? 1
+              : 0,
+            pointerEvents: scrollProgress >= TESTIMONIALS_EXIT_RANGE ? 'auto' : 'none',
+          }}
+        >
+          <div className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-hagrid">say hello 👋</h2>
+            <p className="text-white/90 text-center mb-10 text-lg md:text-xl max-w-3xl mx-auto">
+              If you're working on a social impact problem and need a UX consultant, book a time on my calendar or reach out at lexirohrer@gmail.com
+            </p>
+            
+            {/* Contact Icons */}
+            <div className="flex flex-row gap-6 items-center justify-center">
+              <a
+                href="https://www.linkedin.com/in/alexandra-rohrer/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                  alt="LinkedIn"
+                  className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="mailto:lexirohrer@gmail.com"
+                className="group flex items-center justify-center"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}Gmail.png`}
+                  alt="Gmail"
+                  className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}Calendar.png`}
+                  alt="Calendar"
+                  className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </a>
+              <a
+                href="https://uxlex.substack.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center"
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}Substack.png`}
+                  alt="Substack"
+                  className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
