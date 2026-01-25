@@ -422,7 +422,7 @@ const IndexNew2 = () => {
       
       const startProgress = accumulatedScroll / SCROLL_RANGE;
       const startTime = Date.now();
-      const duration = 300; // 300ms animation
+      const duration = 600; // 600ms animation (slower for less jarring transitions)
       
       let snapAnimationId: number | null = null;
       
@@ -515,12 +515,18 @@ const IndexNew2 = () => {
       const direction = delta > 0 ? 'next' : 'prev';
       const now = Date.now();
       
+      // Require a minimum scroll delta to prevent accidental triggers
+      const MIN_SCROLL_DELTA = 50; // Minimum pixels of scroll before triggering
+      if (Math.abs(delta) < MIN_SCROLL_DELTA) {
+        return; // Ignore small scroll movements
+      }
+      
       // Simplified scroll logic: each distinct scroll gesture moves to next/previous section
       // A new gesture is defined as:
-      // 1. More than 300ms since last wheel event (allows trackpad momentum to settle)
+      // 1. More than 800ms since last wheel event (allows trackpad momentum to settle - increased for less sensitivity)
       // 2. OR different direction than last gesture
       const timeSinceLastWheel = now - lastWheelTimeRef.current;
-      const isNewGesture = timeSinceLastWheel > 300 || wheelGestureDirectionRef.current !== direction;
+      const isNewGesture = timeSinceLastWheel > 800 || wheelGestureDirectionRef.current !== direction;
       
       if (isNewGesture) {
         // New gesture - clear any pending timeout and start fresh
@@ -543,7 +549,7 @@ const IndexNew2 = () => {
         wheelGestureTimeoutRef.current = setTimeout(() => {
           wheelGestureDirectionRef.current = null;
           wheelGestureTimeoutRef.current = null;
-        }, 600); // Reset after 600ms (longer than animation duration)
+        }, 1200); // Reset after 1200ms (longer timeout for less sensitivity)
       }
       // If not a new gesture, ignore the wheel event (part of same trackpad scroll)
       
