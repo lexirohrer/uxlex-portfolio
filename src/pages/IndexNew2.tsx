@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
-import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
 import AboutMeContent from "@/components/sections/AboutMeContent";
 import { allFunFacts } from "@/data/funFacts";
 
@@ -220,8 +219,13 @@ const IndexNew2 = () => {
   const TESTIMONIALS_VISIBLE_RANGE = 0.8333; // Testimonials visible: 66.67-83.33% (first half of testimonials)
   const TESTIMONIALS_EXIT_RANGE = 1.0; // Testimonials exit: 83.33-100% (second half of testimonials)
   
-  // Snap points for sticky sections (section boundaries)
-  const SNAP_POINTS = [0, HERO_EXIT_RANGE, ABOUT_ME_EXIT_RANGE, TESTIMONIALS_EXIT_RANGE]; // 0%, 33.33%, 66.67%, 100%
+  // Snap points for sticky sections - snap to where sections are fully visible
+  const SNAP_POINTS = [
+    0, // Start/hero section
+    ABOUT_ME_VISIBLE_RANGE, // About me section fully visible
+    TESTIMONIALS_VISIBLE_RANGE, // Testimonials section fully visible
+    TESTIMONIALS_EXIT_RANGE // Final section (say hello)
+  ];
 
   const [scale, setScale] = useState(0.5); // Temporary initial state, will be set in useEffect
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -234,6 +238,11 @@ const IndexNew2 = () => {
   const autoScrollAnimationRef = useRef<number | null>(null);
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const targetScrollProgressRef = useRef(0); // Target progress for snapping
+  const currentSectionIndexRef = useRef(0); // Track which section we're currently at
+  const isScrollingToSectionRef = useRef(false); // Track if we're animating to a section
+  const lastWheelTimeRef = useRef(0); // Track last wheel event time
+  const wheelGestureDirectionRef = useRef<'next' | 'prev' | null>(null); // Track direction of current gesture
+  const wheelGestureTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -262,6 +271,7 @@ const IndexNew2 = () => {
     let currentScale = initialScale;
     setScale(initialScale); // Ensure initial state is aligned with margins
     setScrollProgress(0); // Progress bar starts at 0%
+    currentSectionIndexRef.current = 0; // Start at first section (hero)
     setIsInitialized(true); // Mark as initialized to enable transitions
     let animationFrameId: number;
 
@@ -355,21 +365,51 @@ const IndexNew2 = () => {
       autoScrollAnimationRef.current = requestAnimationFrame(animate);
     };
 
-    // Function to snap to nearest section boundary
-    const snapToSection = (currentProgress: number): number => {
-      // Always snap to the nearest section boundary
-      let nearestSnap = SNAP_POINTS[0];
-      let minDistance = Math.abs(currentProgress - nearestSnap);
+    // Function to find current section index based on progress
+    // This determines which section we're currently closest to
+    const findCurrentSectionIndex = (currentProgress: number): number => {
+      // Find which section we're closest to
+      let closestIndex = 0;
+      let minDistance = Math.abs(currentProgress - SNAP_POINTS[0]);
       
-      for (const snapPoint of SNAP_POINTS) {
-        const distance = Math.abs(currentProgress - snapPoint);
+      for (let i = 0; i < SNAP_POINTS.length; i++) {
+        const distance = Math.abs(currentProgress - SNAP_POINTS[i]);
         if (distance < minDistance) {
           minDistance = distance;
-          nearestSnap = snapPoint;
+          closestIndex = i;
         }
       }
       
-      return nearestSnap;
+      return closestIndex;
+    };
+    
+    // Function to move to next or previous section
+    const moveToSection = (direction: 'next' | 'prev') => {
+      if (isScrollingToSectionRef.current) return; // Already animating, ignore
+      
+      // Update current section index based on actual scroll progress
+      const currentProgress = accumulatedScroll / SCROLL_RANGE;
+      currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+      
+      const currentIndex = currentSectionIndexRef.current;
+      let targetIndex: number;
+      
+      if (direction === 'next') {
+        targetIndex = Math.min(currentIndex + 1, SNAP_POINTS.length - 1);
+      } else {
+        targetIndex = Math.max(currentIndex - 1, 0);
+      }
+      
+      // Don't move if already at the target
+      if (targetIndex === currentIndex) return;
+      
+      isScrollingToSectionRef.current = true;
+      currentSectionIndexRef.current = targetIndex;
+      const targetProgress = SNAP_POINTS[targetIndex];
+      
+      // Animate to the target section
+      animateToProgress(targetProgress);
+      // Note: isScrollingToSectionRef is reset in animateToProgress when animation completes
     };
     
     // Function to animate scroll to target progress
@@ -424,7 +464,22 @@ const IndexNew2 = () => {
         if (t < 1) {
           snapAnimationId = requestAnimationFrame(animate);
         } else {
+          // Animation complete - ensure we're exactly at target and update section index
+          accumulatedScroll = targetProgress * SCROLL_RANGE;
+          setScrollProgress(targetProgress);
+          // Find the section index that matches our target progress
+          // Use a small epsilon for floating point comparison
+          const targetIndex = SNAP_POINTS.findIndex((point, index) => 
+            Math.abs(point - targetProgress) < 0.001
+          );
+          if (targetIndex !== -1) {
+            currentSectionIndexRef.current = targetIndex;
+          } else {
+            // Fallback: find closest section
+            currentSectionIndexRef.current = findCurrentSectionIndex(targetProgress);
+          }
           snapAnimationId = null;
+          isScrollingToSectionRef.current = false;
         }
       };
       
@@ -441,19 +496,12 @@ const IndexNew2 = () => {
       // Prevent default only when scroll system is active
       e.preventDefault();
       
-      // Clear any existing scroll timeout
-      if (scrollTimeoutRef.current) {
-        clearTimeout(scrollTimeoutRef.current);
-        scrollTimeoutRef.current = null;
+      // If already animating to a section, ignore all scroll events
+      if (isScrollingToSectionRef.current) {
+        return;
       }
       
-      // Calculate scroll delta (normalize for different devices)
-      const delta = e.deltaY;
-      // Scroll down = positive delta = zoom in (increase scale)
-      // Scroll up = negative delta = zoom out (decrease scale)
-      const normalizedDelta = Math.sign(delta) * Math.min(Math.abs(delta), 100);
-      
-      // If user manually scrolls while auto-scrolling, cancel auto-scroll to allow manual control
+      // Cancel any auto-scroll
       if (isAutoScrollingRef.current) {
         isAutoScrollingRef.current = false;
         if (autoScrollAnimationRef.current) {
@@ -462,97 +510,44 @@ const IndexNew2 = () => {
         }
       }
       
-      // If scrolling down and we're at the start (or very close to start), trigger auto-scroll
-      // Auto-scroll only goes to about me section, not all the way to testimonials
-      if (normalizedDelta > 0 && accumulatedScroll < 50) {
-        startAutoScroll();
-        return;
-      }
-      
-      // Update accumulated scroll: scroll down (positive delta) increases accumulatedScroll
-      // Scroll up (negative delta) decreases accumulatedScroll
-      accumulatedScroll += normalizedDelta;
-      accumulatedScroll = Math.max(0, Math.min(accumulatedScroll, SCROLL_RANGE));
-      
-      
-      // Calculate scroll progress (0 to 1)
-      const progress = accumulatedScroll / SCROLL_RANGE;
-      setScrollProgress(progress);
-      
-      // Set target progress for snapping (will be used when scrolling stops)
-      targetScrollProgressRef.current = progress;
-      
-      // Update body scroll lock based on progress
-      if (accumulatedScroll >= SCROLL_RANGE) {
-        document.body.style.overflow = "";
-      } else {
-        document.body.style.overflow = "hidden";
-      }
-      
-      // Hero section zoom: 
-      // 0 to 16.67%: zoom from MIN_SCALE to MAX_SCALE
-      // 16.67% to 33.33%: continue zooming from MAX_SCALE to HERO_EXIT_SCALE (zooms off screen)
-      // 33.33% to 50%: about me section is visible at scale 1
-      // 50% to 66.67%: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
-      // 66.67% to 83.33%: testimonials section fades in and is visible
-      // 83.33% to 100%: testimonials section exits
-      const MIN_SCALE = minScaleRef.current;
-      if (progress <= HERO_ZOOM_RANGE) {
-        // First phase: zoom from MIN_SCALE to MAX_SCALE
-        const heroProgress = progress / HERO_ZOOM_RANGE;
-        targetScale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * easeOutCubic(heroProgress);
-      } else if (progress <= HERO_EXIT_RANGE) {
-        // Second phase: continue zooming from MAX_SCALE to HERO_EXIT_SCALE to zoom off screen
-        const exitProgress = (progress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE);
-        targetScale = MAX_SCALE + (HERO_EXIT_SCALE - MAX_SCALE) * easeOutCubic(exitProgress);
-      } else if (progress <= ABOUT_ME_VISIBLE_RANGE) {
-        // Third phase: about me section is visible at scale 1
-        targetScale = 1;
-      } else if (progress <= ABOUT_ME_EXIT_RANGE) {
-        // Fourth phase: zoom past about me section from scale 1 to ABOUT_ME_EXIT_SCALE
-        const aboutMeProgress = (progress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
-        targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(aboutMeProgress);
-      } else if (progress <= TESTIMONIALS_VISIBLE_RANGE) {
-        // Fifth phase: testimonials section visible at scale 1
-        targetScale = 1;
-      } else if (progress <= TESTIMONIALS_EXIT_RANGE) {
-        // Sixth phase: zoom past testimonials section from scale 1 to ABOUT_ME_EXIT_SCALE
-        const testimonialsProgress = (progress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE);
-        targetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(testimonialsProgress);
-      } else {
-        // After testimonials exits, stay at ABOUT_ME_EXIT_SCALE
-        targetScale = ABOUT_ME_EXIT_SCALE;
-      }
-      targetScale = Math.max(MIN_SCALE, Math.min(ABOUT_ME_EXIT_SCALE, targetScale));
-      
-      // Always restart animation to ensure smooth updates in both directions
-      // Cancel any existing animation and start fresh
-      if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-      }
-      animationFrameId = 0; // Reset before starting new animation
-      updateScale();
-
-      // Track scroll velocity for momentum
+      // Determine scroll direction
+      const delta = e.deltaY;
+      const direction = delta > 0 ? 'next' : 'prev';
       const now = Date.now();
-      const timeDelta = now - lastScrollTimeRef.current;
-      if (timeDelta > 0) {
-        scrollVelocityRef.current = normalizedDelta / timeDelta;
-      }
-      lastScrollTimeRef.current = now;
       
-      // Set timeout to snap to section when scrolling stops
-      scrollTimeoutRef.current = setTimeout(() => {
-        const currentProgress = accumulatedScroll / SCROLL_RANGE;
-        const snapTarget = snapToSection(currentProgress);
-        
-        // Always snap if not already at a snap point (with small tolerance)
-        if (Math.abs(snapTarget - currentProgress) > 0.001) {
-          // Snap to section boundary
-          animateToProgress(snapTarget);
+      // Simplified scroll logic: each distinct scroll gesture moves to next/previous section
+      // A new gesture is defined as:
+      // 1. More than 300ms since last wheel event (allows trackpad momentum to settle)
+      // 2. OR different direction than last gesture
+      const timeSinceLastWheel = now - lastWheelTimeRef.current;
+      const isNewGesture = timeSinceLastWheel > 300 || wheelGestureDirectionRef.current !== direction;
+      
+      if (isNewGesture) {
+        // New gesture - clear any pending timeout and start fresh
+        if (wheelGestureTimeoutRef.current) {
+          clearTimeout(wheelGestureTimeoutRef.current);
+          wheelGestureTimeoutRef.current = null;
         }
-        scrollTimeoutRef.current = null;
-      }, 150); // Wait 150ms after last scroll event before snapping
+        
+        wheelGestureDirectionRef.current = direction;
+        
+        // Update current section index based on actual scroll progress before moving
+        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+        
+        // Move to next or previous section (only once per gesture)
+        moveToSection(direction);
+        
+        // Reset gesture direction after animation completes to allow for new gestures
+        // The timeout ensures we don't process multiple wheel events from a single trackpad swipe
+        wheelGestureTimeoutRef.current = setTimeout(() => {
+          wheelGestureDirectionRef.current = null;
+          wheelGestureTimeoutRef.current = null;
+        }, 600); // Reset after 600ms (longer than animation duration)
+      }
+      // If not a new gesture, ignore the wheel event (part of same trackpad scroll)
+      
+      lastWheelTimeRef.current = now;
     };
 
     // Touch support for mobile
@@ -622,6 +617,20 @@ const IndexNew2 = () => {
       }
     };
 
+    const handleTouchEnd = (e: TouchEvent) => {
+      // When touch gesture ends (pinch-to-zoom), snap to nearest section
+      if (e.touches.length < 2) {
+        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+        const snapTarget = SNAP_POINTS[currentSectionIndexRef.current];
+        
+        // Snap to the current section if not already there
+        if (Math.abs(snapTarget - currentProgress) > 0.02) {
+          animateToProgress(snapTarget);
+        }
+      }
+    };
+
     // Prevent default scroll behavior only when not at 100% scroll
     const preventScroll = (e: Event) => {
       if (accumulatedScroll < SCROLL_RANGE) {
@@ -633,6 +642,7 @@ const IndexNew2 = () => {
     container.addEventListener("wheel", handleWheel, { passive: false });
     container.addEventListener("touchstart", handleTouchStart, { passive: true });
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
+    container.addEventListener("touchend", handleTouchEnd, { passive: true });
     container.addEventListener("scroll", preventScroll, { passive: false });
 
     // Lock body scroll only when scroll system is active
@@ -649,6 +659,7 @@ const IndexNew2 = () => {
       container.removeEventListener("wheel", handleWheel);
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("touchend", handleTouchEnd);
       container.removeEventListener("scroll", preventScroll);
       document.body.style.overflow = "";
       if (animationFrameId) {
@@ -657,13 +668,30 @@ const IndexNew2 = () => {
       if (autoScrollAnimationRef.current) {
         cancelAnimationFrame(autoScrollAnimationRef.current);
       }
+      if (wheelGestureTimeoutRef.current) {
+        clearTimeout(wheelGestureTimeoutRef.current);
+      }
     };
   }, []);
+
+  // Reset mouse position when scrolling out of hero section
+  useEffect(() => {
+    if (scrollProgress > HERO_EXIT_RANGE) {
+      // Reset mouse position when outside hero section to prevent glitches
+      setMousePosition({ x: 0, y: 0 });
+    }
+  }, [scrollProgress]);
 
   // Mouse-responsive effect for Memoji
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       if (!memojiRef.current) return;
+      
+      // Only apply mouse effect when in hero section (scrollProgress <= HERO_EXIT_RANGE)
+      // This prevents glitches when scrolling back up
+      if (scrollProgress > HERO_EXIT_RANGE) {
+        return;
+      }
       
       // Check if we're still in hero section by checking the element's visibility
       const rect = memojiRef.current.getBoundingClientRect();
@@ -701,44 +729,11 @@ const IndexNew2 = () => {
         memojiElement.removeEventListener('mouseleave', handleMouseLeave);
       }
     };
-  }, []);
+  }, [scrollProgress]);
 
   return (
     <>
-      {/* ShaderGradient - Outside main container to ensure it's always visible */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", isolation: "isolate" }}>
-        <ShaderGradientCanvas style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
-          <ShaderGradient
-            animate="on"
-            brightness={1.1}
-            cAzimuthAngle={60}
-            cDistance={7.1}
-            cPolarAngle={90}
-            cameraZoom={16.25}
-            color1="#000037"
-            color2="#84089d"
-            color3="#000057"
-            envPreset="dawn"
-            grain="on"
-            lightType="3d"
-            positionX={0}
-            positionY={-0.15}
-            positionZ={0}
-            reflection={0.1}
-            rotationX={0}
-            rotationY={0}
-            rotationZ={0}
-            shader="defaults"
-            type="sphere"
-            uAmplitude={1.4}
-            uDensity={1.5}
-            uFrequency={5.5}
-            uSpeed={0.4}
-            uStrength={0.6}
-            wireframe={false}
-          />
-        </ShaderGradientCanvas>
-      </div>
+      {/* Note: ShaderGradient is now in App.tsx to cover entire site */}
       <div
         ref={containerRef}
         className="fixed inset-0 w-full h-full overflow-hidden"
@@ -760,10 +755,11 @@ const IndexNew2 = () => {
             willChange: "transform",
             // Increased z-index separation: hero stays in front longer, then moves far behind
             zIndex: scrollProgress > HERO_EXIT_RANGE ? 1 : 50, // Move behind only after completely zoomed off screen
-            // Hero never fades out - stays visible and zooms out of frame
-            opacity: 1,
+            // Hide hero section when scrolling past it to prevent memoji from appearing in other sections
+            opacity: scrollProgress > HERO_EXIT_RANGE ? 0 : 1,
+            visibility: scrollProgress > HERO_EXIT_RANGE ? 'hidden' : 'visible',
             transition: isInitialized 
-              ? `transform 0.1s ease-out, z-index 0s ${scrollProgress > HERO_EXIT_RANGE ? '0.3s' : '0s'}` 
+              ? `transform 0.1s ease-out, opacity 0.3s ease-out, visibility 0s ${scrollProgress > HERO_EXIT_RANGE ? '0.3s' : '0s'}, z-index 0s ${scrollProgress > HERO_EXIT_RANGE ? '0.3s' : '0s'}` 
               : "none",
             pointerEvents: scrollProgress > HERO_EXIT_RANGE ? 'none' : 'auto',
           }}
@@ -866,11 +862,15 @@ const IndexNew2 = () => {
               className="flex-shrink-0"
               style={{
                 // Move image right as zoom increases to push it completely off screen
-                // Also add mouse-responsive transform
-                transform: scrollProgress > HERO_ZOOM_RANGE
+                // Only apply mouse-responsive transform when in hero section to prevent glitches
+                transform: scrollProgress > HERO_EXIT_RANGE
+                  ? 'translate(0px, 0px)' // Reset when outside hero section
+                  : scrollProgress > HERO_ZOOM_RANGE
                   ? `translateX(${window.innerWidth * 1.5 * ((scrollProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE))}px) translate(${mousePosition.x}px, ${mousePosition.y}px)`
-                  : `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-                transition: scrollProgress > HERO_ZOOM_RANGE 
+                  : `translate(${mousePosition.x}px, ${mousePosition.y}px)`, // Just mouse position when in early hero section
+                transition: scrollProgress > HERO_EXIT_RANGE
+                  ? 'transform 0.3s ease-out' // Smooth reset when scrolling back up
+                  : scrollProgress > HERO_ZOOM_RANGE 
                   ? 'transform 0.1s ease-out' 
                   : 'transform 0.3s ease-out',
                 willChange: 'transform',
@@ -883,7 +883,10 @@ const IndexNew2 = () => {
                 loading="eager"
                 style={{
                   // Additional subtle rotation based on mouse position (very subtle)
-                  transform: `rotate(${mousePosition.x * 0.1}deg)`,
+                  // Only apply when in hero section to prevent glitches
+                  transform: scrollProgress <= HERO_EXIT_RANGE 
+                    ? `rotate(${mousePosition.x * 0.1}deg)`
+                    : 'rotate(0deg)',
                 }}
               />
             </div>
@@ -929,7 +932,7 @@ const IndexNew2 = () => {
         </div>
         
         {/* Testimonials Section - Back layer (lowest z-index), appears after zooming past about me */}
-        {/* Note: ShaderGradientCanvas is at zIndex 0, so it extends behind this section */}
+        {/* Note: ShaderGradient is in App.tsx at zIndex 0, so it extends behind all sections site-wide */}
         <div
           className="fixed inset-0 flex items-center justify-center"
           style={{

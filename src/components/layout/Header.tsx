@@ -55,22 +55,17 @@ const Header = () => {
   const menuButtonLabel = isMenuOpen ? "Close menu" : "Open menu";
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 flex items-center justify-center pt-4 px-4 sm:px-6 md:px-8">
+    <header className="w-full fixed top-0 left-0 z-[100] flex items-center justify-center pt-4 px-4 sm:px-6 md:px-8">
       {/* Frosted glass floating navigation bar */}
       <div className="w-full max-w-7xl mx-auto">
         <div 
-          className="relative rounded-2xl backdrop-blur-xl border transition-all duration-300"
+          className="relative rounded-full backdrop-blur-xl transition-all duration-300"
           style={{
             background: location.pathname === "/" && !isScrolledPastHero
               ? 'rgba(255, 255, 255, 0.1)'
               : theme === 'dark'
               ? 'rgba(255, 255, 255, 0.1)'
               : 'rgba(255, 255, 255, 0.1)',
-            borderColor: location.pathname === "/" && !isScrolledPastHero
-              ? 'rgba(255, 255, 255, 0.2)'
-              : theme === 'dark'
-              ? 'rgba(255, 255, 255, 0.2)'
-              : 'rgba(255, 255, 255, 0.2)',
             boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
           }}
         >
@@ -81,11 +76,6 @@ const Header = () => {
               className="flex items-center gap-2 flex-shrink-0"
               aria-label="Home"
             >
-              <img 
-                src={`${import.meta.env.BASE_URL}favicon.svg`}
-                alt=""
-                className="w-6 h-6"
-              />
               <span 
                 className={`text-xl font-normal font-hagrid transition-colors duration-200 ${
                   location.pathname === "/" && !isScrolledPastHero
@@ -93,7 +83,7 @@ const Header = () => {
                     : "text-black dark:text-[#EAE8F3]"
                 }`}
               >
-                uxlex
+                uxlex.com
               </span>
             </Link>
 
@@ -131,10 +121,9 @@ const Header = () => {
           {/* Mobile menu - Frosted glass dropdown */}
           {isMenuOpen && (
             <div 
-              className="md:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl border backdrop-blur-xl z-[999]"
+              className="md:hidden absolute top-full left-0 right-0 mt-2 rounded-2xl backdrop-blur-xl z-[999]"
               style={{
                 background: 'rgba(255, 255, 255, 0.1)',
-                borderColor: 'rgba(255, 255, 255, 0.2)',
                 boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.2)',
               }}
             >
