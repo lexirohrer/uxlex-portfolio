@@ -45,8 +45,21 @@ const IndexNew = () => {
   // Track if cards are rotating (full flip on shuffle)
   const [isRotating, setIsRotating] = useState(false);
   
+  // Delay video load to improve initial page performance
+  const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
+  
   // Parallax scroll effect
   const { scrollY } = useScroll();
+  
+  // Delay video load after initial render to prevent blocking
+  useEffect(() => {
+    // Load video after 1.5 seconds to allow initial render to complete
+    const timer = setTimeout(() => {
+      setShouldLoadVideo(true);
+    }, 1500);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   // Background layers with parallax offsets (farther layers move less)
   const backgroundY = useTransform(scrollY, [0, 1000], [0, 150]);
@@ -263,16 +276,20 @@ const IndexNew = () => {
           style={{ y: backgroundY }}
           className="absolute inset-0 w-full h-full z-0 overflow-hidden"
         >
-          <video
-            src={`${import.meta.env.BASE_URL}Clouds_bckg.mp4`}
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="none"
-            loading="lazy"
-          />
+          {shouldLoadVideo ? (
+            <video
+              src={`${import.meta.env.BASE_URL}Clouds_bckg.mp4`}
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="none"
+            />
+          ) : (
+            // Placeholder gradient to maintain visual consistency while video loads
+            <div className="w-full h-full bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900" />
+          )}
         </motion.div>
         
         <div className="relative z-10">
