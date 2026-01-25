@@ -43,7 +43,7 @@ const AboutMe = () => {
     "Grew up in a house that hosted 56 exchange students from 16 different countries 🌎"
   ];
 
-  const cardColors = "bg-white dark:bg-[#1A103F]/80 border-gray-200 dark:border-white/10";
+  const cardColors = "bg-[#0A0520] dark:bg-[#0A0520] backdrop-blur-xl border-white/20";
 
   const handleMouseDown = (e: React.MouseEvent, cardIndex: number) => {
     if (activeCard === cardIndex) return; // Don't drag active cards
@@ -184,12 +184,12 @@ const AboutMe = () => {
                           e.stopPropagation();
                           handleCloseCard();
                         }}
-                        className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-gray-600 hover:text-gray-800 transition-all duration-200 z-10 animate-in fade-in-0 zoom-in-95"
+                        className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center text-white/80 hover:text-white transition-all duration-200 z-10 animate-in fade-in-0 zoom-in-95"
                       >
                         <span className="text-sm font-bold">×</span>
                       </button>
                     )}
-                    <p className="text-base font-hagrid text-gray-700 dark:text-[#EAE8F3] leading-relaxed text-center">
+                    <p className="text-base font-hagrid text-white dark:text-[#EAE8F3] leading-relaxed text-center">
                       {fact}
                     </p>
                   </div>

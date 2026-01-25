@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
+import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
 
 const IndexNew2 = () => {
   // Fun facts data
@@ -42,6 +43,10 @@ const IndexNew2 = () => {
   
   // Testimonials state
   const [activeTestimonial, setActiveTestimonial] = useState(2);
+  
+  // Mouse-responsive Memoji state
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const memojiRef = useRef<HTMLDivElement>(null);
   
   const testimonials = [
     {
@@ -161,11 +166,18 @@ const IndexNew2 = () => {
           }}
         >
           <div
-            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex items-center justify-center backface-hidden px-6"
+            className="fact-card-glass absolute inset-0 w-full h-full rounded-3xl border border-white/20 flex items-center justify-center backface-hidden px-6"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(0deg)",
+              position: "absolute",
+              zIndex: 1,
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              isolation: "isolate",
+              willChange: "backdrop-filter",
             }}
           >
             <span className="text-white/90 font-hagrid font-medium text-3xl text-center">
@@ -173,11 +185,18 @@ const IndexNew2 = () => {
             </span>
           </div>
           <div
-            className="absolute inset-0 w-full h-full bg-white/10 backdrop-blur-xl rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
+            className="fact-card-glass absolute inset-0 w-full h-full rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
+              position: "absolute",
+              zIndex: 1,
+              backgroundColor: "rgba(255, 255, 255, 0.1)",
+              backdropFilter: "blur(24px)",
+              WebkitBackdropFilter: "blur(24px)",
+              isolation: "isolate",
+              willChange: "backdrop-filter",
             }}
           >
             <span className="text-4xl md:text-5xl">{fact.emoji}</span>
@@ -502,18 +521,87 @@ const IndexNew2 = () => {
     };
   }, []);
 
+  // Mouse-responsive effect for Memoji
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!memojiRef.current) return;
+      
+      // Check if we're still in hero section by checking the element's visibility
+      const rect = memojiRef.current.getBoundingClientRect();
+      if (rect.width === 0 || rect.height === 0) return; // Element not visible
+      
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      // Calculate mouse position relative to center of Memoji
+      const x = (e.clientX - centerX) / rect.width;
+      const y = (e.clientY - centerY) / rect.height;
+      
+      // Apply movement with a multiplier for subtle effect (adjust 15 for more/less movement)
+      setMousePosition({
+        x: x * 15,
+        y: y * 15,
+      });
+    };
+
+    const handleMouseLeave = () => {
+      // Reset position when mouse leaves
+      setMousePosition({ x: 0, y: 0 });
+    };
+
+    // Add mouse move listener - will only work when element is visible
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    const memojiElement = memojiRef.current;
+    if (memojiElement) {
+      memojiElement.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      if (memojiElement) {
+        memojiElement.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
+
   return (
     <>
       <div
         ref={containerRef}
         className="fixed inset-0 w-full h-full overflow-hidden"
-        style={{ 
-          touchAction: "none",
-          background: "linear-gradient(135deg, #1C1344 0%, #1C1344 50%, #00009d 100%)",
-          backgroundSize: "200% 200%",
-          animation: "gradientShift 8s ease infinite"
-        }}
+        style={{ touchAction: "none" }}
       >
+        <ShaderGradientCanvas style={{ position: "fixed", inset: 0, zIndex: 0 }}>
+          <ShaderGradient
+            animate="on"
+            brightness={1.1}
+            cAzimuthAngle={60}
+            cDistance={7.1}
+            cPolarAngle={90}
+            cameraZoom={16.25}
+            color1="#000037"
+            color2="#84089d"
+            color3="#000057"
+            envPreset="dawn"
+            grain="on"
+            lightType="3d"
+            positionX={0}
+            positionY={-0.15}
+            positionZ={0}
+            reflection={0.1}
+            rotationX={0}
+            rotationY={0}
+            rotationZ={0}
+            shader="defaults"
+            type="sphere"
+            uAmplitude={1.4}
+            uDensity={1.5}
+            uFrequency={5.5}
+            uSpeed={0.4}
+            uStrength={0.6}
+            wireframe={false}
+          />
+        </ShaderGradientCanvas>
         <Header />
         
         {/* Z-axis layers - sections stacked, scrolling passes through them */}
@@ -557,7 +645,7 @@ const IndexNew2 = () => {
               <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
                 <span className="text-[#6A7B9F]">Hi, I'm Lexi</span>
                 <br />
-                <span className="text-[#6A7B9F] italic text-2xl md:text-3xl lg:text-4xl font-normal">
+                <span className="text-[#6A7B9F] text-2xl md:text-3xl lg:text-4xl font-normal">
                   a social impact technologist
                 </span>
               </h1>
@@ -632,21 +720,29 @@ const IndexNew2 = () => {
 
             {/* Memoji - Right Side */}
             <div 
+              ref={memojiRef}
               className="flex-shrink-0"
               style={{
                 // Move image right as zoom increases to push it completely off screen
+                // Also add mouse-responsive transform
                 transform: scrollProgress > HERO_ZOOM_RANGE
-                  ? `translateX(${window.innerWidth * 1.5 * ((scrollProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE))}px)`
-                  : 'translateX(0px)',
-                transition: 'transform 0.1s ease-out',
+                  ? `translateX(${window.innerWidth * 1.5 * ((scrollProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE))}px) translate(${mousePosition.x}px, ${mousePosition.y}px)`
+                  : `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+                transition: scrollProgress > HERO_ZOOM_RANGE 
+                  ? 'transform 0.1s ease-out' 
+                  : 'transform 0.3s ease-out',
                 willChange: 'transform',
               }}
             >
               <img
                 src={`${import.meta.env.BASE_URL}Memoji.png`}
                 alt="Lexi Memoji"
-                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
+                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl transition-transform duration-300"
                 loading="eager"
+                style={{
+                  // Additional subtle rotation based on mouse position (very subtle)
+                  transform: `rotate(${mousePosition.x * 0.1}deg)`,
+                }}
               />
             </div>
             </div>
@@ -662,7 +758,7 @@ const IndexNew2 = () => {
               : `scale(1) translateX(0px)`,
             transformOrigin: "20% center", // Focus on left side to push content right
             transition: isInitialized ? "transform 0.1s ease-out, opacity 0.3s ease-out" : "none",
-            willChange: "transform",
+            willChange: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_VISIBLE_RANGE ? "auto" : "transform",
             // Increased z-index separation: about me stays in front (z-index 30) until completely off screen, then moves behind (z-index 1)
             zIndex: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 30 : scrollProgress > ABOUT_ME_EXIT_RANGE ? 1 : 10,
             // About me fades in after hero exits, stays fully visible until ABOUT_ME_VISIBLE_RANGE, then fades out as it exits
@@ -691,11 +787,11 @@ const IndexNew2 = () => {
             </div>
             
             {/* Fun Facts - 3 Cards in Row on Desktop, Stacked on Mobile */}
-            <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-6">
+            <div className="flex flex-col md:flex-row gap-3 md:gap-4 mt-6" style={{ isolation: "isolate" }}>
               {displayedFacts
                 .slice(0, 3)
                 .map((fact, index) => (
-                  <div key={`wrapper-${index}`} className="flex-1">
+                  <div key={`wrapper-${index}`} className="flex-1" style={{ isolation: "isolate" }}>
                     {renderFactCard(fact, index)}
                   </div>
                 ))}
@@ -704,7 +800,7 @@ const IndexNew2 = () => {
             {/* Shuffle Button - Full Width */}
             <button
               onClick={shuffleFacts}
-              className="w-full mt-2 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+              className="w-full mt-6 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
               aria-label="Shuffle facts"
             >
               <img
@@ -782,7 +878,7 @@ const IndexNew2 = () => {
                   return (
                     <div
                       key={index}
-                      className="absolute rounded-3xl border border-white/30 bg-white/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
+                      className="absolute rounded-3xl border border-white/30 bg-[#0A0520]/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
                       style={{
                         transform,
                         zIndex,
@@ -793,7 +889,9 @@ const IndexNew2 = () => {
                       }}
                       onClick={() => setActiveTestimonial(index)}
                     >
-                      <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl`}></div>
+                      <div className="absolute inset-0 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+                      <div className="absolute inset-0 bg-white/20 rounded-3xl"></div>
+                      <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl backdrop-blur-sm`}></div>
                       <div className="relative z-10 flex flex-col gap-6">
                         <div className="flex-1">
                           <img 
