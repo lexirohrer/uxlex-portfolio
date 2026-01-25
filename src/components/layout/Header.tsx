@@ -81,8 +81,13 @@ const Header = () => {
               className="flex items-center gap-2 flex-shrink-0"
               aria-label="Home"
             >
+              <img 
+                src={`${import.meta.env.BASE_URL}favicon.svg`}
+                alt=""
+                className="w-6 h-6"
+              />
               <span 
-                className={`text-xl font-bold font-hagrid transition-colors duration-200 ${
+                className={`text-xl font-normal font-hagrid transition-colors duration-200 ${
                   location.pathname === "/" && !isScrolledPastHero
                     ? "text-white"
                     : "text-black dark:text-[#EAE8F3]"
@@ -101,7 +106,7 @@ const Header = () => {
                 <Link
                   key={link.to}
                   to={link.to}
-                  className={`${linkClasses(link.to)} px-4 py-2 rounded-xl transition-all duration-200 cursor-pointer ${
+                  className={`${linkClasses(link.to)} px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
                     location.pathname === link.to
                       ? 'bg-white/20 dark:bg-white/10'
                       : 'hover:bg-white/10 dark:hover:bg-white/5'
@@ -115,7 +120,7 @@ const Header = () => {
             {/* Mobile menu button */}
             <button
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className={`${linkBase} p-2 rounded-xl hover:bg-white/10 dark:hover:bg-white/5 transition-colors md:hidden`}
+              className={`${linkBase} p-2 rounded-full hover:bg-white/10 dark:hover:bg-white/5 transition-colors md:hidden`}
               aria-label={menuButtonLabel}
               aria-expanded={isMenuOpen}
             >
@@ -140,7 +145,7 @@ const Header = () => {
                     to={link.to}
                     className={`${linkClasses(
                       link.to
-                    )} px-4 py-3 rounded-xl transition-all duration-200 cursor-pointer ${
+                    )} px-4 py-3 rounded-full transition-all duration-200 cursor-pointer ${
                       location.pathname === link.to
                         ? 'bg-white/20 dark:bg-white/10'
                         : 'hover:bg-white/10 dark:hover:bg-white/5'

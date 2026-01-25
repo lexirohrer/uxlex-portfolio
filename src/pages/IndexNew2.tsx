@@ -219,6 +219,9 @@ const IndexNew2 = () => {
   // Testimonials section: 66.67-100%
   const TESTIMONIALS_VISIBLE_RANGE = 0.8333; // Testimonials visible: 66.67-83.33% (first half of testimonials)
   const TESTIMONIALS_EXIT_RANGE = 1.0; // Testimonials exit: 83.33-100% (second half of testimonials)
+  
+  // Snap points for sticky sections (section boundaries)
+  const SNAP_POINTS = [0, HERO_EXIT_RANGE, ABOUT_ME_EXIT_RANGE, TESTIMONIALS_EXIT_RANGE]; // 0%, 33.33%, 66.67%, 100%
 
   const [scale, setScale] = useState(0.5); // Temporary initial state, will be set in useEffect
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -229,6 +232,8 @@ const IndexNew2 = () => {
   const minScaleRef = useRef(0.5); // Will be set to calculated initial scale
   const isAutoScrollingRef = useRef(false);
   const autoScrollAnimationRef = useRef<number | null>(null);
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const targetScrollProgressRef = useRef(0); // Target progress for snapping
 
   useEffect(() => {
     const container = containerRef.current;
@@ -350,6 +355,82 @@ const IndexNew2 = () => {
       autoScrollAnimationRef.current = requestAnimationFrame(animate);
     };
 
+    // Function to snap to nearest section boundary
+    const snapToSection = (currentProgress: number): number => {
+      // Always snap to the nearest section boundary
+      let nearestSnap = SNAP_POINTS[0];
+      let minDistance = Math.abs(currentProgress - nearestSnap);
+      
+      for (const snapPoint of SNAP_POINTS) {
+        const distance = Math.abs(currentProgress - snapPoint);
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearestSnap = snapPoint;
+        }
+      }
+      
+      return nearestSnap;
+    };
+    
+    // Function to animate scroll to target progress
+    const animateToProgress = (targetProgress: number) => {
+      // Cancel any existing scroll animations
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = 0;
+      }
+      
+      const startProgress = accumulatedScroll / SCROLL_RANGE;
+      const startTime = Date.now();
+      const duration = 300; // 300ms animation
+      
+      let snapAnimationId: number | null = null;
+      
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const t = Math.min(elapsed / duration, 1);
+        // Ease out cubic for smooth deceleration
+        const eased = 1 - Math.pow(1 - t, 3);
+        
+        const currentProgress = startProgress + (targetProgress - startProgress) * eased;
+        accumulatedScroll = currentProgress * SCROLL_RANGE;
+        setScrollProgress(currentProgress);
+        
+        // Update scale based on progress
+        const MIN_SCALE = minScaleRef.current;
+        let newTargetScale = targetScale;
+        if (currentProgress <= HERO_ZOOM_RANGE) {
+          const heroProgress = currentProgress / HERO_ZOOM_RANGE;
+          newTargetScale = MIN_SCALE + (MAX_SCALE - MIN_SCALE) * easeOutCubic(heroProgress);
+        } else if (currentProgress <= HERO_EXIT_RANGE) {
+          const exitProgress = (currentProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE);
+          newTargetScale = MAX_SCALE + (HERO_EXIT_SCALE - MAX_SCALE) * easeOutCubic(exitProgress);
+        } else if (currentProgress <= ABOUT_ME_VISIBLE_RANGE) {
+          newTargetScale = 1;
+        } else if (currentProgress <= ABOUT_ME_EXIT_RANGE) {
+          const aboutMeProgress = (currentProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
+          newTargetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(aboutMeProgress);
+        } else if (currentProgress <= TESTIMONIALS_VISIBLE_RANGE) {
+          newTargetScale = 1;
+        } else if (currentProgress <= TESTIMONIALS_EXIT_RANGE) {
+          const testimonialsProgress = (currentProgress - TESTIMONIALS_VISIBLE_RANGE) / (TESTIMONIALS_EXIT_RANGE - TESTIMONIALS_VISIBLE_RANGE);
+          newTargetScale = 1 + (ABOUT_ME_EXIT_SCALE - 1) * easeOutCubic(testimonialsProgress);
+        } else {
+          newTargetScale = ABOUT_ME_EXIT_SCALE;
+        }
+        targetScale = Math.max(MIN_SCALE, Math.min(ABOUT_ME_EXIT_SCALE, newTargetScale));
+        updateScale();
+        
+        if (t < 1) {
+          snapAnimationId = requestAnimationFrame(animate);
+        } else {
+          snapAnimationId = null;
+        }
+      };
+      
+      snapAnimationId = requestAnimationFrame(animate);
+    };
+
     const handleWheel = (e: WheelEvent) => {
       // Allow normal scrolling once we reach 100% of scroll range
       if (accumulatedScroll >= SCROLL_RANGE && e.deltaY > 0) {
@@ -359,6 +440,12 @@ const IndexNew2 = () => {
       
       // Prevent default only when scroll system is active
       e.preventDefault();
+      
+      // Clear any existing scroll timeout
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+        scrollTimeoutRef.current = null;
+      }
       
       // Calculate scroll delta (normalize for different devices)
       const delta = e.deltaY;
@@ -391,6 +478,9 @@ const IndexNew2 = () => {
       // Calculate scroll progress (0 to 1)
       const progress = accumulatedScroll / SCROLL_RANGE;
       setScrollProgress(progress);
+      
+      // Set target progress for snapping (will be used when scrolling stops)
+      targetScrollProgressRef.current = progress;
       
       // Update body scroll lock based on progress
       if (accumulatedScroll >= SCROLL_RANGE) {
@@ -450,6 +540,19 @@ const IndexNew2 = () => {
         scrollVelocityRef.current = normalizedDelta / timeDelta;
       }
       lastScrollTimeRef.current = now;
+      
+      // Set timeout to snap to section when scrolling stops
+      scrollTimeoutRef.current = setTimeout(() => {
+        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        const snapTarget = snapToSection(currentProgress);
+        
+        // Always snap if not already at a snap point (with small tolerance)
+        if (Math.abs(snapTarget - currentProgress) > 0.001) {
+          // Snap to section boundary
+          animateToProgress(snapTarget);
+        }
+        scrollTimeoutRef.current = null;
+      }, 150); // Wait 150ms after last scroll event before snapping
     };
 
     // Touch support for mobile
@@ -1058,6 +1161,22 @@ const IndexNew2 = () => {
                   loading="lazy"
                 />
               </a>
+            </div>
+            
+            {/* See My Work Button */}
+            <div className="mt-10 flex justify-center">
+              <Button
+                asChild
+                className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-12 md:h-16 w-[328px] md:w-[392px]"
+              >
+                <a
+                  href="/portfolio"
+                  className="flex items-center justify-center gap-3 h-full px-6"
+                >
+                  <span>or, see my work</span>
+                  <span aria-hidden="true" className="text-lg">→</span>
+                </a>
+              </Button>
             </div>
           </div>
         </div>
