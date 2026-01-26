@@ -528,6 +528,7 @@ const IndexNew2 = () => {
         } else {
           // Animation complete - ensure we're exactly at target and update section index
           accumulatedScroll = targetProgress * SCROLL_RANGE;
+          accumulatedScrollRef.current = accumulatedScroll;
           setScrollProgress(targetProgress);
           // Find the section index that matches our target progress
           // Use a small epsilon for floating point comparison
@@ -550,13 +551,13 @@ const IndexNew2 = () => {
 
     const handleWheel = (e: WheelEvent) => {
       // Allow normal scrolling once we reach 100% of scroll range
-      if (accumulatedScroll >= SCROLL_RANGE && e.deltaY > 0) {
+      if (accumulatedScrollRef.current >= SCROLL_RANGE && e.deltaY > 0) {
         // At 100%, allow normal page scrolling - don't prevent default
         return;
       }
       
       // Check if we're in the About Me section and handle regular scrolling first
-      const currentProgress = accumulatedScroll / SCROLL_RANGE;
+      const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
       const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
       
       if (isInAboutMeScrollablePhase && aboutMeScrollContainerRef.current) {
@@ -666,6 +667,24 @@ const IndexNew2 = () => {
       // This avoids blocking rendering
       if (!isInitialized) return;
       
+      // Check if touch is within the About Me scroll container - if so, allow native scrolling
+      if (aboutMeScrollContainerRef.current && e.touches.length === 1) {
+        const touch = e.touches[0];
+        const containerRect = aboutMeScrollContainerRef.current.getBoundingClientRect();
+        const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+        const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
+        
+        // If touch is within About Me container and we're in scrollable phase, allow native scroll
+        if (isInAboutMeScrollablePhase && 
+            touch.clientX >= containerRect.left && 
+            touch.clientX <= containerRect.right &&
+            touch.clientY >= containerRect.top && 
+            touch.clientY <= containerRect.bottom) {
+          // Don't track this touch for section navigation - let the container handle it
+          return;
+        }
+      }
+      
       if (e.touches.length === 1) {
         // Single finger - track for swipe gesture
         singleTouchStartY = e.touches[0].clientY;
@@ -683,6 +702,24 @@ const IndexNew2 = () => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
+      // Check if touch is within the About Me scroll container - if so, allow native scrolling
+      if (aboutMeScrollContainerRef.current && e.touches.length === 1) {
+        const touch = e.touches[0];
+        const containerRect = aboutMeScrollContainerRef.current.getBoundingClientRect();
+        const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+        const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
+        
+        // If touch is within About Me container and we're in scrollable phase, allow native scroll
+        if (isInAboutMeScrollablePhase && 
+            touch.clientX >= containerRect.left && 
+            touch.clientX <= containerRect.right &&
+            touch.clientY >= containerRect.top && 
+            touch.clientY <= containerRect.bottom) {
+          // Don't prevent default - let the container handle scrolling
+          return;
+        }
+      }
+      
       // Only process two-finger pinch gestures
       // Single-finger swipes are handled in touchend to avoid blocking rendering
       if (e.touches.length === 2 && isInitialized) {
@@ -724,6 +761,7 @@ const IndexNew2 = () => {
           progress = Math.min(1, ABOUT_ME_EXIT_RANGE + (targetScale - ABOUT_ME_EXIT_SCALE) / ABOUT_ME_EXIT_SCALE * (1 - ABOUT_ME_EXIT_RANGE));
         }
         accumulatedScroll = progress * SCROLL_RANGE;
+        accumulatedScrollRef.current = accumulatedScroll;
         setScrollProgress(progress);
         
         // Always restart animation to ensure smooth updates
@@ -745,30 +783,42 @@ const IndexNew2 = () => {
         const deltaTime = Date.now() - singleTouchStartTime;
         
         // Check if we're in the About Me scrollable phase
-        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
         const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
         
         // If in About Me scrollable phase, check if content is scrolled to bottom before allowing navigation
         if (isInAboutMeScrollablePhase && aboutMeScrollContainerRef.current) {
           const container = aboutMeScrollContainerRef.current;
-          const isScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 5;
+          const touch = e.changedTouches[0];
+          const containerRect = container.getBoundingClientRect();
           
-          // If swiping down (next) and not at bottom, don't navigate - let container scroll
-          if (deltaY > 0 && !isScrolledToBottom) {
-            return; // Don't navigate, container will handle scroll
-          }
+          // Check if touch was within About Me container
+          const isTouchInContainer = touch.clientX >= containerRect.left && 
+                                      touch.clientX <= containerRect.right &&
+                                      touch.clientY >= containerRect.top && 
+                                      touch.clientY <= containerRect.bottom;
           
-          // If swiping up (prev) and not at top, don't navigate - let container scroll
-          if (deltaY < 0 && container.scrollTop > 0) {
-            return; // Don't navigate, container will handle scroll
-          }
-          
-          // If swiping down and at bottom, advance to exit phase
-          if (deltaY > 0 && isScrolledToBottom && currentProgress <= ABOUT_ME_VISIBLE_RANGE) {
-            if (!isScrollingToSectionRef.current) {
-              animateToProgress(ABOUT_ME_EXIT_RANGE);
+          if (isTouchInContainer) {
+            const isScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 5;
+            const isScrolledToTop = container.scrollTop <= 5;
+            
+            // If swiping down (next) and not at bottom, don't navigate - let container scroll
+            if (deltaY > 0 && !isScrolledToBottom) {
+              return; // Don't navigate, container will handle scroll
             }
-            return;
+            
+            // If swiping up (prev) and not at top, don't navigate - let container scroll
+            if (deltaY < 0 && !isScrolledToTop) {
+              return; // Don't navigate, container will handle scroll
+            }
+            
+            // If swiping down and at bottom, advance to exit phase
+            if (deltaY > 0 && isScrolledToBottom && currentProgress <= ABOUT_ME_VISIBLE_RANGE) {
+              if (!isScrollingToSectionRef.current) {
+                animateToProgress(ABOUT_ME_EXIT_RANGE);
+              }
+              return;
+            }
           }
         }
         
@@ -810,7 +860,7 @@ const IndexNew2 = () => {
 
     // Prevent default scroll behavior only when not at 100% scroll
     const preventScroll = (e: Event) => {
-      if (accumulatedScroll < SCROLL_RANGE) {
+      if (accumulatedScrollRef.current < SCROLL_RANGE) {
         e.preventDefault();
       }
     };
@@ -865,6 +915,44 @@ const IndexNew2 = () => {
     container.addEventListener("scroll", preventScroll, { passive: false });
     // Add keyboard listener for desktop testing
     window.addEventListener("keydown", handleKeyDown);
+    
+    // Set up About Me container touch handlers when it becomes available
+    // Use a function to check and attach listeners
+    const setupAboutMeTouchHandlers = () => {
+      const aboutMeContainer = aboutMeScrollContainerRef.current;
+      if (!aboutMeContainer) return null;
+      
+      const stopPropagation = (e: TouchEvent) => {
+        // Use accumulatedScrollRef to get current value
+        const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+        const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
+        if (isInAboutMeScrollablePhase) {
+          e.stopPropagation(); // Prevent main container handlers from intercepting
+        }
+      };
+      
+      aboutMeContainer.addEventListener("touchstart", stopPropagation, { passive: true });
+      aboutMeContainer.addEventListener("touchmove", stopPropagation, { passive: true });
+      aboutMeContainer.addEventListener("touchend", stopPropagation, { passive: true });
+      
+      return () => {
+        aboutMeContainer.removeEventListener("touchstart", stopPropagation);
+        aboutMeContainer.removeEventListener("touchmove", stopPropagation);
+        aboutMeContainer.removeEventListener("touchend", stopPropagation);
+      };
+    };
+    
+    // Try to set up immediately, and also check periodically until container is available
+    let cleanupAboutMeHandlers: (() => void) | null = null;
+    const trySetup = () => {
+      const cleanup = setupAboutMeTouchHandlers();
+      if (cleanup) {
+        cleanupAboutMeHandlers = cleanup;
+      }
+    };
+    trySetup();
+    // Also check after a short delay in case container renders later
+    const setupTimeout = setTimeout(trySetup, 100);
 
     // Lock body scroll only when scroll system is active
     const updateBodyScroll = () => {
@@ -884,6 +972,10 @@ const IndexNew2 = () => {
       container.removeEventListener("scroll", preventScroll);
       window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
+      clearTimeout(setupTimeout);
+      if (cleanupAboutMeHandlers) {
+        cleanupAboutMeHandlers();
+      }
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
@@ -1180,6 +1272,8 @@ const IndexNew2 = () => {
               style={{
                 maxHeight: 'calc(100vh - 120px)',
                 scrollBehavior: 'smooth',
+                touchAction: 'pan-y', // Allow vertical scrolling on mobile
+                WebkitOverflowScrolling: 'touch', // Smooth scrolling on iOS
               }}
             >
             <AboutMeContent
