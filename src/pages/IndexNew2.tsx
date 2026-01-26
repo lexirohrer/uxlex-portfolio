@@ -31,6 +31,9 @@ const IndexNew2 = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const memojiRef = useRef<HTMLDivElement>(null);
   
+  // About Me scrollable container ref
+  const aboutMeScrollContainerRef = useRef<HTMLDivElement>(null);
+  
   const testimonials = [
     {
       text: "Lexi is the definition of a team player – always willing to go the extra mile and contribute to the project's success. She has a strong sense of self-awareness and a desire to learn and grow.",
@@ -212,8 +215,10 @@ const IndexNew2 = () => {
   const HERO_EXIT_RANGE = 0.3333; // Hero exit: 16.67-33.33% (second half of hero section)
   
   // About Me section: 33.33-66.67%
-  const ABOUT_ME_VISIBLE_RANGE = 0.5; // About me visible: 33.33-50% (first half of about me)
-  const ABOUT_ME_EXIT_RANGE = 0.6667; // About me exit: 50-66.67% (second half of about me)
+  const ABOUT_ME_ENTER_START = 0.3333; // About me enter start: when hero exits
+  const ABOUT_ME_ENTER_END = 0.4167; // About me enter end: content scrolls into view (33.33-41.67%)
+  const ABOUT_ME_VISIBLE_RANGE = 0.5; // About me visible/pause: 41.67-50% (content fully visible, pause for reading)
+  const ABOUT_ME_EXIT_RANGE = 0.6667; // About me exit: 50-66.67% (moves to next section)
   
   // Testimonials section: 66.67-100%
   const TESTIMONIALS_VISIBLE_RANGE = 0.8333; // Testimonials visible: 66.67-83.33% (first half of testimonials)
@@ -243,6 +248,7 @@ const IndexNew2 = () => {
   const lastWheelTimeRef = useRef(0); // Track last wheel event time
   const wheelGestureDirectionRef = useRef<'next' | 'prev' | null>(null); // Track direction of current gesture
   const wheelGestureTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const accumulatedScrollRef = useRef(0); // Store accumulated scroll in ref for keyboard handler access
 
   useEffect(() => {
     const container = containerRef.current;
@@ -279,6 +285,7 @@ const IndexNew2 = () => {
     // Scroll down → zoom in (scale increases, content gets larger)
     // This initial scale is the MIN_SCALE - content cannot zoom out further than this
     let accumulatedScroll = 0; // Start at 0 = minimum zoom
+    accumulatedScrollRef.current = 0; // Initialize ref
     
     // Use a safe default scale initially, then recalculate once content is ready
     // Start with scale 1 to ensure content is visible, then adjust
@@ -369,6 +376,7 @@ const IndexNew2 = () => {
         const currentProgress = startProgress + (targetProgress - startProgress) * easedProgress;
         
         accumulatedScroll = currentProgress * SCROLL_RANGE;
+        accumulatedScrollRef.current = accumulatedScroll;
         setScrollProgress(currentProgress);
         
         // Update scale based on progress
@@ -487,6 +495,7 @@ const IndexNew2 = () => {
         
         const currentProgress = startProgress + (targetProgress - startProgress) * eased;
         accumulatedScroll = currentProgress * SCROLL_RANGE;
+        accumulatedScrollRef.current = accumulatedScroll;
         setScrollProgress(currentProgress);
         
         // Update scale based on progress
@@ -546,6 +555,40 @@ const IndexNew2 = () => {
         return;
       }
       
+      // Check if we're in the About Me section and handle regular scrolling first
+      const currentProgress = accumulatedScroll / SCROLL_RANGE;
+      const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
+      
+      if (isInAboutMeScrollablePhase && aboutMeScrollContainerRef.current) {
+        const container = aboutMeScrollContainerRef.current;
+        const isScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 5; // 5px threshold
+        
+        // If scrolling down and not at bottom, scroll the container instead
+        if (e.deltaY > 0 && !isScrolledToBottom) {
+          e.preventDefault();
+          container.scrollTop += e.deltaY;
+          return; // Don't advance global scroll progress
+        }
+        
+        // If scrolling up and not at top, scroll the container instead
+        if (e.deltaY < 0 && container.scrollTop > 0) {
+          e.preventDefault();
+          container.scrollTop += e.deltaY;
+          return; // Don't advance global scroll progress
+        }
+        
+        // If scrolling down and at bottom, advance to exit phase (ABOUT_ME_EXIT_RANGE)
+        if (e.deltaY > 0 && isScrolledToBottom && currentProgress <= ABOUT_ME_VISIBLE_RANGE) {
+          e.preventDefault();
+          // Advance to exit phase instead of next section
+          animateToProgress(ABOUT_ME_EXIT_RANGE);
+          return;
+        }
+        
+        // If scrolling up and at top, allow going back to previous section
+        // Continue with normal scroll logic below
+      }
+      
       // Prevent default only when scroll system is active
       e.preventDefault();
       
@@ -591,7 +634,6 @@ const IndexNew2 = () => {
         wheelGestureDirectionRef.current = direction;
         
         // Update current section index based on actual scroll progress before moving
-        const currentProgress = accumulatedScroll / SCROLL_RANGE;
         currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
         
         // Move to next or previous section (only once per gesture)
@@ -620,6 +662,8 @@ const IndexNew2 = () => {
     const touchScrollMaxTime = 500; // Maximum time (ms) for a swipe gesture
 
     const handleTouchStart = (e: TouchEvent) => {
+      // touchAction: "none" already prevents default, so we can use passive listeners
+      // This avoids blocking rendering
       if (!isInitialized) return;
       
       if (e.touches.length === 1) {
@@ -700,6 +744,34 @@ const IndexNew2 = () => {
         const deltaY = singleTouchStartY - touchEndY; // Positive = swipe up, Negative = swipe down
         const deltaTime = Date.now() - singleTouchStartTime;
         
+        // Check if we're in the About Me scrollable phase
+        const currentProgress = accumulatedScroll / SCROLL_RANGE;
+        const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
+        
+        // If in About Me scrollable phase, check if content is scrolled to bottom before allowing navigation
+        if (isInAboutMeScrollablePhase && aboutMeScrollContainerRef.current) {
+          const container = aboutMeScrollContainerRef.current;
+          const isScrolledToBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 5;
+          
+          // If swiping down (next) and not at bottom, don't navigate - let container scroll
+          if (deltaY > 0 && !isScrolledToBottom) {
+            return; // Don't navigate, container will handle scroll
+          }
+          
+          // If swiping up (prev) and not at top, don't navigate - let container scroll
+          if (deltaY < 0 && container.scrollTop > 0) {
+            return; // Don't navigate, container will handle scroll
+          }
+          
+          // If swiping down and at bottom, advance to exit phase
+          if (deltaY > 0 && isScrolledToBottom && currentProgress <= ABOUT_ME_VISIBLE_RANGE) {
+            if (!isScrollingToSectionRef.current) {
+              animateToProgress(ABOUT_ME_EXIT_RANGE);
+            }
+            return;
+          }
+        }
+        
         // Only process if significant swipe (100px) within reasonable time (500ms)
         if (Math.abs(deltaY) > touchScrollThreshold && deltaTime < touchScrollMaxTime) {
           // Don't process if already animating to a section
@@ -717,7 +789,6 @@ const IndexNew2 = () => {
             const direction = deltaY > 0 ? 'next' : 'prev';
             
             // Update current section index
-            const currentProgress = accumulatedScroll / SCROLL_RANGE;
             currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
             
             // Move to next or previous section
@@ -744,12 +815,56 @@ const IndexNew2 = () => {
       }
     };
 
+    // Keyboard shortcuts for desktop testing (simulates touch gestures)
+    const handleKeyDown = (e: KeyboardEvent) => {
+      // Only handle arrow keys when not typing in an input/textarea
+      const target = e.target as HTMLElement;
+      if (target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable) {
+        return;
+      }
+      
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp') {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Don't process if already animating to a section
+        if (isScrollingToSectionRef.current) {
+          return;
+        }
+        
+        // Cancel any auto-scroll
+        if (isAutoScrollingRef.current) {
+          isAutoScrollingRef.current = false;
+          if (autoScrollAnimationRef.current) {
+            cancelAnimationFrame(autoScrollAnimationRef.current);
+            autoScrollAnimationRef.current = null;
+          }
+        }
+        
+        // ArrowDown = next section (like swipe down)
+        // ArrowUp = previous section (like swipe up)
+        const direction = e.key === 'ArrowDown' ? 'next' : 'prev';
+        
+        // Update current section index based on actual scroll progress
+        // Use ref to get current value since handler closure might have stale value
+        const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+        currentSectionIndexRef.current = findCurrentSectionIndex(currentProgress);
+        
+        // Move to next or previous section
+        moveToSection(direction);
+      }
+    };
+
     // Add event listeners
     container.addEventListener("wheel", handleWheel, { passive: false });
+    // Use passive listeners for touchstart/touchend - touchAction: "none" handles preventing default
+    // This avoids blocking rendering while still allowing our handlers to work
     container.addEventListener("touchstart", handleTouchStart, { passive: true });
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
     container.addEventListener("touchend", handleTouchEnd, { passive: true });
     container.addEventListener("scroll", preventScroll, { passive: false });
+    // Add keyboard listener for desktop testing
+    window.addEventListener("keydown", handleKeyDown);
 
     // Lock body scroll only when scroll system is active
     const updateBodyScroll = () => {
@@ -767,6 +882,7 @@ const IndexNew2 = () => {
       container.removeEventListener("touchmove", handleTouchMove);
       container.removeEventListener("touchend", handleTouchEnd);
       container.removeEventListener("scroll", preventScroll);
+      window.removeEventListener("keydown", handleKeyDown);
       document.body.style.overflow = "";
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
@@ -874,98 +990,10 @@ const IndexNew2 = () => {
             ref={contentRef}
             className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 px-4 sm:px-6 md:px-8 max-w-7xl mx-auto w-full"
           >
-            {/* Text Content - Left Side */}
-            <div 
-              className="flex-1 max-w-2xl text-left md:text-left"
-              style={{
-                // Move text left as zoom increases to push it completely off screen
-                transform: scrollProgress > HERO_ZOOM_RANGE
-                  ? `translateX(${-window.innerWidth * 1.5 * ((scrollProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE))}px)`
-                  : 'translateX(0px)',
-                transition: 'transform 0.1s ease-out',
-                willChange: 'transform',
-              }}
-            >
-              <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-                <span className="text-white">Hi, I'm Lexi</span>
-                <br />
-                <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
-                  a social impact technologist
-                </span>
-              </h1>
-              <p className="text-white text-base md:text-lg leading-relaxed mt-6">
-                This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
-              </p>
-              <div className="mt-8 flex flex-wrap items-center gap-4">
-                <a
-                  href="https://www.linkedin.com/in/alexandra-rohrer/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}LinkedIn.png`}
-                    alt="LinkedIn"
-                    className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                    loading="eager"
-                  />
-                </a>
-                <a
-                  href="mailto:lexirohrer@gmail.com"
-                  className="group flex items-center justify-center"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}Gmail.png`}
-                    alt="Gmail"
-                    className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                    loading="eager"
-                  />
-                </a>
-                <a
-                  href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}Calendar.png`}
-                    alt="Calendar"
-                    className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                    loading="eager"
-                  />
-                </a>
-                <a
-                  href="https://uxlex.substack.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center"
-                >
-                  <img
-                    src={`${import.meta.env.BASE_URL}Substack.png`}
-                    alt="Substack"
-                    className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                    loading="eager"
-                  />
-                </a>
-                <Button
-                  asChild
-                  className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-12 md:h-16 w-full sm:w-auto"
-                >
-                  <a
-                    href="/portfolio"
-                    className="flex w-full sm:w-auto items-center justify-center gap-3 h-full px-6"
-                  >
-                    <span>see my work</span>
-                    <span aria-hidden="true" className="text-lg">→</span>
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            {/* Memoji - Right Side */}
+            {/* Memoji - Right Side on desktop, Top on mobile */}
             <div 
               ref={memojiRef}
-              className="flex-shrink-0"
+              className="flex-shrink-0 order-1 md:order-2"
               style={{
                 // Move image right as zoom increases to push it completely off screen
                 // Only apply mouse-responsive transform when in hero section to prevent glitches
@@ -996,34 +1024,163 @@ const IndexNew2 = () => {
                 }}
               />
             </div>
+
+            {/* Text Content - Left Side on desktop, Below Memoji on mobile */}
+            <div 
+              className="flex-1 max-w-2xl text-left md:text-left order-2 md:order-1"
+              style={{
+                // Move text left as zoom increases to push it completely off screen
+                transform: scrollProgress > HERO_ZOOM_RANGE
+                  ? `translateX(${-window.innerWidth * 1.5 * ((scrollProgress - HERO_ZOOM_RANGE) / (HERO_EXIT_RANGE - HERO_ZOOM_RANGE))}px)`
+                  : 'translateX(0px)',
+                transition: 'transform 0.1s ease-out',
+                willChange: 'transform',
+              }}
+            >
+              <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                <span className="text-white">Hi, I'm Lexi</span>
+                <br />
+                <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
+                  a social impact technologist
+                </span>
+              </h1>
+              <p className="text-white text-base md:text-lg leading-relaxed mt-6">
+                This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
+              </p>
+              {/* Icons - Full width on mobile, normal on desktop */}
+              <div className="mt-8 w-full flex items-center justify-between md:justify-start md:gap-4">
+                <a
+                  href="https://www.linkedin.com/in/alexandra-rohrer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                    alt="LinkedIn"
+                    className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="mailto:lexirohrer@gmail.com"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Gmail.png`}
+                    alt="Gmail"
+                    className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Calendar.png`}
+                    alt="Calendar"
+                    className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="https://uxlex.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Substack.png`}
+                    alt="Substack"
+                    className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+              </div>
+              {/* Button - On new line */}
+              <div className="mt-6 md:mt-8 flex justify-center md:justify-start">
+                <Button
+                  asChild
+                  className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-12 md:h-16 w-full sm:w-auto"
+                >
+                  <a
+                    href="/portfolio"
+                    className="flex w-full sm:w-auto items-center justify-center gap-3 h-full px-6"
+                  >
+                    <span>see my work</span>
+                    <span aria-hidden="true" className="text-lg">→</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
             </div>
         </div>
         
-        {/* About Me Section - Middle layer, appears after hero, then zooms past to reveal testimonials */}
+        {/* About Me Section - Middle layer, appears after hero, scrolls into view, then zooms past to reveal testimonials */}
         <div
-          className="fixed inset-0 flex items-center justify-center"
+          className="fixed inset-0 flex items-start justify-center pt-[120px] max-md:pt-[96px] max-sm:pt-[88px]"
           style={{
-            // About me section starts at scale 1 and stays visible, then zooms to ABOUT_ME_EXIT_SCALE and moves right to exit completely
-            // IMPORTANT: Only apply transform when actually needed to avoid creating containing block that breaks backdrop-filter
-            transform: scrollProgress > ABOUT_ME_VISIBLE_RANGE
-              ? `scale(${1 + (ABOUT_ME_EXIT_SCALE - 1) * ((scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE))}) translateX(${window.innerWidth * 1.5 * ((scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE))}px)`
-              : undefined,
-            transformOrigin: scrollProgress > ABOUT_ME_VISIBLE_RANGE ? "20% center" : undefined, // Only set when transforming
+            // Phase 1: Enter - scroll content up from below screen (ABOUT_ME_ENTER_START to ABOUT_ME_ENTER_END)
+            // Phase 2: Visible/Pause - content fully visible (ABOUT_ME_ENTER_END to ABOUT_ME_VISIBLE_RANGE)
+            // Phase 3: Exit - zoom and move right to exit (ABOUT_ME_VISIBLE_RANGE to ABOUT_ME_EXIT_RANGE)
+            transform: (() => {
+              if (scrollProgress <= ABOUT_ME_ENTER_START) {
+                // Before enter: content below screen
+                return `translateY(${window.innerHeight}px)`;
+              } else if (scrollProgress <= ABOUT_ME_ENTER_END) {
+                // Enter phase: scroll content up into view
+                const enterProgress = (scrollProgress - ABOUT_ME_ENTER_START) / (ABOUT_ME_ENTER_END - ABOUT_ME_ENTER_START);
+                const translateY = window.innerHeight * (1 - enterProgress);
+                return `translateY(${translateY}px)`;
+              } else if (scrollProgress < ABOUT_ME_EXIT_RANGE) {
+                // Visible phase: content fully visible and scrollable, no transform
+                return undefined;
+              } else if (scrollProgress <= ABOUT_ME_EXIT_RANGE) {
+                // Exit phase: zoom and move right (only after scrolling to bottom of content)
+                const exitProgress = (scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
+                return `scale(${1 + (ABOUT_ME_EXIT_SCALE - 1) * exitProgress}) translateX(${window.innerWidth * 1.5 * exitProgress}px)`;
+              } else {
+                // After exit: off screen
+                return `scale(${ABOUT_ME_EXIT_SCALE}) translateX(${window.innerWidth * 1.5}px)`;
+              }
+            })(),
+            transformOrigin: scrollProgress > ABOUT_ME_VISIBLE_RANGE ? "20% center" : undefined, // Only set when transforming during exit
             transition: isInitialized ? "transform 0.1s ease-out, opacity 0.3s ease-out" : "none",
-            willChange: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_VISIBLE_RANGE ? "auto" : scrollProgress > ABOUT_ME_VISIBLE_RANGE ? "transform" : "auto",
-            // Increased z-index separation: about me stays in front (z-index 30) until completely off screen, then moves behind (z-index 1)
-            zIndex: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 30 : scrollProgress > ABOUT_ME_EXIT_RANGE ? 1 : 10,
-            // About me fades in after hero exits, stays fully visible until ABOUT_ME_VISIBLE_RANGE, then fades out as it exits
-            opacity: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_VISIBLE_RANGE
-              ? 1
-              : scrollProgress > ABOUT_ME_VISIBLE_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE
-              ? Math.max(0, 1 - ((scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE)))
-              : 0,
-            pointerEvents: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 'auto' : 'none',
+            willChange: scrollProgress > HERO_EXIT_RANGE && scrollProgress <= ABOUT_ME_EXIT_RANGE ? "transform" : "auto",
+            // Increased z-index separation: about me stays in front (z-index 30) during enter, visible, and exit phases, then moves behind (z-index 1)
+            zIndex: scrollProgress > ABOUT_ME_ENTER_START && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 30 : scrollProgress > ABOUT_ME_EXIT_RANGE ? 1 : 10,
+            // Opacity: fade in during enter, fully visible during scrollable phase, fade out during exit
+            opacity: (() => {
+              if (scrollProgress <= ABOUT_ME_ENTER_START) {
+                return 0;
+              } else if (scrollProgress <= ABOUT_ME_ENTER_END) {
+                // Fade in during enter phase
+                const enterProgress = (scrollProgress - ABOUT_ME_ENTER_START) / (ABOUT_ME_ENTER_END - ABOUT_ME_ENTER_START);
+                return enterProgress;
+              } else if (scrollProgress < ABOUT_ME_EXIT_RANGE) {
+                // Fully visible during scrollable phase
+                return 1;
+              } else if (scrollProgress <= ABOUT_ME_EXIT_RANGE) {
+                // Fade out during exit
+                const exitProgress = (scrollProgress - ABOUT_ME_VISIBLE_RANGE) / (ABOUT_ME_EXIT_RANGE - ABOUT_ME_VISIBLE_RANGE);
+                return Math.max(0, 1 - exitProgress);
+              } else {
+                return 0;
+              }
+            })(),
+            pointerEvents: scrollProgress > ABOUT_ME_ENTER_START && scrollProgress <= ABOUT_ME_EXIT_RANGE ? 'auto' : 'none',
           }}
         >
             <div 
-              className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto"
+              ref={aboutMeScrollContainerRef}
+              className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto overflow-y-auto"
+              style={{
+                maxHeight: 'calc(100vh - 120px)',
+                scrollBehavior: 'smooth',
+              }}
             >
             <AboutMeContent
               renderFactCard={renderFactCard}
@@ -1064,21 +1221,21 @@ const IndexNew2 = () => {
         >
           <div className="w-full px-4 sm:px-6 md:px-8 max-w-4xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 font-hagrid text-center w-full">what it's like to work with me</h2>
-            <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
-              {/* Navigation Buttons */}
+            <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12 px-4 md:px-0">
+              {/* Navigation Buttons - Positioned outside card on mobile to avoid overlap */}
               <button
                 onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                className="absolute left-0 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="absolute left-2 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={activeTestimonial === 0}
                 aria-label="Previous testimonial"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                 </svg>
               </button>
 
               {/* Card Container */}
-              <div className="relative w-full h-full flex items-center justify-center overflow-visible">
+              <div className="relative w-full h-full flex items-center justify-center overflow-visible px-8 md:px-0">
                 {testimonials.map((testimonial, index) => {
                   const position = index - activeTestimonial;
                   const isActive = index === activeTestimonial;
@@ -1153,11 +1310,11 @@ const IndexNew2 = () => {
 
               <button
                 onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                className="absolute right-0 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="absolute right-2 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={activeTestimonial === testimonials.length - 1}
                 aria-label="Next testimonial"
               >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                 </svg>
               </button>
