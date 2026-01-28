@@ -1,11 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo, useCallback, startTransition } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import { Button } from "@/components/ui/button";
 import AboutMeContent from "@/components/sections/AboutMeContent";
 import { allFunFacts } from "@/data/funFacts";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const IndexNew2 = () => {
+  const isMobile = useIsMobile();
   
   // Track which fact indices have been shown
   const shownFactIndicesRef = useRef<Set<number>>(new Set([0, 1, 2]));
@@ -33,6 +35,10 @@ const IndexNew2 = () => {
   
   // About Me scrollable container ref
   const aboutMeScrollContainerRef = useRef<HTMLDivElement>(null);
+  
+  // Track card heights for consistent sizing on mobile
+  const [maxCardHeight, setMaxCardHeight] = useState<number | null>(null);
+  const cardBackRefs = useRef<(HTMLDivElement | null)[]>([]);
   
   const testimonials = [
     {
@@ -127,13 +133,60 @@ const IndexNew2 = () => {
     });
   };
   
-  const renderFactCard = (
+  // Measure card heights on mobile to ensure consistent sizing based on backside content
+  useEffect(() => {
+    if (!isMobile || cardBackRefs.current.length === 0) {
+      setMaxCardHeight(null);
+      return;
+    }
+    
+    // Use requestAnimationFrame to ensure DOM is ready
+    const measureHeights = () => {
+      const heights = cardBackRefs.current
+        .filter(ref => ref !== null)
+        .map(ref => {
+          // Temporarily make it visible and relative to measure natural height
+          const originalPosition = ref!.style.position;
+          const originalOpacity = ref!.style.opacity;
+          const originalZIndex = ref!.style.zIndex;
+          const originalTransform = ref!.style.transform;
+          
+          ref!.style.position = 'relative';
+          ref!.style.opacity = '1';
+          ref!.style.zIndex = '1';
+          ref!.style.transform = 'none';
+          
+          const height = ref!.scrollHeight;
+          
+          // Restore original styles
+          ref!.style.position = originalPosition;
+          ref!.style.opacity = originalOpacity;
+          ref!.style.zIndex = originalZIndex;
+          ref!.style.transform = originalTransform;
+          
+          return height;
+        });
+      
+      if (heights.length > 0) {
+        const maxHeight = Math.max(...heights);
+        setMaxCardHeight(maxHeight);
+      }
+    };
+    
+    // Delay measurement to ensure cards are rendered
+    const timeoutId = setTimeout(measureHeights, 100);
+    return () => clearTimeout(timeoutId);
+  }, [isMobile, displayedFacts]);
+  
+  const renderFactCard = useCallback((
     fact: typeof displayedFacts[number],
     index: number,
     keyPrefix: string,
     layout: "grid" | "stack" = "grid"
   ) => {
     const isFlipped = flippedCards.has(index);
+    const cardHeight = isMobile && maxCardHeight ? `${maxCardHeight}px` : undefined;
+    
     return (
       <div
         key={`${keyPrefix}-${fact.text}`}
@@ -150,7 +203,10 @@ const IndexNew2 = () => {
               ? "rotateY(180deg)"
               : "rotateY(0deg)",
             transformStyle: "preserve-3d",
-            minHeight: layout === "stack" ? "240px" : "220px",
+            minHeight: isMobile 
+              ? (cardHeight || "180px") // Use measured height or fallback
+              : layout === "stack" ? "240px" : "220px",
+            height: isMobile && cardHeight ? cardHeight : undefined,
           }}
         >
           <div
@@ -160,10 +216,11 @@ const IndexNew2 = () => {
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(0deg)",
               position: "absolute",
-              zIndex: 1,
+              zIndex: isMobile ? (isFlipped ? 0 : 1) : 1,
+              opacity: isMobile ? (isFlipped ? 0 : 1) : 1,
               backgroundColor: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
               isolation: "isolate",
               willChange: "backdrop-filter",
             }}
@@ -173,16 +230,20 @@ const IndexNew2 = () => {
             </span>
           </div>
           <div
+            ref={(el) => {
+              cardBackRefs.current[index] = el;
+            }}
             className="fact-card-glass absolute inset-0 w-full h-full rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
               position: "absolute",
-              zIndex: 1,
+              zIndex: isMobile ? (isFlipped ? 1 : 0) : 1,
+              opacity: isMobile ? (isFlipped ? 1 : 0) : 1,
               backgroundColor: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
+              backdropFilter: "blur(8px)",
+              WebkitBackdropFilter: "blur(8px)",
               isolation: "isolate",
               willChange: "backdrop-filter",
             }}
@@ -195,7 +256,7 @@ const IndexNew2 = () => {
         </div>
       </div>
     );
-  };
+  }, [flippedCards, isRotating, isMobile, maxCardHeight]);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -249,8 +310,31 @@ const IndexNew2 = () => {
   const wheelGestureDirectionRef = useRef<'next' | 'prev' | null>(null); // Track direction of current gesture
   const wheelGestureTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const accumulatedScrollRef = useRef(0); // Store accumulated scroll in ref for keyboard handler access
+  
+  // Cache for getBoundingClientRect() to avoid layout thrashing
+  const containerRectCacheRef = useRef<DOMRect | null>(null);
+  const containerRectCacheTimeRef = useRef(0);
+  const CACHE_DURATION = 100; // Cache for 100ms
+  
+  // Throttle utility function
+  const throttle = <T extends (...args: any[]) => void>(
+    func: T,
+    limit: number
+  ): ((...args: Parameters<T>) => void) => {
+    let inThrottle: boolean;
+    return function(this: any, ...args: Parameters<T>) {
+      if (!inThrottle) {
+        func.apply(this, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  };
 
   useEffect(() => {
+    // Only initialize zoom system on desktop
+    if (isMobile) return;
+    
     const container = containerRef.current;
     const content = contentRef.current;
     if (!container || !content) return;
@@ -340,17 +424,22 @@ const IndexNew2 = () => {
       return 1 - Math.pow(1 - t, 3);
     };
 
-    // Update scale with smooth animation
+    // Update scale with smooth animation - optimized to reduce state updates
     const updateScale = () => {
       const diff = targetScale - currentScale;
       if (Math.abs(diff) > 0.001) {
         // Smooth interpolation - use larger step for faster response
         currentScale += diff * 0.15;
+        // Batch state updates using startTransition for smoother performance
+        startTransition(() => {
         setScale(currentScale);
+        });
         animationFrameId = requestAnimationFrame(updateScale);
       } else {
         currentScale = targetScale;
+        startTransition(() => {
         setScale(currentScale);
+        });
         animationFrameId = 0; // Clear animation frame ID when done
       }
     };
@@ -377,7 +466,9 @@ const IndexNew2 = () => {
         
         accumulatedScroll = currentProgress * SCROLL_RANGE;
         accumulatedScrollRef.current = accumulatedScroll;
+        startTransition(() => {
         setScrollProgress(currentProgress);
+        });
         
         // Update scale based on progress
         // Hero continues zooming past MAX_SCALE to HERO_EXIT_SCALE to zoom off screen
@@ -496,7 +587,9 @@ const IndexNew2 = () => {
         const currentProgress = startProgress + (targetProgress - startProgress) * eased;
         accumulatedScroll = currentProgress * SCROLL_RANGE;
         accumulatedScrollRef.current = accumulatedScroll;
+        startTransition(() => {
         setScrollProgress(currentProgress);
+        });
         
         // Update scale based on progress
         const MIN_SCALE = minScaleRef.current;
@@ -539,7 +632,7 @@ const IndexNew2 = () => {
             currentSectionIndexRef.current = targetIndex;
           } else {
             // Fallback: find closest section
-            currentSectionIndexRef.current = findCurrentSectionIndex(targetProgress);
+          currentSectionIndexRef.current = findCurrentSectionIndex(targetProgress);
           }
           snapAnimationId = null;
           isScrollingToSectionRef.current = false;
@@ -670,7 +763,13 @@ const IndexNew2 = () => {
       // Check if touch is within the About Me scroll container - if so, allow native scrolling
       if (aboutMeScrollContainerRef.current && e.touches.length === 1) {
         const touch = e.touches[0];
-        const containerRect = aboutMeScrollContainerRef.current.getBoundingClientRect();
+        // Use cached rect or update cache if stale
+        const now = Date.now();
+        if (!containerRectCacheRef.current || (now - containerRectCacheTimeRef.current) > CACHE_DURATION) {
+          containerRectCacheRef.current = aboutMeScrollContainerRef.current.getBoundingClientRect();
+          containerRectCacheTimeRef.current = now;
+        }
+        const containerRect = containerRectCacheRef.current;
         const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
         const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
         
@@ -705,7 +804,13 @@ const IndexNew2 = () => {
       // Check if touch is within the About Me scroll container - if so, allow native scrolling
       if (aboutMeScrollContainerRef.current && e.touches.length === 1) {
         const touch = e.touches[0];
-        const containerRect = aboutMeScrollContainerRef.current.getBoundingClientRect();
+        // Use cached rect or update cache if stale
+        const now = Date.now();
+        if (!containerRectCacheRef.current || (now - containerRectCacheTimeRef.current) > CACHE_DURATION) {
+          containerRectCacheRef.current = aboutMeScrollContainerRef.current.getBoundingClientRect();
+          containerRectCacheTimeRef.current = now;
+        }
+        const containerRect = containerRectCacheRef.current;
         const currentProgress = accumulatedScrollRef.current / SCROLL_RANGE;
         const isInAboutMeScrollablePhase = currentProgress >= ABOUT_ME_ENTER_END && currentProgress <= ABOUT_ME_VISIBLE_RANGE;
         
@@ -963,8 +1068,25 @@ const IndexNew2 = () => {
       }
     };
     updateBodyScroll();
+    
+    // Pause animations when tab is hidden to save resources
+    const handleVisibilityChange = () => {
+      if (document.hidden) {
+        // Pause all animations when tab is hidden
+        if (animationFrameId) {
+          cancelAnimationFrame(animationFrameId);
+          animationFrameId = 0;
+        }
+        if (autoScrollAnimationRef.current) {
+          cancelAnimationFrame(autoScrollAnimationRef.current);
+          autoScrollAnimationRef.current = null;
+        }
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
 
     return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
       container.removeEventListener("wheel", handleWheel);
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
@@ -986,7 +1108,7 @@ const IndexNew2 = () => {
         clearTimeout(wheelGestureTimeoutRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   // Reset mouse position when scrolling out of hero section
   useEffect(() => {
@@ -1045,6 +1167,332 @@ const IndexNew2 = () => {
     };
   }, [scrollProgress]);
 
+  // Mobile: Simple scrollable layout
+  if (isMobile) {
+    return (
+      <>
+        <div className="min-h-screen bg-[#0A0520]">
+          <Header />
+          
+          {/* Hero Section */}
+          <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
+            <div className="flex flex-col items-center justify-center gap-8 max-w-7xl mx-auto w-full">
+              {/* Memoji */}
+              <div className="flex-shrink-0">
+                <img
+                  src={`${import.meta.env.BASE_URL}Memoji.png`}
+                  alt="Lexi Memoji"
+                  className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl"
+                  loading="eager"
+                />
+              </div>
+
+              {/* Text Content */}
+              <div className="flex-1 max-w-2xl text-center">
+                <h1 className="font-hagrid text-4xl md:text-5xl font-bold leading-tight mb-4">
+                  <span className="text-white">Hi, I'm Lexi</span>
+                  <br />
+                  <span className="text-white text-2xl md:text-3xl font-normal">
+                    a social impact technologist
+                  </span>
+                </h1>
+                <p className="text-white text-base md:text-lg leading-relaxed mt-6">
+                  This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
+                </p>
+                {/* Icons */}
+                <div className="mt-8 w-full flex items-center justify-between md:justify-start md:gap-4">
+                  <a
+                    href="https://www.linkedin.com/in/alexandra-rohrer/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center flex-shrink-0"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                      alt="LinkedIn"
+                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                      loading="eager"
+                    />
+                  </a>
+                  <a
+                    href="mailto:lexirohrer@gmail.com"
+                    className="group flex items-center justify-center flex-shrink-0"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}Gmail.png`}
+                      alt="Gmail"
+                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                      loading="eager"
+                    />
+                  </a>
+                  <a
+                    href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center flex-shrink-0"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}Calendar.png`}
+                      alt="Calendar"
+                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                      loading="eager"
+                    />
+                  </a>
+                  <a
+                    href="https://uxlex.substack.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group flex items-center justify-center flex-shrink-0"
+                  >
+                    <img
+                      src={`${import.meta.env.BASE_URL}Substack.png`}
+                      alt="Substack"
+                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                      loading="eager"
+                    />
+                  </a>
+                </div>
+                {/* Button */}
+                <div className="mt-6 md:mt-8 flex justify-center">
+                  <Button
+                    asChild
+                    className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-12 md:h-16 w-full sm:w-auto"
+                  >
+                    <a
+                      href="/portfolio"
+                      className="flex w-full sm:w-auto items-center justify-center gap-3 h-full px-6"
+                    >
+                      <span>see my work</span>
+                      <span aria-hidden="true" className="text-lg">→</span>
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* About Me Section */}
+          <section className="min-h-screen flex items-start justify-center px-4 sm:px-6 md:px-8 py-20">
+            <div className="w-full max-w-4xl mx-auto">
+              <AboutMeContent
+                renderFactCard={renderFactCard}
+                displayedFacts={displayedFacts}
+                shuffleFacts={shuffleFacts}
+                textColorClass="text-white"
+                textSecondaryColorClass="text-white/90"
+                cardsContainerClass="flex flex-col md:flex-row gap-3 md:gap-4 mt-6"
+                shuffleButtonClass="w-full mt-6 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]"
+              />
+            </div>
+          </section>
+
+          {/* Testimonials Section */}
+          <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20">
+            <div className="w-full max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-10 font-hagrid text-center w-full">what it's like to work with me</h2>
+              <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
+                {/* Navigation Buttons */}
+                <button
+                  onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
+                  className="absolute left-2 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  disabled={activeTestimonial === 0}
+                  aria-label="Previous testimonial"
+                >
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+
+                {/* Card Container */}
+                <div className="relative w-full h-full flex items-center justify-center overflow-visible px-8 md:px-0">
+                  {testimonials.map((testimonial, index) => {
+                    const position = index - activeTestimonial;
+                    const isActive = index === activeTestimonial;
+                    
+                    let transform = '';
+                    let zIndex = 0;
+                    let opacity = 0;
+                    let filter = 'blur(0px)';
+                    
+                    if (isActive) {
+                      transform = 'translateX(0px) scale(1) perspective(1000px) rotateY(0deg)';
+                      zIndex = 10;
+                      opacity = 1;
+                      filter = 'blur(0px)';
+                    } else if (position > 0) {
+                      transform = `translateX(${120 * position}px) scale(${1 - 0.2 * position}) perspective(1000px) rotateY(-8deg)`;
+                      zIndex = 10 - position;
+                      opacity = position > 2 ? 0 : 0.6;
+                      filter = 'blur(3px)';
+                    } else if (position < 0) {
+                      const absPosition = Math.abs(position);
+                      transform = `translateX(${-120 * absPosition}px) scale(${1 - 0.2 * absPosition}) perspective(1000px) rotateY(8deg)`;
+                      zIndex = 10 - absPosition;
+                      opacity = absPosition > 2 ? 0 : 0.6;
+                      filter = 'blur(3px)';
+                    }
+                    
+                    return (
+                      <div
+                        key={index}
+                        className="absolute rounded-3xl border border-white/30 bg-[#0A0520]/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
+                        style={{
+                          transform,
+                          zIndex,
+                          opacity,
+                          filter,
+                          transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                          pointerEvents: isActive ? 'auto' : 'none'
+                        }}
+                        onClick={() => setActiveTestimonial(index)}
+                      >
+                        <div className="absolute inset-0 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+                        <div className="absolute inset-0 bg-white/20 rounded-3xl"></div>
+                        <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl backdrop-blur-sm`}></div>
+                        <div className="relative z-10 flex flex-col gap-6">
+                          <div className="flex-1">
+                            <img 
+                              src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
+                              alt="" 
+                              className="block dark:hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              loading="lazy"
+                            />
+                            <img 
+                              src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
+                              alt="" 
+                              className="hidden dark:block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              loading="lazy"
+                            />
+                            <p className="text-white italic text-base md:text-2xl leading-relaxed">
+                              {testimonial.text}
+                            </p>
+                          </div>
+                          <div className="mt-4 flex-shrink-0">
+                            <p className="font-semibold text-white text-sm md:text-base">{testimonial.author}</p>
+                            <p className="text-xs md:text-sm text-white/70">{testimonial.title}</p>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <button
+                  onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
+                  className="absolute right-2 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  disabled={activeTestimonial === testimonials.length - 1}
+                  aria-label="Next testimonial"
+                >
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+                
+                {/* Dots Indicator */}
+                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setActiveTestimonial(index)}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === activeTestimonial
+                          ? 'bg-white w-6'
+                          : 'bg-white/40'
+                      }`}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                    />
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Say Hello Section */}
+          <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20">
+            <div className="w-full max-w-4xl mx-auto text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 font-hagrid">say hello 👋</h2>
+              <p className="text-white/90 text-center mb-10 text-lg md:text-xl max-w-3xl mx-auto">
+                If you're working on a social impact problem and need a UX consultant, book a time on my calendar or reach out at lexirohrer@gmail.com
+              </p>
+              
+              {/* Contact Icons */}
+              <div className="flex flex-row gap-6 items-center justify-center">
+                <a
+                  href="https://www.linkedin.com/in/alexandra-rohrer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                    alt="LinkedIn"
+                    className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href="mailto:lexirohrer@gmail.com"
+                  className="group flex items-center justify-center"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Gmail.png`}
+                    alt="Gmail"
+                    className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Calendar.png`}
+                    alt="Calendar"
+                    className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </a>
+                <a
+                  href="https://uxlex.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Substack.png`}
+                    alt="Substack"
+                    className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                </a>
+              </div>
+              
+              {/* See My Work Button */}
+              <div className="mt-10 flex justify-center">
+                <Button
+                  asChild
+                  className="transform transition-transform duration-300 hover:shadow-xl hover:scale-110 h-12 md:h-16 w-[328px] md:w-[392px]"
+                >
+                  <a
+                    href="/portfolio"
+                    className="flex items-center justify-center gap-3 h-full px-6"
+                  >
+                    <span>or, see my work</span>
+                    <span aria-hidden="true" className="text-lg">→</span>
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </section>
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  // Desktop: Zoom-based scroll system
   return (
     <>
       {/* Note: ShaderGradient is now in App.tsx to cover entire site */}

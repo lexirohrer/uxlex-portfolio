@@ -32,13 +32,13 @@ const AboutMeContent: React.FC<AboutMeContentProps> = ({
           about me
         </h2>
         <div className={`space-y-4 ${textSecondaryColorClass} leading-relaxed text-justify`}>
-          <p className="text-lg">
+          <p className="text-base md:text-lg">
             I design experiences that create positive social impact. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
           </p>
-          <p className="text-lg">
+          <p className="text-base md:text-lg">
             Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities. If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or doing Thai flashcards on the elliptical.
           </p>
-          <p className="text-lg">
+          <p className="text-base md:text-lg">
             If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
           </p>
         </div>

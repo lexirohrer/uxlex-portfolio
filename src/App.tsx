@@ -39,7 +39,7 @@ const App = () => (
             <ShaderGradient
               animate="on"
               axesHelper="off"
-              brightness={1.2}
+              brightness={1.0}
               cAzimuthAngle={180}
               cDistance={4.51}
               cPolarAngle={90}
@@ -52,11 +52,11 @@ const App = () => (
               envPreset="city"
               format="gif"
               fov={50}
-              frameRate={10}
+              frameRate={5}
               gizmoHelper="hide"
-              grain="on"
+              grain="off"
               lightType="3d"
-              pixelDensity={1.7}
+              pixelDensity={1.0}
               positionX={0}
               positionY={0}
               positionZ={0}
