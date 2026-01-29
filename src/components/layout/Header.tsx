@@ -5,54 +5,35 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
-  { to: "/", label: "Hello" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/resume", label: "Resume" },
+  { to: "/portfolio", label: "projects" },
+  { to: "/resume", label: "about" },
 ];
 
 const Header = () => {
   const location = useLocation();
-  const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { theme } = useTheme();
   const isMobile = useIsMobile();
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Check if we're on the Hello page (now IndexNew) and if we've scrolled past the hero section
-      if (location.pathname === "/") {
-        const heroSection = document.querySelector('[data-hero-section]');
-        if (heroSection) {
-          const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-          setIsScrolledPastHero(window.scrollY > heroBottom);
-        }
-      } else {
-        setIsScrolledPastHero(false);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check initial state
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
-
-  useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Use white text on Hello page (now IndexNew) only when not scrolled past hero, otherwise use theme-appropriate colors
-  const linkBase =
-    location.pathname === "/" && !isScrolledPastHero
-      ? "text-white"
-      : "text-black dark:text-[#EAE8F3]";
+  // Use theme-appropriate colors for all pages
+  const linkBase = "text-black dark:text-[#EAE8F3]";
 
-  const linkClasses = (to: string) =>
-    `${linkBase} ${
-      location.pathname === to
+  const linkClasses = (to: string) => {
+    // Handle "/portfolio" link being active on both "/" and "/portfolio"
+    const isActive = to === "/portfolio" 
+      ? (location.pathname === "/" || location.pathname === "/portfolio")
+      : location.pathname === to;
+    
+    return `${linkBase} ${
+      isActive
         ? "font-bold"
         : "font-medium opacity-80 hover:opacity-100"
     } transition-colors duration-200`;
+  };
 
   const menuButtonLabel = isMenuOpen ? "Close menu" : "Open menu";
 
@@ -65,11 +46,7 @@ const Header = () => {
           style={{
             background: isMobile 
               ? 'transparent' 
-              : (location.pathname === "/" && !isScrolledPastHero
-                ? 'rgba(255, 255, 255, 0.1)'
-                : theme === 'dark'
-                ? 'rgba(255, 255, 255, 0.1)'
-                : 'rgba(255, 255, 255, 0.1)'),
+              : 'rgba(255, 255, 255, 0.1)',
             boxShadow: isMobile ? 'none' : '0 8px 32px 0 rgba(0, 0, 0, 0.1)',
             backdropFilter: isMobile ? 'none' : undefined,
             WebkitBackdropFilter: isMobile ? 'none' : undefined,
@@ -82,13 +59,7 @@ const Header = () => {
               className="hidden md:flex items-center gap-2 flex-shrink-0"
               aria-label="Home"
             >
-              <span 
-                className={`text-xl font-normal font-hagrid transition-colors duration-200 ${
-                  location.pathname === "/" && !isScrolledPastHero
-                    ? "text-white"
-                    : "text-black dark:text-[#EAE8F3]"
-                }`}
-              >
+              <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-black dark:text-[#EAE8F3]">
                 uxlex.com
               </span>
             </Link>
@@ -103,7 +74,8 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   className={`${linkClasses(link.to)} px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
-                    location.pathname === link.to
+                    (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
+                    (link.to !== "/portfolio" && location.pathname === link.to)
                       ? 'bg-white/20 dark:bg-white/10'
                       : 'hover:bg-white/10 dark:hover:bg-white/5'
                   }`}
@@ -141,7 +113,8 @@ const Header = () => {
                     className={`${linkClasses(
                       link.to
                     )} px-4 py-3 rounded-full transition-all duration-200 cursor-pointer ${
-                      location.pathname === link.to
+                      (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
+                      (link.to !== "/portfolio" && location.pathname === link.to)
                         ? 'bg-white/20 dark:bg-white/10'
                         : 'hover:bg-white/10 dark:hover:bg-white/5'
                     }`}

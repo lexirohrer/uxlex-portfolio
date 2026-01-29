@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Hide scrollbar for About Me scroll container */
+.about-me-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
 /* Force solid background in dark mode for case study hero sections */
 .dark section[class*="bg-gradient"] {
   background-image: none !important;

@@ -6,18 +6,15 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import GlassCursor from "@/components/ui/GlassCursor";
-import { ShaderGradient, ShaderGradientCanvas } from "shadergradient";
 
 // Lazy load all pages for code splitting
-const IndexNew = lazy(() => import("./pages/IndexNew"));
-const IndexNew2 = lazy(() => import("./pages/IndexNew2"));
-const Index = lazy(() => import("./pages/Index"));
 const Portfolio = lazy(() => import("./pages/Portfolio"));
 const Resume = lazy(() => import("./pages/Resume"));
 const CaseStudy = lazy(() => import("./pages/CaseStudy"));
 const FuseCaseStudy = lazy(() => import("./pages/FuseCaseStudy"));
 const MuvMiCaseStudy = lazy(() => import("./pages/MuvMiCaseStudy"));
 const BridgeBoxCaseStudy = lazy(() => import("./pages/BridgeBoxCaseStudy"));
+const Projects = lazy(() => import("./pages/Projects"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -33,63 +30,32 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider>
       <TooltipProvider>
-        {/* ShaderGradient - Global background for entire site */}
-        <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", isolation: "isolate" }}>
-          <ShaderGradientCanvas style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}>
-            <ShaderGradient
-              animate="on"
-              axesHelper="off"
-              brightness={1.0}
-              cAzimuthAngle={180}
-              cDistance={4.51}
-              cPolarAngle={90}
-              cameraZoom={1}
-              color1="#1E3363"
-              color2="#402445"
-              color3="#614A55"
-              destination="onCanvas"
-              embedMode="off"
-              envPreset="city"
-              format="gif"
-              fov={50}
-              frameRate={5}
-              gizmoHelper="hide"
-              grain="off"
-              lightType="3d"
-              pixelDensity={1.0}
-              positionX={0}
-              positionY={0}
-              positionZ={0}
-              range="disabled"
-              rangeEnd={40}
-              rangeStart={0}
-              reflection={0.1}
-              rotationX={0}
-              rotationY={0}
-              rotationZ={0}
-              shader="defaults"
-              type="waterPlane"
-              uAmplitude={1}
-              uDensity={0.7}
-              uFrequency={5.5}
-              uSpeed={0.4}
-              uStrength={2.5}
-              uTime={0}
-              wireframe={false}
-            />
-          </ShaderGradientCanvas>
-        </div>
+        {/* Background Image - Global background for entire site */}
+        <div 
+          style={{ 
+            position: "fixed", 
+            inset: 0, 
+            zIndex: 0, 
+            pointerEvents: "none", 
+            isolation: "isolate",
+            backgroundImage: `url(${import.meta.env.BASE_URL}bckg.png)`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            minWidth: "100vw",
+            minHeight: "100vh"
+          }}
+        />
         <GlassCursor />
         <Toaster />
         <Sonner />
         <BrowserRouter basename={import.meta.env.BASE_URL}>
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/" element={<IndexNew2 />} />
-              <Route path="/hello2" element={<IndexNew />} />
-              <Route path="/home-old" element={<Index />} />
+              <Route path="/" element={<Portfolio />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/resume" element={<Resume />} />
+              <Route path="/projects" element={<Projects />} />
               
               <Route path="/case-study/quickbooks-onboarding" element={<CaseStudy />} />
               <Route path="/case-study/fuse-chrome-extension" element={<FuseCaseStudy />} />

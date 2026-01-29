@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import CaseStudyNavigation from "@/components/sections/CaseStudyNavigation";
@@ -50,16 +51,19 @@ const FuseCaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative bg-gradient-to-br from-rose-100 via-pink-50 to-rose-200 dark:bg-[#1A103F] w-full py-16 max-sm:py-12 overflow-hidden">
-        {/* Grainy overlay - hidden in dark mode */}
-        <div className="absolute inset-0 opacity-30 dark:hidden" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.4'/%3E%3C/svg%3E")`,
-          backgroundSize: '200px 200px'
-        }}></div>
-        
+      <section className="relative w-full py-16 max-sm:py-12 overflow-hidden">
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
+            <Link 
+              to="/portfolio" 
+              className="inline-flex items-center text-gray-700 dark:text-[#EAE8F3]/80 hover:text-gray-900 dark:hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
+            >
+              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span className="text-sm font-medium">Back to projects</span>
+            </Link>
             <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               Fuse Google Chrome Extension
             </h1>
@@ -151,8 +155,8 @@ const FuseCaseStudy = () => {
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white dark:via-[#1A103F]/60 dark:to-[#1A103F]"></div>
         </section>
         
-        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent">
-          <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5">
+        <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent relative z-10">
+          <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
 
               {/* Background */}
               <section className="mb-16">
