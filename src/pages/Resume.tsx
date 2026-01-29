@@ -32,6 +32,9 @@ const Resume = () => {
     allFunFacts.map((_, index) => index)
   );
   
+  // Track cards that are animating to the back
+  const [animatingToBack, setAnimatingToBack] = useState<Set<number>>(new Set());
+  
   // Generate random positions and rotations for scattered card effect
   const [cardPositions, setCardPositions] = useState<Array<{x: number, y: number, rotation: number}>>(() => {
     return allFunFacts.map(() => ({
@@ -138,14 +141,27 @@ const Resume = () => {
       if (isCurrentlyFlipped) {
         // Card is flipped, clicking again moves it to back of stack
         newSet.delete(index);
-        // Move card to back of stack
-        setCardOrder((prevOrder) => {
-          const newOrder = [...prevOrder];
-          const cardIndex = newOrder.indexOf(index);
-          newOrder.splice(cardIndex, 1);
-          newOrder.unshift(index); // Add to front (back of stack)
-          return newOrder;
-        });
+        
+        // Start animation to move card to back
+        setAnimatingToBack((prev) => new Set(prev).add(index));
+        
+        // After animation completes, move card to back of stack
+        setTimeout(() => {
+          setCardOrder((prevOrder) => {
+            const newOrder = [...prevOrder];
+            const cardIndex = newOrder.indexOf(index);
+            newOrder.splice(cardIndex, 1);
+            newOrder.unshift(index); // Add to front (back of stack)
+            return newOrder;
+          });
+          
+          // Clear animation state
+          setAnimatingToBack((prev) => {
+            const newSet = new Set(prev);
+            newSet.delete(index);
+            return newSet;
+          });
+        }, 600); // Match transition duration
       } else {
         // Flip the card
         newSet.add(index);
@@ -210,23 +226,34 @@ const Resume = () => {
     const stackPosition = cardOrder.indexOf(index);
     const isTopCard = stackPosition === cardOrder.length - 1;
     const position = cardPositions[index];
+    const isAnimatingToBack = animatingToBack.has(index);
     
     // Calculate z-index: higher stack position = higher z-index (top card has highest)
-    const zIndex = stackPosition + 1;
+    // When animating to back, reduce z-index immediately so it goes behind other cards
+    const zIndex = isAnimatingToBack ? 0 : stackPosition + 1;
+    
+    // Calculate transform for animation
+    // When animating to back, scale down and move backward
+    const baseTransform = `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`;
+    const animationTransform = isAnimatingToBack 
+      ? `${baseTransform} scale(0.3) translateZ(-200px)`
+      : baseTransform;
     
     return (
       <div
         key={`${keyPrefix}-${fact.text}`}
-        className={`relative transition-all duration-500 ${isTopCard ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-default'}`}
+        className={`relative transition-all duration-500 ${isTopCard && !isAnimatingToBack ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-default'}`}
         style={{ 
           perspective: "1000px",
           position: "absolute",
           top: "50%",
           left: "50%",
-          transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) rotate(${position.rotation}deg)`,
+          transform: animationTransform,
+          transformStyle: "preserve-3d",
           zIndex: zIndex,
           width: "280px",
-          pointerEvents: isTopCard ? 'auto' : 'none',
+          pointerEvents: isTopCard && !isAnimatingToBack ? 'auto' : 'none',
+          opacity: isAnimatingToBack ? 0.3 : 1,
         }}
         onClick={() => toggleFlip(index)}
       >
@@ -236,9 +263,10 @@ const Resume = () => {
             transform: isRotating
               ? undefined
               : isFlipped
-              ? "rotateY(180deg)"
-              : "rotateY(0deg)",
+              ? `rotateY(180deg) rotate(${position.rotation}deg)`
+              : `rotateY(0deg) rotate(${position.rotation}deg)`,
             transformStyle: "preserve-3d",
+            transformOrigin: "center center",
             minHeight: "240px",
             height: cardHeight || undefined,
           }}
@@ -286,7 +314,7 @@ const Resume = () => {
         </div>
       </div>
     );
-  }, [flippedCards, isRotating, isMobile, maxCardHeight, cardOrder, cardPositions]);
+  }, [flippedCards, isRotating, isMobile, maxCardHeight, cardOrder, cardPositions, animatingToBack]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -458,6 +486,14 @@ const Resume = () => {
 
           {/* Resume Section */}
           <section className="mb-60">
+          {/* Download Resume Button */}
+          <div className="mb-10">
+            <Button onClick={handleDownload} className="w-full">
+              <Download size={20} />
+              Download Resume
+            </Button>
+          </div>
+          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
             {/* Left Column: Experience, then Education */}
             <div className="space-y-7">
@@ -508,14 +544,6 @@ const Resume = () => {
                   </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Download PDF Resume Button */}
-              <div className="flex justify-start">
-                <Button onClick={handleDownload}>
-                  <Download size={20} />
-                  Download PDF Resume
-                </Button>
               </div>
             </div>
 
@@ -612,75 +640,6 @@ const Resume = () => {
 
             </div>
           </div>
-          </section>
-
-          {/* Contact Section - Footer Style */}
-          <section className="mb-60">
-            <div className="w-full">
-              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 md:gap-8">
-                {/* Left Side - Content */}
-                <div className="flex-1">
-                  <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 font-hagrid text-left">say hello 👋</h2>
-                  <p className="text-gray-700 dark:text-[#EAE8F3]/90 text-left text-lg md:text-xl max-w-3xl">
-                    If you're working on a social impact problem and need a UX consultant, book a time on my calendar or reach out at lexirohrer@gmail.com
-                  </p>
-                </div>
-                
-                {/* Right Side - Icons */}
-                <div className="flex flex-row gap-6 items-center justify-end md:justify-end flex-shrink-0">
-                  <a
-                    href="https://www.linkedin.com/in/alexandra-rohrer/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}LinkedIn.png`}
-                      alt="LinkedIn"
-                      className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </a>
-                  <a
-                    href="mailto:lexirohrer@gmail.com"
-                    className="group flex items-center justify-center"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Gmail.png`}
-                      alt="Gmail"
-                      className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </a>
-                  <a
-                    href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Calendar.png`}
-                      alt="Calendar"
-                      className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </a>
-                  <a
-                    href="https://uxlex.substack.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Substack.png`}
-                      alt="Substack"
-                      className="w-16 h-16 md:w-20 md:h-20 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="lazy"
-                    />
-                  </a>
-                </div>
-              </div>
-            </div>
           </section>
         </main>
         <Footer />

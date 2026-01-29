@@ -3,11 +3,76 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="px-4 md:px-8 lg:px-16 py-10 bg-white dark:!bg-transparent">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4">
-        {/* Text - Centered */}
-        <div className="text-[#2B2C34] dark:text-[#EAE8F3] text-sm md:text-base">
-          Website by uxlex and cursor ✨
+    <footer className="px-4 md:px-8 lg:px-16 py-6 bg-white dark:!bg-transparent">
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 mb-4">
+          {/* Left Side - Contact Text */}
+          <div className="flex-1">
+            <p className="text-gray-700 dark:text-[#EAE8F3]/90 text-left text-sm md:text-base max-w-3xl">
+              If you're working on a social impact problem and need a UX consultant, book a time on my calendar or reach out at lexirohrer@gmail.com
+            </p>
+          </div>
+          
+          {/* Right Side - Icons */}
+          <div className="flex flex-row gap-4 items-center justify-end md:justify-end flex-shrink-0">
+            <a
+              href="https://www.linkedin.com/in/alexandra-rohrer/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                alt="LinkedIn"
+                className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="mailto:lexirohrer@gmail.com"
+              className="group flex items-center justify-center"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Gmail.png`}
+                alt="Gmail"
+                className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Calendar.png`}
+                alt="Calendar"
+                className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+            </a>
+            <a
+              href="https://uxlex.substack.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group flex items-center justify-center"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}Substack.png`}
+                alt="Substack"
+                className="w-12 h-12 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                loading="lazy"
+              />
+            </a>
+          </div>
+        </div>
+        
+        {/* Website Credit - Centered */}
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
+          <div className="text-[#2B2C34] dark:text-[#EAE8F3] text-xs md:text-sm">
+            Website by uxlex and cursor ✨
+          </div>
         </div>
       </div>
     </footer>
