@@ -159,7 +159,7 @@ const FuseCaseStudy = () => {
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
 
               {/* Background */}
-              <section className="mb-16">
+              <section className="mb-24">
                 <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Background</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
                   For summer 2019, I relocated to Pittsburgh to work in Carnegie Mellon's <strong>Human Computer Interaction Institute (HCII)</strong> as a <strong>UX research intern</strong>. Working closely with Dr. Aniket Kittur and his team of talented researchers, I assisted in developing <strong>Fuse: a chrome extension</strong> to <strong>help researchers collect and organize information.</strong>
@@ -209,7 +209,7 @@ const FuseCaseStudy = () => {
               </section>
 
               {/* Onboarding Design and Testing */}
-              <section className="mb-16">
+              <section className="mb-24">
                 <div className="bg-white dark:bg-white/20 dark:border dark:border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-8">
                   <div className="relative">
                     <img 
@@ -342,7 +342,7 @@ const FuseCaseStudy = () => {
               </section>
 
               {/* Storyboards */}
-              <section className="mb-16">
+              <section className="mb-24">
                 <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Storyboards</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
                   My work with storyboards aimed to explore the link between existing or prospective features and the value they bring to our users. To examine these relationships, I created a series of storyboards detailing common challenges that befall researchers. These storyboards illustrate the way Fuse allows users to tackle challenges using existing features, or how they could do so with prospective features.
@@ -388,7 +388,7 @@ const FuseCaseStudy = () => {
               </section>
 
               {/* User Research */}
-              <section className="mb-16">
+              <section className="mb-24">
                 <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">User Research: Getting Information Out of Fuse</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
                   The sentiment we had noted many times across many interviews, <strong>no one on our research team really understood what this notion meant.</strong> I began by breaking down the overarching research question into more specific questions:
@@ -449,7 +449,7 @@ const FuseCaseStudy = () => {
               </section>
 
               {/* Key Takeaways */}
-              <section className="mb-16">
+              <section className="mb-24">
                 <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Key Takeaways</h2>
                 <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-8">
                   Although my work with the Fuse team was conducted in an academic research setting, it often felt more like a startup environment with so many opportunities to jump in and lend a hand on many different aspects of the product. In this setting, I learned several meaningful takeaways that I know will allow me to better navigate future work environments and contribute to those projects with competence.

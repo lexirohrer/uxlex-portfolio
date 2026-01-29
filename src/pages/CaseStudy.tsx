@@ -137,7 +137,7 @@ const CaseStudy = () => {
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent relative z-10">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
           {/* Overview */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Overview</h2>
             <div className="space-y-4">
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mt-6">
@@ -177,7 +177,7 @@ const CaseStudy = () => {
           </section>
 
           {/* Project Process */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Process</h2>
             
             {/* Building alignment */}
@@ -529,7 +529,7 @@ const CaseStudy = () => {
             </div>
 
           {/* Final Design */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Final Design</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
               The new flow emphasized speed while ensuring users didn't lose the ability to complete important setup later.
@@ -603,7 +603,7 @@ const CaseStudy = () => {
           </section>
 
           {/* Reflection */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-8">
               For me, this project was an important reminder that good design is as much about facilitation and diplomacy as it is about arranging pixels on a screen. Our team had been redesigning this flow on our own for years - but once we stepped back, decided to address root causes, and worked on aligning different points of view, grounding decisions in user data, and designing responsibly with AI, we cracked critical metrics and solved the biggest user facing and organizational problem plaguing the onboarding space.

@@ -77,6 +77,14 @@ const Projects = () => {
   const minScaleRef = useRef(0.5);
   const accumulatedScrollRef = useRef(0);
   
+  // Snap tracking
+  const snapTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  
+  // Flick detection for hero section
+  const scrollVelocityRef = useRef(0);
+  const lastWheelTimeRef = useRef(Date.now());
+  const lastWheelDeltaRef = useRef(0);
+  
   useEffect(() => {
     if (isMobile) return;
     
@@ -186,6 +194,98 @@ const Projects = () => {
       }
     };
     
+    // Calculate project snap points (centers of each project's pause zone)
+    const getProjectSnapPoints = (): number[] => {
+      const heroEnd = HERO_EXIT_RANGE; // 0.2
+      const projectCarouselStart = heroEnd;
+      const projectCarouselRange = 1.0 - projectCarouselStart; // 0.8
+      const numProjects = projects.length;
+      const projectSize = 1.0 / numProjects; // 0.25 per project
+      
+      const snapPoints: number[] = [];
+      for (let i = 0; i < numProjects; i++) {
+        const projectStart = projectCarouselStart + (i * projectSize * projectCarouselRange);
+        // Snap point is the middle of the project range (center of pause zone)
+        const snapPoint = projectStart + (projectSize * projectCarouselRange * 0.5);
+        snapPoints.push(snapPoint);
+      }
+      return snapPoints;
+    };
+    
+    // Get the snap point for project 1 (QuickBooks)
+    const getProject1SnapPoint = (): number => {
+      const heroEnd = HERO_EXIT_RANGE; // 0.2
+      const projectCarouselStart = heroEnd;
+      const projectCarouselRange = 1.0 - projectCarouselStart; // 0.8
+      const projectSize = 1.0 / projects.length; // 0.25 per project
+      
+      const projectStart = projectCarouselStart + (0 * projectSize * projectCarouselRange);
+      // Snap point is the middle of project 1's range
+      return projectStart + (projectSize * projectCarouselRange * 0.5);
+    };
+    
+    // Find nearest project snap point
+    const findNearestSnapPoint = (progress: number): number => {
+      const snapPoints = getProjectSnapPoints();
+      let nearest = progress;
+      let minDistance = Infinity;
+      
+      // Check project snap points
+      for (const snapPoint of snapPoints) {
+        const distance = Math.abs(progress - snapPoint);
+        if (distance < minDistance) {
+          minDistance = distance;
+          nearest = snapPoint;
+        }
+      }
+      
+      // Also consider hero start (0) if we're in hero section
+      if (progress < HERO_EXIT_RANGE) {
+        const heroDistance = Math.abs(progress - 0);
+        if (heroDistance < minDistance) {
+          nearest = 0;
+        }
+      }
+      
+      return nearest;
+    };
+    
+    // Animate to a specific progress point (for snapping)
+    const animateToProgress = (targetProgress: number, duration: number = 600) => {
+      const startProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+      const startTime = Date.now();
+      
+      const animate = () => {
+        const elapsed = Date.now() - startTime;
+        const t = Math.min(1, elapsed / duration);
+        // Ease-out cubic for smooth deceleration
+        const eased = 1 - Math.pow(1 - t, 3);
+        
+        const currentProgress = startProgress + (targetProgress - startProgress) * eased;
+        const currentScroll = currentProgress * SCROLL_RANGE;
+        
+        accumulatedScrollRef.current = currentScroll;
+        accumulatedScroll = currentScroll;
+        
+        startTransition(() => {
+          setScrollProgress(currentProgress);
+        });
+        
+        const newTargetScale = calculateScaleFromProgress(currentProgress);
+        targetScale = Math.max(minScaleRef.current, Math.min(HERO_EXIT_SCALE, newTargetScale));
+        
+        if (!animationFrameId) {
+          animationFrameId = requestAnimationFrame(updateScale);
+        }
+        
+        if (t < 1) {
+          requestAnimationFrame(animate);
+        }
+      };
+      
+      animate();
+    };
+    
     // Update scroll position and scale - single source of truth
     // This ensures consistent state management and prevents glitches
     const updateScrollPosition = (delta: number) => {
@@ -193,7 +293,14 @@ const Projects = () => {
       const newScroll = Math.max(0, Math.min(SCROLL_RANGE, currentScroll + delta));
       
       // Only update if change is significant to avoid micro-updates and jitter
-      if (Math.abs(newScroll - currentScroll) < 0.5) return;
+      // Reduced threshold from 0.5 to 0.1 to improve sensitivity for small scrolls
+      if (Math.abs(newScroll - currentScroll) < 0.1) return;
+      
+      // Clear any pending snap timeout
+      if (snapTimeoutRef.current !== null) {
+        clearTimeout(snapTimeoutRef.current);
+        snapTimeoutRef.current = null;
+      }
       
       // Update ref first (single source of truth)
       accumulatedScrollRef.current = newScroll;
@@ -214,16 +321,84 @@ const Projects = () => {
       if (!animationFrameId) {
         animationFrameId = requestAnimationFrame(updateScale);
       }
+      
+      // Schedule snap-to-project after scroll stops (debounced)
+      // Only snap if we're in the project carousel area
+      if (progress >= HERO_EXIT_RANGE) {
+        // Clear existing timeout
+        if (snapTimeoutRef.current !== null) {
+          clearTimeout(snapTimeoutRef.current);
+        }
+        
+        // Set new timeout to snap after scroll stops
+        snapTimeoutRef.current = setTimeout(() => {
+          const finalProgress = accumulatedScrollRef.current / SCROLL_RANGE;
+          const nearestSnap = findNearestSnapPoint(finalProgress);
+          const snapDistance = Math.abs(finalProgress - nearestSnap);
+          
+          // Only snap if we're far enough from a snap point (more than 5% of scroll range)
+          // This prevents snapping when user is already close to a project center
+          if (snapDistance > 0.05) {
+            animateToProgress(nearestSnap, 600);
+          }
+          snapTimeoutRef.current = null;
+        }, 150); // Wait 150ms after last scroll event
+      }
     };
     
     const handleWheel = (e: WheelEvent) => {
       const currentScroll = accumulatedScrollRef.current;
+      const currentProgress = currentScroll / SCROLL_RANGE;
       
       // Bounds checking - prevent scrolling beyond limits
       if (currentScroll >= SCROLL_RANGE && e.deltaY > 0) return;
       if (currentScroll <= 0 && e.deltaY < 0) return;
       
       e.preventDefault();
+      
+      // Detect flicks in hero section (only when scrolling down)
+      const isInHeroSection = currentProgress < HERO_EXIT_RANGE;
+      const isScrollingDown = e.deltaY > 0;
+      
+      if (isInHeroSection && isScrollingDown) {
+        // Calculate scroll velocity to detect flicks
+        const now = Date.now();
+        const timeDelta = Math.max(1, now - lastWheelTimeRef.current);
+        const deltaY = Math.abs(e.deltaY);
+        
+        // Calculate instantaneous velocity
+        const instantaneousVelocity = deltaY / timeDelta;
+        
+        // Update velocity tracking with exponential moving average
+        if (timeDelta < 50) {
+          scrollVelocityRef.current = scrollVelocityRef.current * 0.5 + instantaneousVelocity * 0.5;
+        } else {
+          scrollVelocityRef.current = instantaneousVelocity;
+        }
+        
+        // Update tracking
+        lastWheelTimeRef.current = now;
+        lastWheelDeltaRef.current = e.deltaY;
+        
+        // Detect flick: velocity > 15 deltaY/ms
+        const isFlick = scrollVelocityRef.current > 15;
+        
+        if (isFlick) {
+          // Clear any pending snap timeout
+          if (snapTimeoutRef.current !== null) {
+            clearTimeout(snapTimeoutRef.current);
+            snapTimeoutRef.current = null;
+          }
+          
+          // Immediately snap to project 1 (QuickBooks)
+          const project1Snap = getProject1SnapPoint();
+          animateToProgress(project1Snap, 600);
+          return; // Don't process normal scroll, just snap
+        }
+      } else {
+        // Reset velocity tracking when not in hero section or scrolling up
+        scrollVelocityRef.current = 0;
+      }
       
       const scrollSpeed = 5;
       const delta = e.deltaY * scrollSpeed;
@@ -301,6 +476,12 @@ const Projects = () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("wheel", handleWindowWheel);
       window.removeEventListener("visibilitychange", handleVisibilityChange);
+      
+      // Cleanup snap timeout
+      if (snapTimeoutRef.current !== null) {
+        clearTimeout(snapTimeoutRef.current);
+        snapTimeoutRef.current = null;
+      }
       
       // Cleanup animation
       if (animationFrameId) {
@@ -398,25 +579,25 @@ const Projects = () => {
     // All upcoming projects are always visible in their stack positions
     // Projects move through positions sequentially: 4 → 3 → 2 → 1 → exit
     
-    // Stack position definitions - matching testimonials styling
-    // Background cards: opacity 0.6, blur 3px, scale 1 - 0.2 * position
+    // Stack position definitions - increased scale differences and offsets for more z-index "space"
+    // More dramatic size differences and horizontal separation creates more visual depth
     const stackPositions = [
       { scale: 2.5, translateX: -window.innerWidth * 1.5, blur: 0, zIndex: 1, opacity: 0 }, // Position 0: Off screen (scaled up and moved left)
       { scale: 1.0, translateX: 0, blur: 0, zIndex: 10, opacity: 1 }, // Position 1: Centered
-      { scale: 0.8, translateX: 200, blur: 3, zIndex: 9, opacity: 0.6 }, // Position 2: Behind center, offset 200px right
-      { scale: 0.6, translateX: 400, blur: 3, zIndex: 8, opacity: 0.6 }, // Position 3: Further back, offset 400px right
-      { scale: 0.4, translateX: 600, blur: 3, zIndex: 7, opacity: 0 }, // Position 4: Furthest back, offset 600px right (hidden)
+      { scale: 0.7, translateX: 300, blur: 5, zIndex: 9, opacity: 0.5 }, // Position 2: Behind center, offset 300px right (was 0.8 scale, 200px)
+      { scale: 0.5, translateX: 600, blur: 8, zIndex: 8, opacity: 0.4 }, // Position 3: Further back, offset 600px right (was 0.6 scale, 400px)
+      { scale: 0.3, translateX: 900, blur: 12, zIndex: 7, opacity: 0 }, // Position 4: Furthest back, offset 900px right (was 0.4 scale, 600px)
     ];
     
     // Each project gets 25% of the project carousel range
     // Adjust timing to add longer pauses when projects are centered
     const projectStart = projectIndex * 0.25;
     const projectEnd = (projectIndex + 1) * 0.25;
-    // Redistribute timing for better pause zones:
-    // 0.02 = transition in (2%), 0.21 = pause zone (21%), 0.02 = transition out (2%)
-    // This gives much more pause time for users to interact with each project
-    const projectCenter = projectStart + 0.02; // Transition happens in first 2% of range
-    const projectPauseEnd = projectEnd - 0.02; // Pause ends 2% before range ends (giving 21% pause zone)
+    // Redistribute timing for more space between projects:
+    // 0.03 = transition in (3%), 0.19 = pause zone (19%), 0.03 = transition out (3%)
+    // Longer transitions create more visual separation between projects
+    const projectCenter = projectStart + 0.03; // Transition happens in first 3% of range (was 2%)
+    const projectPauseEnd = projectEnd - 0.03; // Pause ends 3% before range ends (was 2%) - longer transition zones
     
     // Calculate which position this project should be in
     // When Project 1 is at position 1, Projects 2,3,4 are at positions 2,3,4
@@ -811,16 +992,16 @@ const Projects = () => {
             
             if (!isCentered && index > currentCenteredIndex && currentCenteredIndex >= 0) {
               // This is an upcoming project - calculate its position in the stack
-              // Match testimonials: opacity 0.6, blur 3px, scale 1 - 0.2 * position
+              // Increased scale differences and offsets for more z-index "space"
               const stackPosition = index - currentCenteredIndex; // 1, 2, 3, etc.
               
               // Progressive offset to create card stack effect - each card offset more to the right
-              // Start from the right edge of the focused card and offset progressively
-              finalTranslateX = stackPosition * 200; // 200px offset per card to the right (increased for visible stack)
-              finalBlur = 3; // 3px blur (matching testimonials)
-              finalScale = 1 - (0.2 * stackPosition); // Scale down by 0.2 per position (matching testimonials)
+              // Increased offsets and scale differences create more visual separation
+              finalTranslateX = stackPosition * 300; // 300px offset per card (was 200px) - more horizontal separation
+              finalBlur = 3 + (stackPosition * 2); // Progressive blur: 5px, 8px, 12px (was 3px flat)
+              finalScale = 1 - (0.3 * stackPosition); // Scale down by 0.3 per position (was 0.2) - more dramatic size difference
               finalZIndex = 10 - stackPosition; // Lower z-index for cards further back
-              finalOpacity = stackPosition > 2 ? 0 : 0.6; // Opacity 0.6, hidden if > 2 positions back (matching testimonials)
+              finalOpacity = stackPosition > 2 ? 0 : 0.5 - (stackPosition * 0.1); // Progressive opacity: 0.5, 0.4, 0.3 (was 0.6 flat)
             } else if (!isCentered && index < currentCenteredIndex) {
               // Past projects - scale up and move off left side (already handled by carousel transform)
               // Keep the carousel transform values

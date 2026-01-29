@@ -27,6 +27,20 @@ const Resume = () => {
   // Track if cards are rotating (full flip on shuffle)
   const [isRotating, setIsRotating] = useState(false);
   
+  // Track card order in stack (last index = top of stack)
+  const [cardOrder, setCardOrder] = useState<number[]>(() => 
+    allFunFacts.map((_, index) => index)
+  );
+  
+  // Generate random positions and rotations for scattered card effect
+  const [cardPositions, setCardPositions] = useState<Array<{x: number, y: number, rotation: number}>>(() => {
+    return allFunFacts.map(() => ({
+      x: Math.random() * 40 - 20, // Random x offset between -20px and 20px
+      y: Math.random() * 40 - 20, // Random y offset between -20px and 20px
+      rotation: (Math.random() - 0.5) * 15 // Random rotation between -7.5 and 7.5 degrees
+    }));
+  });
+  
   // Testimonials state
   const [activeTestimonial, setActiveTestimonial] = useState(2);
   
@@ -91,25 +105,49 @@ const Resume = () => {
         .map((_, index) => index)
         .filter(index => !prevShownIndices.has(index));
       
-      // Shuffle all facts for 4x4 grid
-      const allIndices = allFunFacts.map((_, index) => index);
-      const shuffled = [...allIndices].sort(() => Math.random() - 0.5);
-      const newIndices = shuffled;
+      // Shuffle the card order in the stack
+      const shuffledOrder = [...cardOrder].sort(() => Math.random() - 0.5);
+      setCardOrder(shuffledOrder);
       
-      shownFactIndicesRef.current = new Set(newIndices);
-      setShownFactIndices(new Set(newIndices));
-      setDisplayedFacts(newIndices.map(index => allFunFacts[index]));
+      // Generate new random positions and rotations for scattered effect
+      const newPositions = allFunFacts.map(() => ({
+        x: Math.random() * 40 - 20,
+        y: Math.random() * 40 - 20,
+        rotation: (Math.random() - 0.5) * 15
+      }));
+      setCardPositions(newPositions);
+      
+      // Reset flipped cards
       setFlippedCards(new Set());
     }, 600);
   };
   
-  // Toggle flip state of a card
+  // Toggle flip state of a card and handle stack movement
   const toggleFlip = (index: number) => {
+    const topCardIndex = cardOrder[cardOrder.length - 1];
+    
+    // Only allow interaction with the top card
+    if (index !== topCardIndex) {
+      return;
+    }
+    
     setFlippedCards((prev) => {
       const newSet = new Set(prev);
-      if (newSet.has(index)) {
+      const isCurrentlyFlipped = newSet.has(index);
+      
+      if (isCurrentlyFlipped) {
+        // Card is flipped, clicking again moves it to back of stack
         newSet.delete(index);
+        // Move card to back of stack
+        setCardOrder((prevOrder) => {
+          const newOrder = [...prevOrder];
+          const cardIndex = newOrder.indexOf(index);
+          newOrder.splice(cardIndex, 1);
+          newOrder.unshift(index); // Add to front (back of stack)
+          return newOrder;
+        });
       } else {
+        // Flip the card
         newSet.add(index);
       }
       return newSet;
@@ -169,12 +207,27 @@ const Resume = () => {
   ) => {
     const isFlipped = flippedCards.has(index);
     const cardHeight = isMobile && maxCardHeight ? `${maxCardHeight}px` : undefined;
+    const stackPosition = cardOrder.indexOf(index);
+    const isTopCard = stackPosition === cardOrder.length - 1;
+    const position = cardPositions[index];
+    
+    // Calculate z-index: higher stack position = higher z-index (top card has highest)
+    const zIndex = stackPosition + 1;
     
     return (
       <div
         key={`${keyPrefix}-${fact.text}`}
-        className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 w-full"
-        style={{ perspective: "1000px" }}
+        className={`relative transition-all duration-500 ${isTopCard ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-default'}`}
+        style={{ 
+          perspective: "1000px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) rotate(${position.rotation}deg)`,
+          zIndex: zIndex,
+          width: "280px",
+          pointerEvents: isTopCard ? 'auto' : 'none',
+        }}
         onClick={() => toggleFlip(index)}
       >
         <div
@@ -186,60 +239,54 @@ const Resume = () => {
               ? "rotateY(180deg)"
               : "rotateY(0deg)",
             transformStyle: "preserve-3d",
-            minHeight: isMobile 
-              ? (cardHeight || "180px") // Use measured height or fallback
-              : layout === "stack" ? "240px" : "220px",
-            height: isMobile && cardHeight ? cardHeight : undefined,
+            minHeight: "240px",
+            height: cardHeight || undefined,
           }}
         >
           <div
-            className="fact-card-glass absolute inset-0 w-full h-full rounded-3xl border border-white/20 flex items-center justify-center backface-hidden px-6"
+            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-[#0A0520]/20 backdrop-blur-lg flex items-center justify-center backface-hidden px-6 shadow-2xl"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(0deg)",
               position: "absolute",
-              zIndex: isMobile ? (isFlipped ? 0 : 1) : 1,
-              opacity: isMobile ? (isFlipped ? 0 : 1) : 1,
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              isolation: "isolate",
-              willChange: "backdrop-filter",
+              zIndex: isFlipped ? 0 : 1,
+              opacity: isFlipped ? 0 : 1,
             }}
           >
-            <span className="text-white/90 font-hagrid font-medium text-3xl text-center">
-              flip me 👀
+            <div className="absolute inset-0 bg-white/20 dark:bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+            <div className="absolute inset-0 bg-white/20 dark:bg-white/20 rounded-3xl"></div>
+            <span className="text-gray-800 dark:text-white font-hagrid font-medium text-3xl text-center relative z-10">
+              what's this? 👀
             </span>
           </div>
           <div
             ref={(el) => {
               cardBackRefs.current[index] = el;
             }}
-            className="fact-card-glass absolute inset-0 w-full h-full rounded-3xl border border-white/20 flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
+            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-[#0A0520]/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden shadow-2xl"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
               position: "absolute",
-              zIndex: isMobile ? (isFlipped ? 1 : 0) : 1,
-              opacity: isMobile ? (isFlipped ? 1 : 0) : 1,
-              backgroundColor: "rgba(255, 255, 255, 0.1)",
-              backdropFilter: "blur(8px)",
-              WebkitBackdropFilter: "blur(8px)",
-              isolation: "isolate",
-              willChange: "backdrop-filter",
+              zIndex: isFlipped ? 1 : 0,
+              opacity: isFlipped ? 1 : 0,
             }}
           >
-            <span className="text-4xl md:text-5xl">{fact.emoji}</span>
-            <span className="text-white/90 text-base leading-relaxed text-center">
-              {fact.text}
-            </span>
+            <div className="absolute inset-0 bg-white/20 dark:bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+            <div className="absolute inset-0 bg-white/20 dark:bg-white/20 rounded-3xl"></div>
+            <div className="relative z-10 flex flex-col items-center gap-3">
+              <span className="text-4xl md:text-5xl">{fact.emoji}</span>
+              <span className="text-gray-800 dark:text-white text-base leading-relaxed text-center">
+                {fact.text}
+              </span>
+            </div>
           </div>
         </div>
       </div>
     );
-  }, [flippedCards, isRotating, isMobile, maxCardHeight]);
+  }, [flippedCards, isRotating, isMobile, maxCardHeight, cardOrder, cardPositions]);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -259,32 +306,33 @@ const Resume = () => {
           {/* About Me Section */}
           <section className="mb-60">
             <div className="w-full">
-
-              {/* Fun Facts - 4x4 Grid on Desktop, Stacked on Mobile */}
-              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4 mt-6">
-                {displayedFacts.map((fact, index) => (
-                  <div key={`wrapper-${index}`} className="w-full">
-                    {renderFactCard(fact, index, "grid", "grid")}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                {/* Left Side - Text Content */}
+                <div>
+                  <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 leading-relaxed">
+                    <p className="text-base md:text-lg">
+                      I design experiences that create positive social impact. Before finding design, I grew up in a home that hosted 56 exchange students from 16 different countries, fostering my love of travel and language learning. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
+                    </p>
+                    <p className="text-base md:text-lg">
+                      Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities. If I'm not in Figma or planning my next international adventure, you can find me at the climbing gym or doing Thai flashcards on the elliptical.
+                    </p>
+                    <p className="text-base md:text-lg">
+                      If you're working on a social impact problem and need a UX consultant, book a time to chat or reach out at lexirohrer@gmail.com
+                    </p>
                   </div>
-                ))}
-              </div>
+                </div>
 
-              {/* Shuffle Button - Full Width */}
-              <button
-                onClick={shuffleFacts}
-                className="w-full mt-6 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 dark:bg-white/10 backdrop-blur-xl border border-white/20 dark:border-white/20 hover:scale-[1.02]"
-                aria-label="Shuffle facts"
-              >
-                <img
-                  src={`${import.meta.env.BASE_URL}Shuffle_Icon.svg`}
-                  alt="Shuffle"
-                  className="w-6 h-6 drop-shadow-lg"
-                  loading="lazy"
-                />
-                <span className="text-gray-700 dark:text-[#EAE8F3]/90 font-hagrid font-medium text-xl">
-                  shuffle
-                </span>
-              </button>
+                {/* Right Side - Fun Facts Stacked Cards */}
+                <div>
+                  <div className="relative w-full h-[400px] mx-auto max-w-[600px]" style={{ perspective: "1000px" }}>
+                    {displayedFacts.map((fact, index) => (
+                      <div key={`card-${index}`}>
+                        {renderFactCard(fact, index, "stacked", "stack")}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </section>
 

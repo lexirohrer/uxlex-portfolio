@@ -111,7 +111,7 @@ const MuvMiCaseStudy = () => {
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent relative z-10">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
           {/* Overview */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Overview</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3]/90 text-lg mb-6">
             MuvMi, a Bangkok-based ridesharing startup, operates a fleet of electric Tuk Tuks (a three wheeled motorized vehicle). The electric Tuk Tuks are positioned as a cleaner first-last mile alternative to motorbikes, busses, cars, or gas-powered Tuk Tuks. MuvMi offered separate products for tourists and locals, and much of my work with them focused on <strong> how to unite these two services without compromising the user experience</strong> for either group. I took on this project as a part of my Fulbright Research study on how to adapt Western-created Design Thinking Methods to Global South Contexts - so this project focused on not only redesigning the service, but <strong>adapting the methodologies used to specific cultural contexts.</strong>
@@ -221,7 +221,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
           {/* Project Process */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Process</h2>
             
             {/* Process graphic */}
@@ -255,7 +255,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
            {/* Phase 3: Focus Group  with local users */}
-           <section className="mb-16">
+           <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Local users: focus group </h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> Despite being a very user centered company, MuvMi's research methods have largely been limited to surveys, interviews, and focus groups with users. Because of the engrained tendencies towards social harmony and respect for authority (e.g. workshop facilitators), often it can be difficult to elicit honest, direct critique from Thai users. These factors, in addition to the well known issues with groupthink in focus groups, encouraged us to compare traditional methods with adapted participatory design methods for this project. 
             </p>
@@ -284,7 +284,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
           {/* Phase 1: Ethnographic ride alongs */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Tourist users: ethnographic ride alongs</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-md mb-6"> After observing the structure of these focus groups, I designed the tourist research phases to coach MuvMi employees on using resesarch methdos that would allow the user to "show not tell" what they liked and didn't like about the service. ALongside a few MuvMi employees, I conducted ethnographic research, <strong> observing 4 groups of real tourists using the MuvMi app and Tuk Tuk service.</strong> Each tourist group was on vacation in Bangkok, some for the first time and others as repeat visitors. We recruited these tourists through "Travel in Bangkok" Facebook groups, local walking tours, and flyers in nearby hotel lobbies, and they were compensated after the research session with a day pass for free rides on the MuvMi Tuk Tuks.
             </p>
@@ -359,7 +359,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
           {/* Phase 2: Paper prototyping */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Paper prototyping</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> After each ride-along session, the tourists were invited into a nearby coffee shop for a paper prototyping session. Rather than having users react to concepts that the designers had created, the generative nature of this method allowed designers to see the users' honest opinions of the service. To implement this method: 
             </p> 
@@ -417,7 +417,7 @@ const MuvMiCaseStudy = () => {
 
           {/* Phase 4: Synthesis & implementation of new features */}
 
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Synthesis & implementation</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> After conducting both tourist and local user research, key differences between the two emerged. For example:
             </p>
@@ -556,7 +556,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
           {/* Impact */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Impact</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">Across the board, MuvMi employees <strong>rated participatory methods as producing more "realisitic and usable" solutions</strong> than traditional interview and focus group methods. Beyond just the feature updates and changes, this project also represented a <strong>cultural shift in the way MuvMi employees approach design.</strong> After shadowing and practicing ethnographic observation and participatory design workshops, the MuvMi CEO reported observing:
             </p>
@@ -584,7 +584,7 @@ const MuvMiCaseStudy = () => {
           </section>
 
           {/* Reflection */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
             This project was part of my larger Fulbright research into Smart City technologies and how HCD methods can be adapted to Thai cultural norms. MuvMi is already an incredibly user-centered startup in their design and development processes. However, the interview and focus group methods they were defaulted to often clashed with the indirect feedback tendencies engrained in Thai culture, making these methods less successful than they had been in their original contexts. This project was a unique opportunity to explore the wider realm of existing design research methods, and consider which might be better fits for this particular context.

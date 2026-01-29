@@ -159,7 +159,7 @@ const Portfolio = () => {
             aria-label="Scroll to portfolio projects"
           >
             <span className="text-lg md:text-xl">↓</span>
-            <span className="text-base md:text-lg font-medium">check out my work over here</span>
+            <span className="text-base md:text-lg font-regular">check out my work over here</span>
             <span className="text-lg md:text-xl">↓</span>
           </button>
         </section>

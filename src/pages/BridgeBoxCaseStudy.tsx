@@ -156,7 +156,7 @@ const BridgeBoxCaseStudy = () => {
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-white dark:bg-transparent relative z-10">
           <main className="px-[120px] py-[60px] max-md:px-10 max-md:py-[40px] max-sm:px-5 relative z-10">
           {/* Overview */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Overview</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
                 As part of my Fulbright fellowship on adapting Participatory Design to Thailand, I collaborated with BridgeBox, a startup developing <strong>a communication system for climate disaster response.</strong> BridgeBox builds a mobile app for rural residents to call for help during disasters like flash flooding, and a desktop software for "responders" (local governments, nonprofits, and employers) to manage and respond to the submitted cases. The high stakes and unique context for rural Thai users made usability a critical priority in this project.
@@ -164,7 +164,7 @@ const BridgeBoxCaseStudy = () => {
           </section>
 
           {/* Project Goals */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Goals</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
               <div className="bg-[#E6F0F7] dark:bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
@@ -186,7 +186,7 @@ const BridgeBoxCaseStudy = () => {
           </section>
 
           {/* Project Process */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Process</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               Durign this project, I planned a series of participatory design workshops for rural Thai users, trained BridgeBox employees to faciliate design workshops, synthesized workshop results, and produced the final UI designs for implementation. During the 10 month partnership, we:
@@ -600,7 +600,7 @@ const BridgeBoxCaseStudy = () => {
           </section>
 
           {/* End to End Solution */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">End to End Solution</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               The end to end designs had incorporated useful new co-designed features and AI-assisted case categorization – however, BridgeBox's clients could be anyone using a case management system rurally, from large farms managing migrant workers to NGOs delivering disaster relief. To make this system work for everyone, BridgeBox included, I was asked to divide the UI into a tiered subscription model, and explore what the "lite" vs "pro" versions of the UI would look like. This exploration yielded one of the most beautiful Figma files I've made yet (I'm a big color coding gal):
@@ -609,7 +609,7 @@ const BridgeBoxCaseStudy = () => {
           </section>
 
           {/* Impact */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Outcomes</h2>
             <h3 className="text-[#403930] dark:text-[#EAE8F3] text-2xl font-bold mb-6">Concrete Changes</h3>
             <div className="space-y-4 mb-8">
@@ -672,7 +672,7 @@ const BridgeBoxCaseStudy = () => {
               </div>
 
           {/* Reflection */}
-          <section className="mb-16">
+          <section className="mb-24">
             <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Reflection</h2>
             <p className="text-[#403930] dark:text-[#EAE8F3] text-lg mb-6">
               This project reinforced that smart city technologies succeed only when adapted to cultural and infrastructural realities.
