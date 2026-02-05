@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "@/contexts/ThemeContext";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
@@ -12,15 +11,14 @@ const navLinks = [
 const Header = () => {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { theme } = useTheme();
   const isMobile = useIsMobile();
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location.pathname]);
 
-  // Use theme-appropriate colors for all pages
-  const linkBase = "text-black dark:text-[#EAE8F3]";
+  // Use light text colors for all pages (site has dark background)
+  const linkBase = "text-[#EAE8F3]";
 
   const linkClasses = (to: string) => {
     // Handle "/portfolio" link being active on both "/" and "/portfolio"
@@ -59,7 +57,7 @@ const Header = () => {
               className="hidden md:flex items-center gap-2 flex-shrink-0"
               aria-label="Home"
             >
-              <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-black dark:text-[#EAE8F3]">
+              <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-[#EAE8F3]">
                 uxlex.com
               </span>
             </Link>
@@ -76,8 +74,8 @@ const Header = () => {
                   className={`${linkClasses(link.to)} px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
                     (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
                     (link.to !== "/portfolio" && location.pathname === link.to)
-                      ? 'bg-white/20 dark:bg-white/10'
-                      : 'hover:bg-white/10 dark:hover:bg-white/5'
+                      ? 'bg-white/10'
+                      : 'hover:bg-white/10 hover:bg-white/5'
                   }`}
                 >
                   {link.label}
@@ -88,7 +86,7 @@ const Header = () => {
             {/* Mobile menu button - Right aligned on mobile */}
             <button
               onClick={() => setIsMenuOpen((prev) => !prev)}
-              className={`${linkBase} p-2 rounded-full hover:bg-white/10 dark:hover:bg-white/5 transition-colors md:hidden ml-auto`}
+              className={`${linkBase} p-2 rounded-full hover:bg-white/10 hover:bg-white/5 transition-colors md:hidden ml-auto`}
               aria-label={menuButtonLabel}
               aria-expanded={isMenuOpen}
             >
@@ -115,8 +113,8 @@ const Header = () => {
                     )} px-4 py-3 rounded-full transition-all duration-200 cursor-pointer ${
                       (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
                       (link.to !== "/portfolio" && location.pathname === link.to)
-                        ? 'bg-white/20 dark:bg-white/10'
-                        : 'hover:bg-white/10 dark:hover:bg-white/5'
+                        ? 'bg-white/10'
+                        : 'hover:bg-white/10 hover:bg-white/5'
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >

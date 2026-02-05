@@ -5,7 +5,7 @@ const SubstackEmbed = () => {
     <section className="py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
+          <h2 className="text-3xl font-bold text-gray-900 text-white mb-4">
             Stay Updated with My Newsletter
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
@@ -15,7 +15,7 @@ const SubstackEmbed = () => {
         
         <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 max-w-4xl mx-auto">
           <div className="text-center mb-6">
-            <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-2">
+            <h3 className="text-2xl font-semibold text-gray-900 text-white mb-2">
               Lexi's Substack
             </h3>
             <p className="text-gray-600 dark:text-gray-400">
@@ -29,7 +29,7 @@ const SubstackEmbed = () => {
                 <span className="text-white font-bold text-lg">L</span>
               </div>
               <div>
-                <h4 className="font-semibold text-gray-900 dark:text-white">Lexi Rohrer</h4>
+                <h4 className="font-semibold text-gray-900 text-white">Lexi Rohrer</h4>
                 <p className="text-sm text-gray-500 dark:text-gray-400">Launched a year ago</p>
               </div>
             </div>

@@ -70,43 +70,43 @@ const IndexNew = () => {
       text: "Lexi is the definition of a team player – always willing to go the extra mile and contribute to the project's success. She has a strong sense of self-awareness and a desire to learn and grow.",
       author: "Jen Hong",
       title: "Staff Product Designer @ Intuit",
-      gradient: "from-pink-200/20 via-white/10 to-purple-200/20 dark:from-pink-500/10 dark:via-transparent dark:to-purple-500/10",
-      quoteColor: "text-orange-300 dark:text-orange-400"
+      gradient: "from-pink-500/10 via-transparent to-purple-500/10",
+      quoteColor: "text-orange-400"
     },
     {
       text: "Lexi always brings positive energy, proactivity, courage, customer obsession, collaboration, and strong systems thinking to any project she was tasked with. She naturally has a learning mindset and always comes to the table with a strong data-backed POV",
       author: "Womo Iyegha",
       title: "Product Design Leader @ Intuit",
-      gradient: "from-indigo-200/20 via-white/10 to-blue-200/20 dark:from-indigo-500/10 dark:via-transparent dark:to-blue-500/10",
-      quoteColor: "text-purple-300 dark:text-purple-400"
+      gradient: "from-indigo-500/10 via-transparent to-blue-500/10",
+      quoteColor: "text-purple-400"
     },
     {
       text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list. 🚀",
       author: "Zip Lehnus",
       title: "Staff Content Designer, Intuit ",
-      gradient: "from-purple-200/20 via-white/10 to-purple-200/20 dark:from-purple-500/10 dark:via-transparent dark:to-purple-500/10",
-      quoteColor: "text-purple-300 dark:text-purple-400"
+      gradient: "from-purple-500/10 via-transparent to-purple-500/10",
+      quoteColor: "text-purple-400"
     },
     {
       text: "Lexi's UX expertise made sure our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
       author: "Tanida Disyabut",
       title: "Social Enterprise Founder",
-      gradient: "from-yellow-200/20 via-white/10 to-orange-200/20 dark:from-yellow-500/10 dark:via-transparent dark:to-orange-500/10",
-      quoteColor: "text-yellow-300 dark:text-yellow-400"
+      gradient: "from-yellow-500/10 via-transparent to-orange-500/10",
+      quoteColor: "text-yellow-400"
     },
     {
       text: "Lexi has a drive, fearlessness, and openness to improvement that set her apart and in my personal experience is highly correlated with top levels of achievement and success.",
       author: "Aniket Kittur",
       title: "Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University",
-      gradient: "from-pink-200/20 via-white/10 to-purple-200/20 dark:from-pink-500/10 dark:via-transparent dark:to-purple-500/10",
-      quoteColor: "text-orange-300 dark:text-orange-400"
+      gradient: "from-pink-500/10 via-transparent to-purple-500/10",
+      quoteColor: "text-orange-400"
     },
     {
       text: "Lexi is one of those very rare designers who not only excels at her craft but also uplifts everyone around her with her proactivity, curiosity, and positivity.",
       author: "Grace Kim",
       title: "UX Research Lead",
-      gradient: "from-rose-200/20 via-white/10 to-pink-200/20 dark:from-rose-500/10 dark:via-transparent dark:to-pink-500/10",
-      quoteColor: "text-rose-300 dark:text-rose-400"
+      gradient: "from-rose-500/10 via-transparent to-pink-500/10",
+      quoteColor: "text-rose-400"
     }
   ];
   
@@ -373,7 +373,7 @@ const IndexNew = () => {
               aboutMeSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
           }}
-          className="absolute bottom-8 left-1/2 z-[30] text-white/80 dark:text-white/70 tracking-[0.2em] uppercase text-xs cursor-pointer hover:text-white/90 dark:hover:text-white transition-colors duration-200 flex items-center justify-center gap-3 p-0 border-0 bg-transparent whitespace-nowrap"
+          className="absolute bottom-8 left-1/2 z-[30] text-white/80 text-white/70 tracking-[0.2em] uppercase text-xs cursor-pointer hover:text-white transition-colors duration-200 flex items-center justify-center gap-3 p-0 border-0 bg-transparent whitespace-nowrap"
           initial={{ opacity: 0, y: 20, x: '-50%' }}
           animate={{ opacity: 1, y: 0, x: '-50%' }}
           transition={{ duration: 1, delay: 1, ease: [0.22, 1, 0.36, 1] }}
@@ -451,12 +451,12 @@ const IndexNew = () => {
                 }}
               />
               
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-10 font-hagrid text-center w-full relative z-10">what it's like to work with me</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-[#EAE8F3] mb-10 font-hagrid text-center w-full relative z-10">what it's like to work with me</h2>
               <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12 z-10">
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="absolute left-0 md:left-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
+                  className="absolute left-0 md:left-8 z-50 text-[#1A103F] text-white bg-white/10 bg-white/5 backdrop-blur-lg border border-white/20 border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
@@ -500,7 +500,7 @@ const IndexNew = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
+                        className="absolute rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-white/5 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
                         style={{
                           transform,
                           zIndex,
@@ -517,22 +517,22 @@ const IndexNew = () => {
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                               alt="" 
-                              className="block dark:hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              className="block hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                               alt="" 
-                              className="hidden dark:block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              className="hidden block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
-                            <p className="text-gray-800 dark:text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
+                            <p className="text-gray-800 text-[#EAE8F3] italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
                           </div>
                           <div className="mt-4 flex-shrink-0">
-                            <p className="font-semibold text-gray-800 dark:text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
-                            <p className="text-xs md:text-sm text-gray-600 dark:text-[#EAE8F3]/70">{testimonial.title}</p>
+                            <p className="font-semibold text-gray-800 text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
+                            <p className="text-xs md:text-sm text-gray-600 text-[#EAE8F3]/70">{testimonial.title}</p>
                           </div>
                         </div>
                       </div>
@@ -542,7 +542,7 @@ const IndexNew = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="absolute right-0 md:right-8 z-50 text-[#1A103F] dark:text-white bg-white/10 dark:bg-white/5 backdrop-blur-lg border border-white/20 dark:border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
+                  className="absolute right-0 md:right-8 z-50 text-[#1A103F] text-white bg-white/10 bg-white/5 backdrop-blur-lg border border-white/20 border-white/10 rounded-full p-3 disabled:opacity-30 disabled:cursor-not-allowed matte-3d-button"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
@@ -558,8 +558,8 @@ const IndexNew = () => {
                     onClick={() => setActiveTestimonial(index)}
                     className={`w-2 h-2 rounded-full transition-all duration-300 matte-3d-button ${
                       index === activeTestimonial
-                        ? 'bg-[#1A103F] dark:bg-white w-6'
-                        : 'bg-[#1A103F]/40 dark:bg-white/40'
+                        ? 'bg-[#1A103F] bg-white w-6'
+                        : 'bg-[#1A103F]/40 bg-white/40'
                     }`}
                     aria-label={`Go to testimonial ${index + 1}`}
                   />
@@ -573,7 +573,7 @@ const IndexNew = () => {
               <motion.a 
                 key={index} 
                 href={study.link}
-                className="relative lg:col-span-2 lg:row-span-1 rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-white/5 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
+                className="relative lg:col-span-2 lg:row-span-1 rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-white/5 backdrop-blur-lg overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] group"
                 variants={fadeUp}
                 initial="hidden"
                 whileInView="visible"
@@ -582,8 +582,8 @@ const IndexNew = () => {
                 <div className={`absolute inset-0 bg-gradient-to-br ${study.color} rounded-3xl`}></div>
                 <div className="relative z-10 p-6 flex flex-col md:flex-row items-center gap-6">
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-2 font-hagrid group-hover:text-gray-900 transition-colors">{study.title}</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90">{study.description}</p>
+                    <h3 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid group-hover:text-gray-900 transition-colors">{study.title}</h3>
+                    <p className="text-gray-700 text-[#EAE8F3]/90">{study.description}</p>
                   </div>
                   <div className="w-full md:w-48 h-32 flex-shrink-0">
                     <img 

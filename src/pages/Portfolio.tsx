@@ -58,42 +58,42 @@ const Portfolio = () => {
         <Header />
         
         {/* Hero Section */}
-        <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20 relative w-full">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 max-w-7xl mx-auto w-full">
-            {/* Memoji - Right Side on desktop, Top on mobile */}
-            <div 
-              ref={memojiRef}
-              className="flex-shrink-0 order-1 md:order-2"
-              style={{
-                transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
-                transition: 'transform 0.3s ease-out',
-                willChange: 'transform',
-              }}
-            >
-              <img
-                src={`${import.meta.env.BASE_URL}Memoji.png`}
-                alt="Lexi Memoji"
-                className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl transition-transform duration-300"
-                loading="eager"
+        <section className="min-h-screen flex items-center justify-center py-20 relative w-full">
+          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 md:px-8">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 w-full">
+              {/* Memoji - Right Side on desktop, Top on mobile */}
+              <div 
+                ref={memojiRef}
+                className="flex-shrink-0 order-1 md:order-2"
                 style={{
-                  // Additional subtle rotation based on mouse position (very subtle)
-                  transform: `rotate(${mousePosition.x * 0.1}deg)`,
+                  transform: `translate(${mousePosition.x}px, ${mousePosition.y}px)`,
+                  transition: 'transform 0.3s ease-out',
+                  willChange: 'transform',
                 }}
-              />
-            </div>
+              >
+                <img
+                  src={`${import.meta.env.BASE_URL}Memoji.png`}
+                  alt="Lexi Memoji"
+                  className="w-56 h-56 md:w-72 md:h-72 lg:w-96 lg:h-96 xl:w-[28rem] xl:h-[28rem] object-contain drop-shadow-2xl transition-transform duration-300"
+                  loading="eager"
+                  style={{
+                    // Additional subtle rotation based on mouse position (very subtle)
+                    transform: `rotate(${mousePosition.x * 0.1}deg)`,
+                  }}
+                />
+              </div>
 
-            {/* Text Content - Left Side on desktop, Below Memoji on mobile */}
-            <div className="flex-1 max-w-2xl text-left md:text-left order-2 md:order-1">
-              <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
-                <span className="text-white">Hi, I'm Lexi</span>
-                <br />
-                <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
-                  a social impact technologist
-                </span>
-              </h1>
-              <p className="text-white text-base md:text-lg leading-relaxed mt-6">
-                This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
-              </p>
+              {/* Text Content - Left Side on desktop, Below Memoji on mobile */}
+              <div className="flex-1 text-left md:text-left order-2 md:order-1">
+                <h1 className="font-hagrid text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-tight mb-4">
+                  <span className="text-white block">Hi, I'm Lexi</span>
+                  <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal block -mt-[0.0625rem] md:-mt-[0.125rem] lg:-mt-[0.1875rem]">
+                    a social impact technologist
+                  </span>
+                </h1>
+                <p className="text-white text-lg md:text-xl lg:text-2xl leading-relaxed mt-6">
+                  This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
+                </p>
               {/* Icons - Full width on mobile, normal on desktop */}
               <div className="mt-8 w-full flex items-center justify-between md:justify-start md:gap-4">
                 <a
@@ -147,6 +147,7 @@ const Portfolio = () => {
                   />
                 </a>
               </div>
+            </div>
             </div>
           </div>
 

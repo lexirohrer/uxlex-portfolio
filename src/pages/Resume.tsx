@@ -56,15 +56,15 @@ const Resume = () => {
       text: "Lexi is the definition of a team player – always willing to go the extra mile and contribute to the project's success. She has a strong sense of self-awareness and a desire to learn and grow.",
       author: "Jen Hong",
       title: "Staff Product Designer @ Intuit",
-      gradient: "from-pink-200/20 via-white/10 to-purple-200/20 dark:from-pink-500/10 dark:via-transparent dark:to-purple-500/10",
-      quoteColor: "text-orange-300 dark:text-orange-400"
+      gradient: "from-pink-500/10 via-transparent to-purple-500/10",
+      quoteColor: "text-orange-400"
     },
     {
       text: "Lexi always brings positive energy, proactivity, courage, customer obsession, collaboration, and strong systems thinking to any project she was tasked with. She naturally has a learning mindset and always comes to the table with a strong data-backed POV",
       author: "Womo Iyegha",
       title: "Product Design Leader @ Intuit",
-      gradient: "from-indigo-200/20 via-white/10 to-blue-200/20 dark:from-indigo-500/10 dark:via-transparent dark:to-blue-500/10",
-      quoteColor: "text-purple-300 dark:text-purple-400"
+      gradient: "from-indigo-500/10 via-transparent to-blue-500/10",
+      quoteColor: "text-purple-400"
     },
     {
       text: "If they asked me to clean a rocketship with a toothbrush, I'd say yes if Lexi was doing it with me. If I put a design dream team together, she's at the top of my list. 🚀",
@@ -77,22 +77,22 @@ const Resume = () => {
       text: "Lexi's UX expertise made sure our design solutions were grounded in real needs. Her enthusiasm, optimism, and constructive approach made collaboration a joy - I would gladly work with her again.",
       author: "Tanida Disyabut",
       title: "Social Enterprise Founder",
-      gradient: "from-yellow-200/20 via-white/10 to-orange-200/20 dark:from-yellow-500/10 dark:via-transparent dark:to-orange-500/10",
-      quoteColor: "text-yellow-300 dark:text-yellow-400"
+      gradient: "from-yellow-500/10 via-transparent to-orange-500/10",
+      quoteColor: "text-yellow-400"
     },
     {
       text: "Lexi has a drive, fearlessness, and openness to improvement that set her apart and in my personal experience is highly correlated with top levels of achievement and success.",
       author: "Aniket Kittur",
       title: "Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University",
-      gradient: "from-pink-200/20 via-white/10 to-purple-200/20 dark:from-pink-500/10 dark:via-transparent dark:to-purple-500/10",
-      quoteColor: "text-orange-300 dark:text-orange-400"
+      gradient: "from-pink-500/10 via-transparent to-purple-500/10",
+      quoteColor: "text-orange-400"
     },
     {
       text: "Lexi is one of those very rare designers who not only excels at her craft but also uplifts everyone around her with her proactivity, curiosity, and positivity.",
       author: "Grace Kim",
       title: "UX Research Lead",
-      gradient: "from-rose-200/20 via-white/10 to-pink-200/20 dark:from-rose-500/10 dark:via-transparent dark:to-pink-500/10",
-      quoteColor: "text-rose-300 dark:text-rose-400"
+      gradient: "from-rose-500/10 via-transparent to-pink-500/10",
+      quoteColor: "text-rose-400"
     }
   ];
   
@@ -272,7 +272,7 @@ const Resume = () => {
           }}
         >
           <div
-            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-[#0A0520]/20 backdrop-blur-lg flex items-center justify-center backface-hidden px-6 shadow-2xl"
+            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg flex items-center justify-center backface-hidden px-6 shadow-2xl"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
@@ -282,9 +282,9 @@ const Resume = () => {
               opacity: isFlipped ? 0 : 1,
             }}
           >
-            <div className="absolute inset-0 bg-white/20 dark:bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-            <div className="absolute inset-0 bg-white/20 dark:bg-white/20 rounded-3xl"></div>
-            <span className="text-gray-800 dark:text-white font-hagrid font-medium text-3xl text-center relative z-10">
+            <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+            <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
+            <span className="text-gray-800 font-hagrid font-medium text-3xl text-center relative z-10">
               what's this? 👀
             </span>
           </div>
@@ -292,7 +292,7 @@ const Resume = () => {
             ref={(el) => {
               cardBackRefs.current[index] = el;
             }}
-            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-[#0A0520]/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden shadow-2xl"
+            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden shadow-2xl"
             style={{
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
@@ -302,11 +302,11 @@ const Resume = () => {
               opacity: isFlipped ? 1 : 0,
             }}
           >
-            <div className="absolute inset-0 bg-white/20 dark:bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-            <div className="absolute inset-0 bg-white/20 dark:bg-white/20 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+            <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
             <div className="relative z-10 flex flex-col items-center gap-3">
               <span className="text-4xl md:text-5xl">{fact.emoji}</span>
-              <span className="text-gray-800 dark:text-white text-base leading-relaxed text-center">
+              <span className="text-gray-800 text-base leading-relaxed text-center">
                 {fact.text}
               </span>
             </div>
@@ -327,7 +327,7 @@ const Resume = () => {
 
   return (
     <>
-      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-white dark:bg-transparent min-h-screen">
+      <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-transparent min-h-screen">
         <Header />
         <main className="px-[120px] pt-[180px] pb-[100px] max-md:px-10 max-md:pt-[144px] max-md:pb-[60px] max-sm:px-5 max-sm:pt-[132px] max-sm:pb-[40px] relative z-10">
           
@@ -337,7 +337,7 @@ const Resume = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                 {/* Left Side - Text Content */}
                 <div>
-                  <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 leading-relaxed">
+                  <div className="space-y-4 text-[#EAE8F3]/90 leading-relaxed">
                     <p className="text-base md:text-lg">
                       I design experiences that create positive social impact. Before finding design, I grew up in a home that hosted 56 exchange students from 16 different countries, fostering my love of travel and language learning. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
                     </p>
@@ -371,7 +371,7 @@ const Resume = () => {
                 {/* Navigation Buttons */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="absolute left-2 md:left-8 z-50 text-gray-800 dark:text-white bg-white/10 dark:bg-white/10 backdrop-blur-lg border border-white/20 dark:border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute left-2 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
@@ -412,7 +412,7 @@ const Resume = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl border border-white/30 dark:border-white/10 bg-white/20 dark:bg-[#0A0520]/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
+                        className="absolute rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
                         style={{
                           transform,
                           zIndex,
@@ -423,30 +423,30 @@ const Resume = () => {
                         }}
                         onClick={() => setActiveTestimonial(index)}
                       >
-                        <div className="absolute inset-0 bg-white/20 dark:bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-                        <div className="absolute inset-0 bg-white/20 dark:bg-white/20 rounded-3xl"></div>
+                        <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
+                        <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
                         <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl backdrop-blur-sm`}></div>
                         <div className="relative z-10 flex flex-col gap-6">
                           <div className="flex-1">
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                               alt="" 
-                              className="block dark:hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              className="block hidden w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                               alt="" 
-                              className="hidden dark:block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
+                              className="hidden block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
-                            <p className="text-gray-800 dark:text-white italic text-base md:text-2xl leading-relaxed">
+                            <p className="text-gray-800 italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
                           </div>
                           <div className="mt-4 flex-shrink-0">
-                            <p className="font-semibold text-gray-800 dark:text-white text-sm md:text-base">{testimonial.author}</p>
-                            <p className="text-xs md:text-sm text-gray-700 dark:text-white/70">{testimonial.title}</p>
+                            <p className="font-semibold text-gray-800 text-sm md:text-base">{testimonial.author}</p>
+                            <p className="text-xs md:text-sm text-gray-700">{testimonial.title}</p>
                           </div>
                         </div>
                       </div>
@@ -456,7 +456,7 @@ const Resume = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="absolute right-2 md:right-8 z-50 text-gray-800 dark:text-white bg-white/10 dark:bg-white/10 backdrop-blur-lg border border-white/20 dark:border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="absolute right-2 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
@@ -473,8 +473,8 @@ const Resume = () => {
                       onClick={() => setActiveTestimonial(index)}
                       className={`w-2 h-2 rounded-full transition-all duration-300 ${
                         index === activeTestimonial
-                          ? 'bg-gray-800 dark:bg-white w-6'
-                          : 'bg-gray-400 dark:bg-white/40'
+                          ? 'bg-white w-6'
+                          : 'bg-white/40'
                       }`}
                       aria-label={`Go to testimonial ${index + 1}`}
                     />
@@ -489,58 +489,58 @@ const Resume = () => {
           {/* Download Resume Button */}
           <div className="mb-10">
             <Button onClick={handleDownload} className="w-full">
-              <Download size={20} />
+                <Download size={20} />
               Download Resume
-            </Button>
+              </Button>
           </div>
-          
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
             {/* Left Column: Experience, then Education */}
             <div className="space-y-7">
               {/* Experience */}
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] p-8">
+              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div>
-                  <h2 className="text-gray-800 dark:text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Experience</h2>
+                  <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Experience</h2>
                   <div className="space-y-6">
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">August 2024 - Present</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Lived and worked in Bangkok, Thailand on a year long design & research fellowship. Facilitated 15+ participatory design workshops across 5 NGO, private, and public orgs.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Fulbright Fellow on Smart City Technology</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">August 2024 - Present</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Lived and worked in Bangkok, Thailand on a year long design & research fellowship. Facilitated 15+ participatory design workshops across 5 NGO, private, and public orgs.</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Product Designer</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Intuit • September 2021 - August 2024</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Designing onboarding experiences to help small business owners set up and use QuickBooks across web and mobile. Leading the design effort to unify and tailor the QuickBooks onboarding experience across geographic regions.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Product Designer</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Intuit • September 2021 - August 2024</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Designing onboarding experiences to help small business owners set up and use QuickBooks across web and mobile. Leading the design effort to unify and tailor the QuickBooks onboarding experience across geographic regions.</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Design & Communications Director</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Basilica Bio • April 2021 - Present</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Facilitating and participating in environmental justice education workshops. Created Basilica Bio's brand system, communication strategy, and website.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Design & Communications Director</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Basilica Bio • April 2021 - Present</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Facilitating and participating in environmental justice education workshops. Created Basilica Bio's brand system, communication strategy, and website.</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Human Computer Interaction Research Intern</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Carnegie Mellon University • June 2019 - September 2019</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Designed the onboarding flow for the chrome extension by Dr. Aniket Kittur's lab. Planned, recruited for, and conducted concept tests with users on prospective feature development.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Human Computer Interaction Research Intern</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Carnegie Mellon University • June 2019 - September 2019</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Designed the onboarding flow for the chrome extension by Dr. Aniket Kittur's lab. Planned, recruited for, and conducted concept tests with users on prospective feature development.</p>
                   </div>
                   </div>
                 </div>
               </div>
 
               {/* Education */}
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] p-8">
+              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div>
-                  <h2 className="text-gray-800 dark:text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Education</h2>
+                  <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Education</h2>
                   <div className="space-y-4">
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Minor | Linguistics</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">University of Washington, Seattle • 2017-2021</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">GPA: 3.98</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">B.S. | Human Centered Design & Engineering</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Minor | Linguistics</p>
+                    <p className="text-[#EAE8F3]/90 font-medium">University of Washington, Seattle • 2017-2021</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">GPA: 3.98</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">UX Certificate in Interaction Design</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">ID 1025553</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">UX Certificate in Interaction Design</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Nielsen Norman Group, Vancouver • August 2018</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">ID 1025553</p>
                   </div>
                   </div>
                 </div>
@@ -550,90 +550,90 @@ const Resume = () => {
             {/* Right Column: Publications, Skills */}
             <div className="space-y-7">
               {/* Publications */}
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] p-8">
+              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div>
-                  <h2 className="text-gray-800 dark:text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Talks, Publications, Patents</h2>
+                  <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Talks, Publications, Patents</h2>
                   <div className="space-y-6">
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Patent IPR-2412979US: Automatic Onboarding to a Computer Application by Scraping Website Data</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Patent Application, 2024</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Automated system for streamlining user onboarding by extracting relevant business information from websites.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Patent IPR-2412979US: Automatic Onboarding to a Computer Application by Scraping Website Data</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Patent Application, 2024</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Automated system for streamlining user onboarding by extracting relevant business information from websites.</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Mock to Stock: Let's Jam on a Minimum Lovable Product</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Grace Hopper conference, Sept 2023</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Designed and facilitated a workshop guiding 80+ engineers through Intuit's E2E design process.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Mock to Stock: Let's Jam on a Minimum Lovable Product</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Grace Hopper conference, Sept 2023</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Designed and facilitated a workshop guiding 80+ engineers through Intuit's E2E design process.</p>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-xl font-semibold">Human Centered Principles for Applying Augmented Reality in Manufacturing</h3>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 font-medium">Massachusetts Institute of Technology (MIT), January 2019</p>
-                    <p className="text-gray-700 dark:text-[#EAE8F3]/90 mt-2">Conference presentation accompanying my primary author publication at MIT's Undergraduate Research Technology Conference.</p>
+                    <h3 className="text-[#EAE8F3] text-xl font-semibold">Human Centered Principles for Applying Augmented Reality in Manufacturing</h3>
+                    <p className="text-[#EAE8F3]/90 font-medium">Massachusetts Institute of Technology (MIT), January 2019</p>
+                    <p className="text-[#EAE8F3]/90 mt-2">Conference presentation accompanying my primary author publication at MIT's Undergraduate Research Technology Conference.</p>
                   </div>
                   </div>
                 </div>
               </div>
 
               {/* Skills */}
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] p-8">
+              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div>
-                    <h2 className="text-gray-800 dark:text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Skills</h2>
+                    <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Skills</h2>
                   <div className="space-y-4">
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-lg font-semibold mb-2">Design & Research</h3>
+                    <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Design & Research</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Figma</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Adobe CC</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Prototyping</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Design Systems</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">User Research</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">User Interviews</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Usability Testing</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">A/B Testing</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Figma</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Adobe CC</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Prototyping</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Systems</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Research</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Interviews</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Usability Testing</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">A/B Testing</span>
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-lg font-semibold mb-2">Methods & Strategy</h3>
+                    <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Methods & Strategy</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Design Thinking</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Human-Centered Design</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Service Design</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Design critique</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Storyboarding</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Wireframing</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Content Strategy</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Information Architecture</span>
-                    </div>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Thinking</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Human-Centered Design</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Service Design</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design critique</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Storyboarding</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Wireframing</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Content Strategy</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Information Architecture</span>
+                  </div>
                   </div>
                   <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-lg font-semibold mb-2">Collaboration & Analysis</h3>
+                    <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Collaboration & Analysis</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Cross-functional Collaboration</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Stakeholder Management</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Workshop Facilitation</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Product Strategy</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Data Analysis</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Competitive Analysis</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-lg font-semibold mb-2">Technical Skills</h3>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Cross-functional Collaboration</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Stakeholder Management</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Workshop Facilitation</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Product Strategy</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Data Analysis</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Competitive Analysis</span>
+                </div>
+              </div>
+                      <div>
+                    <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Technical Skills</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Sketch</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">InVision</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Miro</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Notion</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Python</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">HTML/CSS</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">JavaScript</span>
-                    </div>
-                  </div>
-                  <div>
-                    <h3 className="text-gray-800 dark:text-[#EAE8F3] text-lg font-semibold mb-2">Languages</h3>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Sketch</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">InVision</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Miro</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Notion</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Python</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">HTML/CSS</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">JavaScript</span>
+                      </div>
+                      </div>
+                      <div>
+                    <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Languages</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">English (Native)</span>
-                      <span className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10">Thai (Conversational)</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">English (Native)</span>
+                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Thai (Conversational)</span>
+                      </div>
                     </div>
-                  </div>
                   </div>
                 </div>
               </div>

@@ -19,8 +19,8 @@ const AboutMeContent: React.FC<AboutMeContentProps> = ({
   renderFactCard,
   displayedFacts,
   shuffleFacts,
-  textColorClass = "text-gray-800 dark:text-[#EAE8F3]",
-  textSecondaryColorClass = "text-gray-700 dark:text-[#EAE8F3]/90",
+  textColorClass = "text-gray-800 text-[#EAE8F3]",
+  textSecondaryColorClass = "text-gray-700 text-[#EAE8F3]/90",
   cardsContainerClass = "relative z-10 flex flex-col md:flex-row gap-3 md:gap-4 mt-6",
   shuffleButtonClass = "relative z-10 w-full mt-2 py-4 px-6 rounded-3xl transition-all duration-200 flex items-center justify-center gap-3 shadow-2xl bg-white/10 backdrop-blur-xl border border-white/20 hover:scale-[1.02]",
 }) => {

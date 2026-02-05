@@ -17,7 +17,7 @@ const KeepInTouch = () => {
       </div>
       <div className="relative w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-6 font-hagrid">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-[#EAE8F3] mb-6 font-hagrid">
             I love to chat - reach out anytime ✨
           </h2>
         </div>

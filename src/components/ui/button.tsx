@@ -10,16 +10,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-[#1A103F] text-white border border-[#1A103F]/20 shadow-lg hover:scale-[1.02] hover:shadow-xl hover:bg-[#2d1a6a] dark:bg-white/10 dark:text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/15",
+          "bg-[#1A103F] text-white border border-[#1A103F]/20 shadow-lg hover:scale-[1.02] hover:shadow-xl hover:bg-[#2d1a6a] bg-white/10 text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/15",
         destructive:
           "bg-red-600 text-white border border-red-500/40 shadow-lg hover:scale-[1.02] hover:shadow-xl hover:bg-red-700",
         outline:
-          "bg-transparent text-[#1A103F] border border-[#1A103F]/30 hover:bg-[#1A103F]/10 hover:scale-[1.02] hover:shadow-lg dark:text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/10",
+          "bg-transparent text-[#1A103F] border border-[#1A103F]/30 hover:bg-[#1A103F]/10 hover:scale-[1.02] hover:shadow-lg text-[#EAE8F3] dark:border-white/25 dark:hover:bg-white/10",
         secondary:
-          "bg-white/80 text-[#1A103F] border border-white/60 shadow-md hover:scale-[1.02] hover:shadow-xl hover:bg-white dark:bg-white/10 dark:text-[#EAE8F3] dark:border-white/20",
+          "bg-white/80 text-[#1A103F] border border-white/60 shadow-md hover:scale-[1.02] hover:shadow-xl hover:bg-white bg-white/10 text-[#EAE8F3] border-white/20",
         ghost:
-          "bg-transparent text-[#1A103F] hover:bg-[#1A103F]/10 dark:text-[#EAE8F3] dark:hover:bg-white/10",
-        link: "text-[#1A103F] underline-offset-4 hover:underline dark:text-[#EAE8F3]",
+          "bg-transparent text-[#1A103F] hover:bg-[#1A103F]/10 text-[#EAE8F3] dark:hover:bg-white/10",
+        link: "text-[#1A103F] underline-offset-4 hover:underline text-[#EAE8F3]",
       },
       size: {
         default: "h-auto",

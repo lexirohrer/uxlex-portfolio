@@ -3,12 +3,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="px-4 md:px-8 lg:px-16 py-6 bg-white dark:!bg-transparent">
+    <footer className="px-4 md:px-8 lg:px-16 py-6 bg-transparent relative z-10">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 md:gap-6 mb-4">
           {/* Left Side - Contact Text */}
           <div className="flex-1">
-            <p className="text-gray-700 dark:text-[#EAE8F3]/90 text-left text-sm md:text-base max-w-3xl">
+            <p className="text-[#EAE8F3]/90 text-left text-sm md:text-base max-w-3xl">
               If you're working on a social impact problem and need a UX consultant, book a time on my calendar or reach out at lexirohrer@gmail.com
             </p>
           </div>
@@ -70,7 +70,7 @@ const Footer = () => {
         
         {/* Website Credit - Centered */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <div className="text-[#2B2C34] dark:text-[#EAE8F3] text-xs md:text-sm">
+          <div className="text-[#EAE8F3] text-xs md:text-sm">
             Website by uxlex and cursor ✨
           </div>
         </div>

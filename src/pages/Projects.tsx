@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState, startTransition } from "react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useTheme } from "@/contexts/ThemeContext";
 import { Link } from "react-router-dom";
 
 const projects = [
@@ -46,7 +45,6 @@ const projects = [
 
 const Projects = () => {
   const isMobile = useIsMobile();
-  const { theme } = useTheme();
   
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -771,7 +769,7 @@ const Projects = () => {
           
           {/* Project Sections */}
           {projects.map((project, index) => {
-            const imageSrc = project.image === "QB cover.png" && theme === 'dark' 
+            const imageSrc = project.image === "QB cover.png" 
               ? project.imageDark 
               : project.image;
             
@@ -779,7 +777,7 @@ const Projects = () => {
               <section key={index} className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20">
                 <div className="w-full max-w-6xl mx-auto">
                   <Link to={project.href} className="block w-full group">
-                    <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99]">
+                    <div className="relative rounded-3xl border border-white/30 border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99]">
                       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
                         <div className={`relative order-1 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} flex items-center justify-center p-6 lg:p-10`}>
                           <img
@@ -802,7 +800,7 @@ const Projects = () => {
                               {project.tools.map((tool, toolIndex) => (
                                 <span
                                   key={toolIndex}
-                                  className="bg-white/30 dark:bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10"
+                                  className="bg-white/30 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 border-white/10"
                                 >
                                   {tool}
                                 </span>
@@ -1087,7 +1085,7 @@ const Projects = () => {
                             {project.tools.map((tool, toolIndex) => (
                               <span
                                 key={toolIndex}
-                                className="bg-white/30 dark:bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10"
+                                className="bg-white/30 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 border-white/10"
                               >
                                 {tool}
                               </span>

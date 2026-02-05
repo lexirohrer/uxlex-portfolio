@@ -52,39 +52,39 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF] dark:from-[#1A103F] dark:to-[#1A103F]">
+    <section className="py-20 bg-gradient-to-br from-[#F8F9FA] to-[#E9ECEF] dark:from-[#1A103F] to-[#1A103F]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8">
-          <h2 className="text-[#403930] dark:text-[#EAE8F3] text-[40px] font-semibold mb-4 font-hagrid">
+          <h2 className="text-[#EAE8F3] text-[40px] font-semibold mb-4 font-hagrid">
             what it's like to work with me
           </h2>
         </div>
 
         <div className="relative">
           {/* Testimonial Card */}
-          <div className="bg-white dark:bg-[#1A103F]/80 dark:border dark:border-white/10 rounded-3xl shadow-xl w-full max-w-[640px] sm:max-w-3xl lg:max-w-4xl mx-auto relative px-6 sm:px-10 md:px-12 py-10 sm:py-12">
+          <div className="bg-white bg-[#1A103F]/80 dark:border border-white/10 rounded-3xl shadow-xl w-full max-w-[640px] sm:max-w-3xl lg:max-w-4xl mx-auto relative px-6 sm:px-10 md:px-12 py-10 sm:py-12">
             {/* Quote Icon */}
             <img 
               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
               alt="" 
-              className="absolute top-8 left-8 block dark:hidden w-16 h-16 opacity-60"
+              className="absolute top-8 left-8 block hidden w-16 h-16 opacity-60"
             />
             <img 
               src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
               alt="" 
-              className="absolute top-8 left-8 hidden dark:block w-16 h-16 opacity-60"
+              className="absolute top-8 left-8 hidden block w-16 h-16 opacity-60"
             />
             
             <div className="relative z-10">
-              <p className="text-[#403930] dark:text-[#EAE8F3] text-lg sm:text-xl leading-relaxed mb-8 text-center italic">
+              <p className="text-[#EAE8F3] text-lg sm:text-xl leading-relaxed mb-8 text-center italic">
                 {testimonials[currentIndex].text}
               </p>
               
               <div className="text-center">
-                <h4 className="text-[#403930] dark:text-[#EAE8F3] text-lg font-semibold mb-1">
+                <h4 className="text-[#EAE8F3] text-lg font-semibold mb-1">
                   {testimonials[currentIndex].author}
                 </h4>
-                <p className="text-[#557592] dark:text-[#EAE8F3]/70 text-base">
+                <p className="text-[#557592] text-[#EAE8F3]/70 text-base">
                   {testimonials[currentIndex].title}
                 </p>
               </div>
@@ -94,20 +94,20 @@ const Testimonials = () => {
           {/* Navigation Arrows */}
           <button
             onClick={goToPrevious}
-            className="absolute left-1 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
+            className="absolute left-1 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-[#1A103F] dark:border border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
             aria-label="Previous testimonial"
           >
-            <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button
             onClick={goToNext}
-            className="absolute right-1 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white dark:bg-[#1A103F] dark:border dark:border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
+            className="absolute right-1 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-[#1A103F] dark:border border-white/10 rounded-full p-3 shadow-lg z-20 matte-3d-button"
             aria-label="Next testimonial"
           >
-            <svg className="w-6 h-6 text-[#403930] dark:text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-6 h-6 text-[#EAE8F3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>
@@ -120,8 +120,8 @@ const Testimonials = () => {
                 onClick={() => goToTestimonial(index)}
                 className={`w-3 h-3 rounded-full transition-all duration-200 matte-3d-button ${
                   index === currentIndex 
-                    ? 'bg-[#403930] dark:bg-[#EAE8F3] scale-125' 
-                    : 'bg-[#D1D5DB] dark:bg-[#EAE8F3]/30'
+                    ? 'bg-[#403930] bg-[#EAE8F3] scale-125' 
+                    : 'bg-[#D1D5DB] bg-[#EAE8F3]/30'
                 }`}
                 aria-label={`Go to testimonial ${index + 1}`}
               />

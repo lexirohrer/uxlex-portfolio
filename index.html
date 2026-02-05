@@ -1,17 +1,15 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script>
       // Set dark mode as default before React loads to prevent flash
       (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const theme = savedTheme === 'light' || savedTheme === 'dark' ? savedTheme : 'dark';
         const root = document.documentElement;
-        root.classList.remove('light', 'dark');
-        root.classList.add(theme);
+        root.classList.remove('light');
+        root.classList.add('dark');
       })();
     </script>
     <title>uxlex</title>

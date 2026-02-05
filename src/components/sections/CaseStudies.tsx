@@ -1,6 +1,5 @@
 
 import React from "react";
-import { useTheme } from "@/contexts/ThemeContext";
 
 const caseStudies = [
   {
@@ -8,7 +7,7 @@ const caseStudies = [
     title: "QuickBooks Onboarding",
     description: "Leading the design effort to streamline onboarding for small business owners",
     tools: ["Figma", "Figjam", "Usertesting.com", "Google Suite", "37% metric bump"],
-    image: "QB cover.png",
+    image: "QB_cover_dark.png",
     imageAlt: "QuickBooks Onboarding"
   },
   {
@@ -38,22 +37,16 @@ const caseStudies = [
 ];
 
 const CaseStudies = () => {
-  const { theme } = useTheme();
-  
   return (
     <section
       id="case-studies"
       className="py-[88px] max-md:py-[60px] max-sm:py-10"
     >
-      <div className="flex flex-col gap-7">
+      <div className="w-full max-w-7xl mx-auto">
+        <div className="flex flex-col gap-7">
         {caseStudies.map((study, index) => {
           // Alternate image position: even indices (0, 2) have image on left, odd (1, 3) have image on right
           const imageOnLeft = index % 2 === 0;
-          
-          // Use dark cover image for QB in dark mode
-          const imageSrc = study.image === "QB cover.png" && theme === 'dark' 
-            ? "QB_cover_dark.png" 
-            : study.image;
           
           return (
             <a
@@ -61,12 +54,12 @@ const CaseStudies = () => {
               href={study.href}
               className="block w-full group"
             >
-              <div className="relative rounded-3xl border border-white/30 dark:border-white/10 overflow-hidden shadow-xl hover:shadow-[inset_0_2px_8px_rgba(0,0,0,0.15)] dark:hover:shadow-[inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99]">
+              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] bg-white/10" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
                   {/* Image Column */}
                   <div className={`relative order-1 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'} flex items-center justify-center p-6 lg:p-10`}>
                     <img
-                      src={`${import.meta.env.BASE_URL}${imageSrc}`}
+                      src={`${import.meta.env.BASE_URL}${study.image}`}
                       className="w-full h-full max-h-[400px] object-contain"
                       alt={study.imageAlt}
                     />
@@ -74,10 +67,10 @@ const CaseStudies = () => {
                   
                   {/* Info Column */}
                   <div className={`relative order-2 ${imageOnLeft ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center p-8 lg:p-12`}>
-                    <h3 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 font-hagrid group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                    <h3 className="text-3xl md:text-4xl font-bold text-[#EAE8F3] mb-4 font-hagrid group-hover:text-white transition-colors">
                       {study.title}
                     </h3>
-                    <p className="text-lg md:text-xl text-gray-700 dark:text-[#EAE8F3]/90 mb-6 leading-relaxed">
+                    <p className="text-lg md:text-xl text-[#EAE8F3]/90 mb-6 leading-relaxed">
                       {study.description}
                     </p>
                     
@@ -86,7 +79,7 @@ const CaseStudies = () => {
                         {study.tools.map((tool, toolIndex) => (
                           <span
                             key={toolIndex}
-                            className="bg-white/30 dark:bg-white/10 text-gray-800 dark:text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 dark:border-white/10"
+                            className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10"
                           >
                             {tool}
                           </span>
@@ -99,6 +92,7 @@ const CaseStudies = () => {
             </a>
           );
         })}
+        </div>
       </div>
     </section>
   );

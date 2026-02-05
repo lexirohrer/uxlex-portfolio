@@ -102,14 +102,14 @@ const AboutMe = () => {
   };
 
   return (
-    <section className="py-16 px-4 max-w-6xl mx-auto bg-white dark:bg-[#1A103F]">
+    <section className="py-16 px-4 max-w-6xl mx-auto bg-white bg-[#1A103F]">
       {/* Text Introduction Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
         <div>
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-8 font-hagrid">
+          <h2 className="text-4xl font-bold text-gray-800 text-[#EAE8F3] mb-8 font-hagrid">
             about me
           </h2>
-          <div className="space-y-4 text-gray-700 dark:text-[#EAE8F3]/90 leading-relaxed">
+          <div className="space-y-4 text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
             <p>
               I design experiences that create positive social impact. As a Fulbright fellow, I used participatory design to make sure Smart City tech solves real problems for Bangkok residents. Nights and weekends I design for Basilica Bio, an environmental justice nonprofit building resilience and climate knowledge in Washington frontline communities.
             </p>
@@ -125,13 +125,13 @@ const AboutMe = () => {
         </div>
         
         <div className="flex flex-col items-center">
-          <h2 className="text-4xl font-bold text-gray-800 dark:text-[#EAE8F3] mb-4 font-hagrid">
+          <h2 className="text-4xl font-bold text-gray-800 text-[#EAE8F3] mb-4 font-hagrid">
             fun fact card stack
           </h2>
           
           <button
             onClick={shuffleCards}
-            className="mb-8 px-6 py-2 bg-gray-100 hover:bg-gray-200 dark:bg-white/10 dark:hover:bg-white/20 text-gray-700 dark:text-[#EAE8F3] rounded-lg transition-colors duration-200 font-medium"
+            className="mb-8 px-6 py-2 bg-gray-100 hover:bg-gray-200 bg-white/10 dark:hover:bg-white/20 text-gray-700 text-[#EAE8F3] rounded-lg transition-colors duration-200 font-medium"
           >
             shuffle
           </button>
@@ -189,7 +189,7 @@ const AboutMe = () => {
                         <span className="text-sm font-bold">×</span>
                       </button>
                     )}
-                    <p className="text-base font-hagrid text-white dark:text-[#EAE8F3] leading-relaxed text-center">
+                    <p className="text-base font-hagrid text-white text-[#EAE8F3] leading-relaxed text-center">
                       {fact}
                     </p>
                   </div>
