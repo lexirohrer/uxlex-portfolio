@@ -47,7 +47,7 @@ const FuseCaseStudy = () => {
   }, [storyboardApi]);
 
   return (
-    <>
+    <div style={{ backgroundColor: '#2B2727', minHeight: '100vh' }}>
       <Header />
       
       {/* Hero Section - Full Width */}
@@ -56,18 +56,18 @@ const FuseCaseStudy = () => {
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             <Link 
-              to="/portfolio" 
-              className="inline-flex items-center text-gray-700 text-[#EAE8F3]/80 hover:text-gray-900 hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
+              to="/projects" 
+              className="inline-flex items-center text-[#EAE8F3]/80 hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span className="text-sm font-medium">Back to projects</span>
             </Link>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               Fuse Google Chrome Extension
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 text-[#EAE8F3]/90 font-normal leading-relaxed">
+            <p className="text-lg lg:text-xl text-[#EAE8F3]/90 font-normal leading-relaxed">
               Building a second brain for researchers synthesizing information
             </p>
           </div>
@@ -90,49 +90,49 @@ const FuseCaseStudy = () => {
               <div className="space-y-4">
                 {/* Context */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Context</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Context</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     Fuse is a Google Chrome extension that helps researchers collect and organize information. In summer 2019, I interned and designed for the Fuse team at Carnegie Mellon's Human Computer Interaction Institute.
                   </p>
                 </div>
 
                 {/* Role */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Role</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Role</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     UX research and design intern on a 7 person cross functional team
                   </p>
                 </div>
 
                 {/* Duration */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Duration</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Duration</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     June - August 2019
                   </p>
                 </div>
 
                                   {/* Tools */}
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Tools</h2>
+                    <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Tools</h2>
                     <div className="flex flex-wrap gap-3">
-                      <span className="bg-white bg-opacity-20 text-gray-800 text-[#EAE8F3] border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Sketch_Logo.png`} alt="Sketch" className="w-5 h-5" />
                         Sketch
                       </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 text-[#EAE8F3] border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Illustrator logo.png`} alt="Illustrator" className="w-5 h-5" />
                         Illustrator
                       </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 text-[#EAE8F3] border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}ID_logo.png`} alt="InDesign" className="w-5 h-5" />
                         InDesign
                       </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 text-[#EAE8F3] border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Photoshop-logo.png`} alt="Photoshop" className="w-5 h-5" />
                         Photoshop
                       </span>
-                      <span className="bg-white bg-opacity-20 text-gray-800 text-[#EAE8F3] border border-gray-200 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Invision Logo.png`} alt="InVision Studio" className="w-5 h-5" />
                         InVision Studio
                       </span>
@@ -152,7 +152,6 @@ const FuseCaseStudy = () => {
               </div>
             </div>
           </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white via-[#1A103F]/60 to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-transparent relative z-10">
@@ -486,8 +485,8 @@ const FuseCaseStudy = () => {
           </main>
           <Footer />
         </div>
-        </>
-      );
-    };
+      </div>
+    );
+  };
 
 export default FuseCaseStudy;

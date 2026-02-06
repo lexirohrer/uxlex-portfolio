@@ -53,7 +53,7 @@ const BridgeBoxCaseStudy = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ backgroundColor: '#2B2727', minHeight: '100vh' }}>
       <Header />
       
       {/* Hero Section - Full Width */}
@@ -62,18 +62,18 @@ const BridgeBoxCaseStudy = () => {
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             <Link 
-              to="/portfolio" 
-              className="inline-flex items-center text-gray-700 text-[#EAE8F3]/80 hover:text-gray-900 hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
+              to="/projects" 
+              className="inline-flex items-center text-[#EAE8F3]/80 hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span className="text-sm font-medium">Back to projects</span>
             </Link>
-            <h1 className="text-4xl lg:text-5xl font-bold text-gray-800 text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
+            <h1 className="text-4xl lg:text-5xl font-bold text-[#EAE8F3] mb-2 max-md:text-3xl font-hagrid">
               BridgeBox 
             </h1>
-            <p className="text-lg lg:text-xl text-gray-700 text-[#EAE8F3]/90 font-normal leading-relaxed">
+            <p className="text-lg lg:text-xl text-[#EAE8F3]/90 font-normal leading-relaxed">
               Designing disaster response tools in rural Thailand
             </p>
           </div>
@@ -96,42 +96,42 @@ const BridgeBoxCaseStudy = () => {
               <div className="space-y-4">
                 {/* Context */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Context</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Context</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     As part of my Fulbright fellowship on Human-Centered Design in Thailand, I collaborated with BridgeBox, a startup developing a communication system for climate disaster response. BridgeBox connects rural "reporters" with urban "responders" (local governments, nonprofits, and employers) through a mobile app and desktop interface.
                   </p>
                 </div>
 
                 {/* Role */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Role</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Role</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     Sole UX/UI Designer, co-workshop facilitator
                   </p>
                 </div>
 
                 {/* Duration */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Duration</h2>
-                  <p className="text-gray-700 text-[#EAE8F3]/90 leading-relaxed">
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Duration</h2>
+                  <p className="text-[#EAE8F3]/90 leading-relaxed">
                     Thailand, 2025 – Fulbright Research Project (10 months)
                   </p>
                 </div>
 
                 {/* Tools */}
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800 text-[#EAE8F3] mb-2 font-hagrid">Methods</h2>
+                  <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Methods</h2>
                   <div className="flex flex-wrap gap-3">
-                    <span className="bg-white bg-white/10 bg-opacity-20 text-gray-800 text-[#EAE8F3] text-[#EAE8F3] border border-gray-200 border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Participatory Design
                     </span>
-                    <span className="bg-white bg-white/10 bg-opacity-20 text-gray-800 text-[#EAE8F3] text-[#EAE8F3] border border-gray-200 border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       User Research
                     </span>
-                    <span className="bg-white bg-white/10 bg-opacity-20 text-gray-800 text-[#EAE8F3] text-[#EAE8F3] border border-gray-200 border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       AI/ML Design
                     </span>
-                    <span className="bg-white bg-white/10 bg-opacity-20 text-gray-800 text-[#EAE8F3] text-[#EAE8F3] border border-gray-200 border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Workshop Facilitation
                     </span>
                   </div>
@@ -150,7 +150,6 @@ const BridgeBoxCaseStudy = () => {
               </div>
             </div>
           </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-white/80 to-white via-[#1A103F]/60 to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-transparent relative z-10">
@@ -724,7 +723,7 @@ const BridgeBoxCaseStudy = () => {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 };
 

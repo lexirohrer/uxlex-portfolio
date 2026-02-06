@@ -565,8 +565,8 @@ const Resume = () => {
 
   const handleDownload = () => {
     const link = document.createElement('a');
-    link.href = '/Rohrer-Resume-2025.pdf';
-    link.download = 'Rohrer-Resume-2025.pdf';
+    link.href = '/Rohrer-Resume.pdf';
+    link.download = 'rohrer-resume.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -581,7 +581,7 @@ const Resume = () => {
           {/* About Me Section */}
           <section 
             ref={firstSectionRef}
-            className="mb-60 pt-[80px]"
+            className="mb-[120px] pt-[80px]"
             style={{
               scrollSnapAlign: 'center',
               scrollSnapStop: 'always',
@@ -645,7 +645,7 @@ const Resume = () => {
                       />
                     </svg>
                     shuffle
-                  </Button>
+              </Button>
                 </div>
               </div>
             </div>
@@ -653,7 +653,7 @@ const Resume = () => {
 
           {/* Testimonials Section */}
           <section 
-            className="mb-60"
+            className="mb-[120px]"
             style={{
               scrollSnapAlign: 'center',
               scrollSnapStop: 'always',
@@ -664,21 +664,21 @@ const Resume = () => {
             }}
           >
             <div className="w-full">
-              <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
-                {/* Navigation Buttons */}
+              <div className="relative w-full min-h-[500px] flex items-center justify-center pb-12">
+                {/* Navigation Buttons - Desktop: Side, Mobile: Bottom */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="absolute left-2 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
-                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
                   </svg>
                 </button>
 
                 {/* Card Container */}
-                <div className="relative w-full h-full flex items-center justify-center overflow-visible px-8 md:px-0">
+                <div className="relative w-full h-full flex items-center justify-center overflow-visible px-4 md:px-8 lg:px-0">
                   {testimonials.map((testimonial, index) => {
                     const position = index - activeTestimonial;
                     const isActive = index === activeTestimonial;
@@ -709,7 +709,7 @@ const Resume = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl p-6 sm:p-8 cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] flex flex-col justify-center"
+                        className="absolute rounded-3xl p-8 sm:p-10 md:p-12 cursor-pointer w-[95%] sm:w-[600px] md:w-[700px] lg:w-[650px] flex flex-col justify-center"
                         style={{
                           background: 'rgba(255, 255, 255, 0.1)',
                           backdropFilter: 'blur(20px)',
@@ -722,8 +722,10 @@ const Resume = () => {
                           filter,
                           transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                           pointerEvents: isActive ? 'auto' : 'none',
-                          minHeight: maxTestimonialHeight ? `${maxTestimonialHeight}px` : '320px',
-                          height: maxTestimonialHeight ? `${maxTestimonialHeight}px` : 'auto'
+                          minHeight: maxTestimonialHeight ? `${maxTestimonialHeight}px` : '400px',
+                          height: maxTestimonialHeight ? `${maxTestimonialHeight}px` : 'auto',
+                          maxWidth: '700px',
+                          width: '100%'
                         }}
                         onClick={() => setActiveTestimonial(index)}
                       >
@@ -746,13 +748,13 @@ const Resume = () => {
                               className="hidden block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
-                            <p className="text-[#EAE8F3]/90 italic text-base md:text-2xl leading-relaxed">
+                            <p className="text-[#EAE8F3]/90 text-base md:text-2xl leading-relaxed font-hagrid">
                               {testimonial.text}
                             </p>
                           </div>
                           <div className="flex-shrink-0">
-                            <p className="font-semibold text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
-                            <p className="text-xs md:text-sm text-[#EAE8F3]/90">{testimonial.title}</p>
+                            <p className="font-semibold text-[#EAE8F3] text-sm md:text-base font-hagrid">{testimonial.author}</p>
+                            <p className="text-xs md:text-sm text-[#EAE8F3]/90 font-hagrid">{testimonial.title}</p>
                           </div>
                         </div>
                       </div>
@@ -762,17 +764,58 @@ const Resume = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="absolute right-2 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
-                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
                   </svg>
                 </button>
                 
-                {/* Dots Indicator */}
-                <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+                {/* Mobile Navigation Buttons - Below Cards */}
+                <div className="md:hidden absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-50 mb-4">
+                  <button
+                    onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
+                    className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                    disabled={activeTestimonial === 0}
+                    aria-label="Previous testimonial"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                  
+                  {/* Dots Indicator - Mobile */}
+                  <div className="flex gap-2">
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setActiveTestimonial(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === activeTestimonial
+                            ? 'bg-white w-6'
+                            : 'bg-white/40'
+                        }`}
+                        aria-label={`Go to testimonial ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                  
+                  <button
+                    onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
+                    className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                    disabled={activeTestimonial === testimonials.length - 1}
+                    aria-label="Next testimonial"
+                  >
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+                
+                {/* Dots Indicator - Desktop */}
+                <div className="hidden md:flex absolute bottom-0 left-1/2 transform -translate-x-1/2 gap-2 z-50">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
@@ -792,7 +835,7 @@ const Resume = () => {
 
           {/* Resume Section */}
           <section 
-            className="mb-60"
+            className="mb-[120px]"
             style={{
               scrollSnapAlign: 'center',
               scrollSnapStop: 'always',
@@ -809,12 +852,12 @@ const Resume = () => {
                   <Download size={20} />
                   Download Resume
                 </Button>
-              </div>
+          </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
                 {/* Left Column: Experience, then Education */}
-                <div className="space-y-7">
-                  {/* Experience */}
+            <div className="space-y-7">
+              {/* Experience */}
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
@@ -880,11 +923,11 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
-                  </div>
+            </div>
 
                 {/* Right Column: Publications, Skills */}
-                <div className="space-y-7">
-                  {/* Publications */}
+            <div className="space-y-7">
+              {/* Publications */}
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
@@ -990,8 +1033,8 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
-                </div>
-              </div>
+            </div>
+          </div>
             </div>
           </section>
         </main>

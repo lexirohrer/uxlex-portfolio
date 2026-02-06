@@ -81,7 +81,7 @@ const Projects = () => {
     
     // Use a small delay to ensure card is rendered
     const timeoutId = setTimeout(updateCardWidth, 100);
-
+    
     return () => {
       window.removeEventListener('resize', updateCardWidth);
       clearTimeout(timeoutId);
@@ -95,29 +95,37 @@ const Projects = () => {
           <Header />
           
           {/* Hero Section */}
-          <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-20">
-            <div className="flex flex-col items-center justify-center gap-8 max-w-7xl mx-auto w-full">
-              <div className="flex-shrink-0">
-                <img
-                  src={`${import.meta.env.BASE_URL}Memoji.png`}
-                  alt="Lexi Memoji"
-                  className="w-48 h-48 md:w-64 md:h-64 object-contain drop-shadow-2xl"
-                  loading="eager"
-                />
-              </div>
-              
-              <div className="flex-1 max-w-2xl text-center">
-                <h1 className="font-hagrid text-4xl md:text-5xl font-bold leading-tight mb-4">
+          <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20 relative w-full">
+            <div className="flex items-center justify-center px-4 sm:px-6 md:px-[120px] max-w-[1440px] mx-auto w-full max-md:px-10 max-sm:px-5">
+              <div className="w-full text-left">
+                {/* Glassmorphic Card */}
+                <div 
+                  className="relative rounded-3xl overflow-hidden p-8 md:p-10 lg:p-12"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.1)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.2)',
+                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                  }}
+                >
+                  <div className="relative z-10">
+                    <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-left">
                   <span className="text-white">Hi, I'm Lexi</span>
                   <br />
-                  <span className="text-white text-2xl md:text-3xl font-normal">
+                      <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
                     a social impact technologist
                   </span>
                 </h1>
-                <p className="text-white text-base md:text-lg leading-relaxed mt-6">
+                    <p className="text-white text-base md:text-lg leading-relaxed mt-6 text-left">
                   This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
                 </p>
-                <div className="mt-8 w-full flex items-center justify-between md:justify-start md:gap-4">
+                  </div>
+                </div>
+                
+                {/* Icons and Button - Inline on desktop */}
+                <div className="mt-8 w-full flex flex-col md:flex-row items-start md:items-center justify-start gap-4 md:gap-6">
+                  <div className="w-full md:w-auto flex items-center justify-between md:justify-start gap-2 sm:gap-3 md:gap-4">
                   <a
                     href="https://www.linkedin.com/in/alexandra-rohrer/"
                     target="_blank"
@@ -127,7 +135,7 @@ const Projects = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}LinkedIn.png`}
                       alt="LinkedIn"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                        className="w-20 h-20 sm:w-20 sm:h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
                       loading="eager"
                     />
                   </a>
@@ -138,7 +146,7 @@ const Projects = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}Gmail.png`}
                       alt="Gmail"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                        className="w-20 h-20 sm:w-20 sm:h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
                       loading="eager"
                     />
                   </a>
@@ -151,7 +159,7 @@ const Projects = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}Calendar.png`}
                       alt="Calendar"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                        className="w-20 h-20 sm:w-20 sm:h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
                       loading="eager"
                     />
                   </a>
@@ -164,33 +172,25 @@ const Projects = () => {
                     <img
                       src={`${import.meta.env.BASE_URL}Substack.png`}
                       alt="Substack"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                        className="w-20 h-20 sm:w-20 sm:h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
                       loading="eager"
                     />
                   </a>
+                  </div>
                 </div>
-                
-                {/* See my work button */}
-                <button
-                  onClick={() => {
-                    const projectsSection = document.querySelector('[data-projects-section]');
-                    if (projectsSection) {
-                      projectsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    }
-                  }}
-                  className="mt-8 px-8 py-4 rounded-2xl text-white font-medium text-lg md:text-xl transition-all duration-300 hover:scale-105 active:scale-95 mx-auto"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.1)',
-                    backdropFilter: 'blur(20px)',
-                    WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
-                  }}
-                >
-                  See my work
-                </button>
               </div>
             </div>
+            
+            {/* Scroll prompt - Anchored to bottom of hero section */}
+            <button
+              onClick={scrollToProjects}
+              className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-50 text-white hover:text-white/80 transition-colors duration-200 flex items-center gap-3 cursor-pointer"
+              aria-label="Scroll to portfolio projects"
+            >
+              <span className="text-lg md:text-xl">↓</span>
+              <span className="text-base md:text-lg font-regular">check out my work over here</span>
+              <span className="text-lg md:text-xl">↓</span>
+            </button>
           </section>
           
           {/* Project Sections */}
@@ -251,7 +251,7 @@ const Projects = () => {
               </section>
             );
           })}
-          </div>
+        </div>
         </div>
       </>
     );
@@ -266,7 +266,7 @@ const Projects = () => {
         {/* Hero Section */}
         <section className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-8 py-20 relative w-full">
           <div className="flex items-center justify-center px-4 sm:px-6 md:px-[120px] max-w-[1440px] mx-auto w-full max-md:px-10 max-sm:px-5">
-            <div className="w-full text-left">
+            <div className="w-full lg:w-3/4 lg:mx-auto text-left">
               {/* Glassmorphic Card */}
               <div 
                 className="relative rounded-3xl overflow-hidden p-8 md:p-10 lg:p-12"
@@ -280,76 +280,76 @@ const Projects = () => {
               >
                 <div className="relative z-10">
                   <h1 className="font-hagrid text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4 text-left">
-                    <span className="text-white">Hi, I'm Lexi</span>
-                    <br />
-                    <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
-                      a social impact technologist
-                    </span>
-                  </h1>
+                <span className="text-white">Hi, I'm Lexi</span>
+                <br />
+                <span className="text-white text-2xl md:text-3xl lg:text-4xl font-normal">
+                  a social impact technologist
+                </span>
+              </h1>
                   <p className="text-white text-base md:text-lg leading-relaxed mt-6 text-left">
-                    This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
-                  </p>
+                This means I design services, create products, and conduct research on some of the world's biggest problems to make their solutions more citizen centered. Occasionally I code things as well, like this portfolio.
+              </p>
                 </div>
               </div>
               
               {/* Icons and Button - Inline on desktop */}
               <div className="mt-8 w-full flex flex-col md:flex-row items-start md:items-center justify-start gap-4 md:gap-6">
-                <div className="flex items-center justify-start gap-4">
-                  <a
-                    href="https://www.linkedin.com/in/alexandra-rohrer/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center flex-shrink-0"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}LinkedIn.png`}
-                      alt="LinkedIn"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="eager"
-                    />
-                  </a>
-                  <a
-                    href="mailto:lexirohrer@gmail.com"
-                    className="group flex items-center justify-center flex-shrink-0"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Gmail.png`}
-                      alt="Gmail"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="eager"
-                    />
-                  </a>
-                  <a
-                    href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center flex-shrink-0"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Calendar.png`}
-                      alt="Calendar"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="eager"
-                    />
-                  </a>
-                  <a
-                    href="https://uxlex.substack.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group flex items-center justify-center flex-shrink-0"
-                  >
-                    <img
-                      src={`${import.meta.env.BASE_URL}Substack.png`}
-                      alt="Substack"
-                      className="w-20 h-20 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
-                      loading="eager"
-                    />
-                  </a>
-                </div>
+                <div className="w-full md:w-auto flex items-center justify-between md:justify-start gap-2 sm:gap-3 md:gap-4">
+                <a
+                  href="https://www.linkedin.com/in/alexandra-rohrer/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}LinkedIn.png`}
+                    alt="LinkedIn"
+                      className="w-16 h-16 sm:w-18 sm:h-18 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="mailto:lexirohrer@gmail.com"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Gmail.png`}
+                    alt="Gmail"
+                      className="w-16 h-16 sm:w-18 sm:h-18 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="https://calendar.app.google/K8owt9w3d5wnVL9B6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Calendar.png`}
+                    alt="Calendar"
+                      className="w-16 h-16 sm:w-18 sm:h-18 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
+                <a
+                  href="https://uxlex.substack.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center flex-shrink-0"
+                >
+                  <img
+                    src={`${import.meta.env.BASE_URL}Substack.png`}
+                    alt="Substack"
+                      className="w-16 h-16 sm:w-18 sm:h-18 md:w-16 md:h-16 drop-shadow-xl transform transition-transform duration-200 group-hover:scale-110"
+                    loading="eager"
+                  />
+                </a>
               </div>
             </div>
           </div>
-
+        </div>
+        
           {/* Scroll prompt - Anchored to bottom of hero section */}
           <button
             onClick={scrollToProjects}
@@ -363,15 +363,15 @@ const Projects = () => {
         </section>
         
         {/* Project Carousel - Matching testimonials carousel style */}
-        <section data-projects-section className="relative w-full min-h-[600px] flex items-center justify-center py-20 px-4 sm:px-6 md:px-8 overflow-visible">
-          <div className="relative w-full max-w-7xl mx-auto min-h-[380px] flex items-center justify-center pb-20 pt-0 overflow-visible">
+        <section data-projects-section className="relative w-full min-h-[700px] flex items-center justify-center py-20 px-4 sm:px-6 md:px-8 overflow-visible">
+          <div className="relative w-full max-w-7xl mx-auto min-h-[500px] flex items-center justify-center pb-32 pt-0 overflow-visible">
             {/* Card Container with Arrows */}
             <div className="relative w-full h-full flex items-center justify-center overflow-visible px-8 md:px-0" style={{ pointerEvents: 'none' }}>
               {projects.map((project, index) => {
                 const imageSrc = project.image === "QB cover.png" 
-                  ? project.imageDark 
-                  : project.image;
-                
+            ? project.imageDark 
+            : project.image;
+          
                 const position = index - activeProject;
                 const isActive = index === activeProject;
                 
@@ -397,18 +397,18 @@ const Projects = () => {
                   opacity = absPosition > 2 ? 0 : 0.6;
                   filter = 'blur(3px)';
                 }
-                
-                return (
-                  <div
-                    key={index}
+          
+          return (
+            <div
+              key={index}
                     ref={isActive ? cardRef : null}
                     className="absolute rounded-3xl border border-white/30 border-white/10 bg-white/15 bg-[#0A0520]/20 backdrop-blur-lg shadow-2xl cursor-pointer overflow-hidden w-[95%] sm:w-[85%] md:w-[75%] flex flex-col justify-center"
-                    style={{
+              style={{
                       transform,
                       zIndex,
                       opacity,
                       filter,
-                      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                       pointerEvents: isActive ? 'auto' : 'none',
                       minHeight: '400px',
                       maxWidth: '960px',
@@ -418,107 +418,125 @@ const Projects = () => {
                     <Link to={project.href} className="block group relative z-10" style={{ width: '100%', height: '100%' }}>
                       <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[320px] sm:min-h-[360px] md:min-h-[400px] lg:min-h-[500px]">
                         <div className={`relative order-1 ${index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'} flex items-center justify-center p-3 sm:p-5 md:p-6 lg:p-10`}>
-                          <img
-                            src={`${import.meta.env.BASE_URL}${imageSrc}`}
+                        <img
+                          src={`${import.meta.env.BASE_URL}${imageSrc}`}
                             className="w-full h-full max-h-[180px] sm:max-h-[240px] md:max-h-[280px] lg:max-h-[400px] object-contain"
-                            alt={project.imageAlt}
-                            loading="lazy"
-                          />
-                        </div>
-                        
+                          alt={project.imageAlt}
+                          loading="lazy"
+                        />
+                      </div>
+                      
                         <div className={`relative order-2 ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'} flex flex-col justify-center p-3 sm:p-5 md:p-6 lg:p-12`}>
                           <h3 className="text-lg sm:text-xl md:text-2xl lg:text-4xl font-bold text-white mb-2 sm:mb-2 md:mb-3 lg:mb-4 font-hagrid group-hover:text-white transition-colors">
-                            {project.title}
-                          </h3>
+                          {project.title}
+                        </h3>
                           <p className="text-xs sm:text-sm md:text-base lg:text-xl text-white/90 mb-3 sm:mb-4 md:mb-5 lg:mb-6 leading-relaxed">
-                            {project.description}
-                          </p>
-                          
-                          {project.tools && project.tools.length > 0 && (
+                          {project.description}
+                        </p>
+                        
+                        {project.tools && project.tools.length > 0 && (
                             <div className="flex flex-wrap gap-1 sm:gap-1.5 md:gap-2">
-                              {project.tools.map((tool, toolIndex) => (
-                                <span
-                                  key={toolIndex}
+                            {project.tools.map((tool, toolIndex) => (
+                              <span
+                                key={toolIndex}
                                   className="bg-white/30 bg-white/10 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium backdrop-blur-sm border border-white/20 border-white/10"
-                                >
-                                  {tool}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
+                              >
+                                {tool}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
+                    </div>
                     </Link>
                   </div>
                 );
               })}
 
-              {/* Navigation Buttons */}
-              {!isMobile && (
-                <>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveProject(prev => prev > 0 ? prev - 1 : prev);
-                    }}
-                    className="absolute left-2 md:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
-                    disabled={activeProject === 0}
-                    aria-label="Previous project"
-                    style={{ pointerEvents: 'auto' }}
-                  >
-                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                    </svg>
-                  </button>
+              {/* Navigation Buttons - Desktop: Side */}
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveProject(prev => prev > 0 ? prev - 1 : prev);
+                }}
+                className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                disabled={activeProject === 0}
+                aria-label="Previous project"
+                style={{ pointerEvents: 'auto' }}
+              >
+                <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
 
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
-                    }}
-                    className="absolute right-2 md:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 md:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
-                    disabled={activeProject === projects.length - 1}
-                    aria-label="Next project"
-                    style={{ pointerEvents: 'auto' }}
-                  >
-                    <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
-                </>
-              )}
-              
-              {/* Mobile swipe indicators */}
-              {isMobile && (
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-50" style={{ pointerEvents: 'auto' }}>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveProject(prev => prev > 0 ? prev - 1 : prev);
-                    }}
-                    className="text-white/60 text-sm px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
-                    disabled={activeProject === 0}
-                    aria-label="Previous project"
-                  >
-                    ← Prev
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
-                    }}
-                    className="text-white/60 text-sm px-4 py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 disabled:opacity-30 disabled:cursor-not-allowed"
-                    disabled={activeProject === projects.length - 1}
-                    aria-label="Next project"
-                  >
-                    Next →
-                  </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
+                }}
+                className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                disabled={activeProject === projects.length - 1}
+                aria-label="Next project"
+                style={{ pointerEvents: 'auto' }}
+              >
+                <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
                 </div>
-              )}
+            
+            {/* Mobile Navigation Buttons - Below Cards */}
+            <div className="md:hidden absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-50 mb-4">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveProject(prev => prev > 0 ? prev - 1 : prev);
+                }}
+                className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={activeProject === 0}
+                aria-label="Previous project"
+                style={{ pointerEvents: 'auto' }}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              {/* Dots Indicator - Mobile */}
+              <div className="flex gap-2">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setActiveProject(index)}
+                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                      index === activeProject
+                        ? 'bg-white w-6'
+                        : 'bg-white/40'
+                    }`}
+                    aria-label={`Go to project ${index + 1}`}
+                    style={{ pointerEvents: 'auto' }}
+                  />
+                ))}
+              </div>
+              
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
+                }}
+                className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                disabled={activeProject === projects.length - 1}
+                aria-label="Next project"
+                style={{ pointerEvents: 'auto' }}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
             </div>
             
-            {/* Dots Indicator */}
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2 z-50">
+            {/* Dots Indicator - Desktop */}
+            <div className="hidden md:flex absolute bottom-4 left-1/2 transform -translate-x-1/2 gap-2 z-50">
               {projects.map((_, index) => (
                 <button
                   key={index}

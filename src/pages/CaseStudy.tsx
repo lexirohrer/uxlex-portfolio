@@ -12,7 +12,7 @@ const CaseStudy = () => {
   }, []);
 
   return (
-    <>
+    <div style={{ backgroundColor: '#2B2727', minHeight: '100vh' }}>
       <Header />
       
       {/* Hero Section - Full Width */}
@@ -21,7 +21,7 @@ const CaseStudy = () => {
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
             <Link 
-              to="/portfolio" 
+              to="/projects" 
               className="inline-flex items-center text-[#EAE8F3]/80 hover:text-[#EAE8F3] transition-colors duration-200 mb-4"
             >
               <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -129,7 +129,6 @@ const CaseStudy = () => {
               </div>
             </div>
           </div>
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent via-[#1A103F]/60 to-[#1A103F]"></div>
         </section>
         
         <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm bg-transparent relative z-10">
@@ -613,7 +612,7 @@ const CaseStudy = () => {
           </main>
           <Footer />
         </div>
-    </>
+    </div>
   );
 };
 

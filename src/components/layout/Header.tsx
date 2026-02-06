@@ -65,7 +65,7 @@ const Header = () => {
                 }}
               >
                 <Search className="w-5 h-5 text-[#EAE8F3]" />
-                <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-[#EAE8F3]">
+                <span className="text-xl font-medium font-hagrid transition-colors duration-200 text-[#EAE8F3] opacity-80 hover:opacity-100">
                   uxlex.com
                 </span>
               </div>

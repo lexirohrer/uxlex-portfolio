@@ -49,7 +49,7 @@ const CaseStudyNavigation = () => {
   };
 
   return (
-    <nav className="border-t border-gray-200 border-white/10 pt-8 mt-16 mb-8">
+    <nav className="border-t border-white/10 pt-8 mt-16 mb-8">
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-6 sm:gap-8">
         {/* Previous Case Study */}
         {previousStudy ? (
@@ -58,7 +58,7 @@ const CaseStudyNavigation = () => {
             onClick={handleNavigation}
             className="group flex items-center gap-3 sm:gap-4 flex-1 hover:opacity-80 transition-opacity"
           >
-            <div className="flex items-center gap-2 text-gray-500 text-[#EAE8F3]/60 group-hover:text-gray-700 dark:group-hover:text-[#EAE8F3] transition-colors flex-shrink-0">
+            <div className="flex items-center gap-2 text-[#EAE8F3]/60 group-hover:text-[#EAE8F3] transition-colors flex-shrink-0">
               <svg
                 className="w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
@@ -74,8 +74,8 @@ const CaseStudyNavigation = () => {
               </svg>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-xs text-gray-400 text-[#EAE8F3]/50 mb-1">Previous project</p>
-              <p className="text-sm sm:text-base font-medium text-gray-700 text-[#EAE8F3]/90 group-hover:text-gray-900 dark:group-hover:text-[#EAE8F3] transition-colors line-clamp-2">
+              <p className="text-xs text-[#EAE8F3]/50 mb-1">Previous project</p>
+              <p className="text-sm sm:text-base font-medium text-[#EAE8F3]/90 group-hover:text-[#EAE8F3] transition-colors line-clamp-2">
                 {previousStudy.title}
               </p>
             </div>
@@ -92,12 +92,12 @@ const CaseStudyNavigation = () => {
             className="group flex items-center gap-3 sm:gap-4 flex-1 sm:text-right hover:opacity-80 transition-opacity"
           >
             <div className="flex-1 min-w-0 order-2 sm:order-1">
-              <p className="text-xs text-gray-400 text-[#EAE8F3]/50 mb-1">Next project</p>
-              <p className="text-sm sm:text-base font-medium text-gray-700 text-[#EAE8F3]/90 group-hover:text-gray-900 dark:group-hover:text-[#EAE8F3] transition-colors line-clamp-2">
+              <p className="text-xs text-[#EAE8F3]/50 mb-1">Next project</p>
+              <p className="text-sm sm:text-base font-medium text-[#EAE8F3]/90 group-hover:text-[#EAE8F3] transition-colors line-clamp-2">
                 {nextStudy.title}
               </p>
             </div>
-            <div className="flex items-center gap-2 text-gray-500 text-[#EAE8F3]/60 group-hover:text-gray-700 dark:group-hover:text-[#EAE8F3] transition-colors flex-shrink-0 order-1 sm:order-2">
+            <div className="flex items-center gap-2 text-[#EAE8F3]/60 group-hover:text-[#EAE8F3] transition-colors flex-shrink-0 order-1 sm:order-2">
               <svg
                 className="w-4 h-4 sm:w-5 sm:h-5"
                 fill="none"
