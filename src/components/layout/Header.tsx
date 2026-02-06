@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 const navLinks = [
-  { to: "/portfolio", label: "projects" },
+  { to: "/projects", label: "projects" },
   { to: "/resume", label: "about" },
 ];
 
@@ -21,9 +21,9 @@ const Header = () => {
   const linkBase = "text-[#EAE8F3]";
 
   const linkClasses = (to: string) => {
-    // Handle "/portfolio" link being active on both "/" and "/portfolio"
-    const isActive = to === "/portfolio" 
-      ? (location.pathname === "/" || location.pathname === "/portfolio")
+    // Handle "/projects" link being active on both "/" and "/projects"
+    const isActive = to === "/projects" 
+      ? (location.pathname === "/" || location.pathname === "/projects")
       : location.pathname === to;
     
     return `${linkBase} ${
@@ -54,12 +54,21 @@ const Header = () => {
             {/* Logo on the left - Hidden on mobile */}
             <Link 
               to="/" 
-              className="hidden md:flex items-center gap-2 flex-shrink-0"
+              className="hidden md:flex items-center gap-2 flex-1"
               aria-label="Home"
             >
-              <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-[#EAE8F3]">
-                uxlex.com
-              </span>
+              <div 
+                className="flex items-center gap-2 px-3 py-1.5 w-full"
+                style={{
+                  borderRadius: '20.074px',
+                  background: 'rgba(0, 0, 0, 0.20)',
+                }}
+              >
+                <Search className="w-5 h-5 text-[#EAE8F3]" />
+                <span className="text-xl font-normal font-hagrid transition-colors duration-200 text-[#EAE8F3]">
+                  uxlex.com
+                </span>
+              </div>
             </Link>
 
             {/* Navigation links on the right - Desktop */}
@@ -72,8 +81,8 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   className={`${linkClasses(link.to)} px-4 py-2 rounded-full transition-all duration-200 cursor-pointer ${
-                    (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
-                    (link.to !== "/portfolio" && location.pathname === link.to)
+                    (link.to === "/projects" && (location.pathname === "/" || location.pathname === "/projects")) || 
+                    (link.to !== "/projects" && location.pathname === link.to)
                       ? 'bg-white/10'
                       : 'hover:bg-white/10 hover:bg-white/5'
                   }`}
@@ -111,8 +120,8 @@ const Header = () => {
                     className={`${linkClasses(
                       link.to
                     )} px-4 py-3 rounded-full transition-all duration-200 cursor-pointer ${
-                      (link.to === "/portfolio" && (location.pathname === "/" || location.pathname === "/portfolio")) || 
-                      (link.to !== "/portfolio" && location.pathname === link.to)
+                      (link.to === "/projects" && (location.pathname === "/" || location.pathname === "/projects")) || 
+                      (link.to !== "/projects" && location.pathname === link.to)
                         ? 'bg-white/10'
                         : 'hover:bg-white/10 hover:bg-white/5'
                     }`}

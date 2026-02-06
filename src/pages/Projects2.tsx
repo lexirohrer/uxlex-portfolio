@@ -3,7 +3,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/sections/Footer";
 import CaseStudies from "@/components/sections/CaseStudies";
 
-const Portfolio = () => {
+const Projects2 = () => {
   // Mouse-responsive Memoji state
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const memojiRef = useRef<HTMLDivElement>(null);
@@ -175,4 +175,4 @@ const Portfolio = () => {
   );
 };
 
-export default Portfolio;
+export default Projects2;

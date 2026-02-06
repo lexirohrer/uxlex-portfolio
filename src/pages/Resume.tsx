@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 
 const Resume = () => {
   const isMobile = useIsMobile();
+  const firstSectionRef = useRef<HTMLElement>(null);
   
   // Track which fact indices have been shown
   const shownFactIndicesRef = useRef<Set<number>>(new Set());
@@ -16,10 +17,11 @@ const Resume = () => {
     shownFactIndicesRef.current
   );
   
-  // Initialize with all facts
-  const [displayedFacts, setDisplayedFacts] = useState(() => 
-    allFunFacts
-  );
+  // Initialize with 3 random facts
+  const [displayedFacts, setDisplayedFacts] = useState(() => {
+    const shuffled = [...allFunFacts].sort(() => Math.random() - 0.5);
+    return shuffled.slice(0, 3);
+  });
   
   // Track which cards are flipped
   const [flippedCards, setFlippedCards] = useState<Set<number>>(new Set());
@@ -35,12 +37,18 @@ const Resume = () => {
   // Track cards that are animating to the back
   const [animatingToBack, setAnimatingToBack] = useState<Set<number>>(new Set());
   
+  // Track animation phase for cards moving to back (0 = sliding away, 1 = sliding back behind)
+  const [animationPhase, setAnimationPhase] = useState<Map<number, number>>(new Map());
+  
+  // Track slide direction for cards moving to back ('top' | 'bottom' | 'left' | 'right')
+  const [slideDirection, setSlideDirection] = useState<Map<number, 'top' | 'bottom' | 'left' | 'right'>>(new Map());
+  
   // Generate random positions and rotations for scattered card effect
   const [cardPositions, setCardPositions] = useState<Array<{x: number, y: number, rotation: number}>>(() => {
     return allFunFacts.map(() => ({
-      x: Math.random() * 40 - 20, // Random x offset between -20px and 20px
-      y: Math.random() * 40 - 20, // Random y offset between -20px and 20px
-      rotation: (Math.random() - 0.5) * 15 // Random rotation between -7.5 and 7.5 degrees
+      x: Math.random() * 120 - 60, // Random x offset between -60px and 60px
+      y: Math.random() * 120 - 60, // Random y offset between -60px and 60px
+      rotation: (Math.random() - 0.5) * 30 // Random rotation between -15 and 15 degrees
     }));
   });
   
@@ -50,6 +58,10 @@ const Resume = () => {
   // Track card heights for consistent sizing on mobile
   const [maxCardHeight, setMaxCardHeight] = useState<number | null>(null);
   const cardBackRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Track testimonial card heights for consistent sizing
+  const [maxTestimonialHeight, setMaxTestimonialHeight] = useState<number | null>(null);
+  const testimonialContentRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   const testimonials = [
     {
@@ -96,29 +108,17 @@ const Resume = () => {
     }
   ];
   
-  // Shuffle facts function
+  // Shuffle facts function - selects 3 new random facts
   const shuffleFacts = () => {
     setIsRotating(true);
     
     setTimeout(() => {
       setIsRotating(false);
       
-      const prevShownIndices = shownFactIndicesRef.current;
-      const unshownIndices = allFunFacts
-        .map((_, index) => index)
-        .filter(index => !prevShownIndices.has(index));
-      
-      // Shuffle the card order in the stack
-      const shuffledOrder = [...cardOrder].sort(() => Math.random() - 0.5);
-      setCardOrder(shuffledOrder);
-      
-      // Generate new random positions and rotations for scattered effect
-      const newPositions = allFunFacts.map(() => ({
-        x: Math.random() * 40 - 20,
-        y: Math.random() * 40 - 20,
-        rotation: (Math.random() - 0.5) * 15
-      }));
-      setCardPositions(newPositions);
+      // Get 3 new random facts
+      const shuffled = [...allFunFacts].sort(() => Math.random() - 0.5);
+      const newFacts = shuffled.slice(0, 3);
+      setDisplayedFacts(newFacts);
       
       // Reset flipped cards
       setFlippedCards(new Set());
@@ -127,26 +127,52 @@ const Resume = () => {
   
   // Toggle flip state of a card and handle stack movement
   const toggleFlip = (index: number) => {
-    const topCardIndex = cardOrder[cardOrder.length - 1];
-    
-    // Only allow interaction with the top card
-    if (index !== topCardIndex) {
-      return;
+    // For grid layout (3 cards), all cards are interactive
+    // For stack layout, only top card is interactive
+    if (displayedFacts.length !== 3) {
+      const topCardIndex = cardOrder[cardOrder.length - 1];
+      if (index !== topCardIndex) {
+        return;
+      }
     }
     
     setFlippedCards((prev) => {
       const newSet = new Set(prev);
       const isCurrentlyFlipped = newSet.has(index);
       
+      // For grid layout (3 cards), just flip/unflip without stack animation
+      if (displayedFacts.length === 3) {
+        if (isCurrentlyFlipped) {
+          newSet.delete(index);
+        } else {
+          newSet.add(index);
+        }
+        return newSet;
+      }
+      
+      // Stack layout behavior (for backward compatibility)
       if (isCurrentlyFlipped) {
         // Card is flipped, clicking again moves it to back of stack
         newSet.delete(index);
         
+        // Randomly select slide direction
+        const directions: Array<'top' | 'bottom' | 'left' | 'right'> = ['top', 'bottom', 'left', 'right'];
+        const randomDirection = directions[Math.floor(Math.random() * directions.length)];
+        
         // Start animation to move card to back
         setAnimatingToBack((prev) => new Set(prev).add(index));
+        setAnimationPhase((prev) => new Map(prev).set(index, 0)); // Phase 0: sliding away
+        setSlideDirection((prev) => new Map(prev).set(index, randomDirection));
         
-        // After animation completes, move card to back of stack
+        // First phase: slide card away in random direction
         setTimeout(() => {
+          setAnimationPhase((prev) => {
+            const newMap = new Map(prev);
+            newMap.set(index, 1); // Phase 1: sliding back behind
+            return newMap;
+          });
+          
+          // Move card to back of stack order
           setCardOrder((prevOrder) => {
             const newOrder = [...prevOrder];
             const cardIndex = newOrder.indexOf(index);
@@ -155,13 +181,26 @@ const Resume = () => {
             return newOrder;
           });
           
-          // Clear animation state
-          setAnimatingToBack((prev) => {
-            const newSet = new Set(prev);
-            newSet.delete(index);
-            return newSet;
-          });
-        }, 600); // Match transition duration
+          // Second phase: slide card back behind the deck from opposite direction
+          setTimeout(() => {
+            // Clear animation state
+            setAnimatingToBack((prev) => {
+              const newSet = new Set(prev);
+              newSet.delete(index);
+              return newSet;
+            });
+            setAnimationPhase((prev) => {
+              const newMap = new Map(prev);
+              newMap.delete(index);
+              return newMap;
+            });
+            setSlideDirection((prev) => {
+              const newMap = new Map(prev);
+              newMap.delete(index);
+              return newMap;
+            });
+          }, 400); // Time for sliding back
+        }, 400); // Time for sliding away
       } else {
         // Flip the card
         newSet.add(index);
@@ -215,6 +254,44 @@ const Resume = () => {
     return () => clearTimeout(timeoutId);
   }, [isMobile, displayedFacts]);
   
+  // Measure testimonial card heights to ensure consistent sizing
+  useEffect(() => {
+    if (testimonialContentRefs.current.length === 0) {
+      setMaxTestimonialHeight(null);
+      return;
+    }
+    
+    const measureHeights = () => {
+      const heights = testimonialContentRefs.current
+        .filter(ref => ref !== null)
+        .map(ref => {
+          // Measure the natural height of the content
+          // Create a temporary clone to measure without affecting the original
+          const clone = ref!.cloneNode(true) as HTMLElement;
+          clone.style.position = 'absolute';
+          clone.style.visibility = 'hidden';
+          clone.style.height = 'auto';
+          clone.style.width = ref!.offsetWidth + 'px';
+          document.body.appendChild(clone);
+          
+          const height = clone.scrollHeight;
+          document.body.removeChild(clone);
+          
+          return height;
+        });
+      
+      if (heights.length > 0) {
+        const maxHeight = Math.max(...heights);
+        // Add padding (p-6 sm:p-8 = 24px/32px) - use the larger value for consistency
+        setMaxTestimonialHeight(maxHeight + 64); // 32px top + 32px bottom padding
+      }
+    };
+    
+    // Delay measurement to ensure cards are rendered
+    const timeoutId = setTimeout(measureHeights, 100);
+    return () => clearTimeout(timeoutId);
+  }, [testimonials]);
+  
   const renderFactCard = useCallback((
     fact: typeof displayedFacts[number],
     index: number,
@@ -222,27 +299,156 @@ const Resume = () => {
     layout: "grid" | "stack" = "grid"
   ) => {
     const isFlipped = flippedCards.has(index);
+    
+    if (layout === "grid") {
+      // Grid layout: simple side-by-side cards that can shrink
+      return (
+        <div
+          key={`${keyPrefix}-${fact.text}`}
+          className="relative cursor-pointer hover:scale-[1.02] transition-transform duration-300 h-full overflow-visible"
+          style={{ 
+            perspective: "1000px",
+            width: "100%",
+            height: "100%",
+            minHeight: "150px"
+          }}
+          onClick={() => toggleFlip(index)}
+        >
+          <div
+            className={`relative w-full h-full ${isRotating ? "animate-flip-full" : ""}`}
+            style={{
+              transform: isRotating
+                ? undefined
+                : isFlipped
+                ? `rotateY(180deg)`
+                : `rotateY(0deg)`,
+              transformStyle: "preserve-3d",
+              transformOrigin: "center center",
+              height: "100%",
+              minHeight: "150px",
+              transition: isRotating ? "none" : "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+            }}
+          >
+            {/* Front of card */}
+            <div
+              className="absolute inset-0 w-full h-full rounded-3xl flex items-center justify-center backface-hidden px-6"
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(0deg)",
+                zIndex: isFlipped ? 0 : 1,
+                opacity: isFlipped ? 0 : 1,
+                transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+              }}
+            >
+              <span className="text-[#EAE8F3] text-2xl font-semibold font-hagrid text-center relative z-10">
+                what's this? 👀
+              </span>
+            </div>
+            {/* Back of card */}
+            <div
+              className="absolute inset-0 w-full h-full rounded-3xl flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
+              style={{
+                background: 'rgba(255, 255, 255, 0.1)',
+                backdropFilter: 'blur(20px)',
+                WebkitBackdropFilter: 'blur(20px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
+                backfaceVisibility: "hidden",
+                WebkitBackfaceVisibility: "hidden",
+                transform: "rotateY(180deg)",
+                zIndex: isFlipped ? 1 : 0,
+                opacity: isFlipped ? 1 : 0,
+                transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+              }}
+            >
+              <div className="relative z-10 flex flex-col items-center gap-3">
+                <span className="text-4xl md:text-5xl">{fact.emoji}</span>
+                <span className="text-[#EAE8F3] text-sm md:text-base leading-relaxed text-center">
+                  {fact.text}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+    
+    // Stack layout (keeping for backward compatibility, but not used in new design)
     const cardHeight = isMobile && maxCardHeight ? `${maxCardHeight}px` : undefined;
     const stackPosition = cardOrder.indexOf(index);
     const isTopCard = stackPosition === cardOrder.length - 1;
     const position = cardPositions[index];
     const isAnimatingToBack = animatingToBack.has(index);
-    
-    // Calculate z-index: higher stack position = higher z-index (top card has highest)
-    // When animating to back, reduce z-index immediately so it goes behind other cards
     const zIndex = isAnimatingToBack ? 0 : stackPosition + 1;
-    
-    // Calculate transform for animation
-    // When animating to back, scale down and move backward
     const baseTransform = `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px))`;
-    const animationTransform = isAnimatingToBack 
-      ? `${baseTransform} scale(0.3) translateZ(-200px)`
-      : baseTransform;
+    const phase = animationPhase.get(index) ?? 0;
+    const direction = slideDirection.get(index) ?? 'top';
+    
+    let animationTransform = baseTransform;
+    if (isAnimatingToBack) {
+      if (phase === 0) {
+        let translateX = 0;
+        let translateY = 0;
+        let rotateZ = 0;
+        
+        switch (direction) {
+          case 'top':
+            translateY = -250;
+            rotateZ = 5;
+            break;
+          case 'bottom':
+            translateY = 250;
+            rotateZ = -5;
+            break;
+          case 'left':
+            translateX = -250;
+            rotateZ = -5;
+            break;
+          case 'right':
+            translateX = 250;
+            rotateZ = 5;
+            break;
+        }
+        
+        animationTransform = `${baseTransform} translateX(${translateX}px) translateY(${translateY}px) rotateZ(${rotateZ}deg) scale(0.95)`;
+      } else {
+        let translateX = 0;
+        let translateY = 0;
+        let rotateZ = 0;
+        
+        switch (direction) {
+          case 'top':
+            translateY = 150;
+            rotateZ = -2;
+            break;
+          case 'bottom':
+            translateY = -150;
+            rotateZ = 2;
+            break;
+          case 'left':
+            translateX = 150;
+            rotateZ = 2;
+            break;
+          case 'right':
+            translateX = -150;
+            rotateZ = -2;
+            break;
+        }
+        
+        animationTransform = `${baseTransform} translateX(${translateX}px) translateY(${translateY}px) translateZ(-200px) scale(0.3) rotateZ(${rotateZ}deg)`;
+      }
+    }
     
     return (
       <div
         key={`${keyPrefix}-${fact.text}`}
-        className={`relative transition-all duration-500 ${isTopCard && !isAnimatingToBack ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-default'}`}
+        className={`relative ${isTopCard && !isAnimatingToBack ? 'cursor-pointer hover:scale-[1.02]' : 'cursor-default'}`}
         style={{ 
           perspective: "1000px",
           position: "absolute",
@@ -253,12 +459,17 @@ const Resume = () => {
           zIndex: zIndex,
           width: "280px",
           pointerEvents: isTopCard && !isAnimatingToBack ? 'auto' : 'none',
-          opacity: isAnimatingToBack ? 0.3 : 1,
+          opacity: isAnimatingToBack ? (phase === 0 ? 1 : 0.3) : 1,
+          transition: isAnimatingToBack 
+            ? (phase === 0 
+                ? 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out'
+                : 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-in')
+            : 'transform 0.5s ease, opacity 0.5s ease',
         }}
         onClick={() => toggleFlip(index)}
       >
         <div
-          className={`relative w-full ${isRotating ? "animate-flip-full" : "transition-transform duration-500"}`}
+          className={`relative w-full ${isRotating ? "animate-flip-full" : ""}`}
           style={{
             transform: isRotating
               ? undefined
@@ -269,21 +480,27 @@ const Resume = () => {
             transformOrigin: "center center",
             minHeight: "240px",
             height: cardHeight || undefined,
+            transition: isRotating ? "none" : "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
+            willChange: "transform",
           }}
         >
           <div
-            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg flex items-center justify-center backface-hidden px-6 shadow-2xl"
+            className="absolute inset-0 w-full h-full rounded-3xl flex items-center justify-center backface-hidden px-6"
             style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(0deg)",
               position: "absolute",
               zIndex: isFlipped ? 0 : 1,
               opacity: isFlipped ? 0 : 1,
+              transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
-            <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-            <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
             <span className="text-gray-800 font-hagrid font-medium text-3xl text-center relative z-10">
               what's this? 👀
             </span>
@@ -292,18 +509,22 @@ const Resume = () => {
             ref={(el) => {
               cardBackRefs.current[index] = el;
             }}
-            className="absolute inset-0 w-full h-full rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden shadow-2xl"
+            className="absolute inset-0 w-full h-full rounded-3xl flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
             style={{
+              background: 'rgba(255, 255, 255, 0.1)',
+              backdropFilter: 'blur(20px)',
+              WebkitBackdropFilter: 'blur(20px)',
+              border: '1px solid rgba(255, 255, 255, 0.2)',
+              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
               position: "absolute",
               zIndex: isFlipped ? 1 : 0,
               opacity: isFlipped ? 1 : 0,
+              transition: "opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1)",
             }}
           >
-            <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-            <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
             <div className="relative z-10 flex flex-col items-center gap-3">
               <span className="text-4xl md:text-5xl">{fact.emoji}</span>
               <span className="text-gray-800 text-base leading-relaxed text-center">
@@ -314,7 +535,33 @@ const Resume = () => {
         </div>
       </div>
     );
-  }, [flippedCards, isRotating, isMobile, maxCardHeight, cardOrder, cardPositions, animatingToBack]);
+  }, [flippedCards, isRotating, isMobile, maxCardHeight, cardOrder, cardPositions, animatingToBack, animationPhase, slideDirection]);
+
+  // Set up scroll snap on mount
+  useEffect(() => {
+    const htmlElement = document.documentElement;
+    htmlElement.style.scrollSnapType = 'y mandatory';
+    htmlElement.style.scrollBehavior = 'smooth';
+    // Reduced scroll padding since we removed top padding from main
+    htmlElement.style.scrollPaddingTop = '80px';
+    
+    return () => {
+      // Cleanup on unmount
+      htmlElement.style.scrollSnapType = '';
+      htmlElement.style.scrollBehavior = '';
+      htmlElement.style.scrollPaddingTop = '';
+    };
+  }, []);
+
+  // Center the first section vertically on page load
+  useEffect(() => {
+    if (firstSectionRef.current) {
+      // Small delay to ensure layout is complete
+      setTimeout(() => {
+        firstSectionRef.current?.scrollIntoView({ behavior: 'instant', block: 'center' });
+      }, 100);
+    }
+  }, []);
 
   const handleDownload = () => {
     const link = document.createElement('a');
@@ -329,14 +576,33 @@ const Resume = () => {
     <>
       <div className="max-w-[1440px] w-full mx-auto my-0 max-md:max-w-[991px] max-sm:max-w-screen-sm relative overflow-hidden bg-transparent min-h-screen">
         <Header />
-        <main className="px-[120px] pt-[180px] pb-[100px] max-md:px-10 max-md:pt-[144px] max-md:pb-[60px] max-sm:px-5 max-sm:pt-[132px] max-sm:pb-[40px] relative z-10">
+        <main className="px-[120px] pt-0 pb-[100px] max-md:px-10 max-md:pt-0 max-md:pb-[60px] max-sm:px-5 max-sm:pt-0 max-sm:pb-[40px] relative z-10">
           
           {/* About Me Section */}
-          <section className="mb-60">
+          <section 
+            ref={firstSectionRef}
+            className="mb-60 pt-[80px]"
+            style={{
+              scrollSnapAlign: 'center',
+              scrollSnapStop: 'always',
+              minHeight: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
             <div className="w-full">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
                 {/* Left Side - Text Content */}
-                <div>
+                <div 
+                  className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8 flex flex-col" 
+                  style={{ 
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)'
+                  }}
+                >
+                  <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">About Lexi</h2>
                   <div className="space-y-4 text-[#EAE8F3]/90 leading-relaxed">
                     <p className="text-base md:text-lg">
                       I design experiences that create positive social impact. Before finding design, I grew up in a home that hosted 56 exchange students from 16 different countries, fostering my love of travel and language learning. As a Fulbright fellow, I most recently used participatory design to make sure Smart City tech solves real problems for Bangkok residents.
@@ -350,22 +616,53 @@ const Resume = () => {
                   </div>
                 </div>
 
-                {/* Right Side - Fun Facts Stacked Cards */}
-                <div>
-                  <div className="relative w-full h-[400px] mx-auto max-w-[600px]" style={{ perspective: "1000px" }}>
+                {/* Right Side - Fun Facts Cards (vertical stack on desktop, horizontal on mobile/tablet) */}
+                <div className="flex flex-col gap-4 lg:h-full lg:min-h-0">
+                  <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-1 gap-4 lg:flex-1 lg:min-h-0 overflow-visible">
                     {displayedFacts.map((fact, index) => (
-                      <div key={`card-${index}`}>
-                        {renderFactCard(fact, index, "stacked", "stack")}
+                      <div key={`card-${index}`} className="flex-1 lg:min-h-0 flex overflow-visible" style={{ minHeight: "150px" }}>
+                        {renderFactCard(fact, index, "grid", "grid")}
                       </div>
                     ))}
                   </div>
+                  {/* Shuffle Button */}
+                  <Button
+                    onClick={shuffleFacts}
+                    className="w-full flex-shrink-0"
+                    aria-label="Shuffle facts"
+                  >
+                    <svg 
+                      className="w-5 h-5" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" 
+                      />
+                    </svg>
+                    shuffle
+                  </Button>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Testimonials Section */}
-          <section className="mb-60">
+          <section 
+            className="mb-60"
+            style={{
+              scrollSnapAlign: 'center',
+              scrollSnapStop: 'always',
+              minHeight: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
             <div className="w-full">
               <div className="relative w-full min-h-[380px] flex items-center justify-center pb-12">
                 {/* Navigation Buttons */}
@@ -412,22 +709,31 @@ const Resume = () => {
                     return (
                       <div
                         key={index}
-                        className="absolute rounded-3xl border border-white/30 border-white/10 bg-white/20 bg-[#0A0520]/20 backdrop-blur-lg p-6 sm:p-8 shadow-2xl cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] min-h-[320px] md:min-h-[360px]"
+                        className="absolute rounded-3xl p-6 sm:p-8 cursor-pointer w-[95%] sm:w-[520px] md:w-[600px] lg:w-[700px] flex flex-col justify-center"
                         style={{
+                          background: 'rgba(255, 255, 255, 0.1)',
+                          backdropFilter: 'blur(20px)',
+                          WebkitBackdropFilter: 'blur(20px)',
+                          border: '1px solid rgba(255, 255, 255, 0.2)',
+                          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                           transform,
                           zIndex,
                           opacity,
                           filter,
                           transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                          pointerEvents: isActive ? 'auto' : 'none'
+                          pointerEvents: isActive ? 'auto' : 'none',
+                          minHeight: maxTestimonialHeight ? `${maxTestimonialHeight}px` : '320px',
+                          height: maxTestimonialHeight ? `${maxTestimonialHeight}px` : 'auto'
                         }}
                         onClick={() => setActiveTestimonial(index)}
                       >
-                        <div className="absolute inset-0 bg-white/20 bg-[#0A0520]/20 rounded-3xl backdrop-blur-xl"></div>
-                        <div className="absolute inset-0 bg-white/20 bg-white/20 rounded-3xl"></div>
-                        <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.gradient} rounded-3xl backdrop-blur-sm`}></div>
-                        <div className="relative z-10 flex flex-col gap-6">
-                          <div className="flex-1">
+                        <div 
+                          ref={(el) => {
+                            testimonialContentRefs.current[index] = el;
+                          }}
+                          className="relative z-10 flex flex-col gap-6"
+                        >
+                          <div>
                             <img 
                               src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                               alt="" 
@@ -440,13 +746,13 @@ const Resume = () => {
                               className="hidden block w-12 h-12 md:w-16 md:h-16 mb-2 opacity-60"
                               loading="lazy"
                             />
-                            <p className="text-gray-800 italic text-base md:text-2xl leading-relaxed">
+                            <p className="text-[#EAE8F3]/90 italic text-base md:text-2xl leading-relaxed">
                               {testimonial.text}
                             </p>
                           </div>
-                          <div className="mt-4 flex-shrink-0">
-                            <p className="font-semibold text-gray-800 text-sm md:text-base">{testimonial.author}</p>
-                            <p className="text-xs md:text-sm text-gray-700">{testimonial.title}</p>
+                          <div className="flex-shrink-0">
+                            <p className="font-semibold text-[#EAE8F3] text-sm md:text-base">{testimonial.author}</p>
+                            <p className="text-xs md:text-sm text-[#EAE8F3]/90">{testimonial.title}</p>
                           </div>
                         </div>
                       </div>
@@ -485,20 +791,40 @@ const Resume = () => {
           </section>
 
           {/* Resume Section */}
-          <section className="mb-60">
-          {/* Download Resume Button */}
-          <div className="mb-10">
-            <Button onClick={handleDownload} className="w-full">
-                <Download size={20} />
-              Download Resume
-              </Button>
-          </div>
+          <section 
+            className="mb-60"
+            style={{
+              scrollSnapAlign: 'center',
+              scrollSnapStop: 'always',
+              minHeight: '100vh',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <div className="w-full">
+              {/* Download Resume Button */}
+              <div className="mb-10">
+                <Button onClick={handleDownload} className="w-full">
+                  <Download size={20} />
+                  Download Resume
+                </Button>
+              </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
-            {/* Left Column: Experience, then Education */}
-            <div className="space-y-7">
-              {/* Experience */}
-              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-7 items-start">
+                {/* Left Column: Experience, then Education */}
+                <div className="space-y-7">
+                  {/* Experience */}
+                  <div 
+                className="relative rounded-3xl overflow-hidden p-8"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                }}
+              >
                 <div>
                   <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Experience</h2>
                   <div className="space-y-6">
@@ -526,8 +852,17 @@ const Resume = () => {
                 </div>
               </div>
 
-              {/* Education */}
-              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
+                  {/* Education */}
+                  <div 
+                className="relative rounded-3xl overflow-hidden p-8"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                }}
+              >
                 <div>
                   <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Education</h2>
                   <div className="space-y-4">
@@ -545,12 +880,21 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
-            </div>
+                  </div>
 
-            {/* Right Column: Publications, Skills */}
-            <div className="space-y-7">
-              {/* Publications */}
-              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
+                {/* Right Column: Publications, Skills */}
+                <div className="space-y-7">
+                  {/* Publications */}
+                  <div 
+                className="relative rounded-3xl overflow-hidden p-8"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                }}
+              >
                 <div>
                   <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Talks, Publications, Patents</h2>
                   <div className="space-y-6">
@@ -573,8 +917,17 @@ const Resume = () => {
                 </div>
               </div>
 
-              {/* Skills */}
-              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
+                  {/* Skills */}
+                  <div 
+                className="relative rounded-3xl overflow-hidden p-8"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                }}
+              >
                 <div>
                     <h2 className="text-[#EAE8F3] text-2xl font-semibold mb-6 font-hagrid text-left">Skills</h2>
                   <div className="space-y-4">
@@ -637,9 +990,9 @@ const Resume = () => {
                   </div>
                 </div>
               </div>
-
+                </div>
+              </div>
             </div>
-          </div>
           </section>
         </main>
         <Footer />
