@@ -333,10 +333,10 @@ const Resume = () => {
             <div
               className="absolute inset-0 w-full h-full rounded-3xl flex items-center justify-center backface-hidden px-6"
               style={{
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'rgba(10, 5, 32, 0.3)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
@@ -354,10 +354,10 @@ const Resume = () => {
             <div
               className="absolute inset-0 w-full h-full rounded-3xl flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
               style={{
-                background: 'rgba(255, 255, 255, 0.1)',
+                background: 'rgba(10, 5, 32, 0.3)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
                 boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 backfaceVisibility: "hidden",
                 WebkitBackfaceVisibility: "hidden",
@@ -595,7 +595,7 @@ const Resume = () => {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-stretch">
                 {/* Left Side - Text Content */}
                 <div 
-                  className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl bg-white/10 p-8 flex flex-col" 
+                  className="relative rounded-3xl border border-white/10 overflow-hidden shadow-2xl bg-[#0A0520]/30 p-8 flex flex-col" 
                   style={{ 
                     boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                     backdropFilter: 'blur(20px)',
@@ -668,7 +668,7 @@ const Resume = () => {
                 {/* Navigation Buttons - Desktop: Side, Mobile: Bottom */}
                 <button
                   onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                  className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === 0}
                   aria-label="Previous testimonial"
                 >
@@ -764,7 +764,7 @@ const Resume = () => {
 
                 <button
                   onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                  className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed"
                   disabled={activeTestimonial === testimonials.length - 1}
                   aria-label="Next testimonial"
                 >
@@ -777,7 +777,7 @@ const Resume = () => {
                 <div className="md:hidden absolute bottom-0 left-1/2 transform -translate-x-1/2 flex items-center gap-4 z-50 mb-4">
                   <button
                     onClick={() => setActiveTestimonial(prev => prev > 0 ? prev - 1 : prev)}
-                    className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
                     disabled={activeTestimonial === 0}
                     aria-label="Previous testimonial"
                   >
@@ -804,7 +804,7 @@ const Resume = () => {
                   
                   <button
                     onClick={() => setActiveTestimonial(prev => prev < testimonials.length - 1 ? prev + 1 : prev)}
-                    className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                    className="text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
                     disabled={activeTestimonial === testimonials.length - 1}
                     aria-label="Next testimonial"
                   >
@@ -977,57 +977,57 @@ const Resume = () => {
                   <div>
                     <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Design & Research</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Figma</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Adobe CC</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Prototyping</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Systems</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Research</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Interviews</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Usability Testing</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">A/B Testing</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Figma</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Adobe CC</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Prototyping</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Systems</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Research</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">User Interviews</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Usability Testing</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">A/B Testing</span>
                     </div>
                   </div>
                   <div>
                     <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Methods & Strategy</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Thinking</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Human-Centered Design</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Service Design</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design critique</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Storyboarding</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Wireframing</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Content Strategy</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Information Architecture</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design Thinking</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Human-Centered Design</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Service Design</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Design critique</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Storyboarding</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Wireframing</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Content Strategy</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Information Architecture</span>
                   </div>
                   </div>
                   <div>
                     <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Collaboration & Analysis</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Cross-functional Collaboration</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Stakeholder Management</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Workshop Facilitation</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Product Strategy</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Data Analysis</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Competitive Analysis</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Cross-functional Collaboration</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Stakeholder Management</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Workshop Facilitation</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Product Strategy</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Data Analysis</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Competitive Analysis</span>
                 </div>
               </div>
                       <div>
                     <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Technical Skills</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Sketch</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">InVision</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Miro</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Notion</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Python</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">HTML/CSS</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">JavaScript</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Sketch</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">InVision</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Miro</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Notion</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Python</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">HTML/CSS</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">JavaScript</span>
                       </div>
                       </div>
                       <div>
                     <h3 className="text-[#EAE8F3] text-lg font-semibold mb-2">Languages</h3>
                     <div className="flex flex-wrap gap-2">
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">English (Native)</span>
-                      <span className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Thai (Conversational)</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">English (Native)</span>
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10">Thai (Conversational)</span>
                       </div>
                     </div>
                   </div>

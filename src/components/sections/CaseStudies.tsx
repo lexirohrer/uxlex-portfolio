@@ -54,7 +54,7 @@ const CaseStudies = () => {
               href={study.href}
               className="block w-full group"
             >
-              <div className="relative rounded-3xl border border-white/20 overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] bg-white/10" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
+              <div className="relative rounded-3xl border border-white/10 overflow-hidden shadow-2xl hover:shadow-[0_20px_60px_rgba(0,0,0,0.4),inset_0_2px_12px_rgba(0,0,0,0.5)] transition-all duration-300 hover:scale-[0.99] bg-[#0A0520]/30" style={{ boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)' }}>
                 <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
                   {/* Image Column */}
                   <div className={`relative order-1 ${imageOnLeft ? 'lg:order-1' : 'lg:order-2'} flex items-center justify-center p-6 lg:p-10`}>
@@ -79,7 +79,7 @@ const CaseStudies = () => {
                         {study.tools.map((tool, toolIndex) => (
                           <span
                             key={toolIndex}
-                            className="bg-white/10 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10"
+                            className="bg-[#0A0520]/30 text-[#EAE8F3] px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10"
                           >
                             {tool}
                           </span>

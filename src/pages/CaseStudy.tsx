@@ -97,19 +97,19 @@ const CaseStudy = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Tools</h2>
                   <div className="flex flex-wrap gap-3">
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                     <img src={`${import.meta.env.BASE_URL}Figma Logo Thumbnail.png`} alt="Figma-logo" className="w-5 h-5" />
                       Figma
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                     <img src={`${import.meta.env.BASE_URL}Figma Logo Thumbnail.png`} alt="Figma-logo" className="w-5 h-5" />
                       Figjam
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                     <img src={`${import.meta.env.BASE_URL}UT-logo.png`} alt="UT-logo" className="w-5 h-5" />
                       Usertesting.com
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                       <img src={`${import.meta.env.BASE_URL}Google_logo.png`} alt="Google Suite" className="w-5 h-5" />
                       Google Suite
                     </span>
@@ -185,25 +185,57 @@ const CaseStudy = () => {
               </p>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-                <div className="bg-white/10 p-6 rounded-2xl">
+                <div 
+                  className="p-6 rounded-2xl"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                   <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Listening</h4>
                   <p className="text-[#EAE8F3]/90 text-md">Each team shared their goals and why their step had been added.</p>
                 </div>
 
-                <div className="bg-white/10 p-6 rounded-2xl">
+                <div 
+                  className="p-6 rounded-2xl"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                   <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Showing evidence</h4>
                   <p className="text-[#EAE8F3]/90 text-md">I shared data on the 18-minute average onboarding time. Then, <b> we watched recordings of people cursing, huffing, and struggling through the flow.</b></p>
                 </div>
 
-                <div className="bg-white/10 p-6 rounded-2xl">
+                <div 
+                  className="p-6 rounded-2xl"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                   <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Finding Shared Goals</h4>
                   <p className="text-[#EAE8F3]/90 text-md">Together, we agreed that the primary goal of onboarding should be to get users to value quickly, not to maximize every team's KPIs.</p>
                 </div>
 
-                <div className="bg-white/10 p-6 rounded-2xl">
+                <div 
+                  className="p-6 rounded-2xl"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
                   <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Co-designing</h4>
                   <p className="text-[#EAE8F3]/90 text-md ">Now aligned on shared principles, each team sketched the leanest possible flow <i>they</i> could think of. We aligned these visions, and deferred other setup tasks to contextual moments later in the product.</p>
@@ -228,7 +260,7 @@ const CaseStudy = () => {
               Past customer surveys showed that 75% of QuickBooks customers had websites, which already contained much of the information needed to create their account — things like business name, email, industry, and branding. Alongside my engineers, we designed an AI import flow that allowed users to scrape data from their public website, rather than importing it manually. <b> With one click, QuickBooks generated a business profile pre-filled with all the user's information we had pulled, which users could then confirm or edit.</b>
               </p>
                 </div>
-               <div className="bg-white/5 rounded-2xl p-4 mb-6">
+               <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-6">
                  <video 
                    className="w-full h-auto rounded-lg"
                    controls 
@@ -244,7 +276,7 @@ const CaseStudy = () => {
               <p className="text-[#EAE8F3]/90 text-lg mb-6">
               When tested in production, this step alone contributed most significantly to shortening the time in flow by 40% compared to control. This step also gave us the opportunity to create a moment of delight later on - if a user chose to create an invoice, <b> QuickBooks would magically generate a personalized invoice</b>, with the logo and colors already pulled in from their website.
               </p>
-              <div className="bg-white/5 rounded-2xl p-4 mb-6">
+              <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-6">
                  <video 
                    className="w-full h-auto rounded-lg"
                    controls 
@@ -291,7 +323,7 @@ const CaseStudy = () => {
             <p className="text-[#EAE8F3]/90 text-lg mb-6">The results of the test couldn't have been more clearer: users wanted short, sweet, to-the-point setup, and our new flow delivered:</p>
              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               
-              <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-12">
+              <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-12">
                 <p className="text-[#EAE8F3]/90 text-lg mb-4">
                   Control Flow (control experience)
                 </p>
@@ -307,7 +339,7 @@ const CaseStudy = () => {
               </div>
 
               {/* Streamlined Flow Quote */}
-              <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-12">
+              <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-12">
                 <p className="text-[#EAE8F3]/90 text-lg mb-4">
                   Streamlined Flow (redesign experience)
                 </p>
@@ -338,8 +370,16 @@ const CaseStudy = () => {
               <p className="text-[#EAE8F3]/90 text-lg mb-6"> However, despite success on the major usability issues of length, ease of use, and confidence, there was still room to grow. To put the finishing touches on this flow, I examined the usability issues that stopped users from giving the new designs a perfect 7. These included:</p>
               
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-100 bg-red-900/30 text-red-200 border border-red-200 border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -351,8 +391,16 @@ const CaseStudy = () => {
                   </div>
                 </div>
                 
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-100 bg-red-900/30 text-red-200 border border-red-200 border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -364,8 +412,16 @@ const CaseStudy = () => {
                   </div>
                 </div>
                 
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-100 bg-red-900/30 text-red-200 border border-red-200 border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -387,8 +443,16 @@ const CaseStudy = () => {
               
               {/* Progress bar pain point */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-100 bg-red-900/30 text-red-200 border border-red-200 border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -399,8 +463,16 @@ const CaseStudy = () => {
                     <p className="text-[#EAE8F3]/90 text-lg">Inconsistent growth then stagnation in the progress bar at the top of the flow</p>
                   </div>
                 </div>
-                <div className="relative bg-green-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-green-100 bg-green-900/30 text-green-800 text-green-200 border border-green-200 border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -421,8 +493,16 @@ const CaseStudy = () => {
               
             {/* Tooltips pain point */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-900/30 text-red-200 border border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -433,8 +513,16 @@ const CaseStudy = () => {
                     <p className="text-[#EAE8F3]/90 text-lg">Users didn't understand why we needed all this information up front</p>
                   </div>
                 </div>
-                <div className="relative bg-green-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-green-900/30 text-green-200 border border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -446,7 +534,7 @@ const CaseStudy = () => {
                   </div>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-2xl p-4 mb-20">
+              <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-20">
                 <video 
                   className="w-full h-auto rounded-lg"
                   controls 
@@ -462,8 +550,16 @@ const CaseStudy = () => {
               
               {/* Generalized uncertainty pain point */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                <div className="relative bg-red-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-red-900/30 text-red-200 border border-red-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -474,8 +570,16 @@ const CaseStudy = () => {
                     <p className="text-[#EAE8F3]/90 text-lg">Generalized uncertainty about whether the product was right for them</p>
                   </div>
                 </div>
-                <div className="relative bg-green-950/20 p-6 rounded-2xl overflow-hidden">
-                  <div className="absolute inset-0 bg-white/10 pointer-events-none"></div>
+                <div 
+                  className="relative p-6 rounded-2xl overflow-hidden"
+                  style={{
+                    background: 'rgba(10, 5, 32, 0.3)',
+                    backdropFilter: 'blur(20px)',
+                    WebkitBackdropFilter: 'blur(20px)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
+                  }}
+                >
+                  <div className="absolute inset-0 pointer-events-none"></div>
                   <div className="relative">
                     <div className="mb-4">
                       <span className="bg-green-900/30 text-green-200 border border-green-800 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-lg shadow-sm flex items-center gap-2 w-fit">
@@ -487,7 +591,7 @@ const CaseStudy = () => {
                   </div>
                 </div>
               </div>
-                  <div className="bg-white/5 rounded-2xl p-4 mb-6">
+                  <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-6">
                     <video 
                       className="w-full h-auto rounded-lg"
                       controls 
@@ -500,7 +604,7 @@ const CaseStudy = () => {
                       Your browser does not support the video tag.
                     </video>
                 </div>
-                <div className="bg-gray-50 bg-white/5 rounded-2xl p-4 mb-6">
+                <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-6">
                     <video 
                       className="w-full h-auto rounded-lg"
                       controls 
@@ -552,7 +656,7 @@ const CaseStudy = () => {
                   Here's a walkthrough of the end to end flow:
                 </p>
 
-                <div className="bg-gray-50 bg-white/5 rounded-2xl p-4 mb-6">
+                <div className="bg-[#0A0520]/20 rounded-2xl p-4 mb-6">
                   <a 
                     href="https://drive.google.com/file/d/1AxKJpkcx9lF__oN7RUE9HgUh-kaz231I/view?usp=sharing"
                     target="_blank"

@@ -51,7 +51,7 @@ const FuseCaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative w-full py-16 max-sm:py-12 overflow-hidden">
+      <section className="relative w-full pt-[160px] pb-16 max-xl:pt-[152px] max-lg:pt-[136px] max-md:pt-[120px] max-sm:pt-[100px] max-sm:pb-12 overflow-hidden">
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
@@ -116,23 +116,23 @@ const FuseCaseStudy = () => {
                   <div>
                     <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Tools</h2>
                     <div className="flex flex-wrap gap-3">
-                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Sketch_Logo.png`} alt="Sketch" className="w-5 h-5" />
                         Sketch
                       </span>
-                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Illustrator logo.png`} alt="Illustrator" className="w-5 h-5" />
                         Illustrator
                       </span>
-                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}ID_logo.png`} alt="InDesign" className="w-5 h-5" />
                         InDesign
                       </span>
-                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Photoshop-logo.png`} alt="Photoshop" className="w-5 h-5" />
                         Photoshop
                       </span>
-                      <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
+                      <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm flex items-center gap-2">
                         <img src={`${import.meta.env.BASE_URL}Invision Logo.png`} alt="InVision Studio" className="w-5 h-5" />
                         InVision Studio
                       </span>
@@ -187,39 +187,63 @@ const FuseCaseStudy = () => {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+                  <div 
+                    className="p-6 rounded-2xl"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Onboarding Design and Testing</h4>
-                    <p className="text-[#EAE8F3] text-md">Start to finish design and testing of a new onboarding sequence to introduce users to Fuse.</p>
+                    <p className="text-[#EAE8F3]/90 text-md">Start to finish design and testing of a new onboarding sequence to introduce users to Fuse.</p>
                   </div>
                   
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+                  <div 
+                    className="p-6 rounded-2xl"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Storyboarding for Prospective Feature Development</h4>
-                    <p className="text-[#EAE8F3] text-md">Created storyboards detailing common challenges researchers face and how Fuse features address them.</p>
+                    <p className="text-[#EAE8F3]/90 text-md">Created storyboards detailing common challenges researchers face and how Fuse features address them.</p>
                   </div>
 
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+                  <div 
+                    className="p-6 rounded-2xl"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">"Getting Information Out of Fuse" User Research</h4>
-                    <p className="text-[#EAE8F3] text-md">Conducted interviews and synthesized insights about how users extract information from Fuse for external use.</p>
+                    <p className="text-[#EAE8F3]/90 text-md">Conducted interviews and synthesized insights about how users extract information from Fuse for external use.</p>
                   </div>
                 </div>
               </section>
 
               {/* Onboarding Design and Testing */}
               <section className="mb-24">
-                <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-8">
+                <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-8">
                   <div className="relative">
                     <img 
                       src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                       alt="" 
-                      className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                      className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
                     />
                     <img 
                       src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                       alt="" 
-                      className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                      className="absolute top-8 left-2 w-16 h-16 opacity-60"
                     />
                     <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">Lexi was instrumental in driving forward several high-impact initiatives despite being here only for the summer. These included spearheading the onboarding experience for the system, generating storyboards and getting feedback on them, and developing process flows for getting information into and out of the system. <strong>I would have been happy with a summer researcher who did only one of those activities; Lexi drove all three</strong></p>
                     <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Aniket Kittur, Cooper-Siegel Chair, Human-Computer Interaction Institute, Carnegie Mellon University</p>
@@ -255,22 +279,46 @@ const FuseCaseStudy = () => {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+                  <div 
+                    className="p-6 rounded-2xl flex flex-col items-start text-left"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Too much clutter</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       Users struggled with "too much clutter and too little information." The first draft of the onboarding sequence felt overwhelming, so the revisions focused on progressive disclosure and simplifying navigation
                     </p>
                   </div>
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+                  <div 
+                    className="p-6 rounded-2xl flex flex-col items-start text-left"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Order of information</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       Users were confused by the order and structure of information presented; the hierarchy of info presented was nearly flat, and users didn't feel like they were starting with the basics before moving on to more niche features
                     </p>
                   </div>
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left">
-                    <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+                  <div 
+                    className="p-6 rounded-2xl flex flex-col items-start text-left"
+                    style={{
+                      background: 'rgba(10, 5, 32, 0.3)',
+                      backdropFilter: 'blur(20px)',
+                      WebkitBackdropFilter: 'blur(20px)',
+                      border: '1px solid rgba(255, 255, 255, 0.1)',
+                    }}
+                  >
+                    <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                     <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Too much motion</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       A video's worth a thousand pictures - but v1 of the onboarding used too may GIFs, distracting users from linear progressin towards a goal. The final design reintroduced GIFs judiciously to highlight key interactions, guiding attention without overwhelming the user.
@@ -301,19 +349,19 @@ const FuseCaseStudy = () => {
                 </p>
                 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                  <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                     <h4 className="text-[#EAE8F3] text-xl font-bold mb-2">Product Comparison</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       Example project comparing different wireless headphone brands to help users evaluate features side by side.
                     </p>
                   </div>
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                  <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                     <h4 className="text-[#EAE8F3] text-xl font-bold mb-2">Trip Planning</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       Example project showing a completed Fuse project for planning a family vacation to Hawaii.
                     </p>
                   </div>
-                  <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+                  <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                     <h4 className="text-[#EAE8F3] text-xl font-bold mb-2">Academic Research</h4>
                     <p className="text-[#EAE8F3]/90 text-md">
                       Example project demonstrating how a researcher can organize and save sources for a literature review.

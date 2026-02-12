@@ -131,7 +131,7 @@ const AboutMe = () => {
           
           <button
             onClick={shuffleCards}
-            className="mb-8 px-6 py-2 bg-gray-100 hover:bg-gray-200 bg-white/10 dark:hover:bg-white/20 text-gray-700 text-[#EAE8F3] rounded-lg transition-colors duration-200 font-medium"
+            className="mb-8 px-6 py-2 bg-[#0A0520]/30 hover:bg-[#0A0520]/40 text-[#EAE8F3] rounded-lg transition-colors duration-200 font-medium"
           >
             shuffle
           </button>

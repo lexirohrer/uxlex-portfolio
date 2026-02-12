@@ -122,16 +122,16 @@ const BridgeBoxCaseStudy = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Methods</h2>
                   <div className="flex flex-wrap gap-3">
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Participatory Design
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       User Research
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       AI/ML Design
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Workshop Facilitation
                     </span>
                   </div>
@@ -166,17 +166,17 @@ const BridgeBoxCaseStudy = () => {
           <section className="mb-24">
             <h2 className="text-[#EAE8F3] text-[32px] font-bold mb-8 font-hagrid">Project Goals</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#F7E59E] text-[#403E33] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Adapt HCD Methods</h4>
                 <p className="text-[#EAE8F3] text-md">Adapt Design Research methods like participatory design to Thai cultural contexts as part of my Fulbright research.</p>
               </div>
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#FDEFB4] text-[#EAE8F3] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Increase Access</h4>
                 <p className="text-[#EAE8F3] text-md">Make BridgeBox more user-friendly and accessible to rural users with lower digital literacy rates.</p>
               </div>
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl flex flex-col items-start text-left h-full">
+              <div className="bg-[#0A0520]/20 p-6 rounded-2xl flex flex-col items-start text-left h-full">
                 <div className="flex items-center justify-center w-12 h-12 bg-[#F7E59E] text-[#EAE8F3] rounded-full text-xl font-bold mb-4">🏆</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Integrate Responsible AI</h4>
                 <p className="text-[#EAE8F3] text-md">Design AI support features to help responders categorize and prioritize disaster reports, so they can focus on the most urgent cases.</p>
@@ -193,28 +193,60 @@ const BridgeBoxCaseStudy = () => {
             
             {/* Process graphic */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Planned co-design workshops</h4>
-                <p className="text-[#EAE8F3] text-md">First, we decided on which participatory methods would best elicit honest critique and leverage Thai collectivist cultural strengths among</p>
+                <p className="text-[#EAE8F3]/90 text-md">First, we decided on which participatory methods would best elicit honest critique and leverage Thai collectivist cultural strengths among</p>
               </div>
               
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Training local facilitators</h4>
-                <p className="text-[#EAE8F3] text-md">Next, I trained Thai collaborators in workshop facilitation to overcome language barriers, and ensure they could reuse these skills after our partnership ended. </p>
+                <p className="text-[#EAE8F3]/90 text-md">Next, I trained Thai collaborators in workshop facilitation to overcome language barriers, and ensure they could reuse these skills after our partnership ended. </p>
               </div>
 
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Ran Co-design workshops </h4>
-                <p className="text-[#EAE8F3] text-md">Co-designed features with rural users through paper prototyping and generative sketching activities. Iterated on these workshops as we found what worked and didn't.</p>
+                <p className="text-[#EAE8F3]/90 text-md">Co-designed features with rural users through paper prototyping and generative sketching activities. Iterated on these workshops as we found what worked and didn't.</p>
               </div>
 
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Designed UI & AI features</h4>
-                <p className="text-[#EAE8F3] text-md">I overhauled the UI based on user-generated designs, and built an ML models to auto-categorize emergency cases by urgency</p>
+                <p className="text-[#EAE8F3]/90 text-md">I overhauled the UI based on user-generated designs, and built an ML models to auto-categorize emergency cases by urgency</p>
               </div>
             </div>
 
@@ -268,17 +300,17 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#EAE8F3] text-lg mb-6">
                 Both contexts had to be structured carefully; At HRDF, lawyers were working to address human rights violations for migrant and rural workers across many site. In Songkhla, frequent flash flooding paried with the tension from political insurgency created a general mistrust of government and aid responders when climate disasters struck.In both contexts, it was crucial to make the submission UI extremely intuitive for rural users, correctly prioritze the submitted cases, and build trust through open lines of communication open between reporters and responders.
               </p>
-               <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+               <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
                    />
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 w-16 h-16 opacity-60"
                    />
                   <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">These areas, long affected by ongoing conflict, have endured deep pain—where <strong>violence, bombings, and gunfire have sadly become part of daily life.</strong> What makes it even harder is how <strong>this unrest blocks access to help during natural disasters.</strong> Floods often submerge entire neighborhoods, leaving families homeless and vulnerable. In such conditions, delivering timely support becomes incredibly difficult.</p>
                   <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
@@ -305,17 +337,17 @@ const BridgeBoxCaseStudy = () => {
                    </div>
                  ))}
                </div>
-            <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+            <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
                    />
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 w-16 h-16 opacity-60"
                    />
                   <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">It's important to have someone in the field with [the participants], because online it's difficult to get their full attention…in person, you can see the time they spent to write down what they actually think.</p>
                   <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Tanida Disyabut, BridgeBox Founder</p>
@@ -373,17 +405,17 @@ const BridgeBoxCaseStudy = () => {
               <p className="text-[#EAE8F3] text-lg mb-6">
                 Beyond feature improvements, collaborating on the solution garnered buy in from users, with one BridgeBox facilitator noting:
               </p>
-              <div className="bg-white/20 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+              <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-6">
                  <div className="relative">
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
                    />
                    <img 
                      src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                      alt="" 
-                     className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                     className="absolute top-8 left-2 w-16 h-16 opacity-60"
                    />
                   <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">[Rural responders] realized that the existing process does not work well and were keen to adopt new tools. With the participatory approach, they take ownership in designing.</p>
                   <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— BridgeBox Facilitator</p>
@@ -537,20 +569,44 @@ const BridgeBoxCaseStudy = () => {
                 Because the BridgeBox team only had one engineer, I volunteered to design this feature and build the model to power it using Google Vertex. To start, I identified the following steps:
                </p>
                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                 <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+                 <div 
+                   className="p-6 rounded-2xl"
+                   style={{
+                     background: 'rgba(10, 5, 32, 0.3)',
+                     backdropFilter: 'blur(20px)',
+                     WebkitBackdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(255, 255, 255, 0.1)',
+                   }}
+                 >
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                    <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Gather Data</h4>
-                   <p className="text-[#EAE8F3] text-md">Collected and organized historical BridgeBox case data for model training.</p>
+                   <p className="text-[#EAE8F3]/90 text-md">Collected and organized historical BridgeBox case data for model training.</p>
                  </div>
-                 <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+                 <div 
+                   className="p-6 rounded-2xl"
+                   style={{
+                     background: 'rgba(10, 5, 32, 0.3)',
+                     backdropFilter: 'blur(20px)',
+                     WebkitBackdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(255, 255, 255, 0.1)',
+                   }}
+                 >
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                    <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Train AI Model</h4>
-                   <p className="text-[#EAE8F3] text-md">Trained and validated a simple model to auto-tag new cases by urgency and category.</p>
+                   <p className="text-[#EAE8F3]/90 text-md">Trained and validated a simple model to auto-tag new cases by urgency and category.</p>
                  </div>
-                 <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                   <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+                 <div 
+                   className="p-6 rounded-2xl"
+                   style={{
+                     background: 'rgba(10, 5, 32, 0.3)',
+                     backdropFilter: 'blur(20px)',
+                     WebkitBackdropFilter: 'blur(20px)',
+                     border: '1px solid rgba(255, 255, 255, 0.1)',
+                   }}
+                 >
+                   <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                    <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Handoff for Integration</h4>
-                   <p className="text-[#EAE8F3] text-md">Packaged the trained model and collaborated with engineering for platform integration.</p>
+                   <p className="text-[#EAE8F3]/90 text-md">Packaged the trained model and collaborated with engineering for platform integration.</p>
                  </div>
                </div>
                <p className="text-[#EAE8F3] text-lg mb-6">

@@ -38,7 +38,7 @@ const Hero = () => {
   }, [subheaderComplete]);
 
   return (
-    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/30 border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-white/20 bg-white/5 backdrop-blur-lg relative px-8 py-6" style={{
+    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-[#0A0520]/40 backdrop-blur-lg relative px-8 py-6" style={{
       boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'
     }}>
       {/* Moving gradient overlay inside card */}

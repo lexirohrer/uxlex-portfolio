@@ -15,7 +15,7 @@ const MuvMiCaseStudy = () => {
       <Header />
       
       {/* Hero Section - Full Width */}
-      <section className="relative w-full py-16 max-sm:py-12 overflow-hidden">
+      <section className="relative w-full pt-[160px] pb-16 max-xl:pt-[152px] max-lg:pt-[136px] max-md:pt-[120px] max-sm:pt-[100px] max-sm:pb-12 overflow-hidden">
         {/* Header - No background */}
         <div className="relative z-10 w-full py-8">
           <div className="max-w-[1440px] mx-auto px-[120px] max-md:px-10 max-sm:px-5">
@@ -80,13 +80,13 @@ const MuvMiCaseStudy = () => {
                 <div>
                   <h2 className="text-2xl font-bold text-[#EAE8F3] mb-2 font-hagrid">Methods</h2>
                   <div className="flex flex-wrap gap-3">
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Participatory Design
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Ethnography
                     </span>
-                    <span className="bg-white/10 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
+                    <span className="bg-[#0A0520]/30 text-[#EAE8F3] border border-white/10 px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm shadow-sm">
                       Paper Prototyping
                     </span>
                   </div>
@@ -125,17 +125,17 @@ const MuvMiCaseStudy = () => {
                 Thai culture's engrained attention to social harmony and respect for authority can make it difficult to elicit direct critical feedback using classic design research methods such as interviews and focus groups. Despite the mismatch between culture and methodology, these methods are the most widely taught and used in places like Thailand, where integration of human centered design is still cutting edge rather than assumed in the technology sector. 
               </p>
             
-              <div className="bg-white bg-white/20 dark:border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+              <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl p-6 sm:p-8 lg:p-12 mb-6">
                 <div className="relative">
                   <img 
                     src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                     alt="" 
-                    className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                    className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
                   />
                   <img 
                     src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                     alt="" 
-                    className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                    className="absolute top-8 left-2 w-16 h-16 opacity-60"
                   />
                   <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">People [in Thailand] think that 'user-first' just means you're thinking about the user and what they would want — but it's actually about being with the user, talking to them, and hearing them speak for themselves about what they want. This isn't well understood yet here.</p>
                   <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— Thai CEO, Stanford HCI graduate (Interview, 06/12/2025)</p>
@@ -150,8 +150,8 @@ const MuvMiCaseStudy = () => {
             {/* Project Goals and Key Outcomes Cards */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
               {/* Project Goals Card */}
-              <div className="bg-white bg-white/10 rounded-2xl shadow-md overflow-hidden">
-                <div className="bg-[#E6F0F7] bg-white/10 p-6">
+              <div className="bg-[#0A0520]/30 rounded-2xl overflow-hidden">
+                <div className="bg-[#0A0520]/20 p-6">
                   <h3 className="text-[#EAE8F3] text-2xl font-bold font-hagrid">
                     Project Goals
                   </h3>
@@ -187,8 +187,8 @@ const MuvMiCaseStudy = () => {
               </div>
 
               {/* Key Outcomes Card */}
-              <div className="bg-white bg-white/10 rounded-2xl shadow-md overflow-hidden">
-                <div className="bg-[#E6F0F7] bg-white/10 p-6">
+              <div className="bg-[#0A0520]/30 rounded-2xl overflow-hidden">
+                <div className="bg-[#0A0520]/20 p-6">
                   <h3 className="text-[#EAE8F3] text-2xl font-bold font-hagrid">
                     Key Outcomes
                   </h3>
@@ -226,29 +226,61 @@ const MuvMiCaseStudy = () => {
             {/* Process graphic */}
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">1</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Locals Focus Group</h4>
-                <p className="text-[#EAE8F3] text-md">MuvMi employees hosted a focus group to discuss pain points with local riders.
+                <p className="text-[#EAE8F3]/90 text-md">MuvMi employees hosted a focus group to discuss pain points with local riders.
                 </p>
               </div>
               
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">2</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Tourist ethnographic ride alongs</h4>
-                <p className="text-[#EAE8F3] text-md">MuvMi employees and I observed tourists using the service to understand their expectations and pain points with calling, finding, and riding the Tuk Tuks.</p>
+                <p className="text-[#EAE8F3]/90 text-md">MuvMi employees and I observed tourists using the service to understand their expectations and pain points with calling, finding, and riding the Tuk Tuks.</p>
               </div>
 
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">3</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3"> Tourist paper prototyping</h4>
-                <p className="text-[#EAE8F3] text-md">I created low-fidelity paper feature cards, and asked tourists to construct their ideal app experience.</p>
+                <p className="text-[#EAE8F3]/90 text-md">I created low-fidelity paper feature cards, and asked tourists to construct their ideal app experience.</p>
               </div>
 
-              <div className="bg-[#E6F0F7] bg-white/10 p-6 rounded-2xl">
-                <div className="flex items-center justify-center w-12 h-12 bg-[#557592] bg-[#EAE8F3] text-white text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
+                <div className="flex items-center justify-center w-12 h-12 bg-[#EAE8F3] text-[#1A103F] rounded-full text-xl font-bold mb-4">4</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-bold mb-3">Synthesis & implementation</h4>
-                <p className="text-[#EAE8F3] text-md"> I consolidated insights from both user groups and worked with MuvMi to implement unified service concepts.</p>
+                <p className="text-[#EAE8F3]/90 text-md"> I consolidated insights from both user groups and worked with MuvMi to implement unified service concepts.</p>
               </div>
             </div>
           </section>
@@ -261,17 +293,41 @@ const MuvMiCaseStudy = () => {
             <p className="text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> Because of language constraints, internal MuvMi employees first conducted the focus groups they were comfortable with with local users to better understand their pain points and needs, while I designed more collaborative methodologies for tourist research. The local workshops were structured as roundtable discussions, focused on specific pain points and needs identified from feedback widgets within the app, and raised similar issues as MuvMi had heard about their service before:
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-green-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-green-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👍</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Local users choose MuvMi Tuk Tuks <strong>because they are safer</strong> than other travel methods (e.g. motorbikes, walking, etc.)</h4>
               </div>
 
-              <div className="bg-red-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Local users cared about speed, but <strong>reliability was even more important.</strong>  ETA inconsistencies damaged trust.</h4>
             </div>
 
-              <div className="bg-red-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Local users <strong>understood why travel was limited to a certain zone</strong>, but often didn't know what zone they were in</h4>
               </div>
@@ -320,17 +376,41 @@ const MuvMiCaseStudy = () => {
 
             {/* Key Insights */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-              <div className="bg-green-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-green-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👍</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Tourist users loved how <strong>safe, clean, and comfortable</strong> the vehicles were</h4>
                 </div>
 
-              <div className="bg-red-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Tourist users <strong>struggled the most with the checkout flow</strong>, with key UI issues preventing them from success</h4>
               </div>
               
-              <div className="bg-red-950/20 p-6 rounded-2xl">
+              <div 
+                className="p-6 rounded-2xl"
+                style={{
+                  background: 'rgba(10, 5, 32, 0.3)',
+                  backdropFilter: 'blur(20px)',
+                  WebkitBackdropFilter: 'blur(20px)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}
+              >
                 <div className="flex items-center justify-center w-12 h-12 bg-red-100 text-[#B38C28] rounded-full text-2xl font-bold mb-4">👎</div>
                 <h4 className="text-[#EAE8F3] text-2xl font-regular mb-3">Tourist users were <strong>confused</strong> why they could only go <strong>limited distances</strong> in the Tuk Tuks</h4>
               </div>
@@ -422,7 +502,7 @@ const MuvMiCaseStudy = () => {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
               {/* Local Riders Box */}
-              <div className="bg-gray-100 bg-white/5 rounded-2xl p-6 shadow-sm">
+              <div className="bg-[#0A0520]/20 rounded-2xl p-6 shadow-sm">
                 <h4 className="font-bold text-[#EAE8F3] text-xl mb-4 text-left">Local Riders...</h4>
                 <ul className="space-y-4 text-[#EAE8F3] text-lg list-disc list-inside">
                   <li>
@@ -437,7 +517,7 @@ const MuvMiCaseStudy = () => {
                 </ul>
               </div>
               {/* Tourist Riders Box */}
-              <div className="bg-gray-100 bg-white/5 rounded-2xl p-6 shadow-sm">
+              <div className="bg-[#0A0520]/20 rounded-2xl p-6 shadow-sm">
                 <h4 className="font-bold text-[#EAE8F3] text-xl mb-4 text-left">Tourists...</h4>
                 <ul className="space-y-4 text-[#EAE8F3] text-lg list-disc list-inside">
                   <li>
@@ -516,17 +596,17 @@ const MuvMiCaseStudy = () => {
           <h3 className="text-[#EAE8F3] text-2xl font-bold mb-6">Methodology Learnings</h3>
           <p className="text-[#EAE8F3] text-lg space-y-3 pl-2 mb-6"> This project was focused not only on solving the desgin challenges at hand, but also on <strong>adapting the methodologies used to specific cultural contexts.</strong> After shadowing and practicing ethnographic observation and participatory design workshops, one Muvmi employee reflected:
           </p> 
-          <div className="bg-white bg-white/20 dark:border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+          <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
             <div className="relative">
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                 alt="" 
-                className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
               />
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                 alt="" 
-                className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 w-16 h-16 opacity-60"
               />
               <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">Activities like paper prototyping felt like another layer — the user has to think deeper on what they want and why, instead of just tell us what they don't like.</p>
               <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>
@@ -536,17 +616,17 @@ const MuvMiCaseStudy = () => {
           <p className="text-[#EAE8F3] text-lg mb-6">
               Other employees reflected that participatory methods gave them not only gave them deeper insights but also confidence in the truthfulness of those insights, compared to the use of traditional interview and focus group methods:
             </p>
-          <div className="bg-white bg-white/20 dark:border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
+          <div className="bg-[#0A0520]/40 border border-white/10 rounded-3xl shadow-xl p-6 sm:p-8 lg:p-12 mb-6">
             <div className="relative">
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-light.png`} 
                 alt="" 
-                className="absolute top-8 left-2 hidden block w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 hidden w-16 h-16 opacity-60"
               />
               <img 
                 src={`${import.meta.env.BASE_URL}open-quotes-dark.png`} 
                 alt="" 
-                className="absolute top-8 left-2 block hidden w-16 h-16 opacity-60"
+                className="absolute top-8 left-2 w-16 h-16 opacity-60"
               />
               <p className="text-[#EAE8F3] text-xl sm:text-2xl pl-28 max-sm:pl-8 pt-2 mb-2">You not only remember what the users say, but what they felt about it at the time… you can truly trust what they say because you can see their frustration or happiness.</p>
               <p className="text-[#EAE8F3] text-lg sm:text-xl pl-28 max-sm:pl-8 pt-2">— MuvMi Employee (Interview, 04/08/2025)</p>

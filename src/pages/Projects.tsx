@@ -102,11 +102,10 @@ const Projects = () => {
                 <div 
                   className="relative rounded-3xl overflow-hidden p-8 md:p-10 lg:p-12"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.1)',
+                    background: 'rgba(10, 5, 32, 0.3)',
                     backdropFilter: 'blur(20px)',
                     WebkitBackdropFilter: 'blur(20px)',
-                    border: '1px solid rgba(255, 255, 255, 0.2)',
-                    boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                    border: '1px solid rgba(255, 255, 255, 0.1)',
                   }}
                 >
                   <div className="relative z-10">
@@ -211,7 +210,6 @@ const Projects = () => {
                         backdropFilter: 'blur(20px)',
                         WebkitBackdropFilter: 'blur(20px)',
                         border: '1px solid rgba(255, 255, 255, 0.2)',
-                        boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                       }}
                     >
                       <div className="relative grid grid-cols-1 lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
@@ -236,7 +234,7 @@ const Projects = () => {
                               {project.tools.map((tool, toolIndex) => (
                                 <span
                                   key={toolIndex}
-                                  className="bg-white/30 bg-white/10 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/20 border-white/10"
+                                  className="bg-[#0A0520]/30 text-white px-4 py-2 rounded-full text-sm font-medium backdrop-blur-sm border border-white/10"
                                 >
                                   {tool}
                                 </span>
@@ -275,7 +273,6 @@ const Projects = () => {
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
                 }}
               >
                 <div className="relative z-10">
@@ -402,7 +399,7 @@ const Projects = () => {
             <div
               key={index}
                     ref={isActive ? cardRef : null}
-                    className="absolute rounded-3xl border border-white/30 border-white/10 bg-white/15 bg-[#0A0520]/20 backdrop-blur-lg shadow-2xl cursor-pointer overflow-hidden w-[95%] sm:w-[85%] md:w-[75%] flex flex-col justify-center"
+                    className="absolute rounded-3xl border border-white/10 bg-[#0A0520]/40 backdrop-blur-lg cursor-pointer overflow-hidden w-[95%] sm:w-[85%] md:w-[75%] flex flex-col justify-center"
               style={{
                       transform,
                       zIndex,
@@ -439,7 +436,7 @@ const Projects = () => {
                             {project.tools.map((tool, toolIndex) => (
                               <span
                                 key={toolIndex}
-                                  className="bg-white/30 bg-white/10 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium backdrop-blur-sm border border-white/20 border-white/10"
+                                  className="bg-[#0A0520]/30 text-white px-2 py-0.5 sm:px-2.5 sm:py-1 md:px-4 md:py-2 rounded-full text-[10px] sm:text-xs md:text-sm font-medium backdrop-blur-sm border border-white/10"
                               >
                                 {tool}
                               </span>
@@ -459,7 +456,7 @@ const Projects = () => {
                   e.stopPropagation();
                   setActiveProject(prev => prev > 0 ? prev - 1 : prev);
                 }}
-                className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                className="hidden md:block absolute left-2 lg:left-8 z-50 text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
                 disabled={activeProject === 0}
                 aria-label="Previous project"
                 style={{ pointerEvents: 'auto' }}
@@ -474,7 +471,7 @@ const Projects = () => {
                   e.stopPropagation();
                   setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
                 }}
-                className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
+                className="hidden md:block absolute right-2 lg:right-8 z-50 text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 lg:p-3 disabled:opacity-30 disabled:cursor-not-allowed transition-all duration-300 hover:scale-105"
                 disabled={activeProject === projects.length - 1}
                 aria-label="Next project"
                 style={{ pointerEvents: 'auto' }}
@@ -492,7 +489,7 @@ const Projects = () => {
                   e.stopPropagation();
                   setActiveProject(prev => prev > 0 ? prev - 1 : prev);
                 }}
-                className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={activeProject === 0}
                 aria-label="Previous project"
                 style={{ pointerEvents: 'auto' }}
@@ -524,7 +521,7 @@ const Projects = () => {
                   e.stopPropagation();
                   setActiveProject(prev => prev < projects.length - 1 ? prev + 1 : prev);
                 }}
-                className="text-white bg-white/10 backdrop-blur-lg border border-white/20 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
+                className="text-white bg-[#0A0520]/30 backdrop-blur-lg border border-white/10 rounded-full p-2 disabled:opacity-30 disabled:cursor-not-allowed"
                 disabled={activeProject === projects.length - 1}
                 aria-label="Next project"
                 style={{ pointerEvents: 'auto' }}
