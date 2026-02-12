@@ -487,11 +487,11 @@ const Resume = () => {
           <div
             className="absolute inset-0 w-full h-full rounded-3xl flex items-center justify-center backface-hidden px-6"
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
+              background: 'rgba(10, 5, 32, 0.3)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(0deg)",
@@ -511,11 +511,11 @@ const Resume = () => {
             }}
             className="absolute inset-0 w-full h-full rounded-3xl flex flex-col items-center justify-center gap-3 px-4 py-6 backface-hidden"
             style={{
-              background: 'rgba(255, 255, 255, 0.1)',
+              background: 'rgba(10, 5, 32, 0.3)',
               backdropFilter: 'blur(20px)',
               WebkitBackdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.2)',
-              boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
               backfaceVisibility: "hidden",
               WebkitBackfaceVisibility: "hidden",
               transform: "rotateY(180deg)",
@@ -711,11 +711,11 @@ const Resume = () => {
                         key={index}
                         className="absolute rounded-3xl p-8 sm:p-10 md:p-12 cursor-pointer w-[95%] sm:w-[600px] md:w-[700px] lg:w-[650px] flex flex-col justify-center"
                         style={{
-                          background: 'rgba(255, 255, 255, 0.1)',
+                          background: 'rgba(10, 5, 32, 0.3)',
                           backdropFilter: 'blur(20px)',
                           WebkitBackdropFilter: 'blur(20px)',
-                          border: '1px solid rgba(255, 255, 255, 0.2)',
-                          boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                           transform,
                           zIndex,
                           opacity,
@@ -861,11 +861,11 @@ const Resume = () => {
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(10, 5, 32, 0.3)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 <div>
@@ -899,11 +899,11 @@ const Resume = () => {
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(10, 5, 32, 0.3)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 <div>
@@ -931,11 +931,11 @@ const Resume = () => {
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(10, 5, 32, 0.3)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 <div>
@@ -964,11 +964,11 @@ const Resume = () => {
                   <div 
                 className="relative rounded-3xl overflow-hidden p-8"
                 style={{
-                  background: 'rgba(255, 255, 255, 0.1)',
+                  background: 'rgba(10, 5, 32, 0.3)',
                   backdropFilter: 'blur(20px)',
                   WebkitBackdropFilter: 'blur(20px)',
-                  border: '1px solid rgba(255, 255, 255, 0.2)',
-                  boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 <div>

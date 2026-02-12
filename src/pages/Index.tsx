@@ -74,8 +74,10 @@ const Index = () => {
           }}
         />
         {/* Second glass screen - behind and offset */}
-        <div className="absolute z-10 w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-[#0A0520]/40 backdrop-blur-lg" style={{
-          boxShadow: '0 8px 32px 0 rgba(0, 0, 0, 0.3)',
+        <div className="absolute z-10 w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-[#0A0520]/30 backdrop-blur-lg" style={{
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)',
           left: 'calc(50% - 80px)',
           top: 'calc(120px - 30px)',
           transform: 'translateX(-50%)'

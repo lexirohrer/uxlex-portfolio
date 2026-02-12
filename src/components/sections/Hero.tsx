@@ -38,8 +38,12 @@ const Hero = () => {
   }, [subheaderComplete]);
 
   return (
-    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/10 max-lg:w-[75vw] max-md:w-[80vw] bg-[#0A0520]/40 backdrop-blur-lg relative px-8 py-6" style={{
-      boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.18)'
+    <div className="w-[900px] h-[600px] rounded-3xl shadow-2xl border border-white/10 max-lg:w-[75vw] max-md:w-[80vw] relative px-8 py-6" style={{
+      background: 'rgba(10, 5, 32, 0.3)',
+      backdropFilter: 'blur(20px)',
+      WebkitBackdropFilter: 'blur(20px)',
+      border: '1px solid rgba(255, 255, 255, 0.1)',
+      boxShadow: '0 20px 60px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.2)'
     }}>
       {/* Moving gradient overlay inside card */}
       <div className="absolute inset-0 moving-gradient opacity-20 dark:opacity-10 rounded-3xl"></div>
